@@ -1,13 +1,48 @@
+import dynamic from "next/dynamic";
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "../styles/Home.module.css";
-import Map from "../components/Map";
-// import styles from "../styles/globals.css";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import ReactMapGL from "react-map-gl";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const Map = dynamic(() => import("../components/Map"), {
+    loading: () => "Loading...",
+    ssr: false,
+  });
+
+  const [locationList, setLocationList] = useState([]);
+
+  const [isLoading, setLoading] = useState(false);
+  const router = useRouter();
+  const { id } = router.query;
+
+  function refreshPage() {
+    const fetchData = async () => {
+      setLoading(true);
+      const data = await fetch("/api/locations");
+      const locations = await data.json();
+      setLocationList(locations);
+      console.log(locations);
+      setLoading(false);
+    };
+    fetchData().catch(console.error);
+  }
+
+  useEffect(() => {
+    refreshPage();
+  }, []);
+
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
+  if (!locationList) {
+    return <h1>No data</h1>;
+  }
+
   return (
     <>
       <Head>
