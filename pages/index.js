@@ -6,13 +6,23 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import ReactMapGL from "react-map-gl";
 
+const Map = dynamic(() => import("../components/Map"), {
+  loading: () => "Loading...",
+  ssr: false,
+});
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const Map = dynamic(() => import("../components/Map"), {
-    loading: () => "Loading...",
-    ssr: false,
+  const [location, setLocation] = useState({
+    latitude: 52.516806,
+    longitude: 13.383309,
+    zoom: 10,
   });
+
+  function updateLocation(newLocation) {
+    setLocation(newLocation);
+  }
 
   // const [locationList, setLocationList] = useState([]);
 
@@ -53,7 +63,7 @@ export default function Home() {
       </Head> */}
       <main className={styles.main}>
         <section className="map">
-          <Map />
+          <Map location={location} updateLocation={updateLocation} />
         </section>
       </main>
     </>
