@@ -3,7 +3,10 @@ const nextConfig = {
   reactStrictMode: true,
   env: {
     mapbox_key:
-      "pk.eyJ1IjoibGFyYXVqbyIsImEiOiJjbGY0NHdnejAwejc1M3luenJuMHg1cXNlIn0.GkysjsNvSZbrpXALeo1R5A",
+      "pk.eyJ1IjoibGFyYXVqbyIsImEiOiJjbGY1amZ6bzQwd3JwM3RvMTF3a2NkMTVwIn0.Y6JKVCNltaEOlgVrM5cFpA",
+  },
+  compiler: {
+    styledComponents: true,
   },
 };
 
