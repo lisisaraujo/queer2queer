@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import Link from "next/link";
 
-export default function Header() {
-  function navBar() {
+export default function NavBar() {
+  function navBarDrop() {
     let x = document.getElementById("myLinks");
     if (x.style.display === "block") {
       x.style.display = "none";
@@ -9,6 +10,7 @@ export default function Header() {
       x.style.display = "block";
     }
   }
+
   return (
     <>
       <nav>
@@ -19,11 +21,16 @@ export default function Header() {
                 QueerMap BER
               </a>
               <div id="myLinks">
-                <a href="#news">News</a>
-                <a href="#contact">Contact</a>
-                <a href="#about">About</a>
+                <Link href="/aboutUs">About Us</Link>
+                <Link href="/ressources">Ressources</Link>
+                <Link href="/feedback">Feedback</Link>
+                <Link href="/contact">Contact</Link>
               </div>
-              <a href="javascript:void(0);" className="icon" onClick={navBar}>
+              <a
+                href="javascript:void(0);"
+                className="icon"
+                onClick={navBarDrop}
+              >
                 <i className="fa fa-bars"></i>
               </a>
             </div>
