@@ -2,27 +2,14 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import styles from "../styles/Home.module.css";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import ReactMapGL from "react-map-gl";
-
-const Map = dynamic(() => import("../components/Map"), {
-  loading: () => "Loading...",
-  ssr: false,
-});
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [location, setLocation] = useState({
-    latitude: 52.516806,
-    longitude: 13.383309,
-    zoom: 10,
+  const Map = dynamic(() => import("../components/Map"), {
+    loading: () => "Loading...",
+    ssr: false,
   });
-
-  function updateLocation(newLocation) {
-    setLocation(newLocation);
-  }
 
   // const [locationList, setLocationList] = useState([]);
 
@@ -63,7 +50,7 @@ export default function Home() {
       </Head> */}
       <main className={styles.main}>
         <section className="map">
-          <Map location={location} updateLocation={updateLocation} />
+          <Map />
         </section>
       </main>
     </>
