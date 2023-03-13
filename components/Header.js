@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import Link from "next/link";
+import styled from "styled-components";
 
 export default function NavBar() {
   function navBarDrop() {
@@ -21,16 +21,12 @@ export default function NavBar() {
                 QueerMap BER
               </a>
               <div id="myLinks">
-                <Link href="/aboutUs">About Us</Link>
+                <Link href="/about">About Us</Link>
                 <Link href="/ressources">Ressources</Link>
                 <Link href="/feedback">Feedback</Link>
                 <Link href="/contact">Contact</Link>
               </div>
-              <a
-                href="javascript:void(0);"
-                className="icon"
-                onClick={navBarDrop}
-              >
+              <a href="#" className="icon" onClick={navBarDrop}>
                 <i className="fa fa-bars"></i>
               </a>
             </div>
