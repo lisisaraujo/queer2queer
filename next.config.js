@@ -5,6 +5,9 @@ const nextConfig = {
     mapbox_key:
       "pk.eyJ1IjoibGFyYXVqbyIsImEiOiJjbGY1amZ6bzQwd3JwM3RvMTF3a2NkMTVwIn0.Y6JKVCNltaEOlgVrM5cFpA",
   },
+  compiler: {
+    styledComponents: true,
+  },
 };
 
 module.exports = nextConfig;

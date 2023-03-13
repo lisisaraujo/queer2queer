@@ -4,6 +4,7 @@ import GlobalStyle from "../components/GlobalStyle";
 import Layout from "../components/Layout";
 import { SWRConfig } from "swr";
 import "map.css";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
