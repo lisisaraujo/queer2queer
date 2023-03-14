@@ -2,9 +2,13 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import styles from "../styles/Home.module.css";
-import { useState, useRouter, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import styled from "styled-components";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
+
+// importing Map component dynamically
 
 export default function Home() {
   const Map = dynamic(() => import("../components/Map"), {
@@ -12,52 +16,57 @@ export default function Home() {
     ssr: false,
   });
 
-  const [isLoading, setLoading] = useState(false);
   const [locations, setLocations] = useState([]);
-  const [center, setCenter] = useState([]);
+  const [isLoading, setLoading] = useState(false);
+  // const [center, setCenter] = useState([13.41133, 52.502183]);
 
-  const onPlaceUpload = () => {
-    loadMarkers();
-  };
+  const router = useRouter();
+  const { id } = router.query;
 
-  const loadMarkers = () => {
-    fetch("/api/locations")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("locations", data.locations);
-        setLocations(data.locations);
-        setCenter([13.41133, 52.502183]); //Berlin
-      })
-      .catch((err) => {
-        console.log("Fetch locations data error: ", err);
-      });
-  };
-  useEffect(() => {
-    loadMarkers();
-  }, []);
-
-  function onPlaceClick(location) {
-    setCenter([location.longitude, location.latitude]);
+  //fetch data from database on page refresh
+  function refreshPage() {
+    const fetchData = async () => {
+      const data = await fetch("/api/locations");
+      const locations = await data.json();
+      console.log(locations);
+      setLocations(data.latLng);
+      // setCenter([13.41133, 52.502183]); //Berlin
+    };
+    fetchData().catch(console.error);
   }
 
-  const newLocation = {
-    ...locations,
-    id: locations[locations.length - 1].id + 1,
-  };
-  setLocations([...locations, newLocation]);
-  setCenter(location.lngLat);
+  useEffect(() => {
+    refreshPage();
+  }, []);
+
+  // if (!locations) {
+  //   return <h1>Loading...</h1>;
+  // }
+
+  // const onLocationUpload = () => {
+  //   refreshPage();
+  // };
+
+  // function onLocationClick(location) {
+  //   setCenter([...location.latLng]);
+  // }
+
+  // const newLocation = {
+  //   ...locations,
+  //   id: locations._id,
+  // };
+  // setLocations([...locations, newLocation]);
+  // setCenter(location.lngLat);
 
   return (
     <>
-      <main className={styles.main}>
-        <section className="map">
-          <Map
-            center={center}
-            locations={locations}
-            onLocationUpload={onLocationUpload}
-          />
-        </section>
-      </main>
+      <section className="map">
+        <Map
+          // center={center}
+          locations={locations}
+          // onLocationUpload={onLocationUpload}
+        />
+      </section>
     </>
   );
 }
