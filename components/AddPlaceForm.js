@@ -1,11 +1,10 @@
 import { useState } from "react";
-
 import { geocoder } from "../src/mapbox";
 
 export default function AddPlaceForm({ onSubmit }) {
-  const [suggestions, setSuggestions] = useState([]);
+  // const [locationSuggestions, setLocationSuggestions] = useState([]);
   const [currentSuggestion, setCurrentSuggestion] = useState({});
-  const [text, setText] = useState("");
+  // const [text, setText] = useState("");
 
   function _onSubmit(event) {
     event.preventDefault();
@@ -20,26 +19,26 @@ export default function AddPlaceForm({ onSubmit }) {
     setText("");
   }
 
-  async function onInput(event) {
-    const query = event.target.value;
-    const response = await geocoder.forwardGeocode({ query, limit: 5 }).send();
-    setSuggestions(response.body.features);
-  }
+  // async function onInput(event) {
+  //   const query = event.target.value;
+  //   const response = await geocoder.forwardGeocode({ query, limit: 5 }).send();
+  //   setSuggestions(response.body.features);
+  // }
 
-  function onSuggestionClick(suggestion) {
-    setCurrentSuggestion(suggestion);
-    setText(suggestion.place_name);
-    setSuggestions([]);
-  }
+  // function onSuggestionClick(suggestion) {
+  //   setCurrentSuggestion(suggestion);
+  //   setText(suggestion.place_name);
+  //   setSuggestions([]);
+  // }
 
-  function onChange(event) {
-    setText(event.target.value);
-  }
+  // function onChange(event) {
+  //   setText(event.target.value);
+  // }
 
   return (
-    <section className="add-place">
-      <h2>Add new place</h2>
-      <form onSubmit={_onSubmit} autoComplete="off">
+    <section className="add-location">
+      <h2>Add new location</h2>
+      <form onSubmit={onSubmit} autoComplete="off">
         <input
           type="text"
           required
@@ -49,14 +48,14 @@ export default function AddPlaceForm({ onSubmit }) {
           minLength={3}
           placeholder="Type the place you want to go..."
         />
-        <button type="submit">Add Place</button>
-        <ul>
+        <button type="submit">Add Location</button>
+        {/* <ul>
           {suggestions.map((x) => (
             <li key={x.place_name} onClick={() => onSuggestionClick(x)}>
               {x.place_name}
             </li>
           ))}
-        </ul>
+        </ul> */}
       </form>
     </section>
   );

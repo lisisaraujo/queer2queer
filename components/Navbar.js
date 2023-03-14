@@ -2,7 +2,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 
-export default function NavBar() {
+export default function Navbar() {
   function navBarDrop() {
     let x = document.getElementById("myLinks");
     if (x.style.display === "block") {

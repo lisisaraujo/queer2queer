@@ -16,6 +16,11 @@ export default function Home() {
     ssr: false,
   });
 
+  const AddButton = dynamic(() => import("../components/Buttons/AddButton"), {
+    loading: () => "Loading...",
+    ssr: false,
+  });
+
   const [locations, setLocations] = useState([]);
   const [isLoading, setLoading] = useState(false);
   // const [center, setCenter] = useState([13.41133, 52.502183]);
@@ -24,24 +29,28 @@ export default function Home() {
   const { id } = router.query;
 
   //fetch data from database on page refresh
-  function refreshPage() {
+  function loadLocations() {
     const fetchData = async () => {
+      setLoading(true);
       const data = await fetch("/api/locations");
       const locations = await data.json();
-      console.log(locations);
       setLocations(data.latLng);
+      setLoading(false);
+      console.log(locations);
       // setCenter([13.41133, 52.502183]); //Berlin
+      if (isLoading) {
+        return <h1>Loading...</h1>;
+      }
+      if (!locations) {
+        return <h1>No data</h1>;
+      }
     };
     fetchData().catch(console.error);
   }
 
   useEffect(() => {
-    refreshPage();
+    loadLocations();
   }, []);
-
-  // if (!locations) {
-  //   return <h1>Loading...</h1>;
-  // }
 
   // const onLocationUpload = () => {
   //   refreshPage();
@@ -67,6 +76,7 @@ export default function Home() {
           // onLocationUpload={onLocationUpload}
         />
       </section>
+      <AddButton />
     </>
   );
 }

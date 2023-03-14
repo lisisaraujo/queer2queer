@@ -17,13 +17,12 @@ export default function Map() {
     zoom: 11,
   });
 
-
   return (
     <ReactMapGL
-      ReactMapGLStyle="mapbox://styles/laraujo/clf2iydy9000c01lxt1e9waqd"
+      mapStyle="mapbox://styles/laraujo/clf2iydy9000c01lxt1e9waqd"
       mapboxAccessToken={accessToken}
       {...viewport}
       onMove={(evt) => setViewport(evt.viewport)}
-    />
+    ></ReactMapGL>
   );
 }
