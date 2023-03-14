@@ -1,12 +1,7 @@
-import { useState, useEffect, useRef, useCallback } from "react";
-import ReactMapGL, {
-  Marker,
-  NavigationControl,
-  ScaleControl,
-  GeolocateControl,
-  Popup,
-} from "react-map-gl";
+import React, { useRef, useEffect, useState } from "react";
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { accessToken } from "../src/mapbox";
+// import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 
 export default function Map() {
   const [viewport, setViewport] = useState({
@@ -14,8 +9,10 @@ export default function Map() {
     width: "100%",
     latitude: 52.5072,
     longitude: 13.4247,
-    zoom: 11,
+    zoom: 12,
   });
+
+  // const marker = new mapboxgl.Marker().setLngLat([30.5, 50.5]).addTo(map); // add the marker to the map
 
   return (
     <ReactMapGL

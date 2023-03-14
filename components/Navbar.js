@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { AiOutlineMenuUnfold } from "react-icons/ai";
+import { SlMenu } from "react-icons/sl";
 
 export default function Navbar() {
   function navBarDrop() {
@@ -14,8 +14,8 @@ export default function Navbar() {
 
   return (
     <>
-      <nav>
-        <Headline>
+      <Headline>
+        <nav>
           <div className="mobile-container">
             <div className="topnav">
               <a href="#home" className="active">
@@ -28,37 +28,41 @@ export default function Navbar() {
                 <Link href="/contact">Contact</Link>
               </div>
               <a href="#" className="icon" onClick={navBarDrop}>
-                <AiOutlineMenuUnfold />
+                <SlMenu />
               </a>
             </div>
           </div>
-        </Headline>
-      </nav>
+        </nav>
+      </Headline>
     </>
   );
 }
 
 const Headline = styled.h1`
-  color: #252629;
+  color: #5e27c4;
   text-align: center;
   display: flex;
   position: fixed;
   z-index: 1;
   display: flex;
+  margin-top: 0px;
+  width: 100%;
 
   .mobile-container {
-    max-width: 480px;
+    max-width: 700px;
     margin: auto;
-    background-color: #555;
+    background-color: transparent;
     /* height: 500px; */
     color: white;
     border-radius: 10px;
     display: flex;
+    align-content: center;
+    position: fixed;
   }
 
   .topnav {
     overflow: hidden;
-    background-color: #333;
+    background-color: #5e27c4;
     position: relative;
   }
 
@@ -88,7 +92,7 @@ const Headline = styled.h1`
   }
 
   .active {
-    background-color: #04aa6d;
+    background-color: transparent;
     color: white;
   }
 `;
