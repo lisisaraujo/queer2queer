@@ -4,11 +4,10 @@ const { Schema } = mongoose;
 
 const locationSchema = new Schema({
   name: { type: String, required: true },
-  location: { type: String, required: true },
-  //   pin: { type: String, required: true },
-  //   mapURL: { type: String, required: false },
-  //   description: { type: String, required: true },
-  //   id: { type: String, required: true },
+  latLng: { type: Array, required: true },
+  type: { type: String, required: true },
+  color: { type: String, required: false },
+  comments: { type: Array, required: false },
 });
 
 // connecting through mongoose to location collection in the database.

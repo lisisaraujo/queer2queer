@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
+import { AiOutlineMenuUnfold } from "react-icons/ai";
 
 export default function NavBar() {
   function navBarDrop() {
@@ -27,7 +28,7 @@ export default function NavBar() {
                 <Link href="/contact">Contact</Link>
               </div>
               <a href="#" className="icon" onClick={navBarDrop}>
-                <i className="fa fa-bars"></i>
+                <AiOutlineMenuUnfold />
               </a>
             </div>
           </div>

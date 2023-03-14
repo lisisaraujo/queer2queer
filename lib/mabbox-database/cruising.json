@@ -17,6 +17,7 @@
   },
   {
     "name": "Ernst-Thälmann park (cruising)",
-    "location": { "lat": 52.5386387, "lng": 13.4312424 }
+    "location": { "lat": 52.5386387, "lng": 13.4312424 },
+    "comments":
   }
 ]
