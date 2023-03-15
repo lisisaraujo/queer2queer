@@ -5,7 +5,7 @@ import { MdLocationOn } from "react-icons/md";
 
 export default function Map({ locations }) {
   const [popupInfo, setPopupInfo] = useState(null);
-  const [show, setShow] = useState(false);
+  const [togglePopUp, setTogglePopUp] = useState(true);
   const [selectedLocation, setSelectedLocation] = useState({});
   const [viewport, setViewport] = useState({
     height: "100%",
@@ -17,6 +17,12 @@ export default function Map({ locations }) {
 
   const iconStyles = { color: "pink", fontSize: "1.5em", cursor: "pointer" };
 
+  function onMarker(location) {
+    console.log("I am clicling! My location: ", location);
+    setSelectedLocation(location);
+    // setTogglePopUp(true);
+  }
+
   return (
     <ReactMapGL
       mapStyle="mapbox://styles/dalalamad/clf5w8x0x009v01mo2feklchc"
@@ -24,36 +30,40 @@ export default function Map({ locations }) {
       {...viewport}
       onMove={(evt) => setViewport(evt.viewport)}
     >
-      {locations.map((location) => {
-        <Marker
-          key={location._id}
-          longitude={parseFloat(location.lngLat[1])}
-          latitude={parseFloat(location.lngLat[0])}
-          color={location.color}
-          style={{ cursor: "pointer", zIndex: 999 }}
+      {togglePopUp && (
+        <Popup
+          anchor="bottom"
+          onClose={() => setTogglePopUp(false)}
+          longitude={13.4247}
+          latitude={52.5072}
+          closeOnClick={true}
+          // longitude={parseFloat(selectedLocation.lngLat[1])}
+          // latitude={parseFloat(selectedLocation.lngLat[0])}
         >
-          <p
-            role="icon"
-            onClick={() => setSelectedLocation(location)}
-            aria-label="push-pin"
+          HEllo
+        </Popup>
+      )}
+
+      {locations.map((location) => {
+        return (
+          <Marker
+            key={location._id}
+            longitude={parseFloat(location.lngLat[1])}
+            latitude={parseFloat(location.lngLat[0])}
+            color={location.color}
+            style={{ cursor: "pointer", zIndex: 999 }}
           >
-            <MdLocationOn style={iconStyles} />
-          </p>
-        </Marker>;
-        {
-          selectedLocation.name === location.name ? (
-            <Popup
-              onClose={() => setSelectedLocation({})}
-              closeOnClick={true}
-              longitude={parseFloat(location.lngLat[1])}
-              latitude={parseFloat(location.lngLat[0])}
+            <p
+              role="icon"
+              onClick={() => {
+                onMarker(location);
+              }}
+              aria-label="push-pin"
             >
-              {location.name}
-            </Popup>
-          ) : (
-            false
-          );
-        }
+              <MdLocationOn style={iconStyles} />
+            </p>
+          </Marker>
+        );
       })}
     </ReactMapGL>
   );
