@@ -1,5 +1,12 @@
-import React, { useState } from "react";
-import ReactMapGL from "react-map-gl";
+import { useState, useEffect, useRef, useCallback } from "react";
+import ReactMapGL, {
+  Marker,
+  NavigationControl,
+  ScaleControl,
+  GeolocateControl,
+  Popup,
+} from "react-map-gl";
+import { accessToken } from "../src/mapbox";
 
 export default function Map() {
   const [viewport, setViewport] = useState({
@@ -12,8 +19,8 @@ export default function Map() {
 
   return (
     <ReactMapGL
-      mapStyle="mapbox://styles/laraujo/clf2iydy9000c01lxt1e9waqd"
-      mapboxAccessToken={process.env.mapbox_key}
+      mapStyle="mapbox://styles/dalalamad/clf5w8x0x009v01mo2feklchc"
+      mapboxAccessToken={accessToken}
       {...viewport}
       onMove={(evt) => setViewport(evt.viewport)}
     ></ReactMapGL>
