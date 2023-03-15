@@ -12,6 +12,7 @@
     "@mapbox/mapbox-gl-geocoder": "^5.0.1",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
+    "geolib": "^3.3.3",
     "mapbox-gl": "^2.13.0",
     "mongodb": "^5.1.0",
     "mongoose": "^7.0.1",
