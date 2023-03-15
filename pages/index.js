@@ -6,21 +6,20 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
-// const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] });
 
 // importing Map component dynamically
+const Map = dynamic(() => import("../components/Map"), {
+  loading: () => "Loading...",
+  ssr: false,
+});
+
+const AddButton = dynamic(() => import("../components/Buttons/AddButton"), {
+  loading: () => "Loading...",
+  ssr: false,
+});
 
 export default function Home() {
-  const Map = dynamic(() => import("../components/Map"), {
-    loading: () => "Loading...",
-    ssr: false,
-  });
-
-  const AddButton = dynamic(() => import("../components/Buttons/AddButton"), {
-    loading: () => "Loading...",
-    ssr: false,
-  });
-
   const [locations, setLocations] = useState([]);
   const [isLoading, setLoading] = useState(false);
   // const [center, setCenter] = useState([13.41133, 52.502183]);
@@ -52,10 +51,6 @@ export default function Home() {
     loadLocations();
   }, []);
 
-  // const onLocationUpload = () => {
-  //   refreshPage();
-  // };
-
   // function onLocationClick(location) {
   //   setCenter([...location.latLng]);
   // }
@@ -70,11 +65,7 @@ export default function Home() {
   return (
     <>
       <section className="map">
-        <Map
-          // center={center}
-          locations={locations}
-          // onLocationUpload={onLocationUpload}
-        />
+        <Map locations={locations} />
       </section>
       <AddButton />
     </>

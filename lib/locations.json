@@ -1,7 +1,7 @@
 [
   {
     "name": "Tipsy Bear",
-    "latLng": [52.540937, 13.4084972],
+    "lngLat": [52.540937, 13.4084972],
     "type": "Bar",
     "color": "blue",
     "color": "blue",
@@ -16,7 +16,7 @@
   },
   {
     "name": "SilverFuture",
-    "latLng": [52.4880615, 13.4280239],
+    "lngLat": [52.4880615, 13.4280239],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -30,7 +30,7 @@
   },
   {
     "name": "Südblock",
-    "latLng": [52.4987318, 13.4129215],
+    "lngLat": [52.4987318, 13.4129215],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -44,7 +44,7 @@
   },
   {
     "name": "Roses",
-    "latLng": [52.5005109, 13.4171672],
+    "lngLat": [52.5005109, 13.4171672],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -58,7 +58,7 @@
   },
   {
     "name": "Möbel Olfe",
-    "latLng": [52.499985, 13.415262],
+    "lngLat": [52.499985, 13.415262],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -72,7 +72,7 @@
   },
   {
     "name": "Bar Zum schmutzigen Hobby",
-    "latLng": [52.507921, 13.451315],
+    "lngLat": [52.507921, 13.451315],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -86,7 +86,7 @@
   },
   {
     "name": "Monster Ronsons's Ichiban Karaoke",
-    "latLng": [52.5052743, 13.4462772],
+    "lngLat": [52.5052743, 13.4462772],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -100,7 +100,7 @@
   },
   {
     "name": "FICKEN 3000",
-    "latLng": [52.4886085, 13.4181037],
+    "lngLat": [52.4886085, 13.4181037],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -114,7 +114,7 @@
   },
   {
     "name": "Café-Bar Himmelreich",
-    "latLng": [52.4885878, 13.3523611],
+    "lngLat": [52.4885878, 13.3523611],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -128,7 +128,7 @@
   },
   {
     "name": "Paloma Bar",
-    "latLng": [52.4993178, 13.4167934],
+    "lngLat": [52.4993178, 13.4167934],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -142,7 +142,7 @@
   },
   {
     "name": "Betty F***",
-    "latLng": [52.5276026, 13.4030642],
+    "lngLat": [52.5276026, 13.4030642],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -156,7 +156,7 @@
   },
   {
     "name": "Capture Bar",
-    "latLng": [52.5098104, 13.45481],
+    "lngLat": [52.5098104, 13.45481],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -170,7 +170,7 @@
   },
   {
     "name": "Greifbar",
-    "latLng": [52.5496812, 13.4151626],
+    "lngLat": [52.5496812, 13.4151626],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -184,7 +184,7 @@
   },
   {
     "name": "New Action (only men)",
-    "latLng": [52.5001681, 13.347258],
+    "lngLat": [52.5001681, 13.347258],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -198,7 +198,7 @@
   },
   {
     "name": "WOOF Bar (only men)",
-    "latLng": [52.4992382, 13.3415847],
+    "lngLat": [52.4992382, 13.3415847],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -212,7 +212,7 @@
   },
   {
     "name": "TOM'S Bar (only men)",
-    "latLng": [52.4980435, 13.3493819],
+    "lngLat": [52.4980435, 13.3493819],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -226,7 +226,7 @@
   },
   {
     "name": "BarbieBar",
-    "latLng": [52.4894692, 13.3845674],
+    "lngLat": [52.4894692, 13.3845674],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -240,7 +240,7 @@
   },
   {
     "name": "To Be Free",
-    "latLng": [52.5331259, 13.1970187],
+    "lngLat": [52.5331259, 13.1970187],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -254,7 +254,7 @@
   },
   {
     "name": "Besenkammer",
-    "latLng": [52.5206225, 13.4101261],
+    "lngLat": [52.5206225, 13.4101261],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -268,7 +268,7 @@
   },
   {
     "name": "OYA",
-    "latLng": [52.5009211, 13.4210326],
+    "lngLat": [52.5009211, 13.4210326],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -282,7 +282,7 @@
   },
   {
     "name": "Große Freiheit",
-    "latLng": [52.513483, 13.4539248],
+    "lngLat": [52.513483, 13.4539248],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -296,7 +296,7 @@
   },
   {
     "name": "Cafe Cralle",
-    "latLng": [52.550633, 13.3610829],
+    "lngLat": [52.550633, 13.3610829],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -310,7 +310,7 @@
   },
   {
     "name": "kwia",
-    "latLng": [52.4940408, 13.4236778],
+    "lngLat": [52.4940408, 13.4236778],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -324,7 +324,7 @@
   },
   {
     "name": "Kfetisch",
-    "latLng": [52.483106, 13.4395609],
+    "lngLat": [52.483106, 13.4395609],
     "type": "Bar",
     "color": "blue",
     "comments": [
@@ -338,7 +338,7 @@
   },
   {
     "name": "Berghain",
-    "latLng": [52.5112867, 13.4405008],
+    "lngLat": [52.5112867, 13.4405008],
     "type": "Club",
     "color": "red",
     "color": "red",
@@ -353,7 +353,7 @@
   },
   {
     "name": "About_blank",
-    "latLng": [52.5025336, 13.4641796],
+    "lngLat": [52.5025336, 13.4641796],
     "type": "Club",
     "color": "red",
     "comments": [
@@ -367,7 +367,7 @@
   },
   {
     "name": "SchwuZ",
-    "latLng": [52.4794165, 13.4315742],
+    "lngLat": [52.4794165, 13.4315742],
     "type": "Club",
     "color": "red",
     "comments": [
@@ -381,7 +381,7 @@
   },
   {
     "name": "Lab.Oratory",
-    "latLng": [52.5116122, 13.4409219],
+    "lngLat": [52.5116122, 13.4409219],
     "type": "Club",
     "color": "red",
     "comments": [
@@ -395,7 +395,7 @@
   },
   {
     "name": "SO36",
-    "latLng": [52.5003921, 13.4199078],
+    "lngLat": [52.5003921, 13.4199078],
     "type": "Club",
     "color": "red",
     "comments": [
@@ -409,7 +409,7 @@
   },
   {
     "name": "Watergate",
-    "latLng": [52.5010558, 13.4430581],
+    "lngLat": [52.5010558, 13.4430581],
     "type": "Club",
     "color": "red",
     "comments": [
@@ -423,7 +423,7 @@
   },
   {
     "name": "Sisyphos",
-    "latLng": [52.4929592, 13.4890505],
+    "lngLat": [52.4929592, 13.4890505],
     "type": "Club",
     "color": "red",
     "comments": [
@@ -437,7 +437,7 @@
   },
   {
     "name": "Golden Gate",
-    "latLng": [52.5129892, 13.4055363],
+    "lngLat": [52.5129892, 13.4055363],
     "type": "Club",
     "color": "red",
     "comments": [
@@ -451,7 +451,7 @@
   },
   {
     "name": "Club Triebwerk",
-    "latLng": [52.4892443, 13.4164536],
+    "lngLat": [52.4892443, 13.4164536],
     "type": "Club",
     "color": "red",
     "comments": [
@@ -465,7 +465,7 @@
   },
   {
     "name": "Revier Südost",
-    "latLng": [52.45989, 13.503286],
+    "lngLat": [52.45989, 13.503286],
     "type": "Club",
     "color": "red",
     "comments": [
@@ -479,7 +479,7 @@
   },
   {
     "name": "TRAUMA BAR UND KINO",
-    "latLng": [52.5306511, 13.362311],
+    "lngLat": [52.5306511, 13.362311],
     "type": "Club",
     "color": "red",
     "comments": [
@@ -493,7 +493,7 @@
   },
   {
     "name": "Volkspark Hasenheide (cruising)",
-    "latLng": [52.4842015, 13.4145337],
+    "lngLat": [52.4842015, 13.4145337],
     "type": "Cruising",
     "color": "green",
     "color": "green",
@@ -508,7 +508,7 @@
   },
   {
     "name": "Tiergarten (cruising)",
-    "latLng": [52.5107805, 13.3365643],
+    "lngLat": [52.5107805, 13.3365643],
     "type": "Cruising",
     "color": "green",
     "comments": [
@@ -522,7 +522,7 @@
   },
   {
     "name": "Volkspark Friedrichshain (cruising)",
-    "latLng": [52.5280353, 13.4341994],
+    "lngLat": [52.5280353, 13.4341994],
     "type": "Cruising",
     "color": "green",
     "comments": [
@@ -536,7 +536,7 @@
   },
   {
     "name": "Grunewald (cruising)",
-    "latLng": [52.4858443, 13.2035949],
+    "lngLat": [52.4858443, 13.2035949],
     "type": "Cruising",
     "color": "green",
     "comments": [
@@ -550,7 +550,7 @@
   },
   {
     "name": "Ernst-Thälmann park (cruising)",
-    "latLng": [52.5386387, 13.4312424],
+    "lngLat": [52.5386387, 13.4312424],
     "type": "Cruising",
     "color": "green",
     "comments": [
@@ -564,7 +564,7 @@
   },
   {
     "name": "Oyoun",
-    "latLng": [13.4206611, 52.4838959],
+    "lngLat": [13.4206611, 52.4838959],
     "type": "Community-Center",
     "color": "yellow",
     "comments": [
