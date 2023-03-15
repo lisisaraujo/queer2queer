@@ -1,9 +1,10 @@
 import React, { useRef, useEffect, useState } from "react";
-import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import ReactMapGL, { Marker, Popup, openInfo } from "react-map-gl";
 import { accessToken } from "../src/mapbox";
-// import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
+import { MdLocationOn } from "react-icons/md";
 
-export default function Map() {
+export default function Map({ locations }) {
+  const [showPopup, setShowPopup] = React.useState(true);
   const [viewport, setViewport] = useState({
     height: "100%",
     width: "100%",
@@ -12,14 +13,27 @@ export default function Map() {
     zoom: 12,
   });
 
-  // const marker = new mapboxgl.Marker().setLngLat([30.5, 50.5]).addTo(map); // add the marker to the map
-
   return (
     <ReactMapGL
       mapStyle="mapbox://styles/dalalamad/clf5w8x0x009v01mo2feklchc"
       mapboxAccessToken={accessToken}
       {...viewport}
       onMove={(evt) => setViewport(evt.viewport)}
-    ></ReactMapGL>
+    >
+      {locations.map((location) => {
+        return (
+          <Marker
+            key={location._id}
+            longitude={parseFloat(location.lngLat[1])}
+            latitude={parseFloat(location.lngLat[0])}
+            color={location.color}
+            style={{ cursor: "pointer", zIndex: 999 }}
+            onClick={() => Popup(location.name)}
+          >
+            <MdLocationOn />
+          </Marker>
+        );
+      })}
+    </ReactMapGL>
   );
 }

@@ -22,7 +22,6 @@ const AddButton = dynamic(() => import("../components/Buttons/AddButton"), {
 export default function Home() {
   const [locations, setLocations] = useState([]);
   const [isLoading, setLoading] = useState(false);
-  // const [center, setCenter] = useState([13.41133, 52.502183]);
 
   const router = useRouter();
   const { id } = router.query;
@@ -33,10 +32,9 @@ export default function Home() {
       setLoading(true);
       const data = await fetch("/api/locations");
       const locations = await data.json();
-      setLocations(data.latLng);
+      setLocations(locations);
       setLoading(false);
       console.log(locations);
-      // setCenter([13.41133, 52.502183]); //Berlin
       if (isLoading) {
         return <h1>Loading...</h1>;
       }
@@ -50,17 +48,6 @@ export default function Home() {
   useEffect(() => {
     loadLocations();
   }, []);
-
-  // function onLocationClick(location) {
-  //   setCenter([...location.latLng]);
-  // }
-
-  // const newLocation = {
-  //   ...locations,
-  //   id: locations._id,
-  // };
-  // setLocations([...locations, newLocation]);
-  // setCenter(location.lngLat);
 
   return (
     <>
