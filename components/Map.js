@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState } from "react";
-import ReactMapGL, { Marker, Popup, openInfo } from "react-map-gl";
+import React, { useState } from "react";
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { accessToken } from "../src/mapbox";
 import { MdLocationOn } from "react-icons/md";
 
@@ -20,10 +20,7 @@ export default function Map({ locations }) {
     const id = e.currentTarget.getAttribute("location-id");
     const location = locations.find((l) => l._id === id);
 
-    // console.log(location);
-    console.log("I am clicling! My location: ", location);
     setSelectedLocation(location);
-    // setTogglePopUp(true);
   }
   console.log("set selected location ", selectedLocation);
 
@@ -59,7 +56,6 @@ export default function Map({ locations }) {
               <>
                 <Popup
                   anchor="bottom"
-                  // onClose={() => setTogglePopUp(false)}
                   longitude={parseFloat(location.lngLat[1])}
                   latitude={parseFloat(location.lngLat[0])}
                   closeOnClick={false}
