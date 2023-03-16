@@ -3,6 +3,7 @@ import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { accessToken } from "../src/mapbox";
 import { MdLocationOn } from "react-icons/md";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Map({ locations }) {
   // const [togglePopUp, setTogglePopUp] = useState(false);
@@ -16,6 +17,7 @@ export default function Map({ locations }) {
   });
 
   const router = useRouter();
+
   const iconStyles = { color: "pink", fontSize: "1.5em", cursor: "pointer" };
 
   function onMarker(e) {
@@ -37,7 +39,9 @@ export default function Map({ locations }) {
         // console.log(location.name);
         return (
           <div key={location._id}>
+            {/* <Link href={"/location/"}> */}
             <Marker
+              onClick={() => router.push(`/location/${location._id}`)}
               key={location._id}
               longitude={parseFloat(location.lngLat[1])}
               latitude={parseFloat(location.lngLat[0])}
@@ -53,11 +57,10 @@ export default function Map({ locations }) {
                 <MdLocationOn style={iconStyles} />
               </p>
             </Marker>
-
+            {/* </Link> */}
             {selectedLocation._id === location._id && (
               <>
                 <Popup
-                  onClick={() => router.push("/locations/")}
                   anchor="bottom"
                   longitude={parseFloat(location.lngLat[1])}
                   latitude={parseFloat(location.lngLat[0])}

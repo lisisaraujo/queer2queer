@@ -1,5 +1,5 @@
-import dbConnect from "../../../db/connect";
-import Location from "../../../db/models/Location";
+import dbConnect from "../../db/connect";
+import Location from "../../db/models/Location";
 
 export default async function handler(request, response) {
   await dbConnect();
@@ -7,7 +7,7 @@ export default async function handler(request, response) {
   if (request.method === "GET") {
     try {
       const locations = await Location.find();
-      // console.log(locations);
+      console.log("LOCATION INDEX: ", locations);
 
       return response.status(200).json(locations);
     } catch (error) {

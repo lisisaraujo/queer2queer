@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }) {
   function loadLocations() {
     const fetchData = async () => {
       setLoading(true);
-      const data = await fetch("/api/locations");
+      const data = await fetch("/api");
       const locations = await data.json();
       setLocations(locations);
       setLoading(false);

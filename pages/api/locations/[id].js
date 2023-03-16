@@ -4,16 +4,15 @@ import Location from "../../../db/models/Location";
 export default async function handler(request, response) {
   await dbConnect();
   const { id } = request.query;
-  console.log("BACKEND", id);
 
-  if (request.method === "DELETE") {
-    const location = await Location.findByIdAndDelete(id);
-    return response.status(200).json(location);
-  }
+  if (request.method === "GET") {
+    try {
+      const locations = await Location.findById(id);
+      console.log("LOCATIONS: ", locations);
 
-  if (request.method === "PUT") {
-    const location = await Location.findByIdAndUpdate(id, request.body);
-    console.log(location);
-    return response.status(200).json(location);
+      return response.status(200).json(locations);
+    } catch (error) {
+      return response.status(404).json("Error", error);
+    }
   }
 }
