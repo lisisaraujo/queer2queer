@@ -3,16 +3,12 @@ import CommentForm from "../../Components/CommentForm";
 import styled from "styled-components";
 import ReturnButton from "../../Components/ReturnButton";
 
-export default function DetailPage({
-  locations,
-  artPiecesInfo,
-  updateArtPiecesInfo,
-  onToggleFavorite,
-}) {
+export default function DetailPage({ locations }) {
   const router = useRouter();
-  const foundPiece = pieces.find((piece) => piece.slug === router.query.slug);
-  const { artist, colors, genre, dimensions, imageSource, name, year, slug } =
-    foundPiece;
+  const locationId = locations.find(
+    (location) => location._id === router.query._id
+  );
+  const { name, type, lngLat, comments } = locationId;
 
   const handleSubmitComment = (event) => {
     event.preventDefault();
@@ -21,18 +17,21 @@ export default function DetailPage({
     const formDataObj = Object.fromEntries(myFormData.entries());
     const commentAndDate = { ...formDataObj, date: date };
 
-    updateArtPiecesInfo((draft) => {
-      let currentPiece = draft.defaultValue.find(
-        (piece) => piece.slug === slug
+    updateLocationInfo((draft) => {
+      let currentLocation = draft.defaultValue.find(
+        (location) => location.slug === slug
       );
-      if (!currentPiece) {
+      if (!currentLocation) {
         draft.defaultValue.push({
           slug,
           isFavorite: false,
           comments: [commentAndDate],
         });
       } else {
-        currentPiece.comments = [commentAndDate, ...currentPiece.comments];
+        currentLocation.comments = [
+          commentAndDate,
+          ...currentLocation.comments,
+        ];
       }
     });
     event.target.reset();
@@ -40,14 +39,14 @@ export default function DetailPage({
     input.focus();
   };
 
-  const currentInfo = artPiecesInfo.defaultValue.find((piece) => {
+  const currentInfo = locationInfo.defaultValue.find((location) => {
     return piece.slug === slug;
   });
 
   return (
     <Container>
       <ReturnButton />
-      <ImageContainer>
+      {/* <ImageContainer>
         <Image
           src={imageSource}
           alt="image of the day"
@@ -55,8 +54,8 @@ export default function DetailPage({
           height={600}
           // fill
         />
-      </ImageContainer>
-      <ColorsContainer>
+      </ImageContainer> */}
+      {/* <ColorsContainer>
         {colors.map((color) => {
           return (
             <>
@@ -66,14 +65,14 @@ export default function DetailPage({
             </>
           );
         })}
-      </ColorsContainer>
+      </ColorsContainer> */}
       <section className="paintingDetails">
         <p>Name: {name}</p>
-        <p>Artist: {artist}</p>
-        <p>Genre: {genre}</p>
-        <p>Year created: {year}</p>
+        <p>Address: {lngLat}</p>
+        <p>Type: {type}</p>
+        <p>Comments: {comments}</p>
       </section>
-      <FavoriteButton slug={slug} onToggleFavorite={onToggleFavorite} />
+      {/* <FavoriteButton slug={slug} onToggleFavorite={onToggleFavorite} /> */}
       <CommentForm onSubmitComment={handleSubmitComment} />
       {currentInfo &&
         currentInfo.comments.map((comment, index) => {
