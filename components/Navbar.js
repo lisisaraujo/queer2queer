@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { SlMenu } from "react-icons/sl";
+import { IoColorFilterOutline } from "react-icons/io5";
 
 export default function Navbar() {
   function navBarDrop() {
@@ -18,9 +19,6 @@ export default function Navbar() {
         <nav>
           <div className="mobile-container">
             <div className="topnav">
-              <a href="#home" className="active">
-                QueerMap BER
-              </a>
               <div id="myLinks">
                 <Link href="/about">About Us</Link>
                 <Link href="/ressources">Ressources</Link>
@@ -29,6 +27,16 @@ export default function Navbar() {
               </div>
               <a href="#" className="icon" onClick={navBarDrop}>
                 <SlMenu />
+              </a>
+              <a href="#home" className="active">
+                QueerMap BER
+              </a>
+              <a
+                href="#"
+                className="icon"
+                onClick={() => router.push("/filterLocationForm")}
+              >
+                <IoColorFilterOutline />
               </a>
             </div>
           </div>
@@ -43,21 +51,23 @@ const Headline = styled.h1`
   text-align: center;
   display: flex;
   position: fixed;
+  flex-direction: column;
   z-index: 1;
   margin-top: 0px;
   width: 100%;
+  align-content: space-between;
 
-  .mobile-container {
-    /* max-width: 700px; */
-    /* margin: auto; */
+  /* .mobile-container {
+    max-width: 700px;
+    margin: auto;
     background-color: transparent;
-    /* height: 500px; */
-    /* color: white;
+    height: 500px;
+    color: white;
     border-radius: 10px;
 
-    align-content: center; */
-    /* position: fixed; */
-  }
+    align-content: center;
+    position: fixed;
+  } */
 
   .topnav {
     overflow: hidden;
@@ -75,12 +85,13 @@ const Headline = styled.h1`
     text-decoration: none;
     font-size: 17px;
     display: block;
+    position: relative;
   }
 
   .topnav a.icon {
     background: black;
     display: block;
-    position: absolute;
+    position: relative;
     right: 0;
     top: 0;
   }

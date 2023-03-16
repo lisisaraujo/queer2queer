@@ -14,10 +14,15 @@ const Map = dynamic(() => import("../components/Map"), {
   ssr: false,
 });
 
-const AddButton = dynamic(() => import("../components/Buttons/AddButton"), {
+const Navbar = dynamic(() => import("../components/Navbar"), {
   loading: () => "Loading...",
   ssr: false,
 });
+
+// const AddButton = dynamic(() => import("../components/Buttons/AddButton"), {
+//   loading: () => "Loading...",
+//   ssr: false,
+// });
 
 export default function Home() {
   const [locations, setLocations] = useState([]);
@@ -54,7 +59,7 @@ export default function Home() {
       <section className="map">
         <Map locations={locations} />
       </section>
-      <AddButton />
+      {/* <AddButton /> */}
     </>
   );
 }
