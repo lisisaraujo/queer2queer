@@ -1,16 +1,19 @@
-import CommentForm from "./CommentForm";
+import CommentForm from "../../components/CommentForm";
 import styled from "styled-components";
-import ReturnButton from "./ReturnButton";
+import ReturnButton from "../../components/ReturnButton";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 export default function LocationDetail({ locations }) {
   const [specificLocation, setSpecificLocation] = useState();
+  const router = useRouter();
   const { id } = router.query;
 
   useEffect(() => {
+    console.log("Oi");
     const fetchSpecificLocation = async () => {
       const response = await fetch(`/api/locations/${id}`);
+
       const specificLocation = await response.json();
       setSpecificLocation(specificLocation);
       console.log(specificLocation);
@@ -21,6 +24,8 @@ export default function LocationDetail({ locations }) {
   if (specificLocation) {
     const { name, lngLat, type, comments } = specificLocation;
 
+    // console.log("SPECIFIC: ", specificLocation);
+
     return (
       <Container>
         <ReturnButton />
@@ -28,19 +33,8 @@ export default function LocationDetail({ locations }) {
           <h1>{name}</h1>
           <p>Address: {lngLat}</p>
           <p>Type: {type}</p>
-          <p>Comments: {comments}</p>
+          {/* <p>Comments: {comments}</p> */}
         </section>
-        ;
-        <CommentForm onSubmitComment={handleSubmitComment} />
-        {currentInfo &&
-          currentInfo.comments.map((comment, index) => {
-            return (
-              <div className="commentCard" key={index}>
-                <p className="date">{comment.date}</p>
-                <p className="comment">{comment.comment}</p>
-              </div>
-            );
-          })}
       </Container>
     );
   }
@@ -55,4 +49,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 2;
+  padding-top: 500px;
 `;

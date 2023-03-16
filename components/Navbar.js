@@ -2,6 +2,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import { SlMenu } from "react-icons/sl";
 import FilterButton from "./Buttons/FilterButton";
+import { IoColorFilterOutline } from "react-icons/io5";
 
 export default function Navbar() {
   function navBarDrop() {
@@ -15,66 +16,53 @@ export default function Navbar() {
 
   return (
     <>
-      <Headline>
-        <nav>
-          <div className="mobile-container">
-            <div className="topnav">
-              <div id="myLinks">
-                <Link href="/about">About Us</Link>
-                <Link href="/ressources">Ressources</Link>
-                <Link href="/feedback">Feedback</Link>
-                <Link href="/contact">Contact</Link>
-              </div>
-              <a href="#" className="icon" onClick={navBarDrop}>
-                <SlMenu />
-              </a>
-              <a href="#home" className="active">
-                QueerMap BER
-              </a>
-              <FilterButton />
-            </div>
-          </div>
-        </nav>
-      </Headline>
+      <NavbarWrapper>
+        <div id="myLinks">
+          <Link href="/about">About Us</Link>
+          <Link href="/ressources">Ressources</Link>
+          <Link href="/feedback">Feedback</Link>
+          <Link href="/contact">Contact</Link>
+        </div>
+        <a href="#" className="icon" onClick={navBarDrop}>
+          <SlMenu />
+        </a>
+        <a href="#home" className="active">
+          QueerMap BER
+        </a>
+        <a
+          a
+          href="#"
+          className="icon"
+          onClick={() => router.push("/filterLocationForm")}
+        >
+          <IoColorFilterOutline />
+        </a>
+      </NavbarWrapper>
     </>
   );
 }
 
-const Headline = styled.h1`
-  color: #5e27c4;
-  text-align: center;
+const NavbarWrapper = styled.nav`
+  width: 80%;
   display: flex;
-  position: fixed;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 10px;
   z-index: 1;
-  margin-top: 0px;
-  width: 100%;
-  align-content: space-between;
+  margin-top: 10px;
+  color: #5e27c4;
+  position: fixed;
+  background-color: #f6f2fc;
+  align-content: inherit;
+  margin-left: 10%;
+  border-radius: 25px;
 
-  /* .mobile-container {
-    max-width: 700px;
-    margin: auto;
-    background-color: transparent;
-    height: 500px;
-    color: white;
-    border-radius: 10px;
-
-    align-content: center;
-    position: fixed;
-  } */
-
-  .topnav {
-    overflow: hidden;
-    background-color: #5e27c4;
-    position: relative;
-  }
-
-  .topnav #myLinks {
+  #myLinks {
     display: none;
   }
 
-  .topnav a {
-    color: white;
+  a {
+    color: #5e27c4;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
@@ -82,21 +70,22 @@ const Headline = styled.h1`
     position: relative;
   }
 
-  .topnav a.icon {
-    background: black;
+  a.icon {
     display: block;
     position: relative;
     right: 0;
     top: 0;
+    background-color: transparent;
+    color: #5e27c4;
   }
 
-  .topnav a:hover {
+  a:hover {
     background-color: #ddd;
     color: black;
   }
 
   .active {
     background-color: transparent;
-    color: white;
+    color: #5e27c4;
   }
 `;
