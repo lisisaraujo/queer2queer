@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { SlMenu } from "react-icons/sl";
-import { IoColorFilterOutline } from "react-icons/io5";
+import FilterButton from "./Buttons/FilterButton";
 
 export default function Navbar() {
   function navBarDrop() {
@@ -31,13 +31,7 @@ export default function Navbar() {
               <a href="#home" className="active">
                 QueerMap BER
               </a>
-              <a
-                href="#"
-                className="icon"
-                onClick={() => router.push("/filterLocationForm")}
-              >
-                <IoColorFilterOutline />
-              </a>
+              <FilterButton />
             </div>
           </div>
         </nav>

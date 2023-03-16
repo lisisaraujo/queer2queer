@@ -6,9 +6,12 @@ import ReturnButton from "../../Components/ReturnButton";
 export default function DetailPage({ locations }) {
   const router = useRouter();
   const locationId = locations.find(
-    (location) => location._id === router.query._id
+    (location) => location._id === router.query.id
   );
+
+  // const locationID = locations.find((l) => l._id === id);
   const { name, type, lngLat, comments } = locationId;
+  console.log("this is the location ID: ", locationId);
 
   const handleSubmitComment = (event) => {
     event.preventDefault();
@@ -39,8 +42,8 @@ export default function DetailPage({ locations }) {
     input.focus();
   };
 
-  const currentInfo = locationInfo.defaultValue.find((location) => {
-    return piece.slug === slug;
+  const currentInfo = locations.defaultValue.find((location) => {
+    return location._id === id;
   });
 
   return (
@@ -66,8 +69,8 @@ export default function DetailPage({ locations }) {
           );
         })}
       </ColorsContainer> */}
-      <section className="paintingDetails">
-        <p>Name: {name}</p>
+      <section className="locationDetails">
+        <h1>{name}</h1>
         <p>Address: {lngLat}</p>
         <p>Type: {type}</p>
         <p>Comments: {comments}</p>

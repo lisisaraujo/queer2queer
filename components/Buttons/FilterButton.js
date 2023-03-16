@@ -1,4 +1,4 @@
-import { IoColorFilterOutline } from "react-icons/io";
+import { IoColorFilterOutline } from "react-icons/io5";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
@@ -6,9 +6,13 @@ export default function FilterButton() {
   const router = useRouter();
   return (
     <>
-      <button onClick={() => router.push("/filterLocationForm")}>
+      <a
+        href="#"
+        className="icon"
+        onClick={() => router.push("/filterLocationForm")}
+      >
         <IoColorFilterOutline />
-      </button>
+      </a>
     </>
   );
 }
