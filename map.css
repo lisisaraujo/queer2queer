@@ -13,3 +13,7 @@ body {
   display: flex;
   text-align: center;
 }
+
+.popup-info {
+  z-index: 20;
+}

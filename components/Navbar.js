@@ -44,20 +44,19 @@ const Headline = styled.h1`
   display: flex;
   position: fixed;
   z-index: 1;
-  display: flex;
   margin-top: 0px;
   width: 100%;
 
   .mobile-container {
-    max-width: 700px;
-    margin: auto;
+    /* max-width: 700px; */
+    /* margin: auto; */
     background-color: transparent;
     /* height: 500px; */
-    color: white;
+    /* color: white;
     border-radius: 10px;
-    display: flex;
-    align-content: center;
-    position: fixed;
+
+    align-content: center; */
+    /* position: fixed; */
   }
 
   .topnav {

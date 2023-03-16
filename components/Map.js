@@ -1,9 +1,11 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useState } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { accessToken } from "../src/mapbox";
-// import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
+import { MdLocationOn } from "react-icons/md";
 
-export default function Map() {
+export default function Map({ locations }) {
+  // const [togglePopUp, setTogglePopUp] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState({});
   const [viewport, setViewport] = useState({
     height: "100%",
     width: "100%",
@@ -12,7 +14,15 @@ export default function Map() {
     zoom: 12,
   });
 
-  // const marker = new mapboxgl.Marker().setLngLat([30.5, 50.5]).addTo(map); // add the marker to the map
+  const iconStyles = { color: "pink", fontSize: "1.5em", cursor: "pointer" };
+
+  function onMarker(e) {
+    const id = e.currentTarget.getAttribute("location-id");
+    const location = locations.find((l) => l._id === id);
+
+    setSelectedLocation(location);
+  }
+  console.log("set selected location ", selectedLocation);
 
   return (
     <ReactMapGL
@@ -20,6 +30,43 @@ export default function Map() {
       mapboxAccessToken={accessToken}
       {...viewport}
       onMove={(evt) => setViewport(evt.viewport)}
-    ></ReactMapGL>
+    >
+      {locations.map((location) => {
+        // console.log(location.name);
+        return (
+          <div key={location._id}>
+            <Marker
+              key={location._id}
+              longitude={parseFloat(location.lngLat[1])}
+              latitude={parseFloat(location.lngLat[0])}
+              color={location.color}
+              style={{ cursor: "pointer", zIndex: 999 }}
+            >
+              <p
+                location-id={location._id}
+                role="icon"
+                onClick={onMarker}
+                aria-label="push-pin"
+              >
+                <MdLocationOn style={iconStyles} />
+              </p>
+            </Marker>
+
+            {selectedLocation._id === location._id && (
+              <>
+                <Popup
+                  anchor="bottom"
+                  longitude={parseFloat(location.lngLat[1])}
+                  latitude={parseFloat(location.lngLat[0])}
+                  closeOnClick={false}
+                >
+                  {location.name}
+                </Popup>
+              </>
+            )}
+          </div>
+        );
+      })}
+    </ReactMapGL>
   );
 }
