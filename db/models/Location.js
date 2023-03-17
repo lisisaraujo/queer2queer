@@ -6,8 +6,8 @@ const locationSchema = new Schema({
   name: { type: String, required: true },
   latLng: { type: Array, required: true },
   type: { type: String, required: true },
-  color: { type: String, required: false },
-  comments: { type: Array, required: false },
+  color: { type: String },
+  comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
 });
 
 // connecting through mongoose to location collection in the database.

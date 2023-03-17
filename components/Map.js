@@ -18,7 +18,7 @@ export default function Map({ locations }) {
 
   const router = useRouter();
 
-  const iconStyles = { color: "pink", fontSize: "1.5em", cursor: "pointer" };
+  const iconStyles = { color: "white", fontSize: "1.5em", cursor: "pointer" };
 
   function onMarker(e) {
     const id = e.currentTarget.getAttribute("location-id");
@@ -41,7 +41,7 @@ export default function Map({ locations }) {
           <div key={location._id}>
             {/* <Link href={"/location/"}> */}
             <Marker
-              onClick={() => router.push(`/location/${location._id}`)}
+              onClick={() => router.push(`/location-page/${location._id}`)}
               key={location._id}
               longitude={parseFloat(location.lngLat[1])}
               latitude={parseFloat(location.lngLat[0])}

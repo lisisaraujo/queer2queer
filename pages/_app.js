@@ -11,6 +11,9 @@ const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export default function App({ Component, pageProps }) {
   const [locations, setLocations] = useState([]);
+  const [comments, setComments] = useState([]);
+  const [age, setAge] = useState(null);
+  const [gender, setGender] = useState("");
   const [isLoading, setLoading] = useState(false);
 
   const router = useRouter();
@@ -20,9 +23,11 @@ export default function App({ Component, pageProps }) {
   function loadLocations() {
     const fetchData = async () => {
       setLoading(true);
-      const data = await fetch("/api");
+      const data = await fetch("/api/locations");
       const locations = await data.json();
       setLocations(locations);
+      setComments(locations[0].comments[0]);
+      console.log("comments ", comments);
       setLoading(false);
       console.log(locations);
       if (isLoading) {

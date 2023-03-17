@@ -31,10 +31,11 @@ export default function LocationDetail({ locations }) {
         <ReturnButton />
         <section className="locationDetails">
           <h1>{name}</h1>
-          <p>Address: {lngLat}</p>
+          {/* <p>Address: {lngLat}</p> */}
           <p>Type: {type}</p>
           {/* <p>Comments: {comments}</p> */}
         </section>
+        <CommentForm />
       </Container>
     );
   }
@@ -50,5 +51,5 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   z-index: 2;
-  padding-top: 500px;
+  padding-top: 300px;
 `;

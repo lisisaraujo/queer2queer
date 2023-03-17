@@ -1,5 +1,5 @@
-import dbConnect from "../../db/connect";
-import Location from "../../db/models/Location";
+import dbConnect from "../../../db/connect";
+import Location from "../../../db/models/Location";
 
 export default async function handler(request, response) {
   await dbConnect();
