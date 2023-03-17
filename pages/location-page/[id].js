@@ -2,27 +2,58 @@ import CommentForm from "../../components/CommentForm";
 import styled from "styled-components";
 import ReturnButton from "../../components/ReturnButton";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
-export default function LocationDetail({ locations }) {
+export default function LocationDetail() {
+  const [comments, setComments] = useState([]);
+  const [isLoading, setLoading] = useState(false);
   const [specificLocation, setSpecificLocation] = useState();
+
   const router = useRouter();
   const { id } = router.query;
 
-  useEffect(() => {
-    console.log("Oi");
-    const fetchSpecificLocation = async () => {
-      const response = await fetch(`/api/locations/${id}`);
-
-      const specificLocation = await response.json();
-      setSpecificLocation(specificLocation);
-      console.log(specificLocation);
+  // fetch data from database on page refresh
+  function loadComments() {
+    const fetchData = async () => {
+      setLoading(true);
+      const data = await fetch("/api/comments");
+      const commentsData = await data.json();
+      console.log("comments ", commentsData);
+      setComments(commentsData);
+      setLoading(false);
+      console.log(commentsData);
+      if (isLoading) {
+        return <h1>Loading...</h1>;
+      }
+      if (!commentsData) {
+        return <h1>No data</h1>;
+      }
     };
-    fetchSpecificLocation();
+    fetchData().catch(console.error);
+  }
+
+  // useEffect(() => {
+  //   loadComments();
+  // }, []);
+
+  useEffect(() => {
+    if (id) {
+      console.log("Oi");
+      const fetchSpecificLocation = async () => {
+        const response = await fetch(`/api/locations/${id}`);
+        const specificLocation = await response.json();
+        setSpecificLocation(specificLocation);
+        console.log(specificLocation);
+      };
+      fetchSpecificLocation();
+      loadComments();
+    }
   }, [id]);
 
   if (specificLocation) {
     const { name, lngLat, type, comments } = specificLocation;
+    // const { comment, age, sexual_orientation, gender, bipoc } = comments;
+    // console.log("COMMENTS CL", comments);
 
     // console.log("SPECIFIC: ", specificLocation);
 
@@ -36,6 +67,12 @@ export default function LocationDetail({ locations }) {
           {/* <p>Comments: {comments}</p> */}
         </section>
         <CommentForm />
+        <div className="comments">
+          {comments &&
+            comments.map((comment) => {
+              return <li>{comment}</li>;
+            })}
+        </div>
       </Container>
     );
   }

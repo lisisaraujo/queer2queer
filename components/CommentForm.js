@@ -15,7 +15,7 @@ export default function CommentForm({ onSubmitComment }) {
 
     const response = await fetch("/api/comments/create", {
       method: "POST",
-      body: JSON.stringify(newLocation),
+      body: JSON.stringify(newComment),
       headers: {
         "Content-Type": "application/json",
       },
@@ -40,13 +40,13 @@ export default function CommentForm({ onSubmitComment }) {
           <label htmlFor="name">Name:</label>
           <input id="name" name="name"></input>
           <label htmlFor="age">Age</label>
-          <input id="age" name="age"></input>
+          <input type="number" id="age" name="age"></input>
           <label htmlFor="sexual-orientation">Sexual Orientation:</label>
           <input id="sexual-orientation" name="sexual-orientation"></input>
           <label htmlFor="gender">Gender:</label>
           <input id="gender" name="gender"></input>
           <label htmlFor="bipoc">BiPoc:</label>
-          <input id="bipoc" name="bipoc"></input>
+          <input type="checkbox" id="bipoc" name="bipoc"></input>
           <button onClick={() => router.push("/")}>Submit</button>
         </InputWrapper>
       </EntryForm>

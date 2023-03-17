@@ -6,6 +6,7 @@ export default async function handler(request, response) {
   if (request.method === "POST") {
     try {
       const commentData = request.body;
+      commentData.bipoc = commentData.bipoc === "on" ? true : false;
       const comment = new Comment(commentData);
       console.log("Comment FROM BACKEND", comment);
 

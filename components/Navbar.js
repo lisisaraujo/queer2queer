@@ -30,7 +30,6 @@ export default function Navbar() {
           QueerMap BER
         </a>
         <a
-          a
           href="#"
           className="icon"
           onClick={() => router.push("/filterLocationForm")}

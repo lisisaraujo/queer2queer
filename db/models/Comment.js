@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const commentSchema = new Schema({
-  location: { type: Schema.Types.ObjectId, ref: "Location", required: true },
+  location: { type: Schema.Types.ObjectId, ref: "Locations" },
   comment: { type: String, required: true },
   age: { type: Number },
   sexual_orientation: { type: String },
@@ -15,5 +15,5 @@ const commentSchema = new Schema({
 // it's not case sensitive
 
 const Comment =
-  mongoose.models.Comment || mongoose.model("Comment", commentSchema);
+  mongoose.models.Comments || mongoose.model("Comments", commentSchema);
 export default Comment;

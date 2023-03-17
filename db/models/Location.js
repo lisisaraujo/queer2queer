@@ -14,5 +14,5 @@ const locationSchema = new Schema({
 // it's not case sensitive
 
 const Location =
-  mongoose.models.Location || mongoose.model("Location", locationSchema);
+  mongoose.models.Locations || mongoose.model("Locations", locationSchema);
 export default Location;
