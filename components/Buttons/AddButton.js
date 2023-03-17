@@ -6,7 +6,7 @@ export default function AddButton() {
   const router = useRouter();
   return (
     <>
-      <button onClick={() => router.push("/addLocationForm")}>
+      <button>
         <IoIosAddCircle />
       </button>
     </>
