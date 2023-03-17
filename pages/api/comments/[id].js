@@ -7,9 +7,8 @@ export default async function handler(request, response) {
 
   if (request.method === "GET") {
     try {
-      const comments = await Comment.findById(id);
-      console.log("COMMENTS: ", comments);
-
+      const comments = await Comment.find({ location: id });
+      console.log("COMMENTS: ", id, comments);
       return response.status(200).json(comments);
     } catch (error) {
       return response.status(404).json("Error", error);

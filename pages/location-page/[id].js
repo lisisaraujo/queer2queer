@@ -1,8 +1,11 @@
-import CommentForm from "../../components/CommentForm";
 import styled from "styled-components";
 import ReturnButton from "../../components/ReturnButton";
 import { useRouter } from "next/router";
 import React, { useRef, useEffect, useState } from "react";
+import AddButton from "../../components/Buttons/AddButton";
+import Link from "next/link";
+import { IoIosAddCircle } from "react-icons/io";
+import CommentForm from "../../components/CommentForm";
 
 export default function LocationDetail() {
   const [comments, setComments] = useState([]);
@@ -16,12 +19,12 @@ export default function LocationDetail() {
   function loadComments() {
     const fetchData = async () => {
       setLoading(true);
-      const data = await fetch("/api/comments");
+      const data = await fetch(`/api/comments/${id}`);
       const commentsData = await data.json();
       console.log("comments ", commentsData);
       setComments(commentsData);
       setLoading(false);
-      console.log(commentsData);
+      // console.log(commentsData);
       if (isLoading) {
         return <h1>Loading...</h1>;
       }
@@ -51,11 +54,11 @@ export default function LocationDetail() {
   }, [id]);
 
   if (specificLocation) {
-    const { name, lngLat, type, comments } = specificLocation;
-    // const { comment, age, sexual_orientation, gender, bipoc } = comments;
-    // console.log("COMMENTS CL", comments);
+    const { name, lngLat, type } = specificLocation;
 
-    // console.log("SPECIFIC: ", specificLocation);
+    console.log("COMMENTS CL", comments);
+
+    console.log("SPECIFIC: ", specificLocation);
 
     return (
       <Container>
@@ -66,11 +69,18 @@ export default function LocationDetail() {
           <p>Type: {type}</p>
           {/* <p>Comments: {comments}</p> */}
         </section>
-        <CommentForm />
+        {/* <Link href="/addComment">
+          {" "}
+          <IoIosAddCircle />{" "}
+        </Link> */}
+
+        <CommentForm locationID={id} />
         <div className="comments">
           {comments &&
-            comments.map((comment) => {
-              return <li>{comment}</li>;
+            comments.map((item) => {
+              const { comment, age, sexual_orientation, gender, bipoc, _id } =
+                item;
+              return <li key={_id}>{comment}</li>;
             })}
         </div>
       </Container>

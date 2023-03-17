@@ -2,7 +2,7 @@ import styled from "styled-components";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 
-export default function CommentForm({ onSubmitComment }) {
+export default function CommentForm({ onSubmitComment, locationID }) {
   const router = useRouter();
   const comments = useSWR("/api/comments");
 
@@ -35,6 +35,12 @@ export default function CommentForm({ onSubmitComment }) {
     <div>
       <EntryForm onSubmit={handleSubmit}>
         <InputWrapper>
+          <input
+            type="hidden"
+            id="location"
+            name="location"
+            value={locationID}
+          ></input>
           <label htmlFor="comment">Comment:</label>
           <input id="comment" name="comment"></input>
           <label htmlFor="name">Name:</label>

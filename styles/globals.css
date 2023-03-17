@@ -81,6 +81,7 @@
 
 html,
 body {
+  margin-top: 300px;
   max-width: 100vw;
   overflow-x: hidden;
 }
