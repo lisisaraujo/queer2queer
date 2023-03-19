@@ -30,7 +30,6 @@ export default function CommentForm({ onSubmitComment, locationID }) {
       console.error(`Error: ${response.status}`);
     }
   }
-
   return (
     <div>
       <EntryForm onSubmit={handleSubmit}>
@@ -48,12 +47,13 @@ export default function CommentForm({ onSubmitComment, locationID }) {
           <label htmlFor="age">Age</label>
           <input type="number" id="age" name="age"></input>
           <label htmlFor="sexual-orientation">Sexual Orientation:</label>
-          <input id="sexual-orientation" name="sexual-orientation"></input>
+          <input id="sexual-orientation" name="sexual_orientation"></input>
           <label htmlFor="gender">Gender:</label>
           <input id="gender" name="gender"></input>
           <label htmlFor="bipoc">BiPoc:</label>
           <input type="checkbox" id="bipoc" name="bipoc"></input>
-          <button onClick={() => router.push("/")}>Submit</button>
+
+          <button onClick={() => router.push("#")}>Submit</button>
         </InputWrapper>
       </EntryForm>
     </div>
@@ -73,4 +73,5 @@ const InputWrapper = styled.div`
   height: 100%;
   margin-left: 10%;
   margin-right: 10%;
+  margin-top: 100px;
 `;

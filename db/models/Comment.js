@@ -9,6 +9,7 @@ const commentSchema = new Schema({
   sexual_orientation: { type: String },
   gender: { type: String },
   bipoc: { type: Boolean },
+  name: { type: String },
 });
 
 // connecting through mongoose to location collection in the database.

@@ -12,6 +12,7 @@ const fetcher = (url) => fetch(url).then((r) => r.json());
 export default function App({ Component, pageProps }) {
   const [locations, setLocations] = useState([]);
   const [isLoading, setLoading] = useState(false);
+  const [comments, setComments] = useState([]);
 
   const router = useRouter();
   const { id } = router.query;
@@ -23,7 +24,7 @@ export default function App({ Component, pageProps }) {
       const data = await fetch("/api/locations");
       const locations = await data.json();
       setLocations(locations);
-      console.log("LOCATIONS FETCHED: ", locations);
+      // console.log("LOCATIONS FETCHED: ", locations);
       setLoading(false);
       if (isLoading) {
         return <h1>Loading...</h1>;
@@ -35,8 +36,27 @@ export default function App({ Component, pageProps }) {
     fetchData().catch(console.error);
   }
 
+  function loadComments() {
+    const fetchData = async () => {
+      setLoading(true);
+      const data = await fetch(`/api/comments`);
+      const commentsData = await data.json();
+      // console.log("comments ", commentsData);
+      setComments(commentsData);
+      setLoading(false);
+      // console.log(commentsData);
+      if (isLoading) {
+        return <h1>Loading...</h1>;
+      }
+      if (!commentsData) {
+        return <h1>No data</h1>;
+      }
+    };
+    fetchData().catch(console.error);
+  }
+
   useEffect(() => {
-    loadLocations();
+    loadLocations(), loadComments();
   }, []);
   return (
     <>
@@ -44,7 +64,7 @@ export default function App({ Component, pageProps }) {
 
       <Layout>
         <SWRConfig value={{ fetcher }}>
-          <Component {...pageProps} locations={locations} />
+          <Component {...pageProps} locations={locations} comments={comments} />
         </SWRConfig>
       </Layout>
     </>

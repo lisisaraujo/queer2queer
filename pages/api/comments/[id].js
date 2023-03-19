@@ -14,4 +14,15 @@ export default async function handler(request, response) {
       return response.status(404).json("Error", error);
     }
   }
+
+  if (request.method === "DELETE") {
+    const comment = await Comment.findByIdAndDelete(id);
+    return response.status(200).json(comment);
+  }
+
+  if (request.method === "PUT") {
+    const comment = await Comment.findByIdAndUpdate(id, request.body);
+    console.log(comment);
+    return response.status(200).json(comment);
+  }
 }

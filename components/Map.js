@@ -4,6 +4,7 @@ import { accessToken } from "../src/mapbox";
 import { MdLocationOn } from "react-icons/md";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Navbar from "./Navbar";
 
 export default function Map({ locations }) {
   // const [togglePopUp, setTogglePopUp] = useState(false);
@@ -29,50 +30,53 @@ export default function Map({ locations }) {
   console.log("set selected location ", selectedLocation);
 
   return (
-    <ReactMapGL
-      mapStyle="mapbox://styles/dalalamad/clf5w8x0x009v01mo2feklchc"
-      mapboxAccessToken={accessToken}
-      {...viewport}
-      onMove={(evt) => setViewport(evt.viewport)}
-    >
-      {locations.map((location) => {
-        // console.log(location.name);
-        return (
-          <div key={location._id}>
-            {/* <Link href={"/location/"}> */}
-            <Marker
-              onClick={() => router.push(`/location-page/${location._id}`)}
-              key={location._id}
-              longitude={parseFloat(location.lngLat[1])}
-              latitude={parseFloat(location.lngLat[0])}
-              color={location.color}
-              style={{ cursor: "pointer", zIndex: 999 }}
-            >
-              <p
-                location-id={location._id}
-                role="icon"
-                onClick={onMarker}
-                aria-label="push-pin"
+    <>
+      <Navbar>Queer Map BER</Navbar>
+      <ReactMapGL
+        mapStyle="mapbox://styles/dalalamad/clf5w8x0x009v01mo2feklchc"
+        mapboxAccessToken={accessToken}
+        {...viewport}
+        onMove={(evt) => setViewport(evt.viewport)}
+      >
+        {locations.map((location) => {
+          // console.log(location.name);
+          return (
+            <div key={location._id}>
+              {/* <Link href={"/location/"}> */}
+              <Marker
+                onClick={() => router.push(`/location-page/${location._id}`)}
+                key={location._id}
+                longitude={parseFloat(location.lngLat[1])}
+                latitude={parseFloat(location.lngLat[0])}
+                color={location.color}
+                style={{ cursor: "pointer", zIndex: 999 }}
               >
-                <MdLocationOn style={iconStyles} />
-              </p>
-            </Marker>
-            {/* </Link> */}
-            {selectedLocation._id === location._id && (
-              <>
-                <Popup
-                  anchor="bottom"
-                  longitude={parseFloat(location.lngLat[1])}
-                  latitude={parseFloat(location.lngLat[0])}
-                  closeOnClick={false}
+                <p
+                  location-id={location._id}
+                  role="icon"
+                  onClick={onMarker}
+                  aria-label="push-pin"
                 >
-                  {location.name}
-                </Popup>
-              </>
-            )}
-          </div>
-        );
-      })}
-    </ReactMapGL>
+                  <MdLocationOn style={iconStyles} />
+                </p>
+              </Marker>
+              {/* </Link> */}
+              {selectedLocation._id === location._id && (
+                <>
+                  <Popup
+                    anchor="bottom"
+                    longitude={parseFloat(location.lngLat[1])}
+                    latitude={parseFloat(location.lngLat[0])}
+                    closeOnClick={false}
+                  >
+                    {location.name}
+                  </Popup>
+                </>
+              )}
+            </div>
+          );
+        })}
+      </ReactMapGL>
+    </>
   );
 }

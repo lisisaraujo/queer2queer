@@ -2,15 +2,14 @@ import styled from "styled-components";
 import ReturnButton from "../../components/ReturnButton";
 import { useRouter } from "next/router";
 import React, { useRef, useEffect, useState } from "react";
-import AddButton from "../../components/Buttons/AddButton";
-import Link from "next/link";
-import { IoIosAddCircle } from "react-icons/io";
-import CommentForm from "../../components/CommentForm";
+import FormModal from "../../components/FormModal";
+import CommentCard from "../../components/CommentCard";
 
 export default function LocationDetail() {
   const [comments, setComments] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [specificLocation, setSpecificLocation] = useState();
+  const [openModal, setOpenModal] = useState(false);
 
   const router = useRouter();
   const { id } = router.query;
@@ -24,7 +23,6 @@ export default function LocationDetail() {
       console.log("comments ", commentsData);
       setComments(commentsData);
       setLoading(false);
-      // console.log(commentsData);
       if (isLoading) {
         return <h1>Loading...</h1>;
       }
@@ -35,9 +33,17 @@ export default function LocationDetail() {
     fetchData().catch(console.error);
   }
 
-  // useEffect(() => {
-  //   loadComments();
-  // }, []);
+  async function handleRemoveComment(id) {
+    const response = await fetch(`/api/comments/${id}`, {
+      method: "DELETE",
+    });
+    if (response.ok) {
+      await response.json();
+      console.log("routerID", id);
+    } else {
+      console.error(`Error: ${response.status}`);
+    }
+  }
 
   useEffect(() => {
     if (id) {
@@ -64,23 +70,75 @@ export default function LocationDetail() {
       <Container>
         <ReturnButton />
         <section className="locationDetails">
-          <h1>{name}</h1>
-          {/* <p>Address: {lngLat}</p> */}
-          <p>Type: {type}</p>
-          {/* <p>Comments: {comments}</p> */}
+          <h1>
+            {name}: {type}
+          </h1>
         </section>
-        {/* <Link href="/addComment">
-          {" "}
-          <IoIosAddCircle />{" "}
-        </Link> */}
 
-        <CommentForm locationID={id} />
+        <div className="modal">
+          <button onClick={() => setOpenModal(true)} className="modalButton">
+            Add Comment
+          </button>
+          <FormModal open={openModal} onClose={() => setOpenModal(false)} />
+        </div>
         <div className="comments">
           {comments &&
             comments.map((item) => {
-              const { comment, age, sexual_orientation, gender, bipoc, _id } =
-                item;
-              return <li key={_id}>{comment}</li>;
+              const {
+                comment,
+                age,
+                sexual_orientation,
+                gender,
+                bipoc,
+                _id,
+                date,
+                name,
+              } = item;
+              return (
+                <CardFrame>
+                  <CommentCard
+                    onClick={() => router.push(`/${id}`)}
+                    key={_id}
+                    name={name}
+                    comment={comment}
+                    age={age}
+                    gender={gender}
+                    bipoc={bipoc}
+                    date={date}
+                    sexual_orientation={sexual_orientation}
+                    onRemoveComment={() => handleRemoveComment(_id)}
+                    // onUpdateCard={handleUpdateCard}
+                    id={_id}
+                  />{" "}
+                  {/* <div className="comment-card" key={_id}>
+                    <p className="date" key={date}>
+                      {date}
+                    </p>
+                    <h3 className="comment" key={comment}>
+                      {comment}
+                    </h3>
+                    <h6>Comment by: </h6>
+                    <p>{name}</p>
+                    <div className="demographic-data">
+                      <button className="demographic-data-tag" key={age}>
+                        {age}
+                      </button>
+                      <button
+                        className="demographic-data-tag"
+                        key={sexual_orientation}
+                      >
+                        {sexual_orientation}
+                      </button>
+                      <button className="demographic-data-tag" key={gender}>
+                        {gender}
+                      </button>
+                      <button className="demographic-data-tag" key={bipoc}>
+                        {bipoc ? "BiPoc" : null}
+                      </button>
+                    </div>
+                  </div> */}
+                </CardFrame>
+              );
             })}
         </div>
       </Container>
@@ -98,5 +156,18 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   z-index: 2;
-  padding-top: 300px;
+  padding-top: 20px;
+`;
+
+const CardFrame = styled.div`
+  border: solid;
+  border-color: gray;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  justify-content: center;
+  height: 100%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 20px;
 `;
