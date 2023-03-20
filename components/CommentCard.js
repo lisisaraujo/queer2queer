@@ -61,7 +61,7 @@ const CardFrame = styled.div`
 `;
 
 const DeleteIcon = styled(RiDeleteBinLine)`
-  position: absolute;
+  position: relative;
   top: 20px;
   width: 20px;
   height: 20px;

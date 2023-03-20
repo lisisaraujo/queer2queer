@@ -43,6 +43,7 @@ export default function LocationDetail() {
     } else {
       console.error(`Error: ${response.status}`);
     }
+    loadComments();
   }
 
   useEffect(() => {
@@ -95,7 +96,7 @@ export default function LocationDetail() {
                 name,
               } = item;
               return (
-                <CardFrame>
+                <div className="comment-card">
                   <CommentCard
                     onClick={() => router.push(`/${id}`)}
                     key={_id}
@@ -107,37 +108,9 @@ export default function LocationDetail() {
                     date={date}
                     sexual_orientation={sexual_orientation}
                     onRemoveComment={() => handleRemoveComment(_id)}
-                    // onUpdateCard={handleUpdateCard}
                     id={_id}
-                  />{" "}
-                  {/* <div className="comment-card" key={_id}>
-                    <p className="date" key={date}>
-                      {date}
-                    </p>
-                    <h3 className="comment" key={comment}>
-                      {comment}
-                    </h3>
-                    <h6>Comment by: </h6>
-                    <p>{name}</p>
-                    <div className="demographic-data">
-                      <button className="demographic-data-tag" key={age}>
-                        {age}
-                      </button>
-                      <button
-                        className="demographic-data-tag"
-                        key={sexual_orientation}
-                      >
-                        {sexual_orientation}
-                      </button>
-                      <button className="demographic-data-tag" key={gender}>
-                        {gender}
-                      </button>
-                      <button className="demographic-data-tag" key={bipoc}>
-                        {bipoc ? "BiPoc" : null}
-                      </button>
-                    </div>
-                  </div> */}
-                </CardFrame>
+                  />
+                </div>
               );
             })}
         </div>

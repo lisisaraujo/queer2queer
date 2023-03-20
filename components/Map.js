@@ -5,6 +5,7 @@ import { MdLocationOn } from "react-icons/md";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Navbar from "./Navbar";
+import SearchBox from "./SearchBox";
 
 export default function Map({ locations }) {
   // const [togglePopUp, setTogglePopUp] = useState(false);
@@ -32,6 +33,7 @@ export default function Map({ locations }) {
   return (
     <>
       <Navbar>Queer Map BER</Navbar>
+      <SearchBox />
       <ReactMapGL
         mapStyle="mapbox://styles/dalalamad/clf5w8x0x009v01mo2feklchc"
         mapboxAccessToken={accessToken}
