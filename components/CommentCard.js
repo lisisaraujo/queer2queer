@@ -15,18 +15,19 @@ export default function CommentCard({
   gender,
   bipoc,
   onRemoveComment,
+  date,
 }) {
   return (
     <CardFrame>
       <div className="comment-card" key={_id}>
-        {/* <p className="date" key={date}>
+        <p className="date" key={date}>
           {date}
-        </p> */}
-        <p>{name}</p>
+        </p>
         <p className="comment" key={comment}>
           {comment}
         </p>
         <div className="demographic-data">
+          <p>commented by: {name}</p>
           <button className="demographic-data-tag" key={age}>
             {age}
           </button>
@@ -61,7 +62,6 @@ const CardFrame = styled.div`
 `;
 
 const DeleteIcon = styled(RiDeleteBinLine)`
-  position: relative;
   top: 20px;
   width: 20px;
   height: 20px;
