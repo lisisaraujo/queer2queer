@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { accessToken } from "../src/mapbox";
 import { FaGlassMartiniAlt } from "react-icons/fa";
@@ -7,7 +7,8 @@ import { IoIosPeople } from "react-icons/io";
 import { MdDirectionsBoat } from "react-icons/md";
 import Link from "next/link";
 import Navbar from "./Navbar";
-import Searchbar from "./Searchbar";
+
+import CategoryFilter from "./CategoryFilter";
 
 export default function Map({ locations }) {
   const [selectedLocation, setSelectedLocation] = useState({});
@@ -16,6 +17,9 @@ export default function Map({ locations }) {
   const clubIcon = <BsFillCameraVideoOffFill style={iconStyles} />;
   const cruisingIcon = <MdDirectionsBoat style={iconStyles} />;
   const communityIcon = <IoIosPeople style={iconStyles} />;
+  const [filteredLocations, setFilteredLocations] = useState(locations);
+  const [selectedCategory, setSelectedCategory] = useState("");
+
   const [viewport, setViewport] = useState({
     height: "100%",
     width: "100%",
@@ -32,17 +36,40 @@ export default function Map({ locations }) {
   }
   console.log("set selected location ", selectedLocation);
 
+  useEffect(() => {
+    setFilteredLocations(locations);
+  }, [locations]);
+
+  const handleCategoryChange = (event) => {
+    setSelectedCategory(event.target.value);
+  };
+  console.log(selectedCategory);
+
+  const getFilteredList = () => {
+    if (!selectedCategory) {
+      return filteredLocations;
+    }
+    return filteredLocations.filter(
+      (location) => location.type === selectedCategory
+    );
+  };
+
+  const filteredList = useMemo(getFilteredList, [
+    selectedCategory,
+    filteredLocations,
+  ]);
+  console.log(filteredList);
+
   return (
     <>
-      <Searchbar />
-      <Navbar>Queer Map BER</Navbar>
+      <Navbar handleCategoryChange={handleCategoryChange}>Queer Map BER</Navbar>
       <ReactMapGL
         mapStyle="mapbox://styles/dalalamad/clf5w8x0x009v01mo2feklchc"
         mapboxAccessToken={accessToken}
         {...viewport}
         onMove={(evt) => setViewport(evt.viewport)}
       >
-        {locations.map((location) => {
+        {filteredList.map((location) => {
           return (
             <div key={location._id}>
               <Marker
