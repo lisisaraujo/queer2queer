@@ -1,7 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { SlMenu } from "react-icons/sl";
-import FilterButton from "./Buttons/FilterButton";
 import { IoColorFilterOutline } from "react-icons/io5";
 
 export default function Navbar() {
