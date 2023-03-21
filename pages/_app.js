@@ -60,8 +60,8 @@ export default function App({ Component, pageProps }) {
   }, []);
   return (
     <>
+      {" "}
       <GlobalStyle />
-
       <Layout>
         <SWRConfig value={{ fetcher }}>
           <Component {...pageProps} locations={locations} comments={comments} />

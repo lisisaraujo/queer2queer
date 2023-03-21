@@ -7,7 +7,8 @@ import { IoIosPeople } from "react-icons/io";
 import { MdDirectionsBoat } from "react-icons/md";
 import Link from "next/link";
 import Navbar from "./Navbar";
-import Searchbar from "./Searchbar";
+
+import CategoryFilter from "./CategoryFilter";
 
 export default function Map({ locations }) {
   const [selectedLocation, setSelectedLocation] = useState({});
@@ -16,6 +17,7 @@ export default function Map({ locations }) {
   const clubIcon = <BsFillCameraVideoOffFill style={iconStyles} />;
   const cruisingIcon = <MdDirectionsBoat style={iconStyles} />;
   const communityIcon = <IoIosPeople style={iconStyles} />;
+
   const [viewport, setViewport] = useState({
     height: "100%",
     width: "100%",
@@ -34,8 +36,9 @@ export default function Map({ locations }) {
 
   return (
     <>
-      <Searchbar />
-      <Navbar>Queer Map BER</Navbar>
+      <Navbar locations={locations} setFilter={setFilter}>
+        Queer Map BER
+      </Navbar>
       <ReactMapGL
         mapStyle="mapbox://styles/dalalamad/clf5w8x0x009v01mo2feklchc"
         mapboxAccessToken={accessToken}
