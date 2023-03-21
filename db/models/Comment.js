@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const commentSchema = new Schema({
   location: { type: Schema.Types.ObjectId, ref: "Locations" },
   comment: { type: String, required: true },
-  age: { type: Number },
+  age: { type: String },
   sexual_orientation: { type: String },
   gender: { type: String },
   bipoc: { type: Boolean },

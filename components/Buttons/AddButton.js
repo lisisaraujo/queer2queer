@@ -1,9 +1,7 @@
 import { IoIosAddCircle } from "react-icons/io";
-import { useRouter } from "next/router";
 import styled from "styled-components";
 
 export default function AddButton() {
-  const router = useRouter();
   return (
     <>
       <button>

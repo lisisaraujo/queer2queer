@@ -45,15 +45,48 @@ export default function CommentForm({ onSubmitComment, locationID }) {
           <label htmlFor="name">Name:</label>
           <input id="name" name="name"></input>
           <label htmlFor="age">Age</label>
-          <input type="number" id="age" name="age"></input>
+          <select name="age">
+            <option value="">Select</option>
+            <option value="<18">&gt; 18</option>
+            <option value="18-25">18-25</option>
+            <option value="26-35">26-35</option>
+            <option value="36-45">36-45</option>
+            <option value="46-55">46-55</option>
+            <option value="55+">55+</option>
+          </select>
           <label htmlFor="sexual-orientation">Sexual Orientation:</label>
-          <input id="sexual-orientation" name="sexual_orientation"></input>
+          <select name="sexual_orientation">
+            <option value="">Select</option>
+            <option value="Lesbian">Lesbian</option>
+            <option value="Gay">Gay</option>
+            <option value="Pansexual">Pansexual</option>
+            <option value="Bisexual">Bisexual</option>
+            <option value="Asexual">Asexual</option>
+            <option value="Aromantic">Aromantic</option>
+            <option value="Queer">Queer</option>
+            <option value="Demisexual">Demisexual</option>
+            <option value="Heterosexual">Heterosexual</option>
+            <option value="Other(specify)">Other(specify)</option>
+          </select>
+          {/* <input name="sexual_orientation" placeholder="Other: "></input> */}
           <label htmlFor="gender">Gender:</label>
-          <input id="gender" name="gender"></input>
+          <select name="gender">
+            <option value="">Select</option>
+            <option value="Genderfluid">Genderfluid</option>
+            <option value="Genderqueer">Genderqueer</option>
+            <option value="Transgender male">Transgender male</option>
+            <option value="Transgender female">Transgender female</option>
+            <option value="Nonbinary">Nonbinary</option>
+            <option value="Intersex">Intersex</option>
+            <option value="Cisgender female">Cisgender female</option>
+            <option value="Cisgender male">Cisgender male</option>
+            <option value="I don't know">I don't know</option>
+            <option value="Other(specify)">Other(specify)</option>
+          </select>
+          {/* <input name="gender" placeholder="Other: "></input> */}
           <label htmlFor="bipoc">BiPoc:</label>
-          <input type="checkbox" id="bipoc" name="bipoc"></input>
-
-          <button onClick={() => router.push("#")}>Submit</button>
+          <input type="checkbox" name="bipoc"></input>
+          <button>Submit</button>
         </InputWrapper>
       </EntryForm>
     </div>

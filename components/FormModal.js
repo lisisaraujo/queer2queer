@@ -2,7 +2,7 @@ import React from "react";
 import CommentForm from "./CommentForm";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-
+import { AiOutlineClose } from "react-icons/ai";
 export default function FormModal({ open, onClose }) {
   const router = useRouter();
   const { id } = router.query;
@@ -18,7 +18,7 @@ export default function FormModal({ open, onClose }) {
           className="modalContainer"
         >
           <p className="closeBtn" onClick={onClose}>
-            X
+            <AiOutlineClose />
           </p>
           <div className="content">
             <CommentForm locationID={id} />
@@ -48,7 +48,9 @@ const ModalWrapper = styled.div`
   }
 
   .modalContainer {
-    max-width: 600px;
+    display: flex;
+    align-content: center;
+    max-width: 500px;
     width: 100%;
     position: fixed;
     top: 40%;
@@ -57,7 +59,9 @@ const ModalWrapper = styled.div`
     display: flex;
     background-color: #ffffff;
     box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.75);
-    border-radius: 8px;
+    border-radius: 20px;
+    flex-direction: column;
+    flex-wrap: nowrap;
   }
 
   img {
@@ -74,7 +78,8 @@ const ModalWrapper = styled.div`
   .closeBtn {
     position: fixed;
     top: 8px;
-    right: 8px;
+    right: 30px;
+    font-size: 2em;
   }
 
   .content {
