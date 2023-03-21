@@ -8,8 +8,6 @@ import { MdDirectionsBoat } from "react-icons/md";
 import Link from "next/link";
 import Navbar from "./Navbar";
 
-import CategoryFilter from "./CategoryFilter";
-
 export default function Map({ locations }) {
   const [selectedLocation, setSelectedLocation] = useState({});
   const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
