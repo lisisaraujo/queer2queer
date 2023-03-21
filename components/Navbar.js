@@ -4,7 +4,7 @@ import { SlMenu } from "react-icons/sl";
 import { IoColorFilterOutline } from "react-icons/io5";
 import CategoryFilter from "./CategoryFilter";
 
-export default function Navbar({ locations, setFilter }) {
+export default function Navbar({ handleCategoryChange }) {
   function navBarDrop() {
     let x = document.getElementById("myLinks");
     if (x.style.display === "block") {
@@ -29,14 +29,7 @@ export default function Navbar({ locations, setFilter }) {
         <a href="#home" className="active">
           QueerMap BER
         </a>
-        <CategoryFilter locations={locations} setFilter={setFilter} />
-        {/* <a
-          href="#"
-          className="icon"
-          onClick={() => router.push("/filterLocationForm")}
-        >
-          <IoColorFilterOutline />
-        </a> */}
+        <CategoryFilter onChangeCategory={handleCategoryChange} />
       </NavbarWrapper>
     </>
   );
