@@ -1,9 +1,11 @@
 import styled from "styled-components";
-import ReturnButton from "../../components/ReturnButton";
+import ReturnButton from "../../components/Buttons/ReturnButton";
 import { useRouter } from "next/router";
 import React, { useRef, useEffect, useState } from "react";
 import FormModal from "../../components/FormModal";
 import CommentCard from "../../components/CommentCard";
+import Location from "../../components/Location";
+import CommentFilter from "../../components/CommentFilter";
 
 export default function LocationDetail() {
   const [comments, setComments] = useState([]);
@@ -70,12 +72,7 @@ export default function LocationDetail() {
     return (
       <Container>
         <ReturnButton />
-        <section className="locationDetails">
-          <h1>
-            {name}: {type}
-          </h1>
-        </section>
-
+        <Location name={name} type={type} />
         <div className="modal">
           <button onClick={() => setOpenModal(true)} className="modalButton">
             Add Comment
