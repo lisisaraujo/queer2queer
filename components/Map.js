@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, {
+  useState,
+  useEffect,
+  useMemo,
+  useRef,
+  useCallback,
+} from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { accessToken } from "../src/mapbox";
 import { FaGlassMartiniAlt } from "react-icons/fa";
@@ -7,8 +13,10 @@ import { IoIosPeople } from "react-icons/io";
 import { MdDirectionsBoat } from "react-icons/md";
 import Link from "next/link";
 import Navbar from "./Navbar";
+import { GeolocateControl } from "react-map-gl";
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 
-export default function Map({ locations }) {
+export default function MyMap({ locations }) {
   const [selectedLocation, setSelectedLocation] = useState({});
   const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
   const barIcon = <FaGlassMartiniAlt style={iconStyles} />;
@@ -17,6 +25,8 @@ export default function Map({ locations }) {
   const communityIcon = <IoIosPeople style={iconStyles} />;
   const [filteredLocations, setFilteredLocations] = useState(locations);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [addLocation, setAddLocation] = useState(null);
+  const mapRef = useRef();
 
   const [viewport, setViewport] = useState({
     height: "100%",
@@ -25,6 +35,14 @@ export default function Map({ locations }) {
     longitude: 13.4247,
     zoom: 12,
   });
+
+  //add new location with geocoder
+  const geocoder = new MapboxGeocoder({
+    accessToken: accessToken,
+    mapboxgl: ReactMapGL,
+  });
+
+  console.log("geocoder: ", geocoder);
 
   function onMarker(e) {
     const id = e.currentTarget.getAttribute("location-id");
@@ -61,12 +79,17 @@ export default function Map({ locations }) {
   return (
     <>
       <Navbar handleCategoryChange={handleCategoryChange}>Queer Map BER</Navbar>
+
       <ReactMapGL
         mapStyle="mapbox://styles/dalalamad/clf5w8x0x009v01mo2feklchc"
         mapboxAccessToken={accessToken}
         {...viewport}
         onMove={(evt) => setViewport(evt.viewport)}
       >
+        <GeolocateControl
+          positionOptions={{ enableHighAccuracy: true }}
+          trackUserLocation={true}
+        />
         {filteredList.map((location) => {
           return (
             <div key={location._id}>
