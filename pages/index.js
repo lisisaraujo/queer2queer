@@ -9,20 +9,28 @@ const MyMap = dynamic(() => import("../components/Map"), {
   loading: () => "Loading...",
   ssr: false,
 });
-const MapSearch = dynamic(() => import("../components/MapSearch"), {
+const Navbar = dynamic(() => import("../components/Navbar"), {
   loading: () => "Loading...",
   ssr: false,
 });
 
-// const AddButton = dynamic(() => import("../components/Buttons/AddButton"), {
-//   loading: () => "Loading...",
-//   ssr: false,
-// });
+const handleCategoryChange = (event) => {
+  setSelectedCategory(event.target.value);
+};
+const AddButton = dynamic(() => import("../components/Buttons/AddButton"), {
+  loading: () => "Loading...",
+  ssr: false,
+});
 
 export default function Home({ locations }) {
   return (
     <>
       <section className="map">
+        <Navbar handleCategoryChange={handleCategoryChange}>
+          Queer Map BER
+        </Navbar>
+        <AddButton />
+
         <MyMap locations={locations} />
       </section>
     </>

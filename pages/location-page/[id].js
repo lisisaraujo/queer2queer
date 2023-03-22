@@ -22,7 +22,7 @@ export default function LocationDetail() {
       setLoading(true);
       const data = await fetch(`/api/comments/${id}`);
       const commentsData = await data.json();
-      console.log("comments ", commentsData);
+      // console.log("comments ", commentsData);
       setComments(commentsData);
       setLoading(false);
       if (isLoading) {
@@ -41,7 +41,7 @@ export default function LocationDetail() {
     });
     if (response.ok) {
       await response.json();
-      console.log("routerID", id);
+      // console.log("routerID", id);
     } else {
       console.error(`Error: ${response.status}`);
     }
@@ -50,12 +50,11 @@ export default function LocationDetail() {
 
   useEffect(() => {
     if (id) {
-      console.log("Oi");
       const fetchSpecificLocation = async () => {
         const response = await fetch(`/api/locations/${id}`);
         const specificLocation = await response.json();
         setSpecificLocation(specificLocation);
-        console.log(specificLocation);
+        // console.log(specificLocation);
       };
       fetchSpecificLocation();
       loadComments();

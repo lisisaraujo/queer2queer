@@ -12,8 +12,7 @@ import { BsFillCameraVideoOffFill } from "react-icons/bs";
 import { IoIosPeople } from "react-icons/io";
 import { MdDirectionsBoat } from "react-icons/md";
 import Link from "next/link";
-import Navbar from "./Navbar";
-import { GeolocateControl } from "react-map-gl";
+import { GeolocateControl, NavigationControl } from "react-map-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 
 export default function MyMap({ locations }) {
@@ -56,9 +55,6 @@ export default function MyMap({ locations }) {
     setFilteredLocations(locations);
   }, [locations]);
 
-  const handleCategoryChange = (event) => {
-    setSelectedCategory(event.target.value);
-  };
   console.log(selectedCategory);
 
   const getFilteredList = () => {
@@ -78,8 +74,6 @@ export default function MyMap({ locations }) {
 
   return (
     <>
-      <Navbar handleCategoryChange={handleCategoryChange}>Queer Map BER</Navbar>
-
       <ReactMapGL
         mapStyle="mapbox://styles/dalalamad/clf5w8x0x009v01mo2feklchc"
         mapboxAccessToken={accessToken}
@@ -89,6 +83,7 @@ export default function MyMap({ locations }) {
         <GeolocateControl
           positionOptions={{ enableHighAccuracy: true }}
           trackUserLocation={true}
+          position="bottom-left"
         />
         {filteredList.map((location) => {
           return (
@@ -132,6 +127,7 @@ export default function MyMap({ locations }) {
             </div>
           );
         })}
+        <NavigationControl position="bottom-left" />
       </ReactMapGL>
     </>
   );

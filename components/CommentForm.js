@@ -11,7 +11,7 @@ export default function CommentForm({ onSubmitComment, locationID }) {
     const formData = new FormData(event.target);
 
     const newComment = Object.fromEntries(formData);
-    console.log("newComment", newComment);
+    // console.log("newComment", newComment);
 
     const response = await fetch("/api/comments/create", {
       method: "POST",
@@ -107,4 +107,5 @@ const InputWrapper = styled.div`
   margin-left: 10%;
   margin-right: 10%;
   margin-top: 100px;
+  border-color: blueviolet;
 `;

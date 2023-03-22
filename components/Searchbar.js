@@ -1,3 +1,26 @@
+import { useState } from "react";
+import { accessToken } from "../src/mapbox";
+import { SearchBox } from "@mapbox/search-js-react";
+
+export default function SearchBar() {
+  const [value, setValue] = useState("");
+  return (
+    <form>
+      <SearchBox
+        accessToken={accessToken}
+        options={{
+          country: "DE",
+        }}
+        popoverOptions={{
+          placement: "top-start",
+          flip: true,
+          offset: 5,
+        }}
+      />
+    </form>
+  );
+}
+
 // import styled from "styled-components";
 // import { useState } from "react";
 // import { useRouter } from "next/router";

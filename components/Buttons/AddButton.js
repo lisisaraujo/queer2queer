@@ -1,26 +1,31 @@
-import { IoIosAddCircle } from "react-icons/io";
+import { MdOutlineAddLocationAlt } from "react-icons/md";
 import styled from "styled-components";
+import Link from "next/link";
 
 export default function AddButton() {
+  const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
+
   return (
     <>
-      <button>
-        <IoIosAddCircle />
-      </button>
+      <StyledButton>
+        <Link href="/addLocation">
+          <MdOutlineAddLocationAlt style={iconStyles} />
+        </Link>
+      </StyledButton>
     </>
   );
 }
 
 export const StyledButton = styled.button`
-  appearance: none;
+  /* appearance: none; */
   border: none;
-  background: var(--color-water-10);
-  font-size: larger;
+  background-color: transparent;
   padding: 0.5rem 1rem;
-  box-shadow: 0px 1px 5px -2px var(--color-granite);
+  z-index: 1;
+  display: flex;
   &:hover {
     cursor: pointer;
   }
-  z-index: 2;
-  display: flex;
+  font-size: 2em;
+  position: absolute;
 `;

@@ -1,7 +1,7 @@
 export default function CategoryFilter({ onChangeCategory }) {
   return (
     <select name="category-list" id="category-list" onChange={onChangeCategory}>
-      <option selected disabled>
+      <option value="Select Filter" selected disabled>
         Select Filter
       </option>
       <option value="Bar">Bar</option>
