@@ -7,7 +7,7 @@ export default async function handler(request, response) {
   if (request.method === "GET") {
     try {
       const locations = await Location.find();
-      console.log("LOCATION INDEX: ", locations);
+      // console.log("LOCATION INDEX: ", locations);
 
       return response.status(200).json(locations);
     } catch (error) {

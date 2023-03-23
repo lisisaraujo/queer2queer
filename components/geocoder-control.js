@@ -2,8 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import { useControl, Marker, MarkerProps, ControlPosition } from "react-map-gl";
 import MapboxGeocoder, { GeocoderOptions } from "@mapbox/mapbox-gl-geocoder";
-
-import { accessToken } from "./mapbox";
+import accessToken from "../src/mapbox";
 
 /* eslint-disable complexity,max-statements */
 export default function GeocoderControl(props) {

@@ -5,7 +5,7 @@ import React, { useRef, useEffect, useState } from "react";
 import FormModal from "../../components/FormModal";
 import CommentCard from "../../components/CommentCard";
 import Location from "../../components/Location";
-import CommentFilter from "../../components/CommentFilter";
+import CategoryFilter from "../../components/CategoryFilter";
 
 export default function LocationDetail() {
   const [comments, setComments] = useState([]);
@@ -64,9 +64,9 @@ export default function LocationDetail() {
   if (specificLocation) {
     const { name, lngLat, type } = specificLocation;
 
-    console.log("COMMENTS CL", comments);
+    // console.log("COMMENTS CL", comments);
 
-    console.log("SPECIFIC: ", specificLocation);
+    // console.log("SPECIFIC: ", specificLocation);
 
     return (
       <Container>

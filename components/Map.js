@@ -72,6 +72,8 @@ export default function MyMap({ locations }) {
   ]);
   console.log(filteredList);
 
+  // const [userClick, setUserClick] = useState(null);
+
   return (
     <>
       <ReactMapGL
@@ -96,6 +98,21 @@ export default function MyMap({ locations }) {
                 color={location.color}
                 style={{ cursor: "pointer", zIndex: 1 }}
               >
+                {/* {userClick && (
+                  <Marker
+                    className="marker" //doesn't work
+                    longitude={userClick.lng}
+                    latitude={userClick.lat}
+                    color="#ffb400" // Easter Egg for T.
+                    style={{ cursor: "pointer", zIndex: 999 }}
+                    // draggable="true"
+                    onClick={(e) => {
+                      e.originalEvent.stopPropagation();
+                      // console.log("User Marker click: ", e);
+                      setUserPopup(true);
+                    }}
+                  />
+                )} */}
                 <p
                   location-id={location._id}
                   role="icon"
