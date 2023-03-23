@@ -31,6 +31,8 @@ export default function AddPlaceForm({ locationID }) {
     } else {
       console.error(`Error: ${response.status}`);
     }
+
+    router.push("/");
   }
   return (
     <div>

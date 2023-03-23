@@ -15,4 +15,10 @@ export default async function handler(request, response) {
       return response.status(404).json("Error", error);
     }
   }
+
+  if (request.method === "DELETE") {
+    console.log("iddddd", id);
+    const location = await Location.findByIdAndDelete(id);
+    return response.status(200).json(location);
+  }
 }

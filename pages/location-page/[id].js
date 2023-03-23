@@ -7,7 +7,7 @@ import CommentCard from "../../components/Comments/CommentCard";
 import Location from "../../components/Location";
 import { RiDeleteBinLine } from "react-icons/ri";
 
-export default function LocationDetail({ loadLocations, loadComments }) {
+export default function LocationDetail({ loadLocations, onRemoveLocation }) {
   const [comments, setComments] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [specificLocation, setSpecificLocation] = useState();
@@ -17,23 +17,23 @@ export default function LocationDetail({ loadLocations, loadComments }) {
   const { id } = router.query;
 
   // fetch data from database on page refresh
-  // function loadComments() {
-  //   const fetchData = async () => {
-  //     setLoading(true);
-  //     const data = await fetch(`/api/comments/${id}`);
-  //     const commentsData = await data.json();
-  //     // console.log("comments ", commentsData);
-  //     setComments(commentsData);
-  //     setLoading(false);
-  //     if (isLoading) {
-  //       return <h1>Loading...</h1>;
-  //     }
-  //     if (!commentsData) {
-  //       return <h1>No data</h1>;
-  //     }
-  //   };
-  //   fetchData().catch(console.error);
-  // }
+  function loadComments() {
+    const fetchData = async () => {
+      setLoading(true);
+      const data = await fetch(`/api/comments/${id}`);
+      const commentsData = await data.json();
+      // console.log("comments ", commentsData);
+      setComments(commentsData);
+      setLoading(false);
+      if (isLoading) {
+        return <h1>Loading...</h1>;
+      }
+      if (!commentsData) {
+        return <h1>No data</h1>;
+      }
+    };
+    fetchData().catch(console.error);
+  }
 
   async function handleRemoveComment(id) {
     const response = await fetch(`/api/comments/${id}`, {
@@ -59,6 +59,7 @@ export default function LocationDetail({ loadLocations, loadComments }) {
       console.error(`Error: ${response.status}`);
     }
     loadLocations();
+    router.push("/");
   }
 
   useEffect(() => {
@@ -83,7 +84,6 @@ export default function LocationDetail({ loadLocations, loadComments }) {
 
     return (
       <Container>
-        <DeleteIcon onClick={() => onRemoveLocation(_id)} />
         <ReturnButton />
         <Location name={name} type={type} />
         <div className="modal">
@@ -109,7 +109,6 @@ export default function LocationDetail({ loadLocations, loadComments }) {
                 <div className="comment-card" key={_id}>
                   <CommentCard
                     onClick={() => router.push(`/${id}`)}
-                    // key={_id}
                     name={name}
                     comment={comment}
                     age={age}
@@ -118,12 +117,12 @@ export default function LocationDetail({ loadLocations, loadComments }) {
                     date={date}
                     sexual_orientation={sexual_orientation}
                     onRemoveComment={() => handleRemoveComment(_id)}
-                    // id={_id}
                   />
                 </div>
               );
             })}
         </div>
+        <DeleteIcon onClick={() => handleRemoveLocation(id)} />
       </Container>
     );
   }
