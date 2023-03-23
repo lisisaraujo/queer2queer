@@ -40,36 +40,72 @@ export default function CommentForm({ locationID }) {
             value={locationID}
           ></input>
           <label htmlFor="comment">Comment:</label>
-          <input id="comment" name="comment"></input>
+          <input key="comment" id="comment" name="comment"></input>
           <label htmlFor="name">Name:</label>
-          <input id="name" name="name"></input>
+          <input key="name" id="name" name="name"></input>
           <label htmlFor="age">Age</label>
-          <select name="age">
-            <option value="">Select</option>
-            <option value="<18">&gt; 18</option>
-            <option value="18-25">18-25</option>
-            <option value="26-35">26-35</option>
-            <option value="36-45">36-45</option>
-            <option value="46-55">46-55</option>
-            <option value="55+">55+</option>
+          <select key="age" name="age">
+            <option key="select-age" value="">
+              Select
+            </option>
+            <option key="<18" value="<18">
+              &gt; 18
+            </option>
+            <option key="18-25" value="18-25">
+              18-25
+            </option>
+            <option key="26-35" value="26-35">
+              26-35
+            </option>
+            <option key="36-45" value="36-45">
+              36-45
+            </option>
+            <option key="46-55" value="46-55">
+              46-55
+            </option>
+            <option key="55+" value="55+">
+              55+
+            </option>
           </select>
           <label htmlFor="sexual-orientation">Sexual Orientation:</label>
           <select name="sexual_orientation">
-            <option value="">Select</option>
-            <option value="Lesbian">Lesbian</option>
-            <option value="Gay">Gay</option>
-            <option value="Pansexual">Pansexual</option>
-            <option value="Bisexual">Bisexual</option>
-            <option value="Asexual">Asexual</option>
-            <option value="Aromantic">Aromantic</option>
-            <option value="Queer">Queer</option>
-            <option value="Demisexual">Demisexual</option>
-            <option value="Heterosexual">Heterosexual</option>
-            <option value="Other(specify)">Other(specify)</option>
+            <option key="select-sexual-orientation" value="">
+              Select
+            </option>
+            <option key="lesbian" value="Lesbian">
+              Lesbian
+            </option>
+            <option key="gay" value="Gay">
+              Gay
+            </option>
+            <option key="pansexual" value="Pansexual">
+              Pansexual
+            </option>
+            <option key="bisexual" value="Bisexual">
+              Bisexual
+            </option>
+            <option key="asexual" value="Asexual">
+              Asexual
+            </option>
+            <option key="aromantic" value="Aromantic">
+              Aromantic
+            </option>
+            <option key="queer" value="Queer">
+              Queer
+            </option>
+            <option key="demisexual" value="Demisexual">
+              Demisexual
+            </option>
+            <option key="heterosexual" value="Heterosexual">
+              Heterosexual
+            </option>
+            <option key="other-sexual" value="Other(specify)">
+              Other(specify)
+            </option>
           </select>
           {/* <input name="sexual_orientation" placeholder="Other: "></input> */}
           <label htmlFor="gender">Gender:</label>
-          <select name="gender">
+          <select key="select-gender" name="gender">
             <option value="">Select</option>
             <option value="Genderfluid">Genderfluid</option>
             <option value="Genderqueer">Genderqueer</option>
