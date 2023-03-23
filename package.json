@@ -34,7 +34,6 @@
     "react-mutate": "^1.0.0",
     "react-tag-input": "^6.8.1",
     "styled-components": "^5.3.9",
-    "swr": "^2.1.0",
-    "uuidv4": "^6.2.13"
+    "swr": "^2.1.0"
   }
 }
