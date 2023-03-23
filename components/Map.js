@@ -58,7 +58,7 @@ export default function MyMap({ locations }) {
     selectedCategory,
     filteredLocations,
   ]);
-  console.log(filteredList);
+  // console.log(filteredList);
 
   return (
     <>

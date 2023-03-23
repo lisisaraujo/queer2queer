@@ -5,7 +5,6 @@ import React, { useRef, useEffect, useState } from "react";
 import FormModal from "../../components/FormModal";
 import CommentCard from "../../components/Comments/CommentCard";
 import Location from "../../components/Location";
-import CategoryFilter from "../../components/CategoryFilter";
 
 export default function LocationDetail() {
   const [comments, setComments] = useState([]);
@@ -64,7 +63,7 @@ export default function LocationDetail() {
   if (specificLocation) {
     const { name, lngLat, type } = specificLocation;
 
-    // console.log("COMMENTS CL", comments);
+    console.log("COMMENTS CL", comments);
 
     // console.log("SPECIFIC: ", specificLocation);
 
@@ -78,7 +77,7 @@ export default function LocationDetail() {
           </button>
           <FormModal open={openModal} onClose={() => setOpenModal(false)} />
         </div>
-        <div className="comments">
+        <div className="comments" key={comments}>
           {comments &&
             comments.map((item) => {
               const {
@@ -92,10 +91,10 @@ export default function LocationDetail() {
                 name,
               } = item;
               return (
-                <div className="comment-card">
+                <div className="comment-card" key={_id}>
                   <CommentCard
                     onClick={() => router.push(`/${id}`)}
-                    key={_id}
+                    // key={_id}
                     name={name}
                     comment={comment}
                     age={age}
@@ -104,7 +103,7 @@ export default function LocationDetail() {
                     date={date}
                     sexual_orientation={sexual_orientation}
                     onRemoveComment={() => handleRemoveComment(_id)}
-                    id={_id}
+                    // id={_id}
                   />
                 </div>
               );

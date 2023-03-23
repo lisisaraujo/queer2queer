@@ -15,24 +15,14 @@ export default function CommentCard({
   return (
     <CardFrame>
       <div className="comment-card" key={_id}>
-        <p className="date" key={date}>
-          {date}
-        </p>
-        <p className="comment" key={comment}>
-          {comment}
-        </p>
+        <p className="date">{date}</p>
+        <p className="comment">{comment}</p>
         <div className="demographic-data">
           <p>commented by: {name}</p>
-          <button className="demographic-data-tag" key={age}>
-            {age}
-          </button>
-          <button className="demographic-data-tag" key={sexual_orientation}>
-            {sexual_orientation}
-          </button>
-          <button className="demographic-data-tag" key={gender}>
-            {gender}
-          </button>
-          <button className="demographic-data-tag" key={bipoc}>
+          <button className="demographic-data-tag">{age}</button>
+          <button className="demographic-data-tag">{sexual_orientation}</button>
+          <button className="demographic-data-tag">{gender}</button>
+          <button className="demographic-data-tag">
             {bipoc ? "BiPoc" : null}
           </button>
         </div>
