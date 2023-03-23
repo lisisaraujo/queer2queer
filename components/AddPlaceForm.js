@@ -1,66 +1,3 @@
-// import { useState } from "react";
-// import geocoder from "../src/mapbox";
-
-// export default function AddPlaceForm({ onSubmit }) {
-//   const [suggestions, setSuggestions] = useState([]);
-//   const [currentSuggestion, setCurrentSuggestion] = useState({});
-//   const [text, setText] = useState("");
-
-//   function _onSubmit(event) {
-//     event.preventDefault();
-//     if (!currentSuggestion.geometry) {
-//       return;
-//     }
-//     onSubmit({
-//       description: currentSuggestion.place_name,
-//       lngLat: currentSuggestion.geometry.coordinates,
-//     });
-//     setCurrentSuggestion({});
-//     setText("");
-//   }
-
-//   async function onInput(event) {
-//     const query = event.target.value;
-//     const response = await geocoder.forwardGeocode({ query, limit: 5 }).send();
-//     setSuggestions(response.body.features);
-//   }
-
-//   function onSuggestionClick(suggestion) {
-//     setCurrentSuggestion(suggestion);
-//     setText(suggestion.place_name);
-//     setSuggestions([]);
-//   }
-
-//   function onChange(event) {
-//     setText(event.target.value);
-//   }
-
-//   return (
-//     <section className="add-place">
-//       <h2>Find Place</h2>
-//       <form onSubmit={_onSubmit} autoComplete="off">
-//         <input
-//           type="text"
-//           required
-//           onInput={onInput}
-//           value={text}
-//           onChange={onChange}
-//           minLength={3}
-//           placeholder="Type the place you want to go"
-//         />
-//         <button type="submit">Add Place</button>
-//         <ul>
-//           {suggestions.map((x) => (
-//             <li key={x.place_name} onClick={() => onSuggestionClick(x)}>
-//               {x.place_name}
-//             </li>
-//           ))}
-//         </ul>
-//       </form>
-//     </section>
-//   );
-// }
-
 import styled from "styled-components";
 import useSWR from "swr";
 import { useRouter } from "next/router";
@@ -75,27 +12,8 @@ export default function AddPlaceForm({ locationID }) {
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
-
     const newLocation = Object.fromEntries(formData);
     console.log("newLocation", newLocation);
-
-    // const address = `${newLocation.address} ${newLocation.city}}`;
-
-    // const apiUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
-    //   address
-    // )}.json?access_token=${accessToken}`;
-
-    // console.log(accessToken, address);
-
-    // const apiResponse = await fetch(apiUrl);
-
-    // const features = apiResponse.data.features;
-    // if (features.length > 0) {
-    //   const firstFeature = features[0];
-    //   const { lon, lat } = firstFeature.center;
-    //   console.log(`The coordinates of ${address} are: [${lon}, ${lat}]`);
-    // }
-    // console.log(apiResponse);
 
     const response = await fetch("/api/locations/create", {
       method: "POST",
@@ -128,10 +46,7 @@ export default function AddPlaceForm({ locationID }) {
           <h1>Suggest Location</h1>
           <label htmlFor="name">Name of location:</label>
           <input id="name" name="name"></input>
-
           <label htmlFor="address">Address:</label>
-          {/* <input id="lngLat" name="lngLat"></input> */}
-
           <AddressAutofill accessToken={accessToken}>
             <input
               name="address"
@@ -139,19 +54,19 @@ export default function AddPlaceForm({ locationID }) {
               type="text"
               autoComplete="address-line1"
             />
+            <input
+              name="city"
+              placeholder="City"
+              type="text"
+              autoComplete="address-level2"
+            />
+            <input
+              name="postcode"
+              placeholder="Postcode"
+              type="text"
+              autoComplete="postal-code"
+            />
           </AddressAutofill>
-          <input
-            name="city"
-            placeholder="City"
-            type="text"
-            autoComplete="address-level2"
-          />
-          <input
-            name="postcode"
-            placeholder="Postcode"
-            type="text"
-            autoComplete="postal-code"
-          />
           <label htmlFor="type">Type:</label>
           <select name="type">
             <option value="">Select</option>

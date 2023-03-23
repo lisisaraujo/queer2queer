@@ -3,7 +3,7 @@ import ReturnButton from "../../components/Buttons/ReturnButton";
 import { useRouter } from "next/router";
 import React, { useRef, useEffect, useState } from "react";
 import FormModal from "../../components/FormModal";
-import CommentCard from "../../components/CommentCard";
+import CommentCard from "../../components/Comments/CommentCard";
 import Location from "../../components/Location";
 import CategoryFilter from "../../components/CategoryFilter";
 

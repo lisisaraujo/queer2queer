@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  useMemo,
-  useRef,
-  useCallback,
-} from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { accessToken } from "../src/mapbox";
 import { FaGlassMartiniAlt } from "react-icons/fa";
@@ -13,7 +7,7 @@ import { IoIosPeople } from "react-icons/io";
 import { MdDirectionsBoat } from "react-icons/md";
 import Link from "next/link";
 import { GeolocateControl, NavigationControl } from "react-map-gl";
-import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
+import Navbar from "./Navbar";
 
 export default function MyMap({ locations }) {
   const [selectedLocation, setSelectedLocation] = useState({});
@@ -24,8 +18,6 @@ export default function MyMap({ locations }) {
   const communityIcon = <IoIosPeople style={iconStyles} />;
   const [filteredLocations, setFilteredLocations] = useState(locations);
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [addLocation, setAddLocation] = useState(null);
-  const mapRef = useRef();
 
   const [viewport, setViewport] = useState({
     height: "100%",
@@ -34,14 +26,6 @@ export default function MyMap({ locations }) {
     longitude: 13.4247,
     zoom: 12,
   });
-
-  //add new location with geocoder
-  const geocoder = new MapboxGeocoder({
-    accessToken: accessToken,
-    mapboxgl: ReactMapGL,
-  });
-
-  console.log("geocoder: ", geocoder);
 
   function onMarker(e) {
     const id = e.currentTarget.getAttribute("location-id");
@@ -54,6 +38,10 @@ export default function MyMap({ locations }) {
   useEffect(() => {
     setFilteredLocations(locations);
   }, [locations]);
+
+  const handleCategoryChange = (event) => {
+    setSelectedCategory(event.target.value);
+  };
 
   console.log(selectedCategory);
 
@@ -72,10 +60,9 @@ export default function MyMap({ locations }) {
   ]);
   console.log(filteredList);
 
-  // const [userClick, setUserClick] = useState(null);
-
   return (
     <>
+      <Navbar handleCategoryChange={handleCategoryChange}>Queer Map BER</Navbar>
       <ReactMapGL
         mapStyle="mapbox://styles/dalalamad/clf5w8x0x009v01mo2feklchc"
         mapboxAccessToken={accessToken}
@@ -91,28 +78,12 @@ export default function MyMap({ locations }) {
           return (
             <div key={location._id}>
               <Marker
-                // onClick={() => router.push(`/location-page/${location._id}`)}
                 key={location._id}
                 longitude={parseFloat(location.lngLat[1])}
                 latitude={parseFloat(location.lngLat[0])}
                 color={location.color}
                 style={{ cursor: "pointer", zIndex: 1 }}
               >
-                {/* {userClick && (
-                  <Marker
-                    className="marker" //doesn't work
-                    longitude={userClick.lng}
-                    latitude={userClick.lat}
-                    color="#ffb400" // Easter Egg for T.
-                    style={{ cursor: "pointer", zIndex: 999 }}
-                    // draggable="true"
-                    onClick={(e) => {
-                      e.originalEvent.stopPropagation();
-                      // console.log("User Marker click: ", e);
-                      setUserPopup(true);
-                    }}
-                  />
-                )} */}
                 <p
                   location-id={location._id}
                   role="icon"

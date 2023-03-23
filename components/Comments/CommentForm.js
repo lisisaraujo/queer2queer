@@ -2,14 +2,13 @@ import styled from "styled-components";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 
-export default function CommentForm({ onSubmitComment, locationID }) {
+export default function CommentForm({ locationID }) {
   const router = useRouter();
   const comments = useSWR("/api/comments");
 
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
-
     const newComment = Object.fromEntries(formData);
     // console.log("newComment", newComment);
 

@@ -17,10 +17,10 @@ export default function Navbar({ handleCategoryChange }) {
     <>
       <NavbarWrapper>
         <div id="myLinks">
-          <Link href="/about">About Us</Link>
-          <Link href="/ressources">Ressources</Link>
-          <Link href="/feedback">Feedback</Link>
-          <Link href="/contact">Contact</Link>
+          <Link href="/menu/about">About Us</Link>
+          <Link href="/menu/ressources">Ressources</Link>
+          <Link href="/menu/feedback">Feedback</Link>
+          <Link href="/menu/contact">Contact</Link>
         </div>
         <a href="#" className="icon" onClick={navBarDrop}>
           <SlMenu />

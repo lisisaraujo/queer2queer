@@ -2,13 +2,14 @@ import Layout from "../../components/Layout";
 import GlobalStyle from "../../components/GlobalStyle";
 import ReturnButton from "../../components/Buttons/ReturnButton";
 
-export default function AboutUs() {
+export default function Feedback() {
   return (
     <>
       <ReturnButton />
       <GlobalStyle></GlobalStyle>
+
       <Layout>
-        <h1>About Us</h1>
+        <h1>Feedback</h1>
         <p>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
           nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,

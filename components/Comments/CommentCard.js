@@ -1,10 +1,5 @@
 import styled from "styled-components";
-import React, { useRef, useEffect, useState } from "react";
-import {
-  RiDeleteBinLine,
-  RiPencilLine,
-  RiCheckboxCircleLine,
-} from "react-icons/ri";
+import { RiDeleteBinLine } from "react-icons/ri";
 
 export default function CommentCard({
   _id,

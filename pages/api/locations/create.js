@@ -16,22 +16,12 @@ export default async function handler(req, res) {
         console.log("RES DATA FEATURES", res.data.features);
         const apiResponseData = res.data.features[0];
         console.log("apiResponseData", apiResponseData);
-        const coordinates = apiResponseData.center;
-        const invertedCoords = coordinates.reverse();
-        console.log("COORDINATES", coordinates);
-        // const apiResponse = await fetch(apiUrl);
-        // console.log("API RESPONSE", apiResponse);
-        // console.log("API RESPONSE DATA", apiResponse.data);
+        const coordinates = apiResponseData.center.reverse();
         const locationData = req.body;
-        console.log("LOCATION DATA", locationData);
-        const location = new Location(locationData);
-        location.lngLat.push(...invertedCoords);
-
-        // locationCoords = coordinates;
-        // console.log("locationCoords", locationCoords);
-        console.log("location FROM BACKEND", location);
-
-        location.save();
+        const newLocation = new Location(locationData);
+        newLocation.lngLat.push(...coordinates);
+        console.log("newLocation FROM BACKEND", newLocation);
+        newLocation.save();
         // res.status(201).json({ status: "Location created" });
       });
     } catch (error) {
