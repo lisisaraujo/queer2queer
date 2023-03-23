@@ -1,8 +1,8 @@
 import dynamic from "next/dynamic";
 
-// import { Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 
-// const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] });
 
 const MyMap = dynamic(() => import("../components/Map"), {
   loading: () => "Loading...",
