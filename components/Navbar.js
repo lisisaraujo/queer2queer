@@ -4,14 +4,14 @@ import { SlMenu } from "react-icons/sl";
 import CategoryFilter from "./CategoryFilter";
 
 export default function Navbar({ handleCategoryChange }) {
-  // function navBarDrop() {
-  //   let x = document.getElementById("myLinks");
-  //   if (x.style.display === "block") {
-  //     x.style.display = "none";
-  //   } else {
-  //     x.style.display = "block";
-  //   }
-  // }
+  function navBarDrop() {
+    let x = document.getElementById("myLinks");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+  }
 
   return (
     <>
