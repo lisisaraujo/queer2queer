@@ -2,7 +2,7 @@ import styled from "styled-components";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import ReturnButton from "./Buttons/ReturnButton";
-import { AddressAutofill } from "@mapbox/search-js-react";
+// import { AddressAutofill } from "@mapbox/search-js-react";
 import { accessToken } from "../src/mapbox";
 
 export default function AddPlaceForm({ locationID }) {
@@ -49,26 +49,26 @@ export default function AddPlaceForm({ locationID }) {
           <label htmlFor="name">Name of location:</label>
           <input id="name" name="name"></input>
           <label htmlFor="address">Address:</label>
-          <AddressAutofill accessToken={accessToken}>
-            <input
-              name="address"
-              placeholder="Address"
-              type="text"
-              autoComplete="address-line1"
-            />
-            <input
-              name="city"
-              placeholder="City"
-              type="text"
-              autoComplete="address-level2"
-            />
-            <input
-              name="postcode"
-              placeholder="Postcode"
-              type="text"
-              autoComplete="postal-code"
-            />
-          </AddressAutofill>
+          {/* <AddressAutofill accessToken={accessToken}> */}
+          <input
+            name="address"
+            placeholder="Address"
+            type="text"
+            autoComplete="address-line1"
+          />
+          <input
+            name="city"
+            placeholder="City"
+            type="text"
+            autoComplete="address-level2"
+          />
+          <input
+            name="postcode"
+            placeholder="Postcode"
+            type="text"
+            autoComplete="postal-code"
+          />
+          {/* </AddressAutofill> */}
           <label htmlFor="type">Type:</label>
           <select name="type">
             <option value="">Select</option>
