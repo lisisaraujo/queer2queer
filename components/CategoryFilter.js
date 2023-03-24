@@ -14,6 +14,7 @@ export default function CategoryFilter({ onChangeCategory }) {
       <option value="Club">Club</option>
       <option value="Cruising">Cruising</option>
       <option value="Community-Center">Community-Center</option>
+      <option value="Other">Other</option>
     </select>
   );
 }

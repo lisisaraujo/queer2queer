@@ -22,16 +22,14 @@ export default function AddPlaceForm({ locationID }) {
         "Content-Type": "application/json",
       },
     });
-
     if (response.ok) {
       await response.json();
-      locations.mutate();
-
-      event.target.reset();
+      console.log("RESPONSE", response);
     } else {
       console.error(`Error: ${response.status}`);
     }
-
+    locations.mutate();
+    event.target.reset();
     router.push("/");
   }
   return (
@@ -78,7 +76,7 @@ export default function AddPlaceForm({ locationID }) {
             <option value="Community-Center">Community-Center</option>
             <option value="Other">Other</option>
           </select>
-          <button>Submit</button>
+          <button onClick={() => console.log("clickeddd")}>Submit</button>
         </InputWrapper>
       </EntryForm>
     </div>

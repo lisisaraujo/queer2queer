@@ -6,6 +6,8 @@ import FormModal from "../../components/FormModal";
 import CommentCard from "../../components/Comments/CommentCard";
 import Location from "../../components/Location";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { MdWrongLocation } from "react-icons/md";
+import AddCommentButton from "../../components/Buttons/AddCommentButton";
 
 export default function LocationDetail({ loadLocations, onRemoveLocation }) {
   const [comments, setComments] = useState([]);
@@ -83,50 +85,58 @@ export default function LocationDetail({ loadLocations, onRemoveLocation }) {
     // console.log("SPECIFIC: ", specificLocation);
 
     return (
-      <Container>
+      <>
+        {" "}
         <ReturnButton />
         <Location name={name} type={type} />
-        <div className="modal">
+        <CommentCards>
+          <div className="comments" key={comments}>
+            {comments &&
+              comments.map((item) => {
+                const {
+                  comment,
+                  age,
+                  sexual_orientation,
+                  gender,
+                  bipoc,
+                  _id,
+                  date,
+                  name,
+                } = item;
+                return (
+                  <div className="comment-card" key={_id}>
+                    <CommentCard
+                      onClick={() => router.push(`/${id}`)}
+                      name={name}
+                      comment={comment}
+                      age={age}
+                      gender={gender}
+                      bipoc={bipoc}
+                      date={date}
+                      sexual_orientation={sexual_orientation}
+                      onRemoveComment={() => handleRemoveComment(_id)}
+                    />
+                  </div>
+                );
+              })}
+          </div>
+          {/* <AddCommentButton
+            onClick={() => setOpenModal(true)}
+            className="modalButton"
+          /> */}
           <button onClick={() => setOpenModal(true)} className="modalButton">
-            Add Comment
+            <AddCommentButton />
           </button>
-          <FormModal open={openModal} onClose={() => setOpenModal(false)} />
-        </div>
-
-        <div className="comments" key={comments}>
-          {comments &&
-            comments.map((item) => {
-              const {
-                comment,
-                age,
-                sexual_orientation,
-                gender,
-                bipoc,
-                _id,
-                date,
-                name,
-              } = item;
-              return (
-                <div className="comment-card" key={_id}>
-                  <CommentCard
-                    onClick={() => router.push(`/${id}`)}
-                    name={name}
-                    comment={comment}
-                    age={age}
-                    gender={gender}
-                    bipoc={bipoc}
-                    date={date}
-                    sexual_orientation={sexual_orientation}
-                    onRemoveComment={() => handleRemoveComment(_id)}
-                  />
-                </div>
-              );
-            })}
-        </div>
-        <DeleteIcon onClick={() => handleRemoveLocation(id)}>
-          Delete this location
-        </DeleteIcon>
-      </Container>
+          <div className="modal">
+            <FormModal open={openModal} onClose={() => setOpenModal(false)} />
+          </div>
+        </CommentCards>
+        <DeleteLocation>
+          <MdWrongLocation onClick={() => handleRemoveLocation(id)}>
+            Delete this location
+          </MdWrongLocation>
+        </DeleteLocation>
+      </>
     );
   }
   return (
@@ -136,7 +146,7 @@ export default function LocationDetail({ loadLocations, onRemoveLocation }) {
   );
 }
 
-const Container = styled.div`
+const CommentCards = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -157,11 +167,12 @@ const Container = styled.div`
 //   margin-top: 20px;
 // `;
 
-const DeleteIcon = styled(RiDeleteBinLine)`
+const DeleteLocation = styled(MdWrongLocation)`
   top: 20px;
   width: 20px;
   height: 20px;
   right: 20px;
   color: #fe4b13;
   position: absolute;
+  margin-top: 90vh;
 `;

@@ -9,16 +9,19 @@ const MyMap = dynamic(() => import("../components/Map"), {
   ssr: false,
 });
 
-const AddButton = dynamic(() => import("../components/Buttons/AddButton"), {
-  loading: () => "Loading...",
-  ssr: false,
-});
+const AddLocationButton = dynamic(
+  () => import("../components/Buttons/AddLocationButton"),
+  {
+    loading: () => "Loading...",
+    ssr: false,
+  }
+);
 
 export default function Home({ locations }) {
   return (
     <>
       <section className="map">
-        <AddButton />
+        <AddLocationButton />
         <MyMap locations={locations} />
       </section>
     </>

@@ -1,16 +1,14 @@
-import { MdOutlineAddLocationAlt } from "react-icons/md";
+import { BiMessageSquareAdd } from "react-icons/bi";
 import styled from "styled-components";
 import Link from "next/link";
 
-export default function AddButton() {
+export default function AddCommentButton() {
   const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
 
   return (
     <>
       <StyledButton>
-        <Link href="/addLocation">
-          <MdOutlineAddLocationAlt style={iconStyles} />
-        </Link>
+        <BiMessageSquareAdd style={iconStyles} />
       </StyledButton>
     </>
   );
@@ -21,11 +19,12 @@ export const StyledButton = styled.button`
   border: none;
   background-color: transparent;
   padding: 0.5rem 1rem;
-  z-index: 1;
   display: flex;
   &:hover {
     cursor: pointer;
   }
   font-size: 2em;
   position: absolute;
+  color: white;
+  font-size: 2em;
 `;

@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }) {
 
   //fetch data from database on page refresh
   function loadLocations() {
-    const fetchData = async () => {
+    const fetchLocations = async () => {
       setLoading(true);
       const data = await fetch("/api/locations");
       const locations = await data.json();
@@ -32,7 +32,7 @@ export default function App({ Component, pageProps }) {
         return <h1>No data</h1>;
       }
     };
-    fetchData().catch(console.error);
+    fetchLocations().catch(console.error);
   }
 
   function loadComments() {
@@ -45,7 +45,7 @@ export default function App({ Component, pageProps }) {
       setLoading(false);
       // console.log(commentsData);
       if (isLoading) {
-        return <h1>Loading...</h1>;
+        return <h1>Loading Comments...</h1>;
       }
       if (!commentsData) {
         return <h1>No data</h1>;

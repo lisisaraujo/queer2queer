@@ -5,17 +5,19 @@ import { FaGlassMartiniAlt } from "react-icons/fa";
 import { BsFillCameraVideoOffFill } from "react-icons/bs";
 import { IoIosPeople } from "react-icons/io";
 import { MdDirectionsBoat } from "react-icons/md";
+import { MdLocationOn } from "react-icons/md";
 import Link from "next/link";
 import { GeolocateControl, NavigationControl } from "react-map-gl";
 import Navbar from "./Navbar";
 
 export default function MyMap({ locations }) {
   const [selectedLocation, setSelectedLocation] = useState({});
-  const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
+  const iconStyles = { color: "white", fontSize: "1.5em", cursor: "pointer" };
   const barIcon = <FaGlassMartiniAlt style={iconStyles} />;
   const clubIcon = <BsFillCameraVideoOffFill style={iconStyles} />;
   const cruisingIcon = <MdDirectionsBoat style={iconStyles} />;
   const communityIcon = <IoIosPeople style={iconStyles} />;
+  const otherIcon = <MdLocationOn style={iconStyles} />;
   const [filteredLocations, setFilteredLocations] = useState(locations);
   const [selectedCategory, setSelectedCategory] = useState("");
 
@@ -94,6 +96,7 @@ export default function MyMap({ locations }) {
                   {location.type === "Club" && clubIcon}
                   {location.type === "Cruising" && cruisingIcon}
                   {location.type === "Community-Center" && communityIcon}
+                  {location.type === "Other" && otherIcon}
                 </p>
               </Marker>
               {selectedLocation._id === location._id && (
