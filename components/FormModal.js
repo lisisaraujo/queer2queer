@@ -1,5 +1,5 @@
 import React from "react";
-import CommentForm from "./CommentForm";
+import CommentForm from "./Comments/CommentForm";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";

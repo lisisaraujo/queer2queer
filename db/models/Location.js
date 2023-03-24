@@ -4,9 +4,10 @@ const { Schema } = mongoose;
 
 const locationSchema = new Schema({
   name: { type: String, required: true },
-  latLng: { type: Array, required: true },
+  lngLat: { type: Array, required: true },
   type: { type: String, required: true },
   color: { type: String },
+  // address: { type: String },
   comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
 });
 

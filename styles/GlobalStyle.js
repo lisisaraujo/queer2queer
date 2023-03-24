@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         font-family: sans-serif;
         margin: 0;
+        background-color:  rgb(35, 35, 35);
     }
 
     .nav {

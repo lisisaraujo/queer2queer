@@ -1,9 +1,8 @@
-import styles from "../styles/Home.module.css";
 import React, { useRef, useEffect, useState } from "react";
-import GlobalStyle from "../components/GlobalStyle";
+import GlobalStyle from "../styles/GlobalStyle";
 import Layout from "../components/Layout";
 import { SWRConfig } from "swr";
-import "map.css";
+import "/styles/map.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useRouter } from "next/router";
 
@@ -64,7 +63,13 @@ export default function App({ Component, pageProps }) {
       <GlobalStyle />
       <Layout>
         <SWRConfig value={{ fetcher }}>
-          <Component {...pageProps} locations={locations} comments={comments} />
+          <Component
+            {...pageProps}
+            locations={locations}
+            comments={comments}
+            loadLocations={loadLocations}
+            loadComments={loadComments}
+          />
         </SWRConfig>
       </Layout>
     </>
