@@ -1,9 +1,8 @@
-import styles from "../styles/Home.module.css";
 import React, { useRef, useEffect, useState } from "react";
-import GlobalStyle from "../components/GlobalStyle";
+import GlobalStyle from "../styles/GlobalStyle";
 import Layout from "../components/Layout";
 import { SWRConfig } from "swr";
-import "map.css";
+import "/styles/map.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useRouter } from "next/router";
 

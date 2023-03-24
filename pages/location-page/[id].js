@@ -92,6 +92,7 @@ export default function LocationDetail({ loadLocations, onRemoveLocation }) {
           </button>
           <FormModal open={openModal} onClose={() => setOpenModal(false)} />
         </div>
+
         <div className="comments" key={comments}>
           {comments &&
             comments.map((item) => {
@@ -122,7 +123,9 @@ export default function LocationDetail({ loadLocations, onRemoveLocation }) {
               );
             })}
         </div>
-        <DeleteIcon onClick={() => handleRemoveLocation(id)} />
+        <DeleteIcon onClick={() => handleRemoveLocation(id)}>
+          Delete this location
+        </DeleteIcon>
       </Container>
     );
   }
@@ -137,22 +140,22 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 2;
+  /* z-index: 2; */
   padding-top: 20px;
 `;
 
-const CardFrame = styled.div`
-  border: solid;
-  border-color: gray;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  justify-content: center;
-  height: 100%;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 20px;
-`;
+// const CardFrame = styled.div`
+//   border: solid;
+//   border-color: gray;
+//   display: flex;
+//   flex-direction: column;
+//   padding: 20px;
+//   justify-content: center;
+//   height: 100%;
+//   margin-left: 10%;
+//   margin-right: 10%;
+//   margin-top: 20px;
+// `;
 
 const DeleteIcon = styled(RiDeleteBinLine)`
   top: 20px;
@@ -160,4 +163,5 @@ const DeleteIcon = styled(RiDeleteBinLine)`
   height: 20px;
   right: 20px;
   color: #fe4b13;
+  position: absolute;
 `;

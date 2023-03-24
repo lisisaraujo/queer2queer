@@ -13,10 +13,14 @@ export default function CommentCard({
   date,
 }) {
   return (
-    <CardFrame>
-      <div className="comment-card" key={_id}>
-        <p className="date">{date}</p>
-        <p className="comment">{comment}</p>
+    <>
+      <CardFrame>
+        <CommentCardStyle>
+          <div className="comment-card" key={_id}>
+            <p className="date">{date}</p>
+            <p className="comment">{comment}</p>
+          </div>
+        </CommentCardStyle>
         <div className="demographic-data">
           <p>commented by: {name}</p>
           <button className="demographic-data-tag">{age}</button>
@@ -26,10 +30,11 @@ export default function CommentCard({
             {bipoc ? "BiPoc" : null}
           </button>
         </div>
-      </div>
-      <DeleteIcon onClick={() => onRemoveComment(_id)} />
-      {/* <EditIcon onClick={() => setIsEditing(true)} /> */}
-    </CardFrame>
+
+        <DeleteIcon onClick={() => onRemoveComment(_id)} />
+        {/* <EditIcon onClick={() => setIsEditing(true)} /> */}
+      </CardFrame>
+    </>
   );
 }
 
@@ -44,6 +49,9 @@ const CardFrame = styled.div`
   margin-left: 10%;
   margin-right: 10%;
   margin-top: 20px;
+  width: 400px;
+  border-radius: 10px;
+  background-color: #fe4b13;
 `;
 
 const DeleteIcon = styled(RiDeleteBinLine)`
@@ -51,5 +59,27 @@ const DeleteIcon = styled(RiDeleteBinLine)`
   width: 20px;
   height: 20px;
   right: 20px;
-  color: #fe4b13;
+  color: black;
+  align-self: flex-end;
+`;
+const CommentCardStyle = styled.div`
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: left;
+  box-shadow: 0px 0px 18px 2px rgba(54, 54, 54, 0.75);
+  width: 350px;
+  margin: 40px auto;
+
+  .date {
+    font-size: 0.7rem;
+    text-align: right;
+  }
+  .comment {
+    align-self: center;
+  }
+
+  button.demographic-data-tag {
+    background-color: wheat;
+  }
 `;

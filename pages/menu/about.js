@@ -1,5 +1,5 @@
 import Layout from "../../components/Layout";
-import GlobalStyle from "../../components/GlobalStyle";
+import GlobalStyle from "../../styles/GlobalStyle";
 import ReturnButton from "../../components/Buttons/ReturnButton";
 
 export default function AboutUs() {
