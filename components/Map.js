@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { accessToken } from "../src/mapbox";
@@ -10,9 +11,17 @@ import Link from "next/link";
 import { GeolocateControl, NavigationControl } from "react-map-gl";
 import Navbar from "./Navbar";
 
+const AddLocationButton = dynamic(
+  () => import("../components/Buttons/AddLocationButton"),
+  {
+    loading: () => "Loading...",
+    ssr: false,
+  }
+);
+
 export default function MyMap({ locations }) {
   const [selectedLocation, setSelectedLocation] = useState({});
-  const iconStyles = { color: "white", fontSize: "1.5em", cursor: "pointer" };
+  const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
   const barIcon = <FaGlassMartiniAlt style={iconStyles} />;
   const clubIcon = <BsFillCameraVideoOffFill style={iconStyles} />;
   const cruisingIcon = <MdDirectionsBoat style={iconStyles} />;
@@ -66,16 +75,11 @@ export default function MyMap({ locations }) {
     <>
       <Navbar handleCategoryChange={handleCategoryChange}>Queer Map BER</Navbar>
       <ReactMapGL
-        mapStyle="mapbox://styles/dalalamad/clf5w8x0x009v01mo2feklchc"
+        mapStyle="mapbox://styles/dalalamad/clfe8aq9s006701o42zx1li76"
         mapboxAccessToken={accessToken}
         {...viewport}
         onMove={(evt) => setViewport(evt.viewport)}
       >
-        <GeolocateControl
-          positionOptions={{ enableHighAccuracy: true }}
-          trackUserLocation={true}
-          position="bottom-left"
-        />
         {filteredList.map((location) => {
           return (
             <div key={location._id}>
@@ -100,7 +104,7 @@ export default function MyMap({ locations }) {
                 </p>
               </Marker>
               {selectedLocation._id === location._id && (
-                <div className="pop-up">
+                <div id="pop-up">
                   <Popup
                     anchor="bottom"
                     longitude={parseFloat(location.lngLat[1])}
@@ -118,7 +122,13 @@ export default function MyMap({ locations }) {
             </div>
           );
         })}
-        <NavigationControl position="bottom-left" />
+        <GeolocateControl
+          positionOptions={{ enableHighAccuracy: true }}
+          trackUserLocation={true}
+          position="bottom-left"
+        />
+        {/* <NavigationControl position="bottom-left" /> */}
+        <AddLocationButton />
       </ReactMapGL>
     </>
   );

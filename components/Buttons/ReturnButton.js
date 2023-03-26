@@ -1,15 +1,19 @@
 import Link from "next/link";
 import { IoIosArrowRoundBack } from "react-icons/io";
+import styled from "styled-components";
 
 export default function ReturnButton() {
-  const iconStyles = { color: "black", fontSize: "2em", cursor: "pointer" };
+  const iconStyles = { color: "white", fontSize: "2em", cursor: "pointer" };
   return (
-    <div className="return-button">
-      <button className="return-button" type="button">
-        <Link href="/">
-          <IoIosArrowRoundBack style={iconStyles} />
-        </Link>
-      </button>
-    </div>
+    <StyledButton>
+      <Link href="/">
+        <IoIosArrowRoundBack style={iconStyles} />
+      </Link>
+    </StyledButton>
   );
 }
+
+export const StyledButton = styled.button`
+  background-color: transparent;
+  border: none;
+`;

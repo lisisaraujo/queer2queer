@@ -1,15 +1,13 @@
 import styled from "styled-components";
-import ReturnButton from "../../components/Buttons/ReturnButton";
 import { useRouter } from "next/router";
 import React, { useRef, useEffect, useState } from "react";
 import FormModal from "../../components/FormModal";
 import CommentCard from "../../components/Comments/CommentCard";
-import Location from "../../components/Location";
-import { RiDeleteBinLine } from "react-icons/ri";
 import { MdWrongLocation } from "react-icons/md";
 import AddCommentButton from "../../components/Buttons/AddCommentButton";
+import Header from "../../components/Header";
 
-export default function LocationDetail({ loadLocations, onRemoveLocation }) {
+export default function LocationDetail({ loadLocations }) {
   const [comments, setComments] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [specificLocation, setSpecificLocation] = useState();
@@ -86,10 +84,8 @@ export default function LocationDetail({ loadLocations, onRemoveLocation }) {
 
     return (
       <>
-        {" "}
-        <ReturnButton />
-        <Location name={name} type={type} />
-        <CommentCards>
+        <Header name={name} />
+        <div className="location-container">
           <div className="comments" key={comments}>
             {comments &&
               comments.map((item) => {
@@ -120,59 +116,37 @@ export default function LocationDetail({ loadLocations, onRemoveLocation }) {
                 );
               })}
           </div>
-          {/* <AddCommentButton
+          <a
+            href="#"
             onClick={() => setOpenModal(true)}
-            className="modalButton"
-          /> */}
-          <button onClick={() => setOpenModal(true)} className="modalButton">
+            className="add-comment-button"
+          >
             <AddCommentButton />
-          </button>
+          </a>
           <div className="modal">
             <FormModal open={openModal} onClose={() => setOpenModal(false)} />
           </div>
-        </CommentCards>
-        <DeleteLocation>
-          <MdWrongLocation onClick={() => handleRemoveLocation(id)}>
-            Delete this location
-          </MdWrongLocation>
-        </DeleteLocation>
+
+          <DeleteLocation>
+            <MdWrongLocation
+              onClick={() => handleRemoveLocation(id)}
+            ></MdWrongLocation>
+          </DeleteLocation>
+        </div>
       </>
     );
   }
-  return (
-    <>
-      <h1>Loading</h1>
-    </>
-  );
 }
 
-const CommentCards = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* z-index: 2; */
-  padding-top: 20px;
-`;
-
-// const CardFrame = styled.div`
-//   border: solid;
-//   border-color: gray;
-//   display: flex;
-//   flex-direction: column;
-//   padding: 20px;
-//   justify-content: center;
-//   height: 100%;
-//   margin-left: 10%;
-//   margin-right: 10%;
-//   margin-top: 20px;
-// `;
-
 const DeleteLocation = styled(MdWrongLocation)`
-  top: 20px;
+  display: flex;
+  align-items: flex-end;
+  align-self: flex-end;
   width: 20px;
   height: 20px;
-  right: 20px;
-  color: #fe4b13;
-  position: absolute;
-  margin-top: 90vh;
+  color: red;
+  position: relative;
+
+  .add-comment-button {
+  }
 `;

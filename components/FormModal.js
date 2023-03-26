@@ -3,6 +3,7 @@ import CommentForm from "./Comments/CommentForm";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
+
 export default function FormModal({ open, onClose }) {
   const router = useRouter();
   const { id } = router.query;
