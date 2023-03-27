@@ -62,17 +62,17 @@ export default function App({ Component, pageProps, session }) {
     <>
       <SessionProvider session={session}>
         <GlobalStyle />
-        <Layout>
-          <SWRConfig value={{ fetcher }}>
-            <Component
-              {...pageProps}
-              locations={locations}
-              comments={comments}
-              loadLocations={loadLocations}
-              loadComments={loadComments}
-            />
-          </SWRConfig>
-        </Layout>
+        {/* <Layout> */}
+        <SWRConfig value={{ fetcher }}>
+          <Component
+            {...pageProps}
+            locations={locations}
+            comments={comments}
+            loadLocations={loadLocations}
+            loadComments={loadComments}
+          />
+        </SWRConfig>
+        {/* </Layout> */}
       </SessionProvider>
     </>
   );

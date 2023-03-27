@@ -71,8 +71,8 @@ const CardFrame = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
-  margin: 20px;
-  width: 400px;
+  margin-bottom: 20px;
+  width: 100%;
   border-radius: 10px;
 `;
 

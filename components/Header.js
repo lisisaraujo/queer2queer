@@ -27,7 +27,7 @@ const HeaderWrapper = styled.nav`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   /* padding: 5px; */
   margin-top: 0px;
   color: #fdfbfc;
@@ -36,6 +36,10 @@ const HeaderWrapper = styled.nav`
   opacity: 0.9;
   margin-bottom: 200px;
   z-index: 1;
+
+  .title {
+    margin: auto;
+  }
 
   a {
     color: #fdfbfc;
@@ -69,6 +73,6 @@ const HeaderWrapper = styled.nav`
 
   .return-button {
     display: flex;
-    align-self: flex-start;
+    align-self: flex-end;
   }
 `;

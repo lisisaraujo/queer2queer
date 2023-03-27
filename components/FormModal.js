@@ -51,34 +51,34 @@ const ModalWrapper = styled.div`
   .modalContainer {
     display: flex;
     align-content: center;
-    max-width: 500px;
-    width: 100%;
+    max-width: 80%;
     position: fixed;
-    top: 40%;
-    left: 50%;
+    margin-top: 20%;
+    /* top: 50%;
+    left: 50%; */
     transform: translate(-50%, -50%);
     display: flex;
     background-color: #ffffff;
     box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.75);
     border-radius: 20px;
     flex-direction: column;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
   }
 
-  img {
+  /* img {
     width: 250px;
     object-fit: cover;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
-  }
+  } */
 
-  .modalRight {
+  /* .modalRight {
     width: 100%;
-  }
+  } */
 
   .closeBtn {
     position: fixed;
-    top: 8px;
+    top: 10%;
     right: 30px;
     font-size: 2em;
   }

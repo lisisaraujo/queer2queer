@@ -10,7 +10,7 @@ export default function CommentForm({ locationID }) {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const ageCategories = [
-    { value: "select", label: "Select" },
+    { value: "select", label: "Select", isDisabled: true },
     { value: ">18", label: ">18" },
     { value: "18-25", label: "18-25" },
     { value: "26-35", label: "26-35" },
@@ -20,7 +20,7 @@ export default function CommentForm({ locationID }) {
   ];
 
   const sexualOrientationCategories = [
-    { value: "select", label: "Select" },
+    { value: "select", label: "Select", isDisabled: true },
     { value: "Lesbian", label: "Lesbian" },
     { value: "Gay", label: "Gay" },
     { value: "Pansexual", label: "Pansexual" },
@@ -33,9 +33,8 @@ export default function CommentForm({ locationID }) {
     { value: "Other", label: "Other" },
   ];
 
-
   const genderCategories = [
-    { value: "select", label: "Select" },
+    { value: "select", label: "Select", isDisabled: true },
     { value: "Genderfluid", label: "Genderfluid" },
     { value: "Genderqueer", label: "Genderqueer" },
     { value: "Transgender male", label: "Transgender male" },
@@ -47,7 +46,6 @@ export default function CommentForm({ locationID }) {
     { value: "I don’t know", label: "I don’t know" },
     { value: "Other", label: "Other" },
   ];
-
 
   async function handleSubmit(event) {
     event.preventDefault();

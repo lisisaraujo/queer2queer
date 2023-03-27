@@ -4,10 +4,19 @@ import { useRouter } from "next/router";
 import ReturnButton from "./Buttons/ReturnButton";
 // import { AddressAutofill } from "@mapbox/search-js-react";
 import { accessToken } from "../src/mapbox";
+import { useState } from "react";
+import Select from "react-select";
 
 export default function AddPlaceForm({ locationID }) {
   const router = useRouter();
   const locations = useSWR("/api/locations");
+  const [selectedOption, setSelectedOption] = useState(null);
+  const typeCategories = [
+    { value: "Bar", label: "Bar" },
+    { value: "Club", label: "Club" },
+    { value: "Cruising", label: "Cruising" },
+    { value: "Community-Center", label: "Community-Center" },
+  ];
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -68,14 +77,20 @@ export default function AddPlaceForm({ locationID }) {
           />
           {/* </AddressAutofill> */}
           <label htmlFor="type">Type:</label>
-          <select name="type">
+          <Select
+            defaultValue={selectedOption}
+            onChange={setSelectedOption}
+            options={typeCategories}
+            name="type"
+          />
+          {/* <select name="type">
             <option value="">Select</option>
             <option value="Bar">Bar</option>
             <option value="Club">Club</option>
             <option value="Cruising">Cruising</option>
             <option value="Community-Center">Community-Center</option>
             <option value="Other">Other</option>
-          </select>
+          </select> */}
           <button onClick={() => router.push("/")}>Submit</button>
         </InputWrapper>
       </EntryForm>

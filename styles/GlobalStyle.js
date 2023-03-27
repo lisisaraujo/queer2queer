@@ -5,24 +5,18 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
 
     }
-
-
-    html,
-      body,
-      body > div:first-child,
+    
+      /* body > div:first-child,
       div#__next,
-      div#__next > div {
+      div#__next > div */
+  
+      body, div#__next {
         height: 100%;
         width: 100%;
         font-family: sans-serif;
         background-color: whitesmoke;
         display: flex;
       }
-
-    /* .nav {
-        text-align: center;
-        box-shadow: 0 1px 2px rgba(0,0,0,.1);
-    } */
 
 
 
@@ -57,7 +51,11 @@ a:-webkit-any-link {
 .location-container {
     margin-top: 100px;
     display: flex;
+    flex-direction: column;
     position: relative;
+    align-content: center;
+    width: 95vw;
+    margin: 100px auto 0 auto;
 }
 `;
 
