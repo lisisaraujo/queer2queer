@@ -1,9 +1,10 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { SlMenu } from "react-icons/sl";
+import { FiMenu } from "react-icons/fi";
 import CategoryFilter from "./CategoryFilter";
 
 export default function Navbar({ handleCategoryChange }) {
+  const iconStyles = { color: "white", fontSize: "1.5em", cursor: "pointer" };
   function navBarDrop() {
     let x = document.getElementById("myLinks");
     if (x.style.display === "block") {
@@ -23,10 +24,10 @@ export default function Navbar({ handleCategoryChange }) {
           <Link href="/menu/contact">Contact</Link>
         </div>
         <a href="#" className="icon" onClick={navBarDrop}>
-          <SlMenu />
+          <FiMenu style={iconStyles} />
         </a>
         <a href="#home" className="active">
-          QueerMap BER
+          QueerArchive
         </a>
         <CategoryFilter onChangeCategory={handleCategoryChange} />
       </NavbarWrapper>
@@ -37,24 +38,26 @@ export default function Navbar({ handleCategoryChange }) {
 const NavbarWrapper = styled.nav`
   width: 80%;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
-  padding: 10px;
+  /* padding: 5px; */
   z-index: 1;
-  margin-top: 10px;
-  color: #5e27c4;
+  margin-top: 25px;
+  color: #fdfbfc;
   position: fixed;
-  background-color: #f6f2fc;
-  align-content: inherit;
+  background-color: rgba(77, 150, 239, 0.9);
+  opacity: 0.9;
   margin-left: 10%;
-  border-radius: 25px;
+  border-radius: 16px;
+  box-shadow: 0px 0px 18px 2px rgba(54, 54, 54, 0.75);
 
   #myLinks {
     display: none;
   }
 
   a {
-    color: #5e27c4;
+    color: #fdfbfc;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
@@ -68,16 +71,18 @@ const NavbarWrapper = styled.nav`
     right: 0;
     top: 0;
     background-color: transparent;
-    color: #5e27c4;
+    color: #fdfbfc;
   }
 
   a:hover {
-    background-color: #ddd;
-    color: black;
+    background-color: #73aef4;
+    color: #fdfbfc;
+    border-radius: 10px;
   }
 
   .active {
     background-color: transparent;
-    color: #5e27c4;
+    color: #fdfbfc;
+    align-self: center;
   }
 `;
