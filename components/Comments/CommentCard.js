@@ -26,16 +26,18 @@ export default function CommentCard({
         </CommentStyle>
         <div className="demographic-data">
           {name && <p>commented by: {name}</p>}
-          {age && <button className="demographic-data-tag">{age}</button>}
+          {age && <button className="demographic-data-tag">#{age}</button>}
           {sexual_orientation && (
             <button className="demographic-data-tag">
-              {sexual_orientation}
+              #{sexual_orientation}
             </button>
           )}
-          {gender && <button className="demographic-data-tag">{gender}</button>}
+          {gender && (
+            <button className="demographic-data-tag">#{gender}</button>
+          )}
           {bipoc && (
             <button className="demographic-data-tag">
-              {bipoc ? "BiPoc" : null}
+              {bipoc ? "#BiPoc" : null}
             </button>
           )}
         </div>
@@ -71,19 +73,31 @@ const CardFrame = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
-  margin-bottom: 20px;
   width: 100%;
+  margin-bottom: 20px;
   border-radius: 10px;
+
+  .demographic-data-tag {
+    color: white;
+    background: rgba(77, 150, 239, 1);
+    border-color: rgba(77, 150, 239, 1);
+    padding: 5px;
+    margin: 1px;
+    border-radius: 10%;
+  }
 `;
 
 const CommentStyle = styled.div`
-  background-color: white;
+  display: flex;
+  position: relative;
+  background-color: whitesmoke;
   border-radius: 10px;
   padding: 15px;
-  text-align: left;
-  box-shadow: 0px 0px 18px 2px rgba(54, 54, 54, 0.75);
-  width: 350px;
-  margin: 40px auto;
+  /* text-align: left; */
+  /* box-shadow: 0px 0px 5px 3px rgba(54, 54, 54, 0.75); */
+  border-style: solid;
+  width: 100%;
+  margin: auto;
 
   .date {
     font-size: 0.7rem;
@@ -91,10 +105,6 @@ const CommentStyle = styled.div`
   }
   .comment {
     align-self: center;
-  }
-
-  button {
-    background-color: wheat;
   }
 `;
 

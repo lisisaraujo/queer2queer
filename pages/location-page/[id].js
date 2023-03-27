@@ -8,6 +8,7 @@ import AddCommentButton from "../../components/Buttons/AddCommentButton";
 import Header from "../../components/Header";
 import { useSession, getSession } from "next-auth/react";
 import { RiDeleteBinLine } from "react-icons/ri";
+import Location from "../../components/Location";
 
 export default function LocationDetail({ loadLocations }) {
   const [comments, setComments] = useState([]);
@@ -91,6 +92,8 @@ export default function LocationDetail({ loadLocations }) {
       <>
         <Header name={name} />
         <div className="location-container">
+          <Location specificLocation={specificLocation} />
+          <h2>Comments</h2>
           <div className="comments" key={comments}>
             {comments &&
               comments.map((item) => {

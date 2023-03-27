@@ -53,9 +53,8 @@ const ModalWrapper = styled.div`
     align-content: center;
     max-width: 80%;
     position: fixed;
-    margin-top: 20%;
-    /* top: 50%;
-    left: 50%; */
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     background-color: #ffffff;
@@ -78,7 +77,6 @@ const ModalWrapper = styled.div`
 
   .closeBtn {
     position: fixed;
-    top: 10%;
     right: 30px;
     font-size: 2em;
   }
