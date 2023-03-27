@@ -127,7 +127,7 @@ export default function MyMap({ locations }) {
           trackUserLocation={true}
           position="bottom-left"
         />
-        {/* <NavigationControl position="bottom-left" /> */}
+        <NavigationControl position="bottom-left" />
         <AddLocationButton />
       </ReactMapGL>
     </>
