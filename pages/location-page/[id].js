@@ -6,12 +6,17 @@ import CommentCard from "../../components/Comments/CommentCard";
 import { MdWrongLocation } from "react-icons/md";
 import AddCommentButton from "../../components/Buttons/AddCommentButton";
 import Header from "../../components/Header";
+import { useSession, getSession } from "next-auth/react";
+import { RiDeleteBinLine } from "react-icons/ri";
 
 export default function LocationDetail({ loadLocations }) {
   const [comments, setComments] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [specificLocation, setSpecificLocation] = useState();
   const [openModal, setOpenModal] = useState(false);
+
+  const { data: session } = useSession();
+  console.log(session);
 
   const router = useRouter();
   const { id } = router.query;
@@ -126,12 +131,13 @@ export default function LocationDetail({ loadLocations }) {
           <div className="modal">
             <FormModal open={openModal} onClose={() => setOpenModal(false)} />
           </div>
-
-          <DeleteLocation>
-            <MdWrongLocation
-              onClick={() => handleRemoveLocation(id)}
-            ></MdWrongLocation>
-          </DeleteLocation>
+          {session ? (
+            <DeleteLocation>
+              <MdWrongLocation
+                onClick={() => handleRemoveLocation(id)}
+              ></MdWrongLocation>
+            </DeleteLocation>
+          ) : null}
         </div>
       </>
     );
@@ -149,4 +155,27 @@ const DeleteLocation = styled(MdWrongLocation)`
 
   .add-comment-button {
   }
+`;
+
+export const getServerSideProps = async (context) => {
+  const session = await getSession(context);
+  // if (!session) {
+  //   return {
+  //     redirect: {
+  //       destination: "/login",
+  //     },
+  //   };
+  // }
+
+  return {
+    props: { session },
+  };
+};
+
+const DeleteIcon = styled(RiDeleteBinLine)`
+  top: 20px;
+  width: 20px;
+  height: 20px;
+  right: 20px;
+  color: #fe4b13;
 `;

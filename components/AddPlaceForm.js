@@ -76,7 +76,7 @@ export default function AddPlaceForm({ locationID }) {
             <option value="Community-Center">Community-Center</option>
             <option value="Other">Other</option>
           </select>
-          <button onClick={() => console.log("clickeddd")}>Submit</button>
+          <button onClick={() => router.push("/")}>Submit</button>
         </InputWrapper>
       </EntryForm>
     </div>

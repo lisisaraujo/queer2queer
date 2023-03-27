@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { useSession, getSession } from "next-auth/react";
 
 export default function CommentCard({
   _id,
@@ -12,6 +13,8 @@ export default function CommentCard({
   onRemoveComment,
   date,
 }) {
+  const { data: session } = useSession();
+  console.log("session", session);
   return (
     <>
       <CardFrame>
@@ -31,11 +34,26 @@ export default function CommentCard({
           </button>
         </div>
 
-        <DeleteIcon onClick={() => onRemoveComment(_id)} />
+        {session ? <DeleteIcon onClick={() => onRemoveComment(_id)} /> : null}
       </CardFrame>
     </>
   );
 }
+
+export const getServerSideProps = async (context) => {
+  const session = await getSession(context);
+  // if (!session) {
+  //   return {
+  //     redirect: {
+  //       destination: "/login",
+  //     },
+  //   };
+  // }
+
+  return {
+    props: { session },
+  };
+};
 
 const CardFrame = styled.div`
   border: solid;

@@ -5,10 +5,11 @@ import { SWRConfig } from "swr";
 import "/styles/map.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useRouter } from "next/router";
+import { SessionProvider } from "next-auth/react";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps, session }) {
   const [locations, setLocations] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [comments, setComments] = useState([]);
@@ -59,19 +60,20 @@ export default function App({ Component, pageProps }) {
   }, []);
   return (
     <>
-      {" "}
-      <GlobalStyle />
-      <Layout>
-        <SWRConfig value={{ fetcher }}>
-          <Component
-            {...pageProps}
-            locations={locations}
-            comments={comments}
-            loadLocations={loadLocations}
-            loadComments={loadComments}
-          />
-        </SWRConfig>
-      </Layout>
+      <SessionProvider session={session}>
+        <GlobalStyle />
+        <Layout>
+          <SWRConfig value={{ fetcher }}>
+            <Component
+              {...pageProps}
+              locations={locations}
+              comments={comments}
+              loadLocations={loadLocations}
+              loadComments={loadComments}
+            />
+          </SWRConfig>
+        </Layout>
+      </SessionProvider>
     </>
   );
 }
