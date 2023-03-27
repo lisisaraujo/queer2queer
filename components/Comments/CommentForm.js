@@ -1,35 +1,53 @@
 import styled from "styled-components";
 import useSWR from "swr";
 import { useRouter } from "next/router";
+import Select from "react-select";
+import { useState } from "react";
 
 export default function CommentForm({ locationID }) {
   const router = useRouter();
   const comments = useSWR("/api/comments");
-  const ageCategories = [">18", "18-25", "26-35", "36-45", "46-55", "55+"];
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const ageCategories = [
+    { value: "select", label: "Select" },
+    { value: ">18", label: ">18" },
+    { value: "18-25", label: "18-25" },
+    { value: "26-35", label: "26-35" },
+    { value: "36-45", label: "36-45" },
+    { value: "46-55", label: "46-55" },
+    { value: "55+", label: "55+" },
+  ];
+
   const sexualOrientationCategories = [
-    "Lesbian",
-    "Gay",
-    "Pansexual",
-    "Bisexual",
-    "Asexual",
-    "Aromantic",
-    "Queer",
-    "Demisexual",
-    "Heterosexual",
-    "Other",
+    { value: "select", label: "Select" },
+    { value: "Lesbian", label: "Lesbian" },
+    { value: "Gay", label: "Gay" },
+    { value: "Pansexual", label: "Pansexual" },
+    { value: "Bisexual", label: "Bisexual" },
+    { value: "Asexual", label: "Asexual" },
+    { value: "Aromantic", label: "Aromantic" },
+    { value: "Queer", label: "Queer" },
+    { value: "Demisexual", label: "Demisexual" },
+    { value: "Heterosexual", label: "Heterosexual" },
+    { value: "Other", label: "Other" },
   ];
+
+
   const genderCategories = [
-    "Genderfluid",
-    "Genderqueer",
-    "Transgender male",
-    "Transgender female",
-    "Nonbinary",
-    "Intersex",
-    "Cisgender female",
-    "Cisgender male",
-    "I don’t know",
-    "Other",
+    { value: "select", label: "Select" },
+    { value: "Genderfluid", label: "Genderfluid" },
+    { value: "Genderqueer", label: "Genderqueer" },
+    { value: "Transgender male", label: "Transgender male" },
+    { value: "Transgender female", label: "Transgender female" },
+    { value: "Nonbinary", label: "Nonbinary" },
+    { value: "Intersex", label: "Intersex" },
+    { value: "Cisgender female", label: "Cisgender female" },
+    { value: "Cisgender male", label: "Cisgender male" },
+    { value: "I don’t know", label: "I don’t know" },
+    { value: "Other", label: "Other" },
   ];
+
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -54,6 +72,7 @@ export default function CommentForm({ locationID }) {
     event.target.reset();
     router.push("/");
   }
+
   return (
     <div>
       <EntryForm onSubmit={handleSubmit}>
@@ -81,37 +100,28 @@ export default function CommentForm({ locationID }) {
             <label htmlFor="name">Name:</label>
             <input key="name" id="name" name="name"></input>
             <label htmlFor="age">Age:</label>
-            <select value="age">
-              <option>select</option>
-              {ageCategories &&
-                ageCategories.map((age) => (
-                  <option key={age} value={age}>
-                    {age}
-                  </option>
-                ))}
-            </select>
 
+            <Select
+              defaultValue={selectedOption}
+              onChange={setSelectedOption}
+              options={ageCategories}
+              name="age"
+            />
             <label htmlFor="sexual-orientation">Sexual Orientation:</label>
-            <select value={sexualOrientationCategories}>
-              <option>select</option>
-              {sexualOrientationCategories &&
-                sexualOrientationCategories.map((orientation) => (
-                  <option key={orientation} value={orientation}>
-                    {orientation}
-                  </option>
-                ))}
-            </select>
-            {/* <input name="sexual_orientation" placeholder="Other: "></input> */}
+            <Select
+              defaultValue={selectedOption}
+              onChange={setSelectedOption}
+              options={sexualOrientationCategories}
+              name="sexual_orientation"
+            />
             <label htmlFor="gender">Gender:</label>
-            <select value={genderCategories}>
-              <option>select</option>
-              {genderCategories &&
-                genderCategories.map((gender) => (
-                  <option key={gender} value={gender}>
-                    {gender}
-                  </option>
-                ))}
-            </select>
+
+            <Select
+              defaultValue={selectedOption}
+              onChange={setSelectedOption}
+              options={genderCategories}
+              name="gender"
+            />
             <checkbox>
               {" "}
               <label htmlFor="bipoc">BiPoc:</label>

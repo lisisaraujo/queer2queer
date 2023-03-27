@@ -26,12 +26,18 @@ export default function CommentCard({
         </CommentStyle>
         <div className="demographic-data">
           <p>commented by: {name}</p>
-          <button className="demographic-data-tag">{age}</button>
-          <button className="demographic-data-tag">{sexual_orientation}</button>
-          <button className="demographic-data-tag">{gender}</button>
-          <button className="demographic-data-tag">
-            {bipoc ? "BiPoc" : null}
-          </button>
+          {age && <button className="demographic-data-tag">{age}</button>}
+          {sexual_orientation && (
+            <button className="demographic-data-tag">
+              {sexual_orientation}
+            </button>
+          )}
+          {gender && <button className="demographic-data-tag">{gender}</button>}
+          {bipoc && (
+            <button className="demographic-data-tag">
+              {bipoc ? "BiPoc" : null}
+            </button>
+          )}
         </div>
 
         {session ? <DeleteIcon onClick={() => onRemoveComment(_id)} /> : null}
