@@ -25,7 +25,7 @@ export default function CommentCard({
           </div>
         </CommentStyle>
         <div className="demographic-data">
-          <p>commented by: {name}</p>
+          {name && <p>commented by: {name}</p>}
           {age && <button className="demographic-data-tag">{age}</button>}
           {sexual_orientation && (
             <button className="demographic-data-tag">
