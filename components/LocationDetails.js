@@ -1,19 +1,17 @@
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import React, { useRef, useEffect, useState } from "react";
-import FormModal from "./ModalCommemntForm";
 import CommentCard from "./Comments/CommentCard";
 import { MdWrongLocation } from "react-icons/md";
-import AddCommentButton from "./Buttons/AddCommentButton";
 import Header from "./Header";
 import { useSession, getSession } from "next-auth/react";
-import Location from "./Location";
+import Location from "./LocationCard";
+import ModalCommentForm from "./ModalCommentForm";
 
-export default function LocationDetail({ loadLocations }) {
+export default function LocationDetails({ loadLocations }) {
   const [comments, setComments] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [specificLocation, setSpecificLocation] = useState();
-  const [openModal, setOpenModal] = useState(false);
 
   const { data: session } = useSession();
   console.log(session);
@@ -21,7 +19,6 @@ export default function LocationDetail({ loadLocations }) {
   const router = useRouter();
   const { id } = router.query;
 
-  // fetch data from database on page refresh
   function loadComments() {
     const fetchData = async () => {
       setLoading(true);
@@ -31,7 +28,7 @@ export default function LocationDetail({ loadLocations }) {
       setComments(commentsData);
       setLoading(false);
       if (isLoading) {
-        return <h1>Loading...</h1>;
+        return <h1>Comments Loading...</h1>;
       }
       if (!commentsData) {
         return <h1>No data</h1>;
@@ -96,13 +93,9 @@ export default function LocationDetail({ loadLocations }) {
             <div className="title-header">
               {" "}
               <h2>Comments</h2>
-              <a
-                href="#"
-                onClick={() => setOpenModal(true)}
-                className="add-comment-button"
-              >
-                <AddCommentButton />
-              </a>
+              <div className="modal">
+                <ModalCommentForm />
+              </div>
             </div>
 
             <div className="comments" key={comments}>
@@ -136,9 +129,6 @@ export default function LocationDetail({ loadLocations }) {
                 })}
             </div>
 
-            <div className="modal">
-              <FormModal open={openModal} onClose={() => setOpenModal(false)} />
-            </div>
             {session ? (
               <DeleteLocation>
                 <MdWrongLocation
@@ -178,8 +168,13 @@ const StyledLocationContainer = styled.div`
   .title-header {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin-top: 40px;
+  }
+
+  .comment-card {
+    margin-right: 10%;
+    margin-left: 10%;
   }
 `;

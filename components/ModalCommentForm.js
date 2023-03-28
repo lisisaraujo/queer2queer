@@ -1,31 +1,33 @@
 import React from "react";
-import { useRouter } from "next/router";
-import styled from "styled-components";
-import LocationDetail from "./LocationDetails";
+// import ReactDOM from "react-dom";
 import Modal from "react-modal";
+import CommentForm from "./Comments/CommentForm";
+import { useRouter } from "next/router";
 import { BiMessageSquareAdd } from "react-icons/bi";
+import styled from "styled-components";
 
-export default function ModalLocationDetail({ locationID }) {
-  const customStyles = {
-    content: {
-      top: "55%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-      padding: "0px",
-      background: "inherit",
-      borderRadius: "10px",
-    },
-  };
+const customStyles = {
+  content: {
+    top: "55%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    padding: "0px",
+    background: "inherit",
+    borderRadius: "10px",
+  },
+};
 
-  // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
-  Modal.setAppElement("div");
+// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
+Modal.setAppElement("div");
 
+export default function ModalCommentForm() {
   const router = useRouter();
   const { id } = router.query;
   const iconStyles = { color: "black", fontSize: "2.5em", cursor: "pointer" };
+  //   const customStyles = { backgroundColor: "black" };
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -55,7 +57,7 @@ export default function ModalLocationDetail({ locationID }) {
         style={customStyles}
         contentLabel="Modal"
       >
-        <LocationDetail locationID={id} />
+        <CommentForm locationID={id} />
       </Modal>
     </div>
   );

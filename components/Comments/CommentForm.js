@@ -138,6 +138,8 @@ const EntryForm = styled.form`
   display: flex;
   flex-direction: column;
   text-align: start;
+  width: 100%;
+  height: 100%;
 `;
 
 const InputWrapper = styled.div`
@@ -146,6 +148,7 @@ const InputWrapper = styled.div`
   /* padding: 5px; */
   /* justify-content: center; */
   height: 100%;
+  width: auto;
   margin-left: 10%;
   margin-right: 10%;
 

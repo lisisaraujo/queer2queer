@@ -5,7 +5,7 @@ import { MdDirectionsBoat } from "react-icons/md";
 import { MdLocationOn } from "react-icons/md";
 import styled from "styled-components";
 
-export default function Location({ specificLocation }) {
+export default function LocationCard({ specificLocation }) {
   const iconStyles = { color: "white", fontSize: "2em", cursor: "pointer" };
   const barIcon = <FaGlassMartiniAlt style={iconStyles} />;
   const clubIcon = <BsFillCameraVideoOffFill style={iconStyles} />;
