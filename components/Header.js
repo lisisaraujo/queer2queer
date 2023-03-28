@@ -2,7 +2,7 @@ import ReturnButton from "./Buttons/ReturnButton";
 import styled from "styled-components";
 import CategoryFilter from "./CategoryFilter";
 
-export default function Header({ name, handleCategoryChange }) {
+export default function Header({ name }) {
   return (
     <>
       <HeaderWrapper>

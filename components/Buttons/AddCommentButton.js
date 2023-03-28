@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Link from "next/link";
 
 export default function AddCommentButton() {
-  const iconStyles = { color: "Blue", fontSize: "1.2em", cursor: "pointer" };
+  const iconStyles = { color: "black", fontSize: "2.5em", cursor: "pointer" };
 
   return (
     <>
@@ -15,16 +15,12 @@ export default function AddCommentButton() {
 }
 
 export const StyledButton = styled.button`
-  /* appearance: none; */
   border: none;
   background-color: transparent;
-  /* padding: 0.5rem 1rem; */
-  display: flex;
   &:hover {
     cursor: pointer;
   }
-  font-size: 2em;
-  position: absolute;
-  color: white;
-  font-size: 2em;
+  /* margin-left: 80%;
+  margin-bottom: 80%; */
+  position: relative;
 `;

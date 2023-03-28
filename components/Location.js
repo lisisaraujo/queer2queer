@@ -6,7 +6,7 @@ import { MdLocationOn } from "react-icons/md";
 import styled from "styled-components";
 
 export default function Location({ specificLocation }) {
-  const iconStyles = { color: "black", fontSize: "2em", cursor: "pointer" };
+  const iconStyles = { color: "white", fontSize: "2em", cursor: "pointer" };
   const barIcon = <FaGlassMartiniAlt style={iconStyles} />;
   const clubIcon = <BsFillCameraVideoOffFill style={iconStyles} />;
   const cruisingIcon = <MdDirectionsBoat style={iconStyles} />;
@@ -32,7 +32,8 @@ export default function Location({ specificLocation }) {
           </div>
         </section>
         <div className="location-address">
-          <p>lorem ipsum</p>
+          <label>Address: </label>
+          <p>Adalbertstr. 1, 10090 Berlin</p>
         </div>
       </StyledLocationHeader>
     </>
@@ -42,21 +43,39 @@ export default function Location({ specificLocation }) {
 const StyledLocationHeader = styled.div`
   display: flex;
   flex-direction: column;
-  border-style: solid;
+  /* border-style: solid; */
   border-radius: 10px;
+  /* border-width: 3px; */
+  border-color: black;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  padding: 20px;
+  justify-content: center;
   /* align-items: center; */
-  /* justify-content: space-around; */
+  height: 100%;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 3px rgba(54, 54, 54, 0.75);
 
   .location-details {
     display: flex;
-
     flex-direction: row;
-    /* align-items: center; */
     justify-content: space-around;
+    align-items: center;
   }
 
-  /* .location-icon {
+  .location-address {
     display: flex;
     flex-direction: column;
-  } */
+    margin-left: 45px;
+  }
+
+  .location-icon {
+    border-style: solid;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: pink;
+  }
 `;

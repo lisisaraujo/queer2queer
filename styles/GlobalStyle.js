@@ -3,6 +3,12 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
+        
+  color: whitesmoke;
+  font-family: sans-serif;
+  font-weight: lighter;
+  text-decoration: none;
+
 
     }
     
@@ -13,8 +19,7 @@ const GlobalStyle = createGlobalStyle`
       body, div#__next {
         height: 100%;
         width: 100%;
-        font-family: sans-serif;
-        background-color: whitesmoke;
+        background-color: rgb(35, 35, 35);
         display: flex;
       }
 

@@ -87,7 +87,7 @@ export default function CommentForm({ locationID }) {
               <textarea
                 name="comment"
                 rows={6}
-                cols={40}
+                cols={32}
                 maxLength={200}
                 placeholder="make it 200 characteres max :)"
               />
@@ -143,7 +143,7 @@ const EntryForm = styled.form`
 const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  /* padding: 5px; */
   /* justify-content: center; */
   height: 100%;
   margin-left: 10%;
@@ -152,8 +152,9 @@ const InputWrapper = styled.div`
   .comment-card {
     display: flex;
     position: relative;
-    padding: 20px;
+
     align-self: center;
+    width: auto;
   }
 
   .demographic-data {

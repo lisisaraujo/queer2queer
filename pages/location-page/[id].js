@@ -1,184 +1,190 @@
-import styled from "styled-components";
-import { useRouter } from "next/router";
-import React, { useRef, useEffect, useState } from "react";
-import FormModal from "../../components/FormModal";
-import CommentCard from "../../components/Comments/CommentCard";
-import { MdWrongLocation } from "react-icons/md";
-import AddCommentButton from "../../components/Buttons/AddCommentButton";
-import Header from "../../components/Header";
-import { useSession, getSession } from "next-auth/react";
-import { RiDeleteBinLine } from "react-icons/ri";
-import Location from "../../components/Location";
+// import styled from "styled-components";
+// import { useRouter } from "next/router";
+// import React, { useRef, useEffect, useState } from "react";
+// import FormModal from "../../components/ModalCommemntForm";
+// import CommentCard from "../../components/Comments/CommentCard";
+// import { MdWrongLocation } from "react-icons/md";
+// import AddCommentButton from "../../components/Buttons/AddCommentButton";
+// import Header from "../../components/Header";
+// import { useSession, getSession } from "next-auth/react";
+// import Location from "../../components/Location";
 
-export default function LocationDetail({ loadLocations }) {
-  const [comments, setComments] = useState([]);
-  const [isLoading, setLoading] = useState(false);
-  const [specificLocation, setSpecificLocation] = useState();
-  const [openModal, setOpenModal] = useState(false);
+// export default function LocationDetail({ loadLocations }) {
+//   const [comments, setComments] = useState([]);
+//   const [isLoading, setLoading] = useState(false);
+//   const [specificLocation, setSpecificLocation] = useState();
+//   const [openModal, setOpenModal] = useState(false);
 
-  const { data: session } = useSession();
-  console.log(session);
+//   const { data: session } = useSession();
+//   console.log(session);
 
-  const router = useRouter();
-  const { id } = router.query;
+//   const router = useRouter();
+//   const { id } = router.query;
 
-  // fetch data from database on page refresh
-  function loadComments() {
-    const fetchData = async () => {
-      setLoading(true);
-      const data = await fetch(`/api/comments/${id}`);
-      const commentsData = await data.json();
-      // console.log("comments ", commentsData);
-      setComments(commentsData);
-      setLoading(false);
-      if (isLoading) {
-        return <h1>Loading...</h1>;
-      }
-      if (!commentsData) {
-        return <h1>No data</h1>;
-      }
-    };
-    fetchData().catch(console.error);
-  }
+//   // fetch data from database on page refresh
+//   function loadComments() {
+//     const fetchData = async () => {
+//       setLoading(true);
+//       const data = await fetch(`/api/comments/${id}`);
+//       const commentsData = await data.json();
+//       // console.log("comments ", commentsData);
+//       setComments(commentsData);
+//       setLoading(false);
+//       if (isLoading) {
+//         return <h1>Loading...</h1>;
+//       }
+//       if (!commentsData) {
+//         return <h1>No data</h1>;
+//       }
+//     };
+//     fetchData().catch(console.error);
+//   }
 
-  async function handleRemoveComment(id) {
-    const response = await fetch(`/api/comments/${id}`, {
-      method: "DELETE",
-    });
-    if (response.ok) {
-      await response.json();
-      // console.log("routerID", id);
-    } else {
-      console.error(`Error: ${response.status}`);
-    }
-    loadComments();
-  }
+//   async function handleRemoveComment(id) {
+//     const response = await fetch(`/api/comments/${id}`, {
+//       method: "DELETE",
+//     });
+//     if (response.ok) {
+//       await response.json();
+//       // console.log("routerID", id);
+//     } else {
+//       console.error(`Error: ${response.status}`);
+//     }
+//     loadComments();
+//   }
 
-  async function handleRemoveLocation(id) {
-    const response = await fetch(`/api/locations/${id}`, {
-      method: "DELETE",
-    });
-    if (response.ok) {
-      await response.json();
-      // console.log("routerID", id);
-    } else {
-      console.error(`Error: ${response.status}`);
-    }
-    loadLocations();
-    router.push("/");
-  }
+//   async function handleRemoveLocation(id) {
+//     const response = await fetch(`/api/locations/${id}`, {
+//       method: "DELETE",
+//     });
+//     if (response.ok) {
+//       await response.json();
+//       // console.log("routerID", id);
+//     } else {
+//       console.error(`Error: ${response.status}`);
+//     }
+//     loadLocations();
+//     router.push("/");
+//   }
 
-  useEffect(() => {
-    if (id) {
-      const fetchSpecificLocation = async () => {
-        const response = await fetch(`/api/locations/${id}`);
-        const specificLocation = await response.json();
-        setSpecificLocation(specificLocation);
-        // console.log(specificLocation);
-      };
-      fetchSpecificLocation();
-      loadComments();
-    }
-  }, [id]);
+//   useEffect(() => {
+//     if (id) {
+//       const fetchSpecificLocation = async () => {
+//         const response = await fetch(`/api/locations/${id}`);
+//         const specificLocation = await response.json();
+//         setSpecificLocation(specificLocation);
+//         // console.log(specificLocation);
+//       };
+//       fetchSpecificLocation();
+//       loadComments();
+//     }
+//   }, [id]);
 
-  if (specificLocation) {
-    const { name, lngLat, type } = specificLocation;
+//   if (specificLocation) {
+//     const { name, lngLat, type } = specificLocation;
 
-    console.log("COMMENTS CL", comments);
+//     console.log("COMMENTS CL", comments);
 
-    // console.log("SPECIFIC: ", specificLocation);
+//     // console.log("SPECIFIC: ", specificLocation);
 
-    return (
-      <>
-        <Header name={name} />
-        <div className="location-container">
-          <Location specificLocation={specificLocation} />
-          <h2>Comments</h2>
-          <div className="comments" key={comments}>
-            {comments &&
-              comments.map((item) => {
-                const {
-                  comment,
-                  age,
-                  sexual_orientation,
-                  gender,
-                  bipoc,
-                  _id,
-                  date,
-                  name,
-                } = item;
-                return (
-                  <div className="comment-card" key={_id}>
-                    <CommentCard
-                      onClick={() => router.push(`/${id}`)}
-                      name={name}
-                      comment={comment}
-                      age={age}
-                      gender={gender}
-                      bipoc={bipoc}
-                      date={date}
-                      sexual_orientation={sexual_orientation}
-                      onRemoveComment={() => handleRemoveComment(_id)}
-                    />
-                  </div>
-                );
-              })}
-          </div>
-          <a
-            href="#"
-            onClick={() => setOpenModal(true)}
-            className="add-comment-button"
-          >
-            <AddCommentButton />
-          </a>
-          <div className="modal">
-            <FormModal open={openModal} onClose={() => setOpenModal(false)} />
-          </div>
-          {session ? (
-            <DeleteLocation>
-              <MdWrongLocation
-                onClick={() => handleRemoveLocation(id)}
-              ></MdWrongLocation>
-            </DeleteLocation>
-          ) : null}
-        </div>
-      </>
-    );
-  }
-}
+//     return (
+//       <>
+//         <Header name={name} />
+//         <StyledLocationContainer>
+//           <div className="location-container">
+//             <Location specificLocation={specificLocation} />
+//             <div className="title-header">
+//               {" "}
+//               <h2>Comments</h2>
+//               <a
+//                 href="#"
+//                 onClick={() => setOpenModal(true)}
+//                 className="add-comment-button"
+//               >
+//                 <AddCommentButton />
+//               </a>
+//             </div>
 
-const DeleteLocation = styled(MdWrongLocation)`
-  display: flex;
-  align-items: flex-end;
-  align-self: flex-end;
-  width: 20px;
-  height: 20px;
-  color: red;
-  position: relative;
+//             <div className="comments" key={comments}>
+//               {comments &&
+//                 comments.map((item) => {
+//                   const {
+//                     comment,
+//                     age,
+//                     sexual_orientation,
+//                     gender,
+//                     bipoc,
+//                     _id,
+//                     date,
+//                     name,
+//                   } = item;
+//                   return (
+//                     <div className="comment-card" key={_id}>
+//                       <CommentCard
+//                         onClick={() => router.push(`/${id}`)}
+//                         name={name}
+//                         comment={comment}
+//                         age={age}
+//                         gender={gender}
+//                         bipoc={bipoc}
+//                         date={date}
+//                         sexual_orientation={sexual_orientation}
+//                         onRemoveComment={() => handleRemoveComment(_id)}
+//                       />
+//                     </div>
+//                   );
+//                 })}
+//             </div>
 
-  .add-comment-button {
-  }
-`;
+//             <div className="modal">
+//               <FormModal open={openModal} onClose={() => setOpenModal(false)} />
+//             </div>
+//             {session ? (
+//               <DeleteLocation>
+//                 <MdWrongLocation
+//                   onClick={() => handleRemoveLocation(id)}
+//                 ></MdWrongLocation>
+//               </DeleteLocation>
+//             ) : null}
+//           </div>
+//         </StyledLocationContainer>
+//       </>
+//     );
+//   }
+// }
 
-export const getServerSideProps = async (context) => {
-  const session = await getSession(context);
-  // if (!session) {
-  //   return {
-  //     redirect: {
-  //       destination: "/login",
-  //     },
-  //   };
-  // }
+// const DeleteLocation = styled(MdWrongLocation)`
+//   display: flex;
+//   align-items: flex-end;
+//   align-self: flex-end;
+//   width: 20px;
+//   height: 20px;
+//   color: red;
+//   position: relative;
+// `;
 
-  return {
-    props: { session },
-  };
-};
+// export const getServerSideProps = async (context) => {
+//   const session = await getSession(context);
 
-const DeleteIcon = styled(RiDeleteBinLine)`
-  top: 20px;
-  width: 20px;
-  height: 20px;
-  right: 20px;
-  color: #fe4b13;
-`;
+//   return {
+//     props: { session },
+//   };
+// };
+
+// const StyledLocationContainer = styled.div`
+//   width: 100vw;
+//   height: 100vh;
+
+//   .title-header {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-between;
+//     align-items: center;
+//     margin-top: 40px;
+//   }
+
+//   .comment-card {
+//     margin-right: 10%;
+//     margin-left: 10%;
+//   }
+// `;

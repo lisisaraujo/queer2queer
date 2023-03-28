@@ -10,6 +10,7 @@ import { MdLocationOn } from "react-icons/md";
 import Link from "next/link";
 import { GeolocateControl, NavigationControl } from "react-map-gl";
 import Navbar from "./Navbar";
+import { Modal } from "./ModalLocationDetail";
 
 const AddLocationButton = dynamic(
   () => import("../components/Buttons/AddLocationButton"),
@@ -19,7 +20,7 @@ const AddLocationButton = dynamic(
   }
 );
 
-export default function MyMap({ locations }) {
+export default function MyMap({ locations, setClickedLocation }) {
   const [selectedLocation, setSelectedLocation] = useState({});
   const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
   const barIcon = <FaGlassMartiniAlt style={iconStyles} />;
@@ -54,7 +55,7 @@ export default function MyMap({ locations }) {
     setSelectedCategory(event.target.value);
   };
 
-  console.log(selectedCategory);
+  // console.log(selectedCategory);
 
   const getFilteredList = () => {
     if (!selectedCategory) {
@@ -111,10 +112,13 @@ export default function MyMap({ locations }) {
                     latitude={parseFloat(location.lngLat[0])}
                     closeOnClick={false}
                   >
-                    <div className="location-link">
-                      <Link href={`/location-page/${location._id}`}>
-                        {location.name}
-                      </Link>
+                    <div
+                      className="location-link"
+                      onClick={() => {
+                        setClickedLocation(location._id);
+                      }}
+                    >
+                      {location.name}
                     </div>
                   </Popup>
                 </div>

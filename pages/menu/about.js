@@ -1,14 +1,17 @@
 import Layout from "../../components/Layout";
 import GlobalStyle from "../../styles/GlobalStyle";
 import ReturnButton from "../../components/Buttons/ReturnButton";
+import Header from "../../components/Header";
 
 export default function AboutUs() {
+  const name = "About us";
   return (
     <>
       <ReturnButton />
-      <GlobalStyle></GlobalStyle>
+      {/* <GlobalStyle></GlobalStyle> */}
       <Layout>
-        <h1>About Us</h1>
+        <Header>{name}</Header>
+
         <p>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
           nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
