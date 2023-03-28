@@ -51,7 +51,8 @@ export default function CommentForm({ locationID }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const newComment = Object.fromEntries(formData);
-    // console.log("newComment", newComment);
+    newComment.date = new Date();
+    console.log("newComment", newComment);
 
     const response = await fetch("/api/comments/create", {
       method: "POST",
@@ -136,7 +137,6 @@ export default function CommentForm({ locationID }) {
 const EntryForm = styled.form`
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   text-align: start;
 `;
 
@@ -165,11 +165,41 @@ const InputWrapper = styled.div`
     align-content: space-around;
   }
   .submit-button {
-    width: 100px;
+    width: 80px;
     height: 40px;
     align-self: center;
-    background-color: blue;
+    background-color: rgb(60, 60, 60);
+    box-shadow: 0px 0px 5px 3px rgba(54, 54, 54, 0.75);
     color: white;
     border-radius: 10px;
+    margin-bottom: 10%;
+    border-style: none;
+  }
+
+  textarea {
+    display: flex;
+    position: relative;
+    background-color: rgb(60, 60, 60);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 0px 5px 3px rgba(54, 54, 54, 0.75);
+    text-align: left;
+    width: 100%;
+    margin: 40px auto;
+    .date {
+      font-size: 0.7rem;
+      text-align: right;
+    }
+    .comment {
+      align-self: center;
+    }
+    background-color: inherit;
+  }
+
+  input {
+    color: black;
+  }
+  select {
+    background-color: black;
   }
 `;

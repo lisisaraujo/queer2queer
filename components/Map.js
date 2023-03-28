@@ -55,7 +55,7 @@ export default function MyMap({ locations, setClickedLocation }) {
     setSelectedCategory(event.target.value);
   };
 
-  // console.log(selectedCategory);
+  console.log(selectedCategory);
 
   const getFilteredList = () => {
     if (!selectedCategory) {
@@ -112,14 +112,20 @@ export default function MyMap({ locations, setClickedLocation }) {
                     latitude={parseFloat(location.lngLat[0])}
                     closeOnClick={false}
                   >
-                    <div
+                    <div className="location-link">
+                      <Link href={`/location-page/${location._id}`}>
+                        {location.name}
+                      </Link>
+                    </div>
+
+                    {/* <div
                       className="location-link"
                       onClick={() => {
                         setClickedLocation(location._id);
                       }}
                     >
                       {location.name}
-                    </div>
+                    </div> */}
                   </Popup>
                 </div>
               )}

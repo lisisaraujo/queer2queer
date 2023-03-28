@@ -21,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
         width: 100%;
         background-color: rgb(35, 35, 35);
         display: flex;
+        color: whitesmoke;
       }
 
 

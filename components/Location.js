@@ -73,9 +73,10 @@ const StyledLocationHeader = styled.div`
   }
 
   .location-icon {
-    border-style: solid;
+    /* border-style: solid; */
     padding: 15px;
     border-radius: 5px;
-    background-color: pink;
+    background-color: rgb(60, 60, 60);
+    box-shadow: 0px 0px 5px 3px rgba(77, 150, 239, 0.8);
   }
 `;

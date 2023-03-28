@@ -20,6 +20,7 @@ export default function CommentCard({
       <CardFrame>
         <div className="demographic-data">
           {name && <p>commented by: {name}</p>}
+          <div className="comment-date">{date}</div>
           {age && <button className="demographic-data-tag">#{age}</button>}
           {sexual_orientation && (
             <button className="demographic-data-tag">
@@ -79,9 +80,11 @@ const CardFrame = styled.div`
   box-shadow: 0px 0px 5px 3px rgba(54, 54, 54, 0.75);
 
   .demographic-data-tag {
-    color: white;
-    background: rgba(77, 150, 239, 1);
-    border-color: rgba(77, 150, 239, 1);
+    background-color: rgb(60, 60, 60);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 0px 5px 3px rgba(54, 54, 54, 0.75);
+    border-style: none;
     padding: 5px;
     margin: 1px;
     border-radius: 10%;

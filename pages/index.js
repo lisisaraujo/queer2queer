@@ -14,26 +14,27 @@ const MyMap = dynamic(() => import("../components/Map"), {
 export default function Home({ locations, locationID }) {
   const router = useRouter();
   const { id } = router.query;
-  const [clickedLocation, setClickedLocation] = useState();
+  // const [clickedLocation, setClickedLocation] = useState();
 
-  useEffect(() => {
-    if (id) {
-      const fetchClickedLocation = async () => {
-        const response = await fetch(`/api/locations/${id}`);
-        const clickedLocation = await response.json();
-        setClickedLocation(clickedLocation);
-        // console.log(specificLocation);
-      };
-      fetchClickedLocation();
-      loadComments();
-    }
-  }, [id]);
+  // useEffect(() => {
+  //   if (id) {
+  //     const fetchClickedLocation = async () => {
+  //       const response = await fetch(`/api/locations/${id}`);
+  //       const clickedLocation = await response.json();
+  //       setClickedLocation(clickedLocation);
+  //       // console.log(specificLocation);
+  //     };
+  //     fetchClickedLocation();
+  //     loadComments();
+  //   }
+  // }, [id]);
 
   return (
     <>
       <section className="map">
-        <MyMap locations={locations} setClickedLocation={setClickedLocation} />
-        {clickedLocation && <ModalLocationDetail />}
+        {/* <MyMap locations={locations} setClickedLocation={setClickedLocation} />
+        {clickedLocation && <ModalLocationDetail />} */}
+        <MyMap locations={locations} />
       </section>
     </>
   );

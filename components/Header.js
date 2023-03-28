@@ -32,7 +32,8 @@ const HeaderWrapper = styled.nav`
   margin-top: 0px;
   color: #fdfbfc;
   position: fixed;
-  background-color: rgba(77, 150, 239, 1);
+  background-color: inherit;
+  box-shadow: 0px 0px 5px 3px rgba(77, 150, 239, 0.8);
   opacity: 0.9;
   margin-bottom: 200px;
   z-index: 1;
