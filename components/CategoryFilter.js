@@ -1,11 +1,27 @@
 import styled from "styled-components";
 import { FiFilter } from "react-icons/fi";
+import Select from "react-select";
+import { typeCategories, selectFilterColorStyles } from "./../utils";
+import { useState } from "react";
 
 export default function CategoryFilter({ onChangeCategory }) {
   const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  // const handleCategoryChange = (event) => {
+  //   setSelectedCategory(event.target.value);
+  // };
   return (
     <>
       <StyledFilter>
+        <Select
+          defaultValue={selectedOption}
+          onChange={setSelectedOption}
+          options={typeCategories}
+          name="type"
+          styles={selectFilterColorStyles}
+        />
+
         <select
           className="home-filter"
           name="category-list"

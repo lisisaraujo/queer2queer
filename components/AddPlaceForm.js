@@ -5,32 +5,21 @@ import { useRouter } from "next/router";
 import { accessToken } from "../src/mapbox";
 import { useState } from "react";
 import Select from "react-select";
+import { selectFilterColorStyles, typeCategories } from "../utils";
 
 export default function AddPlaceForm({ locationID }) {
   const router = useRouter();
   const locations = useSWR("/api/locations");
   const [selectedOption, setSelectedOption] = useState(null);
-  const typeCategories = [
-    { value: "Bar", label: "Bar" },
-    { value: "Club", label: "Club" },
-    { value: "Cruising", label: "Cruising" },
-    { value: "Community-Center", label: "Community-Center" },
-  ];
+  // const typeCategories = [
+  //   { value: "Bar", label: "Bar" },
+  //   { value: "Club", label: "Club" },
+  //   { value: "Cruising", label: "Cruising" },
+  //   { value: "Community-Center", label: "Community-Center" },
+  // ];
 
   const selectStyles = {
     color: "black",
-  };
-
-  const colorStyles = {
-    control: (styles) => ({ ...styles, backgroundColor: "white" }),
-    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-      return {
-        ...styles,
-        backgroundColor: "rgba(77, 150, 239, 0.8)",
-        color: "#FFF",
-        cursor: isDisabled ? "not-allowed" : "default",
-      };
-    },
   };
 
   async function handleSubmit(event) {
@@ -98,7 +87,7 @@ export default function AddPlaceForm({ locationID }) {
               onChange={setSelectedOption}
               options={typeCategories}
               name="type"
-              styles={colorStyles}
+              styles={selectFilterColorStyles}
             />
           </div>
 

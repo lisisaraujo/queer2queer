@@ -7,6 +7,8 @@ import Header from "./Header";
 import { useSession, getSession } from "next-auth/react";
 import Location from "./LocationCard";
 import ModalCommentForm from "./ModalCommentForm";
+import FilterComment from "./FilterComments";
+import CommentFilter from "./CommentFilter";
 
 export default function LocationDetails({ loadLocations }) {
   const [comments, setComments] = useState([]);
@@ -87,6 +89,7 @@ export default function LocationDetails({ loadLocations }) {
     return (
       <>
         <Header>{name}</Header>
+        {/* <CommentFilter /> */}
         <StyledLocationContainer>
           <div className="location-container">
             <Location specificLocation={specificLocation} />
