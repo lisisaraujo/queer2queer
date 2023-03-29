@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Select from "react-select";
 import { useState } from "react";
 
-export default function CommentForm({ locationID, closeModal }) {
+export default function CommentForm({ locationID, closeModal, loadComments }) {
   const router = useRouter();
   const comments = useSWR("/api/comments");
   const [selectedOption, setSelectedOption] = useState(null);
@@ -83,7 +83,7 @@ export default function CommentForm({ locationID, closeModal }) {
     comments.mutate();
     event.target.reset();
     closeModal();
-    // router.push("/");
+    loadComments();
   }
 
   return (

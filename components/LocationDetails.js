@@ -94,7 +94,7 @@ export default function LocationDetails({ loadLocations }) {
               {" "}
               <h2>Comments</h2>
               <div className="modal">
-                <ModalCommentForm />
+                <ModalCommentForm loadComments={loadComments} />
               </div>
             </div>
 

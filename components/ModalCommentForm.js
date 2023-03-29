@@ -33,7 +33,7 @@ const closeButtonStyle = {
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement("div");
 
-export default function ModalCommentForm() {
+export default function ModalCommentForm({ loadComments }) {
   const router = useRouter();
   const { id } = router.query;
   const iconStyles = { color: "#4D96EF", fontSize: "2.5em", cursor: "pointer" };
@@ -70,7 +70,11 @@ export default function ModalCommentForm() {
         <button onClick={closeModal} style={closeButtonStyle}>
           X
         </button>
-        <CommentForm locationID={id} closeModal={closeModal} />
+        <CommentForm
+          locationID={id}
+          closeModal={closeModal}
+          loadComments={loadComments}
+        />
       </Modal>
     </div>
   );

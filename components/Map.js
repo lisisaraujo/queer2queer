@@ -133,7 +133,6 @@ export default function MyMap({ locations, setClickedLocation }) {
           position="bottom-left"
         />
         <NavigationControl position="bottom-left" />
-        {/* <AddLocationButton /> */}
         <ModalAddLocationForm />
       </ReactMapGL>
     </>
