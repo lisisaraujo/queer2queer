@@ -15,7 +15,7 @@ export default function ModalLocationDetail({ locationID }) {
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
       padding: "0px",
-      background: "inherit",
+      background: "rgb(35, 35, 35)",
       borderRadius: "10px",
     },
   };
@@ -44,9 +44,11 @@ export default function ModalLocationDetail({ locationID }) {
 
   return (
     <div>
-      <StyledButton>
-        <BiMessageSquareAdd style={iconStyles} onClick={openModal} />
-      </StyledButton>
+      <div className="location-link">
+        <a href="#" onClick={openModal}>
+          Name of location
+        </a>
+      </div>
 
       <Modal
         isOpen={modalIsOpen}
@@ -55,6 +57,7 @@ export default function ModalLocationDetail({ locationID }) {
         style={customStyles}
         contentLabel="Modal"
       >
+        <p>This should be the locaton detail page</p>
         <LocationDetail locationID={id} />
       </Modal>
     </div>

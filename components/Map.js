@@ -10,7 +10,8 @@ import { MdLocationOn } from "react-icons/md";
 import Link from "next/link";
 import { GeolocateControl, NavigationControl } from "react-map-gl";
 import Navbar from "./Navbar";
-import { Modal } from "./ModalLocationDetail";
+import ModalLocationDetail, { Modal } from "./ModalLocationDetail";
+import ModalAddLocationForm from "./ModalAddLocationForm";
 
 const AddLocationButton = dynamic(
   () => import("../components/Buttons/AddLocationButton"),
@@ -112,6 +113,8 @@ export default function MyMap({ locations, setClickedLocation }) {
                     latitude={parseFloat(location.lngLat[0])}
                     closeOnClick={false}
                   >
+                    {/* <ModalLocationDetail /> */}
+
                     <div className="location-link">
                       <Link href={`/location-page/${location._id}`}>
                         {location.name}
@@ -138,7 +141,8 @@ export default function MyMap({ locations, setClickedLocation }) {
           position="bottom-left"
         />
         <NavigationControl position="bottom-left" />
-        <AddLocationButton />
+        {/* <AddLocationButton /> */}
+        <ModalAddLocationForm />
       </ReactMapGL>
     </>
   );

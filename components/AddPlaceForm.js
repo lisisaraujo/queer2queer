@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import useSWR from "swr";
 import { useRouter } from "next/router";
-import ReturnButton from "./Buttons/ReturnButton";
 // import { AddressAutofill } from "@mapbox/search-js-react";
 import { accessToken } from "../src/mapbox";
 import { useState } from "react";
@@ -17,6 +16,10 @@ export default function AddPlaceForm({ locationID }) {
     { value: "Cruising", label: "Cruising" },
     { value: "Community-Center", label: "Community-Center" },
   ];
+
+  const selectStyles = {
+    color: "black",
+  };
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -42,8 +45,7 @@ export default function AddPlaceForm({ locationID }) {
     router.push("/");
   }
   return (
-    <div>
-      <ReturnButton />
+    <>
       <EntryForm onSubmit={handleSubmit}>
         <InputWrapper>
           <input
@@ -52,65 +54,121 @@ export default function AddPlaceForm({ locationID }) {
             name="location"
             value={locationID}
           ></input>
-          <h1>Suggest Location</h1>
-          <label htmlFor="name">Name of location:</label>
-          <input id="name" name="name"></input>
-          <label htmlFor="address">Address:</label>
-          {/* <AddressAutofill accessToken={accessToken}> */}
-          <input
-            name="address"
-            placeholder="Address"
-            type="text"
-            autoComplete="address-line1"
-          />
-          <input
-            name="city"
-            placeholder="City"
-            type="text"
-            autoComplete="address-level2"
-          />
-          <input
-            name="postcode"
-            placeholder="Postcode"
-            type="text"
-            autoComplete="postal-code"
-          />
-          {/* </AddressAutofill> */}
-          <label htmlFor="type">Type:</label>
-          <Select
-            defaultValue={selectedOption}
-            onChange={setSelectedOption}
-            options={typeCategories}
-            name="type"
-          />
-          {/* <select name="type">
-            <option value="">Select</option>
-            <option value="Bar">Bar</option>
-            <option value="Club">Club</option>
-            <option value="Cruising">Cruising</option>
-            <option value="Community-Center">Community-Center</option>
-            <option value="Other">Other</option>
-          </select> */}
-          <button onClick={() => router.push("/")}>Submit</button>
+          <h2>Suggest Location</h2>
+          <div className="location-input-field">
+            {" "}
+            <label htmlFor="name">Name of location:</label>
+            <input id="name" name="name"></input>
+            <label htmlFor="address">Address:</label>
+            {/* <AddressAutofill accessToken={accessToken}> */}
+            <input
+              name="address"
+              placeholder="Address"
+              type="text"
+              autoComplete="address-line1"
+            />
+            <input
+              name="city"
+              placeholder="City"
+              type="text"
+              autoComplete="address-level2"
+            />
+            <input
+              name="postcode"
+              placeholder="Postcode"
+              type="text"
+              autoComplete="postal-code"
+            />
+            {/* </AddressAutofill> */}
+            <label htmlFor="type">Type:</label>
+            <Select
+              defaultValue={selectedOption}
+              onChange={setSelectedOption}
+              options={typeCategories}
+              name="type"
+              style={selectStyles}
+            />
+          </div>
+
+          <button onClick={() => router.push("/")} className="submit-button">
+            Submit
+          </button>
         </InputWrapper>
       </EntryForm>
-    </div>
+    </>
   );
 }
 
 const EntryForm = styled.form`
-  justify-content: center;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  text-align: start;
+  width: 100%;
+  height: 100%;
 `;
 
 const InputWrapper = styled.div`
-  /* border: solid; */
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  justify-content: center;
+  position: relative;
+  /* padding: 5px; */
+  /* justify-content: center; */
+  /* height: 100%; */
+  width: auto;
+  /* margin-left: 10%;
+  margin-right: 10%; */
+  align-items: center;
   height: 100%;
-  margin-left: 25%;
-  margin-right: 25%;
-  margin-top: 100px;
-  border-color: blueviolet;
+  /* width: auto; */
+  margin-left: 10%;
+  margin-right: 10%;
+  justify-content: space-evenly;
+
+  .location-input-field {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-evenly;
+    position: relative; */
+    gap: 10px;
+  }
+
+  .submit-button {
+    width: 80px;
+    height: 40px;
+    align-self: center;
+    background-color: rgb(60, 60, 60);
+    box-shadow: 0px 0px 5px 3px rgba(54, 54, 54, 0.75);
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 10%;
+    border-style: none;
+  }
+
+  textarea {
+    display: flex;
+    position: relative;
+    background-color: rgb(60, 60, 60);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 0px 5px 3px rgba(54, 54, 54, 0.75);
+    text-align: left;
+    width: 100%;
+    margin: 40px auto;
+    .date {
+      font-size: 0.7rem;
+      text-align: right;
+    }
+    .comment {
+      align-self: center;
+    }
+    background-color: inherit;
+  }
+
+  input {
+    color: black;
+  }
+  select {
+    background-color: black;
+  }
 `;

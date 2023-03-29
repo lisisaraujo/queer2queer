@@ -1,6 +1,6 @@
-"use client";
-import AddPlaceForm from "../components/AddPlaceForm";
+// "use client";
+// import AddPlaceForm from "../components/AddPlaceForm";
 
-export default function AddLocation() {
-  return <>{<AddPlaceForm />}</>;
-}
+// export default function AddLocation() {
+//   return <>{<AddPlaceForm />}</>;
+// }
