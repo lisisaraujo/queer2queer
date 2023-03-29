@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Select from "react-select";
 import { useState } from "react";
 
-export default function CommentForm({ locationID }) {
+export default function CommentForm({ locationID, closeModal }) {
   const router = useRouter();
   const comments = useSWR("/api/comments");
   const [selectedOption, setSelectedOption] = useState(null);
@@ -47,11 +47,24 @@ export default function CommentForm({ locationID }) {
     { value: "Other", label: "Other" },
   ];
 
+  const colorStyles = {
+    control: (styles) => ({ ...styles, backgroundColor: "white" }),
+    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+      return {
+        ...styles,
+        backgroundColor: "rgba(77, 150, 239, 0.8)",
+        color: "#FFF",
+        cursor: isDisabled ? "not-allowed" : "default",
+      };
+    },
+  };
+
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const newComment = Object.fromEntries(formData);
-    newComment.date = new Date();
+    newComment.date = new Date().toLocaleString();
+
     console.log("newComment", newComment);
 
     const response = await fetch("/api/comments/create", {
@@ -69,7 +82,8 @@ export default function CommentForm({ locationID }) {
     }
     comments.mutate();
     event.target.reset();
-    router.push("/");
+    closeModal();
+    // router.push("/");
   }
 
   return (
@@ -105,6 +119,7 @@ export default function CommentForm({ locationID }) {
               onChange={setSelectedOption}
               options={ageCategories}
               name="age"
+              styles={colorStyles}
             />
             <label htmlFor="sexual-orientation">Sexual Orientation:</label>
             <Select
@@ -112,6 +127,7 @@ export default function CommentForm({ locationID }) {
               onChange={setSelectedOption}
               options={sexualOrientationCategories}
               name="sexual_orientation"
+              styles={colorStyles}
             />
             <label htmlFor="gender">Gender:</label>
 
@@ -120,8 +136,9 @@ export default function CommentForm({ locationID }) {
               onChange={setSelectedOption}
               options={genderCategories}
               name="gender"
+              styles={colorStyles}
             />
-            <checkbox>
+            <checkbox className="checkbox">
               {" "}
               <label htmlFor="bipoc">BiPoc:</label>
               <input type="checkbox" name="bipoc"></input>
@@ -140,22 +157,36 @@ const EntryForm = styled.form`
   text-align: start;
   width: 100%;
   height: 100%;
+  color: whitesmoke;
 `;
 
 const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  position: relative;
   /* padding: 5px; */
   /* justify-content: center; */
-  height: 100%;
+  /* height: 100%; */
   width: auto;
+  /* margin-left: 10%;
+  margin-right: 10%; */
+  align-items: center;
+  height: 100%;
+  /* width: auto; */
   margin-left: 10%;
   margin-right: 10%;
+  justify-content: space-evenly;
 
+  .location-input-field {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-evenly;
+    position: relative; */
+    gap: 10px;
+  }
   .comment-card {
     display: flex;
     position: relative;
-
     align-self: center;
     width: auto;
   }
@@ -171,12 +202,13 @@ const InputWrapper = styled.div`
     width: 80px;
     height: 40px;
     align-self: center;
-    background-color: rgb(60, 60, 60);
-    box-shadow: 0px 0px 5px 3px rgba(54, 54, 54, 0.75);
-    color: white;
+    background-color: rgba(77, 150, 239, 0.8);
+    box-shadow: 0px 0px 5px 3px rgba(90, 90, 90, 0.75);
+    color: whitesmoke;
     border-radius: 10px;
     margin-bottom: 10%;
     border-style: none;
+    margin-top: 30px;
   }
 
   textarea {
@@ -185,24 +217,23 @@ const InputWrapper = styled.div`
     background-color: rgb(60, 60, 60);
     border-radius: 10px;
     padding: 15px;
-    box-shadow: 0px 0px 5px 3px rgba(54, 54, 54, 0.75);
+    box-shadow: 0px 0px 5px 3px rgba(0, 24, 255, 0.5);
     text-align: left;
     width: 100%;
-    margin: 40px auto;
-    .date {
-      font-size: 0.7rem;
-      text-align: right;
-    }
-    .comment {
-      align-self: center;
-    }
-    background-color: inherit;
+    margin: 15px auto 40px auto;
+    background-color: whitesmoke;
   }
 
   input {
     color: black;
+    border-radius: 5px;
+    border-style: none;
+    padding: 10px;
   }
-  select {
-    background-color: black;
+  .checkbox {
+    font-size: 1.5em;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px auto;
   }
 `;

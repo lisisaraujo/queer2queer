@@ -86,7 +86,7 @@ export default function LocationDetails({ loadLocations }) {
 
     return (
       <>
-        <Header name={name} />
+        <Header>{name}</Header>
         <StyledLocationContainer>
           <div className="location-container">
             <Location specificLocation={specificLocation} />
@@ -168,11 +168,11 @@ const StyledLocationContainer = styled.div`
   .title-header {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     justify-content: space-around;
     align-items: center;
     margin-top: 40px;
   }
-
   .comment-card {
     margin-right: 10%;
     margin-left: 10%;

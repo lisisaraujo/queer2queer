@@ -4,7 +4,7 @@ const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
         
-  color: whitesmoke;
+  color: #BFBDBD;
   font-family: sans-serif;
   font-weight: lighter;
   text-decoration: none;
@@ -62,6 +62,12 @@ a:-webkit-any-link {
     width: 95vw;
     margin: 100px auto 0 auto;
 }
+
+.ReactModal__Overlay--after-open {
+    position: fixed;
+    inset: 0px;
+    background-color: rgba(35, 35, 35, 0.75);
+  }
 `;
 
 export default GlobalStyle;

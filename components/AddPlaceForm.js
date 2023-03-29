@@ -21,6 +21,18 @@ export default function AddPlaceForm({ locationID }) {
     color: "black",
   };
 
+  const colorStyles = {
+    control: (styles) => ({ ...styles, backgroundColor: "white" }),
+    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+      return {
+        ...styles,
+        backgroundColor: "rgba(77, 150, 239, 0.8)",
+        color: "#FFF",
+        cursor: isDisabled ? "not-allowed" : "default",
+      };
+    },
+  };
+
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -86,7 +98,7 @@ export default function AddPlaceForm({ locationID }) {
               onChange={setSelectedOption}
               options={typeCategories}
               name="type"
-              style={selectStyles}
+              styles={colorStyles}
             />
           </div>
 
@@ -112,17 +124,10 @@ const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  /* padding: 5px; */
-  /* justify-content: center; */
-  /* height: 100%; */
   width: auto;
-  /* margin-left: 10%;
-  margin-right: 10%; */
   align-items: center;
-  height: 100%;
+  height: auto;
   /* width: auto; */
-  margin-left: 10%;
-  margin-right: 10%;
   justify-content: space-evenly;
 
   .location-input-field {
@@ -137,12 +142,13 @@ const InputWrapper = styled.div`
     width: 80px;
     height: 40px;
     align-self: center;
-    background-color: rgb(60, 60, 60);
-    box-shadow: 0px 0px 5px 3px rgba(54, 54, 54, 0.75);
-    color: white;
+    background-color: rgba(77, 150, 239, 0.8);
+    box-shadow: 0px 0px 5px 3px rgba(90, 90, 90, 0.75);
+    color: whitesmoke;
     border-radius: 10px;
     margin-bottom: 10%;
     border-style: none;
+    margin-top: 30px;
   }
 
   textarea {
@@ -167,8 +173,8 @@ const InputWrapper = styled.div`
 
   input {
     color: black;
-  }
-  select {
-    background-color: black;
+    border-radius: 5px;
+    border: none;
+    /* box-shadow: 0px 0px 5px 3px rgba(90, 90, 90, 0.75); */
   }
 `;

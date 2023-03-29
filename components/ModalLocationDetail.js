@@ -4,6 +4,7 @@ import styled from "styled-components";
 import LocationDetail from "./LocationDetails";
 import Modal from "react-modal";
 import { BiMessageSquareAdd } from "react-icons/bi";
+import LocationDetails from "./LocationDetails";
 
 export default function ModalLocationDetail({ locationID }) {
   const customStyles = {
@@ -58,7 +59,7 @@ export default function ModalLocationDetail({ locationID }) {
         contentLabel="Modal"
       >
         <p>This should be the locaton detail page</p>
-        <LocationDetail locationID={id} />
+        <LocationDetails locationID={id} />
       </Modal>
     </div>
   );

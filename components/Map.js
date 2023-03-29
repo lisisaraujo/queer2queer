@@ -13,14 +13,6 @@ import Navbar from "./Navbar";
 import ModalLocationDetail, { Modal } from "./ModalLocationDetail";
 import ModalAddLocationForm from "./ModalAddLocationForm";
 
-const AddLocationButton = dynamic(
-  () => import("../components/Buttons/AddLocationButton"),
-  {
-    loading: () => "Loading...",
-    ssr: false,
-  }
-);
-
 export default function MyMap({ locations, setClickedLocation }) {
   const [selectedLocation, setSelectedLocation] = useState({});
   const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
@@ -90,7 +82,7 @@ export default function MyMap({ locations, setClickedLocation }) {
                 longitude={parseFloat(location.lngLat[1])}
                 latitude={parseFloat(location.lngLat[0])}
                 color={location.color}
-                style={{ cursor: "pointer", zIndex: 1 }}
+                style={{ cursor: "pointer" }}
               >
                 <p
                   location-id={location._id}

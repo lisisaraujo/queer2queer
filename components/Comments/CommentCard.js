@@ -18,9 +18,9 @@ export default function CommentCard({
   return (
     <>
       <CardFrame>
+        <div className="date">{date}</div>
         <div className="demographic-data">
           {name && <p>commented by: {name}</p>}
-          <div className="comment-date">{date}</div>
           {age && <button className="demographic-data-tag">#{age}</button>}
           {sexual_orientation && (
             <button className="demographic-data-tag">
@@ -80,6 +80,22 @@ const CardFrame = styled.div`
   box-shadow: 0px 0px 5px 3px rgba(54, 54, 54, 0.75);
 
   .demographic-data-tag {
+    background-color: rgba(114, 59, 216, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 0px 5px 3px rgba(114, 59, 216, 0.3);
+    border-style: none;
+    padding: 5px;
+    margin: 3px;
+    border-radius: 10%;
+  }
+
+  .date {
+    font-size: 0.7rem;
+    text-align: right;
+  }
+
+  /* .demographic-data-tag {
     background-color: rgb(60, 60, 60);
     border-radius: 10px;
     padding: 15px;
@@ -88,7 +104,7 @@ const CardFrame = styled.div`
     padding: 5px;
     margin: 1px;
     border-radius: 10%;
-  }
+  } */
 `;
 
 const CommentStyle = styled.div`
@@ -101,10 +117,7 @@ const CommentStyle = styled.div`
   text-align: left;
   width: 100%;
   margin: 40px auto;
-  .date {
-    font-size: 0.7rem;
-    text-align: right;
-  }
+
   .comment {
     align-self: center;
   }

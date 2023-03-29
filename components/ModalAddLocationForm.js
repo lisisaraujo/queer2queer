@@ -7,7 +7,7 @@ import AddPlaceForm from "./AddPlaceForm";
 
 const customStyles = {
   content: {
-    top: "55%",
+    top: "56%",
     left: "50%",
     right: "auto",
     bottom: "auto",
@@ -26,7 +26,7 @@ const closeButtonStyle = {
   backgroundColor: "transparent",
   marginTop: "5%",
   marginLeft: "85%",
-  fontSize: "1.2em",
+  fontSize: "1.5em",
   border: "none",
 };
 
@@ -58,10 +58,6 @@ export default function ModalAddLocationForm() {
     setIsOpen(false);
   }
 
-  function handleCloseModal() {
-    setIsOpen(false);
-  }
-
   return (
     <div>
       <StyledButton>
@@ -75,7 +71,7 @@ export default function ModalAddLocationForm() {
         style={customStyles}
         contentLabel="Modal"
       >
-        <button onClick={handleCloseModal} style={closeButtonStyle}>
+        <button onClick={closeModal} style={closeButtonStyle}>
           X
         </button>
         <AddPlaceForm locationID={id} />

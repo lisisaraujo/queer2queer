@@ -34,6 +34,7 @@ export default function LocationCard({ specificLocation }) {
         <div className="location-address">
           <label>Address: </label>
           <p>Adalbertstr. 1, 10090 Berlin</p>
+          {/* <p>Adalbertstr. 1, 10090 Berlin</p> */}
         </div>
       </StyledLocationHeader>
     </>
@@ -57,7 +58,7 @@ const StyledLocationHeader = styled.div`
   width: 100%;
   margin-bottom: 20px;
   border-radius: 10px;
-  box-shadow: 0px 0px 5px 3px rgba(54, 54, 54, 0.75);
+  box-shadow: 0px 0px 5px 3px rgba(54, 54, 54, 0.9);
 
   .location-details {
     display: flex;
@@ -76,7 +77,7 @@ const StyledLocationHeader = styled.div`
     /* border-style: solid; */
     padding: 15px;
     border-radius: 5px;
-    background-color: rgb(60, 60, 60);
-    box-shadow: 0px 0px 5px 3px rgba(77, 150, 239, 0.8);
+    background-color: rgba(114, 59, 216, 0.1);
+    box-shadow: 0px 0px 5px 3px rgba(95, 94, 94, 0.4);
   }
 `;
