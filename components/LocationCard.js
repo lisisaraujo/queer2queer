@@ -77,7 +77,7 @@ const StyledLocationHeader = styled.div`
     /* border-style: solid; */
     padding: 15px;
     border-radius: 5px;
-    background-color: rgba(114, 59, 216, 0.1);
+    background-color: inherit;
     box-shadow: 0px 0px 5px 3px rgba(95, 94, 94, 0.4);
   }
 `;
