@@ -1,9 +1,9 @@
 import LocationDetail from "../../components/LocationDetails";
 
-export default function LocationPage() {
+export default function LocationPage({ loadLocations, locations }) {
   return (
     <>
-      <LocationDetail />
+      <LocationDetail loadLocations={loadLocations} locations={locations} />
     </>
   );
 }

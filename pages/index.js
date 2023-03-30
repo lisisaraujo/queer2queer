@@ -17,7 +17,7 @@ const ModalLocationDetail = dynamic(
   }
 );
 
-export default function Home({ locations, selectedLocation }) {
+export default function Home({ locations, selectedLocation, loadLocations }) {
   const router = useRouter();
   const { id } = router.query;
   // const [clickedLocation, setClickedLocation] = useState();
@@ -39,7 +39,7 @@ export default function Home({ locations, selectedLocation }) {
     <>
       <section className="map">
         {locations && <ModalLocationDetail />}
-        <MyMap locations={locations} />
+        <MyMap locations={locations} loadLocations={loadLocations} />
         {/* <MyMap locations={locations} /> */}
       </section>
     </>
