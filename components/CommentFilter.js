@@ -1,3 +1,110 @@
+import styled from "styled-components";
+import { FiFilter } from "react-icons/fi";
+import Select from "react-select";
+import { useState } from "react";
+import {
+  selectFilterColorStyles,
+  genderCategories,
+  sexualOrientationCategories,
+  colorStyles,
+  ageCategories,
+  typeCategories,
+} from "../utils";
+import { useRouter } from "next/router";
+
+export default function CommentFilter({
+  handleCategoryChange,
+  setSelectedAgeOption,
+  selectedAgeOption,
+  setSelectedGenderOption,
+  selectedGenderOption,
+}) {
+  const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
+  const router = useRouter();
+
+  return (
+    <>
+      <StyledFilter>
+        {/* <Select
+          defaultValue={selectedOption}
+          onChange={setSelectedOption}
+          options={typeCategories}
+          name="type"
+          styles={selectFilterColorStyles}
+        /> */}
+        {/* 
+        <select
+          className="home-filter"
+          name="category-list"
+          id="category-list"
+          onChange={handleCategoryChange}
+          selected
+        >
+          <option defaultValue="Select Filter" disabled>
+            Filter
+          </option>
+          <option value="">Age</option>
+          <option value="18-25">18-25</option>
+          <option value="26-35">26-35</option>
+          <option value="36-45">36-45</option>
+          <option value="46-55">46-55</option>
+          <option value="55+">55+</option>
+        </select> */}
+
+        <label htmlFor="age">Age:</label>
+        <Select
+          defaultValue={selectedAgeOption}
+          onChange={setSelectedAgeOption}
+          options={ageCategories}
+          name="age"
+          styles={colorStyles}
+        />
+        <label htmlFor="sexual-orientation">Sexual Orientation:</label>
+        {/* <Select
+          defaultValue={selectedOption}
+          onChange={setSelectedOption}
+          options={sexualOrientationCategories}
+          name="sexual_orientation"
+          styles={colorStyles}
+        /> */}
+        <label htmlFor="gender">Gender:</label>
+
+        <Select
+          defaultValue={selectedGenderOption}
+          onChange={setSelectedGenderOption}
+          options={genderCategories}
+          name="gender"
+          styles={colorStyles}
+        />
+        <checkbox className="checkbox">
+          {" "}
+          <label htmlFor="bipoc">BiPoc:</label>
+          <input type="checkbox" name="bipoc"></input>
+        </checkbox>
+      </StyledFilter>
+    </>
+  );
+}
+
+export const StyledFilter = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  width: fit-content;
+
+  #category-list {
+    color: white;
+    background-color: rgba(77, 150, 239, 1);
+    border-radius: 10px;
+    width: 60px;
+    height: 30px;
+    border-color: white;
+  }
+  .type-list {
+    background-color: rgba(77, 150, 239, 1);
+  }
+`;
+
 // import styled from "styled-components";
 // import { FiFilter } from "react-icons/fi";
 // import {

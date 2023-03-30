@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useMemo } from "react";
 import CommentCard from "./Comments/CommentCard";
 import { MdWrongLocation } from "react-icons/md";
 import Header from "./Header";
@@ -8,6 +8,7 @@ import { useSession, getSession } from "next-auth/react";
 import Location from "./LocationCard";
 import ModalCommentForm from "./ModalCommentForm";
 import useSWR from "swr";
+import CommentFilter from "./CommentFilter";
 
 export default function LocationDetails({ loadLocations }) {
   const [comments, setComments] = useState([]);
@@ -21,6 +22,56 @@ export default function LocationDetails({ loadLocations }) {
 
   const router = useRouter();
   const { id } = router.query;
+  //////////////////////
+
+  const [filteredComments, setFilteredComments] = useState(comments);
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  const [selectedAgeOption, setSelectedAgeOption] = useState(null);
+  const [selectedGenderOption, setSelectedGenderOption] = useState(null);
+
+  useEffect(() => {
+    setFilteredComments(comments);
+  }, [comments]);
+
+  const handleCategoryChange = (event) => {
+    setSelectedAgeOption(event.target.value);
+    setSelectedGenderOption(event.target.value);
+  };
+
+  console.log("selected option", selectedAgeOption, selectedGenderOption);
+  console.log("filtered comments", filteredComments);
+
+  const getFilteredList = () => {
+    // if (!selectedAgeOption && !selectedGenderOption) {
+    //   return filteredComments;
+    // }
+    let filtered = [...filteredComments];
+    if (selectedAgeOption) {
+      filtered = filtered.filter(
+        (comment) => comment.age === selectedAgeOption.value
+      );
+    }
+    if (selectedGenderOption) {
+      filtered = filtered.filter(
+        (comment) => comment.gender === selectedGenderOption.value
+      );
+    }
+    return filtered;
+    // if () filteredComments.filter((comment) => {
+    //     console.log(comment.age, selectedAgeOption.value);
+    //     return comment.age === selectedAgeOption.value && comment.gender === selectedGenderOption.value
+    //   });
+  };
+
+  // const filteredList = useMemo(getFilteredList, [
+  //   selectedAgeOption,
+  //   selectedGenderOption,
+  //   filteredComments,
+  // ]);
+
+  const filteredList = getFilteredList();
+  //////////////////////
 
   function loadComments() {
     const fetchData = async () => {
@@ -94,6 +145,14 @@ export default function LocationDetails({ loadLocations }) {
         {/* <CommentFilter /> */}
         <StyledLocationContainer>
           <div className="location-container">
+            {}
+            <CommentFilter
+              handleCategoryChange={handleCategoryChange}
+              setSelectedAgeOption={setSelectedAgeOption}
+              setSelectedGenderOption={setSelectedGenderOption}
+              selectedAgeOption={selectedAgeOption}
+              selectedGenderOption={selectedGenderOption}
+            />
             <Location specificLocation={specificLocation} />
             <div className="title-header">
               {" "}
@@ -104,34 +163,33 @@ export default function LocationDetails({ loadLocations }) {
             </div>
 
             <div className="comments" key={comments}>
-              {comments &&
-                comments.map((item) => {
-                  const {
-                    comment,
-                    age,
-                    sexual_orientation,
-                    gender,
-                    bipoc,
-                    _id,
-                    date,
-                    name,
-                  } = item;
-                  return (
-                    <div className="comment-card" key={_id}>
-                      <CommentCard
-                        onClick={() => router.push(`/${id}`)}
-                        name={name}
-                        comment={comment}
-                        age={age}
-                        gender={gender}
-                        bipoc={bipoc}
-                        date={date}
-                        sexual_orientation={sexual_orientation}
-                        onRemoveComment={() => handleRemoveComment(_id)}
-                      />
-                    </div>
-                  );
-                })}
+              {filteredList.map((item) => {
+                const {
+                  comment,
+                  age,
+                  sexual_orientation,
+                  gender,
+                  bipoc,
+                  _id,
+                  date,
+                  name,
+                } = item;
+                return (
+                  <div className="comment-card" key={_id}>
+                    <CommentCard
+                      onClick={() => router.push(`/${id}`)}
+                      name={name}
+                      comment={comment}
+                      age={age}
+                      gender={gender}
+                      bipoc={bipoc}
+                      date={date}
+                      sexual_orientation={sexual_orientation}
+                      onRemoveComment={() => handleRemoveComment(_id)}
+                    />
+                  </div>
+                );
+              })}
             </div>
             {session ? (
               <div>

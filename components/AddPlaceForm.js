@@ -54,30 +54,31 @@ export default function AddPlaceForm({
           ></input>
           <h2>Suggest Location</h2>
           <div className="location-input-field">
-            {" "}
             <label htmlFor="name">Name of location:</label>
             <input id="name" name="name"></input>
             <label htmlFor="address">Address:</label>
-            <AddressAutofill accessToken={accessToken}>
-              <input
-                name="address"
-                placeholder="Address"
-                type="text"
-                autoComplete="address-line1"
-              />
-              <input
-                name="city"
-                placeholder="City"
-                type="text"
-                autoComplete="address-level2"
-              />
-              <input
-                name="postcode"
-                placeholder="Postcode"
-                type="text"
-                autoComplete="postal-code"
-              />
-            </AddressAutofill>
+            <div className="address-input">
+              <AddressAutofill accessToken={accessToken}>
+                <input
+                  name="address"
+                  placeholder="Address"
+                  type="text"
+                  autoComplete="address-line1"
+                />
+                <input
+                  name="city"
+                  placeholder="City"
+                  type="text"
+                  autoComplete="address-level2"
+                />
+                <input
+                  name="postcode"
+                  placeholder="Postcode"
+                  type="text"
+                  autoComplete="postal-code"
+                />
+              </AddressAutofill>
+            </div>
             <label htmlFor="type">Type:</label>
             <Select
               defaultValue={selectedOption}
@@ -120,6 +121,10 @@ const InputWrapper = styled.div`
     /* justify-content: space-evenly;
     position: relative; */
     gap: 10px;
+  }
+  .address-input {
+    display: flex;
+    flex-direction: column;
   }
 
   .submit-button {
