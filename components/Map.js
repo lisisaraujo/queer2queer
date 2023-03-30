@@ -6,27 +6,21 @@ import { FaGlassMartiniAlt } from "react-icons/fa";
 import { BsFillCameraVideoOffFill } from "react-icons/bs";
 import { IoIosPeople } from "react-icons/io";
 import { MdDirectionsBoat } from "react-icons/md";
-import { MdLocationOn } from "react-icons/md";
+import { ImLocation } from "react-icons/im";
 import Link from "next/link";
 import { GeolocateControl, NavigationControl } from "react-map-gl";
 import Navbar from "./Navbar";
+import ModalLocationDetail, { Modal } from "./ModalLocationDetail";
+import ModalAddLocationForm from "./ModalAddLocationForm";
 
-const AddLocationButton = dynamic(
-  () => import("../components/Buttons/AddLocationButton"),
-  {
-    loading: () => "Loading...",
-    ssr: false,
-  }
-);
-
-export default function MyMap({ locations }) {
+export default function MyMap({ locations, loadLocations }) {
   const [selectedLocation, setSelectedLocation] = useState({});
-  const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
+  const iconStyles = { color: "white", fontSize: "1.5em", cursor: "pointer" };
   const barIcon = <FaGlassMartiniAlt style={iconStyles} />;
   const clubIcon = <BsFillCameraVideoOffFill style={iconStyles} />;
   const cruisingIcon = <MdDirectionsBoat style={iconStyles} />;
   const communityIcon = <IoIosPeople style={iconStyles} />;
-  const otherIcon = <MdLocationOn style={iconStyles} />;
+  const otherIcon = <ImLocation style={iconStyles} />;
   const [filteredLocations, setFilteredLocations] = useState(locations);
   const [selectedCategory, setSelectedCategory] = useState("");
 
@@ -88,7 +82,7 @@ export default function MyMap({ locations }) {
                 longitude={parseFloat(location.lngLat[1])}
                 latitude={parseFloat(location.lngLat[0])}
                 color={location.color}
-                style={{ cursor: "pointer", zIndex: 1 }}
+                style={{ cursor: "pointer" }}
               >
                 <p
                   location-id={location._id}
@@ -111,11 +105,22 @@ export default function MyMap({ locations }) {
                     latitude={parseFloat(location.lngLat[0])}
                     closeOnClick={false}
                   >
+                    {/* <ModalLocationDetail /> */}
+
                     <div className="location-link">
                       <Link href={`/location-page/${location._id}`}>
                         {location.name}
                       </Link>
                     </div>
+
+                    {/* <div
+                      className="location-link"
+                      onClick={() => {
+                        setClickedLocation(location._id);
+                      }}
+                    >
+                      {location.name}
+                    </div> */}
                   </Popup>
                 </div>
               )}
@@ -128,7 +133,7 @@ export default function MyMap({ locations }) {
           position="bottom-left"
         />
         <NavigationControl position="bottom-left" />
-        <AddLocationButton />
+        <ModalAddLocationForm loadLocations={loadLocations} />
       </ReactMapGL>
     </>
   );

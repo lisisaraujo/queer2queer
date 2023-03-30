@@ -3,7 +3,11 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import styled from "styled-components";
 
 export default function ReturnButton() {
-  const iconStyles = { color: "white", fontSize: "2em", cursor: "pointer" };
+  const iconStyles = {
+    color: "whitesmoke",
+    fontSize: "3em",
+    cursor: "pointer",
+  };
   return (
     <StyledButton>
       <Link href="/">

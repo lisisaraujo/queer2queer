@@ -31,6 +31,7 @@
     "react-icons": "^4.8.0",
     "react-map-gl": "^7.0.21",
     "react-map-gl-geocoder": "^1.8.1",
+    "react-modal": "^3.16.1",
     "react-mutate": "^1.0.0",
     "react-select": "^5.7.2",
     "react-tag-input": "^6.8.1",

@@ -3,6 +3,12 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
+        
+  /* color: #BFBDBD; */
+  font-family: sans-serif;
+  font-weight: lighter;
+  text-decoration: none;
+
 
     }
     
@@ -13,9 +19,9 @@ const GlobalStyle = createGlobalStyle`
       body, div#__next {
         height: 100%;
         width: 100%;
-        font-family: sans-serif;
-        background-color: whitesmoke;
+        background-color: rgb(35, 35, 35);
         display: flex;
+        color: whitesmoke;
       }
 
 
@@ -49,7 +55,6 @@ a:-webkit-any-link {
 } 
 
 .location-container {
-    margin-top: 100px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -57,6 +62,12 @@ a:-webkit-any-link {
     width: 95vw;
     margin: 100px auto 0 auto;
 }
+
+.ReactModal__Overlay--after-open {
+    position: fixed;
+    inset: 0px;
+    background-color: rgba(35, 35, 35, 0.75);
+  }
 `;
 
 export default GlobalStyle;

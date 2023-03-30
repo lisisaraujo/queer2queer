@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const commentSchema = new Schema({
+  date: { type: String },
   location: { type: Schema.Types.ObjectId, ref: "Locations" },
   comment: { type: String, required: true },
   age: { type: String },

@@ -3,7 +3,11 @@ import styled from "styled-components";
 import { FiMenu } from "react-icons/fi";
 import CategoryFilter from "./CategoryFilter";
 
-export default function Navbar({ handleCategoryChange }) {
+export default function Navbar({
+  handleCategoryChange,
+  selectedOption,
+  setSelectedOption,
+}) {
   const iconStyles = { color: "white", fontSize: "1.5em", cursor: "pointer" };
   function navBarDrop() {
     let x = document.getElementById("myLinks");
@@ -29,7 +33,10 @@ export default function Navbar({ handleCategoryChange }) {
         <a href="#home" className="active">
           QueerArchive
         </a>
-        <CategoryFilter onChangeCategory={handleCategoryChange} />
+        <CategoryFilter
+          onChangeCategory={handleCategoryChange}
+          setSelectedOption={handleCategoryChange}
+        />
       </NavbarWrapper>
     </>
   );

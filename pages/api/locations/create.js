@@ -3,7 +3,7 @@ import Location from "../../../db/models/Location";
 import { accessToken } from "../../../src/mapbox";
 import axios from "axios";
 
-export default async function handler(req, res) {
+export default async function handler(req, response) {
   await dbConnect();
   const address = `${req.body.address} ${req.body.postcode} ${req.body.city}`;
   if (req.method === "POST") {
@@ -22,11 +22,11 @@ export default async function handler(req, res) {
         newLocation.lngLat.push(...coordinates);
         console.log("newLocation FROM BACKEND", newLocation);
         newLocation.save();
-        // res.status(201).json({ status: "Location created" });
+        response.status(201).json({ status: "Location created" });
       });
     } catch (error) {
       console.log(error);
-      // res.status(400).json({ error: error.message });
+      response.status(400).json({ error: error.message });
     }
   }
 }
