@@ -29,6 +29,9 @@ export default function LocationDetails({ loadLocations }) {
 
   const [selectedAgeOption, setSelectedAgeOption] = useState(null);
   const [selectedGenderOption, setSelectedGenderOption] = useState(null);
+  const [selectedsexualOrientationOption, setSelectedsexualOrientationOption] =
+    useState(null);
+  const [selectedBipocOption, setSelectedBipocOption] = useState(null);
 
   useEffect(() => {
     setFilteredComments(comments);
@@ -39,7 +42,13 @@ export default function LocationDetails({ loadLocations }) {
     setSelectedGenderOption(event.target.value);
   };
 
-  console.log("selected option", selectedAgeOption, selectedGenderOption);
+  console.log(
+    "selected option",
+    selectedAgeOption,
+    selectedGenderOption,
+    selectedBipocOption,
+    selectedsexualOrientationOption
+  );
   console.log("filtered comments", filteredComments);
 
   const getFilteredList = () => {
@@ -47,6 +56,7 @@ export default function LocationDetails({ loadLocations }) {
     //   return filteredComments;
     // }
     let filtered = [...filteredComments];
+
     if (selectedAgeOption) {
       filtered = filtered.filter(
         (comment) => comment.age === selectedAgeOption.value
@@ -57,12 +67,32 @@ export default function LocationDetails({ loadLocations }) {
         (comment) => comment.gender === selectedGenderOption.value
       );
     }
+    if (selectedsexualOrientationOption) {
+      filtered = filtered.filter(
+        (comment) =>
+          comment.sexual_orientation === selectedsexualOrientationOption.value
+      );
+    }
+    if (selectedBipocOption) {
+      console.log(selectedBipocOption);
+      filtered = filtered.filter(
+        (comment) => comment.bipoc === selectedBipocOption.value
+      );
+    }
+    if (
+      !selectedAgeOption ||
+      !selectedGenderOption ||
+      !selectedsexualOrientationOption ||
+      !selectedBipocOption
+    ) {
+      return filtered;
+    }
     return filtered;
-    // if () filteredComments.filter((comment) => {
-    //     console.log(comment.age, selectedAgeOption.value);
-    //     return comment.age === selectedAgeOption.value && comment.gender === selectedGenderOption.value
-    //   });
   };
+  // if () filteredComments.filter((comment) => {
+  //     console.log(comment.age, selectedAgeOption.value);
+  //     return comment.age === selectedAgeOption.value && comment.gender === selectedGenderOption.value
+  //   });
 
   // const filteredList = useMemo(getFilteredList, [
   //   selectedAgeOption,
@@ -145,14 +175,6 @@ export default function LocationDetails({ loadLocations }) {
         {/* <CommentFilter /> */}
         <StyledLocationContainer>
           <div className="location-container">
-            {}
-            <CommentFilter
-              handleCategoryChange={handleCategoryChange}
-              setSelectedAgeOption={setSelectedAgeOption}
-              setSelectedGenderOption={setSelectedGenderOption}
-              selectedAgeOption={selectedAgeOption}
-              selectedGenderOption={selectedGenderOption}
-            />
             <Location specificLocation={specificLocation} />
             <div className="title-header">
               {" "}
@@ -161,7 +183,21 @@ export default function LocationDetails({ loadLocations }) {
                 <ModalCommentForm loadComments={loadComments} />
               </div>
             </div>
-
+            <div className="comment-filter">
+              {" "}
+              <CommentFilter
+                handleCategoryChange={handleCategoryChange}
+                setSelectedAgeOption={setSelectedAgeOption}
+                setSelectedGenderOption={setSelectedGenderOption}
+                setSelectedsexualOrientationOption={
+                  setSelectedsexualOrientationOption
+                }
+                // sexualOrientationCategories={sexualOrientationCategories}
+                selectedAgeOption={selectedAgeOption}
+                selectedGenderOption={selectedGenderOption}
+                selectedBipocOption={setSelectedBipocOption}
+              />
+            </div>
             <div className="comments" key={comments}>
               {filteredList.map((item) => {
                 const {

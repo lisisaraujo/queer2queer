@@ -9,6 +9,7 @@ import {
   colorStyles,
   ageCategories,
   typeCategories,
+  bipocCategory,
 } from "../utils";
 import { useRouter } from "next/router";
 
@@ -18,6 +19,10 @@ export default function CommentFilter({
   selectedAgeOption,
   setSelectedGenderOption,
   selectedGenderOption,
+  setSelectedsexualOrientationOption,
+  selectedsexualOrientationOption,
+  selectedBipocOption,
+  setSelectedBipocOption,
 }) {
   const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
   const router = useRouter();
@@ -51,7 +56,7 @@ export default function CommentFilter({
           <option value="55+">55+</option>
         </select> */}
 
-        <label htmlFor="age">Age:</label>
+        <label htmlFor="age">Age: </label>
         <Select
           defaultValue={selectedAgeOption}
           onChange={setSelectedAgeOption}
@@ -59,15 +64,15 @@ export default function CommentFilter({
           name="age"
           styles={colorStyles}
         />
-        <label htmlFor="sexual-orientation">Sexual Orientation:</label>
-        {/* <Select
-          defaultValue={selectedOption}
-          onChange={setSelectedOption}
+        <label htmlFor="sexual-orientation">Sexual Orientation: </label>
+        <Select
+          defaultValue={selectedsexualOrientationOption}
+          onChange={setSelectedsexualOrientationOption}
           options={sexualOrientationCategories}
           name="sexual_orientation"
           styles={colorStyles}
-        /> */}
-        <label htmlFor="gender">Gender:</label>
+        />
+        <label htmlFor="gender">Gender: </label>
 
         <Select
           defaultValue={selectedGenderOption}
@@ -76,11 +81,15 @@ export default function CommentFilter({
           name="gender"
           styles={colorStyles}
         />
-        <checkbox className="checkbox">
-          {" "}
-          <label htmlFor="bipoc">BiPoc:</label>
-          <input type="checkbox" name="bipoc"></input>
-        </checkbox>
+
+        <label htmlFor="bipoc">BiPoc: </label>
+        <Select
+          defaultValue={selectedBipocOption}
+          onChange={setSelectedBipocOption}
+          options={bipocCategory}
+          name="bipoc"
+          styles={colorStyles}
+        />
       </StyledFilter>
     </>
   );
@@ -91,6 +100,8 @@ export const StyledFilter = styled.div`
   flex-wrap: wrap;
   align-content: center;
   width: fit-content;
+  color: white;
+  justify-content: space-evenly;
 
   #category-list {
     color: white;
