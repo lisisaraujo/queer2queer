@@ -33,7 +33,7 @@ const closeButtonStyle = {
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement("div");
 
-export default function ModalAddLocationForm() {
+export default function ModalAddLocationForm({ loadLocations }) {
   const router = useRouter();
   const { id } = router.query;
   const iconStyles = {
@@ -74,7 +74,11 @@ export default function ModalAddLocationForm() {
         <button onClick={closeModal} style={closeButtonStyle}>
           X
         </button>
-        <AddPlaceForm locationID={id} />
+        <AddPlaceForm
+          locationID={id}
+          closeModal={closeModal}
+          loadLocations={loadLocations}
+        />
       </Modal>
     </div>
   );

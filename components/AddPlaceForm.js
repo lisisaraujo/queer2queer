@@ -1,26 +1,21 @@
 import styled from "styled-components";
 import useSWR from "swr";
-import { useRouter } from "next/router";
-// import { AddressAutofill } from "@mapbox/search-js-react";
-import { accessToken } from "../src/mapbox";
-import { useState } from "react";
 import Select from "react-select";
+import { useRouter } from "next/router";
+import { useState } from "react";
+
+// import { AddressAutofill } from "@mapbox/search-js-react";
+
 import { selectFilterColorStyles, typeCategories } from "../utils";
 
-export default function AddPlaceForm({ locationID }) {
+export default function AddPlaceForm({
+  locationID,
+  loadLocations,
+  closeModal,
+}) {
   const router = useRouter();
   const locations = useSWR("/api/locations");
   const [selectedOption, setSelectedOption] = useState(null);
-  // const typeCategories = [
-  //   { value: "Bar", label: "Bar" },
-  //   { value: "Club", label: "Club" },
-  //   { value: "Cruising", label: "Cruising" },
-  //   { value: "Community-Center", label: "Community-Center" },
-  // ];
-
-  const selectStyles = {
-    color: "black",
-  };
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -35,6 +30,7 @@ export default function AddPlaceForm({ locationID }) {
         "Content-Type": "application/json",
       },
     });
+    console.log("response, ", response);
     if (response.ok) {
       await response.json();
       console.log("RESPONSE", response);
@@ -43,7 +39,8 @@ export default function AddPlaceForm({ locationID }) {
     }
     locations.mutate();
     event.target.reset();
-    router.push("/");
+    closeModal();
+    loadLocations();
   }
   return (
     <>
@@ -91,9 +88,7 @@ export default function AddPlaceForm({ locationID }) {
             />
           </div>
 
-          <button onClick={() => router.push("/")} className="submit-button">
-            Submit
-          </button>
+          <button className="submit-button">Submit</button>
         </InputWrapper>
       </EntryForm>
     </>

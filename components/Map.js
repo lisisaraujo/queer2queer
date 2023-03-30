@@ -13,7 +13,7 @@ import Navbar from "./Navbar";
 import ModalLocationDetail, { Modal } from "./ModalLocationDetail";
 import ModalAddLocationForm from "./ModalAddLocationForm";
 
-export default function MyMap({ locations, setClickedLocation }) {
+export default function MyMap({ locations }) {
   const [selectedLocation, setSelectedLocation] = useState({});
   const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
   const barIcon = <FaGlassMartiniAlt style={iconStyles} />;

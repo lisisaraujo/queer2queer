@@ -6,7 +6,7 @@ import Modal from "react-modal";
 import { BiMessageSquareAdd } from "react-icons/bi";
 import LocationDetails from "./LocationDetails";
 
-export default function ModalLocationDetail({ locationID }) {
+export default function ModalLocationDetail({ locationID, loadLocations }) {
   const customStyles = {
     content: {
       top: "55%",

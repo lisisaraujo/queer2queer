@@ -4,6 +4,7 @@ export const typeCategories = [
   { value: "Club", label: "Club" },
   { value: "Cruising", label: "Cruising" },
   { value: "Community-Center", label: "Community-Center" },
+  { value: "Other", label: "Other" },
 ];
 
 export const ageCategories = [

@@ -9,8 +9,10 @@ import Location from "./LocationCard";
 import ModalCommentForm from "./ModalCommentForm";
 import FilterComment from "./FilterComments";
 import CommentFilter from "./CommentFilter";
+// import useSWR from "swr";
 
 export default function LocationDetails({ loadLocations }) {
+  // const locations = useSWR("/api/locations");
   const [comments, setComments] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [specificLocation, setSpecificLocation] = useState();
@@ -62,8 +64,9 @@ export default function LocationDetails({ loadLocations }) {
     } else {
       console.error(`Error: ${response.status}`);
     }
-    loadLocations();
-    router.push("/");
+    // locations.mutate();
+    // router.push("/");
+    // // loadLocations();
   }
 
   useEffect(() => {
@@ -90,71 +93,76 @@ export default function LocationDetails({ loadLocations }) {
       <>
         <Header>{name}</Header>
         {/* <CommentFilter /> */}
-        <StyledLocationContainer>
-          <div className="location-container">
-            <Location specificLocation={specificLocation} />
-            <div className="title-header">
-              {" "}
-              <h2>Comments</h2>
-              <div className="modal">
-                <ModalCommentForm loadComments={loadComments} />
-              </div>
+        {/* <StyledLocationContainer> */}
+        <div className="location-container">
+          <Location specificLocation={specificLocation} />
+          <div className="title-header">
+            {" "}
+            <h2>Comments</h2>
+            <div className="modal">
+              <ModalCommentForm loadComments={loadComments} />
             </div>
-
-            <div className="comments" key={comments}>
-              {comments &&
-                comments.map((item) => {
-                  const {
-                    comment,
-                    age,
-                    sexual_orientation,
-                    gender,
-                    bipoc,
-                    _id,
-                    date,
-                    name,
-                  } = item;
-                  return (
-                    <div className="comment-card" key={_id}>
-                      <CommentCard
-                        onClick={() => router.push(`/${id}`)}
-                        name={name}
-                        comment={comment}
-                        age={age}
-                        gender={gender}
-                        bipoc={bipoc}
-                        date={date}
-                        sexual_orientation={sexual_orientation}
-                        onRemoveComment={() => handleRemoveComment(_id)}
-                      />
-                    </div>
-                  );
-                })}
-            </div>
-
-            {session ? (
-              <DeleteLocation>
-                <MdWrongLocation
-                  onClick={() => handleRemoveLocation(id)}
-                ></MdWrongLocation>
-              </DeleteLocation>
-            ) : null}
           </div>
-        </StyledLocationContainer>
+
+          <div className="comments" key={comments}>
+            {comments &&
+              comments.map((item) => {
+                const {
+                  comment,
+                  age,
+                  sexual_orientation,
+                  gender,
+                  bipoc,
+                  _id,
+                  date,
+                  name,
+                } = item;
+                return (
+                  <div className="comment-card" key={_id}>
+                    <CommentCard
+                      onClick={() => router.push(`/${id}`)}
+                      name={name}
+                      comment={comment}
+                      age={age}
+                      gender={gender}
+                      bipoc={bipoc}
+                      date={date}
+                      sexual_orientation={sexual_orientation}
+                      onRemoveComment={() => handleRemoveComment(_id)}
+                    />
+                  </div>
+                );
+              })}
+          </div>
+
+          {session ? (
+            // <DeleteLocation>
+
+            <MdWrongLocation
+              onClick={() => {
+                console.log("DELETE LOCATION CLICKED");
+                handleRemoveLocation(id);
+              }}
+            ></MdWrongLocation>
+          ) : // </DeleteLocation>
+          null}
+        </div>
+        {/* </StyledLocationContainer> */}
       </>
     );
   }
 }
 
-const DeleteLocation = styled(MdWrongLocation)`
-  display: flex;
-  align-items: flex-end;
-  align-self: flex-end;
-  width: 20px;
-  height: 20px;
-  color: red;
-  position: relative;
-`;
+// const DeleteLocation = styled(MdWrongLocation)`
+//   display: flex;
+//   align-items: flex-end;
+//   align-self: flex-end;
+//   width: 20px;
+//   height: 20px;
+//   color: red;
+//   position: relative;
+//   z-index: 2;
+// `;
 
 export const getServerSideProps = async (context) => {
   const session = await getSession(context);

@@ -4,7 +4,7 @@ const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
         
-  color: #BFBDBD;
+  /* color: #BFBDBD; */
   font-family: sans-serif;
   font-weight: lighter;
   text-decoration: none;
