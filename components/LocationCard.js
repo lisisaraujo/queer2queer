@@ -15,10 +15,8 @@ export default function LocationCard({ specificLocation }) {
   return (
     <>
       <StyledLocationHeader>
-        {" "}
         <section className="location-details">
           <div className="location-icon">
-            {" "}
             {specificLocation.type === "Bar" && barIcon}
             {specificLocation.type === "Club" && clubIcon}
             {specificLocation.type === "Cruising" && cruisingIcon}
@@ -26,15 +24,20 @@ export default function LocationCard({ specificLocation }) {
             {specificLocation.type === "Other" && otherIcon}
           </div>
           <div className="location-description">
-            {" "}
             <h3>{specificLocation.name}</h3>
             <h4>{specificLocation.type}</h4>
           </div>
         </section>
         <div className="location-address">
           <label>Address: </label>
-          <p>Adalbertstr. 1, 10090 Berlin</p>
-          {/* <p>Adalbertstr. 1, 10090 Berlin</p> */}
+          {specificLocation.address ? (
+            <p>
+              {specificLocation.address}, {specificLocation.city}{" "}
+              {specificLocation.postcode}
+            </p>
+          ) : (
+            <p>Adalbertstr. 1, 10090 Berlin</p>
+          )}
         </div>
       </StyledLocationHeader>
     </>
@@ -42,7 +45,6 @@ export default function LocationCard({ specificLocation }) {
 }
 
 const StyledLocationHeader = styled.div`
-  display: flex;
   flex-direction: column;
   /* border-style: solid; */
   border-radius: 10px;
@@ -54,10 +56,9 @@ const StyledLocationHeader = styled.div`
   padding: 20px;
   justify-content: center;
   /* align-items: center; */
-  height: 100%;
-  width: 100%;
+  /* height: 100%;
+  width: 100%; */
   margin-bottom: 20px;
-  border-radius: 10px;
   box-shadow: 0px 0px 5px 3px rgba(54, 54, 54, 0.9);
 
   .location-details {
@@ -65,12 +66,14 @@ const StyledLocationHeader = styled.div`
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    color: #bfbdbd;
   }
 
   .location-address {
     display: flex;
     flex-direction: column;
     margin-left: 45px;
+    color: #bfbdbd;
   }
 
   .location-icon {

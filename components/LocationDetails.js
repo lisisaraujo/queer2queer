@@ -82,7 +82,7 @@ export default function LocationDetails({ loadLocations }) {
   }, [id]);
 
   if (specificLocation) {
-    const { name, lngLat, type } = specificLocation;
+    const { name, lngLat, type, address, city, postcode } = specificLocation;
 
     console.log("COMMENTS CL", comments);
 
@@ -174,6 +174,8 @@ export const getServerSideProps = async (context) => {
 const StyledLocationContainer = styled.div`
   width: 100vw;
   height: 100vh;
+  display: flex;
+  justify-content: center;
 
   .title-header {
     display: flex;
@@ -181,7 +183,9 @@ const StyledLocationContainer = styled.div`
     justify-content: space-between;
     justify-content: space-around;
     align-items: center;
-    margin-top: 40px;
+    margin: 40px 0px;
+    color: #bfbdbd;
+    border-bottom: solid 0.5px rgba(114, 59, 216, 0.9);
   }
   .comment-card {
     margin-right: 10%;

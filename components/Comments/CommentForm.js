@@ -198,16 +198,23 @@ const InputWrapper = styled.div`
     align-content: space-around;
   }
   .submit-button {
-    width: 80px;
-    height: 40px;
+    width: 120px;
+    height: 50px;
     align-self: center;
-    background-color: rgba(77, 150, 239, 0.8);
+    background-color: blue;
     box-shadow: 0px 0px 5px 3px rgba(90, 90, 90, 0.75);
-    color: whitesmoke;
     border-radius: 10px;
     margin-bottom: 10%;
     border-style: none;
-    margin-top: 30px;
+    margin-top: 10px;
+    color: whitesmoke;
+    font-size: 1.2em;
+    &:hover {
+      box-shadow: 0px 0px 18px 2px rgba(125, 125, 125, 0.75);
+      /* width: 125px;
+      height: 55px;
+      background-color: red; */
+    }
   }
 
   textarea {

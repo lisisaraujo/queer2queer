@@ -2,7 +2,7 @@ import ReturnButton from "./Buttons/ReturnButton";
 import styled from "styled-components";
 import CategoryFilter from "./CategoryFilter";
 
-export default function Header({ children }) {
+export default function Header({ children, handleCategoryChange }) {
   return (
     <>
       <HeaderWrapper>
@@ -15,7 +15,6 @@ export default function Header({ children }) {
           {" "}
           <h3>{children}</h3>
         </div>
-
         {/* <CategoryFilter onChangeCategory={handleCategoryChange} /> */}
       </HeaderWrapper>
     </>
@@ -35,13 +34,13 @@ const HeaderWrapper = styled.nav`
   background-color: inherit;
   box-shadow: 0px 0px 5px 3px rgba(95, 94, 94, 0.4);
   opacity: 0.9;
-  margin-bottom: 200px;
+  /* margin-bottom: 200px; */
   z-index: 1;
   font-size: 1.2em;
 
   .title {
-    margin: auto;
-    margin-right: 35%;
+    /* margin: auto;
+    margin-right: 35%; */
   }
 
   a {

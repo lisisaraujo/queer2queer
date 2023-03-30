@@ -3,8 +3,8 @@ import useSWR from "swr";
 import Select from "react-select";
 import { useRouter } from "next/router";
 import { useState } from "react";
-
-// import { AddressAutofill } from "@mapbox/search-js-react";
+import { AddressAutofill } from "@mapbox/search-js-react";
+import { accessToken } from "../src/mapbox";
 
 import { selectFilterColorStyles, typeCategories } from "../utils";
 
@@ -58,26 +58,26 @@ export default function AddPlaceForm({
             <label htmlFor="name">Name of location:</label>
             <input id="name" name="name"></input>
             <label htmlFor="address">Address:</label>
-            {/* <AddressAutofill accessToken={accessToken}> */}
-            <input
-              name="address"
-              placeholder="Address"
-              type="text"
-              autoComplete="address-line1"
-            />
-            <input
-              name="city"
-              placeholder="City"
-              type="text"
-              autoComplete="address-level2"
-            />
-            <input
-              name="postcode"
-              placeholder="Postcode"
-              type="text"
-              autoComplete="postal-code"
-            />
-            {/* </AddressAutofill> */}
+            <AddressAutofill accessToken={accessToken}>
+              <input
+                name="address"
+                placeholder="Address"
+                type="text"
+                autoComplete="address-line1"
+              />
+              <input
+                name="city"
+                placeholder="City"
+                type="text"
+                autoComplete="address-level2"
+              />
+              <input
+                name="postcode"
+                placeholder="Postcode"
+                type="text"
+                autoComplete="postal-code"
+              />
+            </AddressAutofill>
             <label htmlFor="type">Type:</label>
             <Select
               defaultValue={selectedOption}

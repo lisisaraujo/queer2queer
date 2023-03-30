@@ -7,7 +7,9 @@ const locationSchema = new Schema({
   lngLat: { type: Array, required: true },
   type: { type: String, required: true },
   color: { type: String },
-  // address: { type: String },
+  address: { type: String },
+  city: { type: String },
+  postcode: { type: String },
   comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
 });
 

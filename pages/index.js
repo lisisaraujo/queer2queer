@@ -38,9 +38,9 @@ export default function Home({ locations, selectedLocation, loadLocations }) {
   return (
     <>
       <section className="map">
-        {locations && <ModalLocationDetail />}
+        {/* {locations && <ModalLocationDetail />}
+        <MyMap locations={locations} loadLocations={loadLocations} /> */}
         <MyMap locations={locations} loadLocations={loadLocations} />
-        {/* <MyMap locations={locations} /> */}
       </section>
     </>
   );

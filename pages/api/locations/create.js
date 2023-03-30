@@ -17,6 +17,7 @@ export default async function handler(req, response) {
         const apiResponseData = res.data.features[0];
         console.log("apiResponseData", apiResponseData);
         const coordinates = apiResponseData.center.reverse();
+        const address = apiResponseData.place_name;
         const locationData = req.body;
         const newLocation = new Location(locationData);
         newLocation.lngLat.push(...coordinates);

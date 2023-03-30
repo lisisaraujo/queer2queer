@@ -19,6 +19,12 @@ export default function CommentCard({
     <>
       <CardFrame>
         <div className="date">{date}</div>
+
+        <CommentStyle>
+          <div className="comment-card" key={_id}>
+            <p className="comment">{comment}</p>
+          </div>
+        </CommentStyle>
         <div className="demographic-data">
           {name && <p>commented by: {name}</p>}
           {age && <button className="demographic-data-tag">#{age}</button>}
@@ -36,13 +42,6 @@ export default function CommentCard({
             </button>
           )}
         </div>
-        <CommentStyle>
-          <div className="comment-card" key={_id}>
-            <p className="date">{date}</p>
-            <p className="comment">{comment}</p>
-          </div>
-        </CommentStyle>
-
         {session ? <DeleteIcon onClick={() => onRemoveComment(_id)} /> : null}
       </CardFrame>
     </>
@@ -78,9 +77,11 @@ const CardFrame = styled.div`
   margin-bottom: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 5px 3px rgba(54, 54, 54, 0.75);
+  color: #bfbdbd;
 
   .demographic-data-tag {
-    background-color: rgba(114, 59, 216, 0.2);
+    background-color: rgba(114, 59, 216, 0.1);
+    color: #bfbdbd;
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0px 0px 5px 3px rgba(114, 59, 216, 0.3);
@@ -93,6 +94,7 @@ const CardFrame = styled.div`
   .date {
     font-size: 0.7rem;
     text-align: right;
+    color: #bfbdbd;
   }
 
   /* .demographic-data-tag {
