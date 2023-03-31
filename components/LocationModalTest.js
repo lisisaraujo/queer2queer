@@ -15,7 +15,7 @@ export default function LocationModalTest({ loadLocations }) {
   const [specificLocation, setSpecificLocation] = useState();
 
   const { data: session } = useSession();
-  console.log(session);
+  // console.log(session);
 
   const router = useRouter();
   const { id } = router.query;
@@ -94,7 +94,7 @@ export default function LocationModalTest({ loadLocations }) {
   if (specificLocation) {
     const { name, lngLat, type } = specificLocation;
 
-    console.log("COMMENTS CL", comments);
+    // console.log("COMMENTS CL", comments);
 
     // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
     Modal.setAppElement("div");

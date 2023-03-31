@@ -18,7 +18,7 @@ export default function LocationDetails({ loadLocations }) {
   const iconStyles = { color: "red", fontSize: "2em" };
 
   const { data: session } = useSession();
-  console.log(session);
+  // console.log(session);
 
   const router = useRouter();
   const { id } = router.query;
@@ -41,19 +41,16 @@ export default function LocationDetails({ loadLocations }) {
     setSelectedGenderOption(event.target.value);
   };
 
-  console.log(
-    "selected option",
-    selectedAgeOption,
-    selectedGenderOption,
-    selectedBipocOption,
-    selectedsexualOrientationOption
-  );
-  console.log("filtered comments", filteredComments);
+  // console.log(
+  //   "selected option",
+  //   selectedAgeOption,
+  //   selectedGenderOption,
+  //   selectedBipocOption,
+  //   selectedsexualOrientationOption
+  // );
+  // console.log("filtered comments", filteredComments);
 
   const getFilteredList = () => {
-    // if (!selectedAgeOption && !selectedGenderOption) {
-    //   return filteredComments;
-    // }
     let filtered = [...filteredComments];
 
     if (selectedAgeOption) {
@@ -73,7 +70,7 @@ export default function LocationDetails({ loadLocations }) {
       );
     }
     if (selectedBipocOption) {
-      console.log(selectedBipocOption);
+      // console.log(selectedBipocOption);
       filtered = filtered.filter(
         (comment) => comment.bipoc === selectedBipocOption.value
       );
@@ -84,20 +81,10 @@ export default function LocationDetails({ loadLocations }) {
       selectedsexualOrientationOption === "" ||
       selectedBipocOption === ""
     ) {
-      setFilteredComments(comments);
+      return filtered;
     }
     return filtered;
   };
-  // if () filteredComments.filter((comment) => {
-  //     console.log(comment.age, selectedAgeOption.value);
-  //     return comment.age === selectedAgeOption.value && comment.gender === selectedGenderOption.value
-  //   });
-
-  // const filteredList = useMemo(getFilteredList, [
-  //   selectedAgeOption,
-  //   selectedGenderOption,
-  //   filteredComments,
-  // ]);
 
   const filteredList = getFilteredList();
   //////////////////////
@@ -164,7 +151,7 @@ export default function LocationDetails({ loadLocations }) {
   if (specificLocation) {
     const { name, lngLat, type, address, city, postcode } = specificLocation;
 
-    console.log("COMMENTS CL", comments);
+    // console.log("COMMENTS CL", comments);
 
     // console.log("SPECIFIC: ", specificLocation);
 
@@ -182,8 +169,8 @@ export default function LocationDetails({ loadLocations }) {
                 <ModalCommentForm loadComments={loadComments} />
               </div>
             </div>
+            <h3>Filter Comments by:</h3>
             <div className="comment-filter">
-              {" "}
               <CommentFilter
                 handleCategoryChange={handleCategoryChange}
                 setSelectedAgeOption={setSelectedAgeOption}
@@ -232,7 +219,7 @@ export default function LocationDetails({ loadLocations }) {
                 <MdWrongLocation
                   style={iconStyles}
                   onClick={() => {
-                    console.log("DELETE LOCATION CLICKED");
+                    // console.log("DELETE LOCATION CLICKED");
                     handleRemoveLocation(id);
                   }}
                 />
@@ -271,7 +258,9 @@ const StyledLocationContainer = styled.div`
   justify-content: center;
   color: #bfbdbd;
   /* border-bottom: solid 0.5px whitesmoke; */
-
+  h3 {
+    text-align: center;
+  }
   .title-header {
     display: flex;
     flex-direction: row;

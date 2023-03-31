@@ -21,7 +21,7 @@ export default function CommentForm({ locationID, closeModal, loadComments }) {
     const newComment = Object.fromEntries(formData);
     newComment.date = new Date().toLocaleString();
 
-    console.log("newComment", newComment);
+    // console.log("newComment", newComment);
 
     const response = await fetch("/api/comments/create", {
       method: "POST",
@@ -64,10 +64,15 @@ export default function CommentForm({ locationID, closeModal, loadComments }) {
               />
             </label>
           </div>
-          <label htmlFor="comment-title">Tell us about you (optional)</label>
+          <label htmlFor="comment-title">Tell us about you (OPTIONAL)</label>
           <div className="demographic-data">
             <label htmlFor="name">Name:</label>
-            <input key="name" id="name" name="name"></input>
+            <input
+              key="name"
+              id="name"
+              name="name"
+              placeholder="optional"
+            ></input>
             <label htmlFor="age">Age:</label>
             <Select
               defaultValue={selectedOption}

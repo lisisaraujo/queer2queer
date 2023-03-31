@@ -21,7 +21,7 @@ export default function AddPlaceForm({
     event.preventDefault();
     const formData = new FormData(event.target);
     const newLocation = Object.fromEntries(formData);
-    console.log("newLocation", newLocation);
+    // console.log("newLocation", newLocation);
 
     const response = await fetch("/api/locations/create", {
       method: "POST",
@@ -30,10 +30,10 @@ export default function AddPlaceForm({
         "Content-Type": "application/json",
       },
     });
-    console.log("response, ", response);
+    // console.log("response, ", response);
     if (response.ok) {
       await response.json();
-      console.log("RESPONSE", response);
+      // console.log("RESPONSE", response);
     } else {
       console.error(`Error: ${response.status}`);
     }

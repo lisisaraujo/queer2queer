@@ -14,7 +14,6 @@ import {
 import { useRouter } from "next/router";
 
 export default function CommentFilter({
-  handleCategoryChange,
   setSelectedAgeOption,
   selectedAgeOption,
   setSelectedGenderOption,
@@ -30,32 +29,6 @@ export default function CommentFilter({
   return (
     <>
       <StyledFilter>
-        {/* <Select
-          defaultValue={selectedOption}
-          onChange={setSelectedOption}
-          options={typeCategories}
-          name="type"
-          styles={selectFilterColorStyles}
-        /> */}
-        {/* 
-        <select
-          className="home-filter"
-          name="category-list"
-          id="category-list"
-          onChange={handleCategoryChange}
-          selected
-        >
-          <option defaultValue="Select Filter" disabled>
-            Filter
-          </option>
-          <option value="">Age</option>
-          <option value="18-25">18-25</option>
-          <option value="26-35">26-35</option>
-          <option value="36-45">36-45</option>
-          <option value="46-55">46-55</option>
-          <option value="55+">55+</option>
-        </select> */}
-
         <div className="select-box">
           <label htmlFor="age">Age </label>{" "}
           <Select
@@ -67,6 +40,16 @@ export default function CommentFilter({
           />
         </div>
         <div className="select-box">
+          <label htmlFor="sexual-orientation">Sexual Orientation </label>{" "}
+          <Select
+            defaultValue={selectedsexualOrientationOption}
+            onChange={setSelectedsexualOrientationOption}
+            options={sexualOrientationCategories}
+            name="sexual_orientation"
+            styles={colorStyles}
+          />
+        </div>
+        <div className="select-box">
           {" "}
           <label htmlFor="gender">Gender </label>
           <Select
@@ -74,16 +57,6 @@ export default function CommentFilter({
             onChange={setSelectedGenderOption}
             options={genderCategories}
             name="gender"
-            styles={colorStyles}
-          />
-        </div>
-        <div className="select-box">
-          <label htmlFor="sexual-orientation">Sexual Orientation </label>{" "}
-          <Select
-            defaultValue={selectedsexualOrientationOption}
-            onChange={setSelectedsexualOrientationOption}
-            options={sexualOrientationCategories}
-            name="sexual_orientation"
             styles={colorStyles}
           />
         </div>

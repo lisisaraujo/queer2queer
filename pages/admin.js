@@ -5,7 +5,7 @@ import Header from "../components/Header";
 
 export default function Account() {
   const { data: session, status } = useSession();
-  console.log(session);
+  // console.log(session);
 
   if (status === "authenticated") {
     return (

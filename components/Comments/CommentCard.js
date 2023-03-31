@@ -14,7 +14,7 @@ export default function CommentCard({
   date,
 }) {
   const { data: session } = useSession();
-  console.log("session", session);
+  // console.log("session", session);
   return (
     <>
       <CardFrame>

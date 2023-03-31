@@ -6,13 +6,13 @@ import Header from "../components/Header";
 
 export default function Login() {
   const { data: session } = useSession();
-  console.log(session);
+  // console.log(session);
   const router = useRouter();
 
   if (session) {
     return (
       <>
-      <title>Login</title>
+        <title>Login</title>
         <Header>Login</Header>
         <StyledAdminPage>
           <p>Welcome, {session.user.name}</p>

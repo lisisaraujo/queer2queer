@@ -38,7 +38,7 @@ export default function MyMap({ locations, loadLocations }) {
 
     setSelectedLocation(location);
   }
-  console.log("set selected location ", selectedLocation);
+  // console.log("set selected location ", selectedLocation);
 
   useEffect(() => {
     setFilteredLocations(locations);
@@ -48,7 +48,7 @@ export default function MyMap({ locations, loadLocations }) {
     setSelectedCategory(event.target.value);
   };
 
-  console.log(selectedCategory);
+  // console.log(selectedCategory);
 
   const getFilteredList = () => {
     if (!selectedCategory) {
