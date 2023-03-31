@@ -271,7 +271,7 @@ const StyledLocationContainer = styled.div`
   display: flex;
   justify-content: center;
   color: #bfbdbd;
-  border-bottom: solid 0.5px whitesmoke;
+  /* border-bottom: solid 0.5px whitesmoke; */
 
   .title-header {
     display: flex;

@@ -52,11 +52,8 @@ const StyledAdminPage = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* border-style: solid;
-  border-color: blue; */
   color: whitesmoke;
   margin: 10% 40%;
-  /* padding: 100px; */
   font-size: 2em;
   button {
     width: 80px;
