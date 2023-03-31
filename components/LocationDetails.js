@@ -25,7 +25,6 @@ export default function LocationDetails({ loadLocations }) {
   //////////////////////
 
   const [filteredComments, setFilteredComments] = useState(comments);
-  const [selectedCategory, setSelectedCategory] = useState("");
 
   const [selectedAgeOption, setSelectedAgeOption] = useState(null);
   const [selectedGenderOption, setSelectedGenderOption] = useState(null);
@@ -80,12 +79,12 @@ export default function LocationDetails({ loadLocations }) {
       );
     }
     if (
-      !selectedAgeOption ||
-      !selectedGenderOption ||
-      !selectedsexualOrientationOption ||
-      !selectedBipocOption
+      selectedAgeOption === "" ||
+      selectedGenderOption === "" ||
+      selectedsexualOrientationOption === "" ||
+      selectedBipocOption === ""
     ) {
-      return filtered;
+      setFilteredComments(comments);
     }
     return filtered;
   };
