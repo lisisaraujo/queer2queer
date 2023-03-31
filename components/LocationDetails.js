@@ -228,7 +228,7 @@ export default function LocationDetails({ loadLocations }) {
               })}
             </div>
             {session ? (
-              <div>
+              <div className="delete-location">
                 <h4>Delete this location</h4>
                 <MdWrongLocation
                   style={iconStyles}
@@ -270,6 +270,8 @@ const StyledLocationContainer = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
+  color: #bfbdbd;
+  border-bottom: solid 0.5px whitesmoke;
 
   .title-header {
     display: flex;
@@ -279,10 +281,27 @@ const StyledLocationContainer = styled.div`
     align-items: center;
     margin: 40px 0px;
     color: #bfbdbd;
-    border-bottom: solid 0.5px rgba(114, 59, 216, 0.9);
+    border-bottom: solid 0.5px whitesmoke;
+  }
+
+  .comment-filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 10px 0px;
+    font-size: 1em;
   }
   .comment-card {
     margin-right: 10%;
     margin-left: 10%;
+  }
+
+  .delete-location {
+    /* margin: 20px 10px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    justify-content: center;
   }
 `;

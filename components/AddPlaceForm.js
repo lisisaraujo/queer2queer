@@ -103,6 +103,7 @@ const EntryForm = styled.form`
   text-align: start;
   width: 100%;
   height: 100%;
+  color: whitesmoke;
 `;
 
 const InputWrapper = styled.div`
@@ -114,6 +115,7 @@ const InputWrapper = styled.div`
   height: auto;
   /* width: auto; */
   justify-content: space-evenly;
+  margin: 0px 30px;
 
   .location-input-field {
     display: flex;
@@ -131,13 +133,17 @@ const InputWrapper = styled.div`
     width: 80px;
     height: 40px;
     align-self: center;
-    background-color: rgba(77, 150, 239, 0.8);
+    background-color: rgba(1, 72, 224, 0.7);
     box-shadow: 0px 0px 5px 3px rgba(90, 90, 90, 0.75);
+
     color: whitesmoke;
     border-radius: 10px;
     margin-bottom: 10%;
     border-style: none;
     margin-top: 30px;
+    &:hover {
+      box-shadow: 0px 0px 18px 2px rgba(125, 125, 125, 0.75);
+    }
   }
 
   textarea {

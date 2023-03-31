@@ -157,7 +157,7 @@ const InputWrapper = styled.div`
     width: 120px;
     height: 50px;
     align-self: center;
-    background-color: blue;
+    background-color: rgba(1, 72, 224, 0.7);
     box-shadow: 0px 0px 5px 3px rgba(90, 90, 90, 0.75);
     border-radius: 10px;
     margin-bottom: 10%;

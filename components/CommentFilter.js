@@ -56,40 +56,49 @@ export default function CommentFilter({
           <option value="55+">55+</option>
         </select> */}
 
-        <label htmlFor="age">Age: </label>
-        <Select
-          defaultValue={selectedAgeOption}
-          onChange={setSelectedAgeOption}
-          options={ageCategories}
-          name="age"
-          styles={colorStyles}
-        />
-        <label htmlFor="sexual-orientation">Sexual Orientation: </label>
-        <Select
-          defaultValue={selectedsexualOrientationOption}
-          onChange={setSelectedsexualOrientationOption}
-          options={sexualOrientationCategories}
-          name="sexual_orientation"
-          styles={colorStyles}
-        />
-        <label htmlFor="gender">Gender: </label>
+        <div className="select-box">
+          <label htmlFor="age">Age </label>{" "}
+          <Select
+            defaultValue={selectedAgeOption}
+            onChange={setSelectedAgeOption}
+            options={ageCategories}
+            name="age"
+            styles={colorStyles}
+          />
+        </div>
+        <div className="select-box">
+          {" "}
+          <label htmlFor="gender">Gender </label>
+          <Select
+            defaultValue={selectedGenderOption}
+            onChange={setSelectedGenderOption}
+            options={genderCategories}
+            name="gender"
+            styles={colorStyles}
+          />
+        </div>
+        <div className="select-box">
+          <label htmlFor="sexual-orientation">Sexual Orientation </label>{" "}
+          <Select
+            defaultValue={selectedsexualOrientationOption}
+            onChange={setSelectedsexualOrientationOption}
+            options={sexualOrientationCategories}
+            name="sexual_orientation"
+            styles={colorStyles}
+          />
+        </div>
 
-        <Select
-          defaultValue={selectedGenderOption}
-          onChange={setSelectedGenderOption}
-          options={genderCategories}
-          name="gender"
-          styles={colorStyles}
-        />
-
-        <label htmlFor="bipoc">BiPoc: </label>
-        <Select
-          defaultValue={selectedBipocOption}
-          onChange={setSelectedBipocOption}
-          options={bipocCategory}
-          name="bipoc"
-          styles={colorStyles}
-        />
+        <div className="select-box">
+          {" "}
+          <label htmlFor="bipoc">BiPoc </label>
+          <Select
+            defaultValue={selectedBipocOption}
+            onChange={setSelectedBipocOption}
+            options={bipocCategory}
+            name="bipoc"
+            styles={colorStyles}
+          />
+        </div>
       </StyledFilter>
     </>
   );
@@ -102,6 +111,9 @@ export const StyledFilter = styled.div`
   width: fit-content;
   color: white;
   justify-content: space-evenly;
+  .select-box {
+    margin: 0px 15px;
+  }
 
   #category-list {
     color: white;
@@ -115,80 +127,3 @@ export const StyledFilter = styled.div`
     background-color: rgba(77, 150, 239, 1);
   }
 `;
-
-// import styled from "styled-components";
-// import { FiFilter } from "react-icons/fi";
-// import {
-//   ageCategories,
-//   sexualOrientationCategories,
-//   genderCategories,
-//   colorStyles,
-// } from "./Comments/CommentForm";
-// import { useRouter } from "next/router";
-// import { useState } from "react";
-// import Select from "react-select";
-
-// export default function CommentFilter({ onChangeCategory, comments }) {
-//   const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
-//   const router = useRouter();
-//   //   const comments = useSWR("/api/comments");
-//   const [selectedOption, setSelectedOption] = useState(null);
-//   const handleCategoryChange = (event) => {
-//     setSelectedCategory(event.target.value);
-//   };
-//   return (
-//     <>
-//       <StyledFilter>
-//         <label htmlFor="age">Age:</label>
-//         <Select
-//           defaultValue={selectedOption}
-//           onChange={handleCategoryChange}
-//           options={ageCategories}
-//           name="age"
-//           styles={colorStyles}
-//         />
-//         <label htmlFor="sexual-orientation">Sexual Orientation:</label>
-//         <Select
-//           defaultValue={selectedOption}
-//           onChange={handleCategoryChange}
-//           options={sexualOrientationCategories}
-//           name="sexual_orientation"
-//           styles={colorStyles}
-//         />
-//         <label htmlFor="gender">Gender:</label>
-
-//         <Select
-//           defaultValue={selectedOption}
-//           onChange={handleCategoryChange}
-//           options={genderCategories}
-//           name="gender"
-//           styles={colorStyles}
-//         />
-//         <checkbox className="checkbox">
-//           {" "}
-//           <label htmlFor="bipoc">BiPoc:</label>
-//           <input type="checkbox" name="bipoc"></input>
-//         </checkbox>
-//       </StyledFilter>
-//     </>
-//   );
-// }
-
-// export const StyledFilter = styled.div`
-//   display: flex;
-//   flex-wrap: wrap;
-//   align-content: center;
-//   width: fit-content;
-
-//   #category-list {
-//     color: white;
-//     background-color: rgba(77, 150, 239, 1);
-//     border-radius: 10px;
-//     width: 60px;
-//     height: 30px;
-//     border-color: white;
-//   }
-//   .type-list {
-//     background-color: rgba(77, 150, 239, 1);
-//   }
-// `;
