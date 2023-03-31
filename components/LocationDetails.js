@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useMemo } from "react";
 import CommentCard from "./Comments/CommentCard";
 import { MdWrongLocation } from "react-icons/md";
 import Header from "./Header";
@@ -8,6 +8,7 @@ import { useSession, getSession } from "next-auth/react";
 import Location from "./LocationCard";
 import ModalCommentForm from "./ModalCommentForm";
 import useSWR from "swr";
+import CommentFilter from "./CommentFilter";
 
 export default function LocationDetails({ loadLocations }) {
   const [comments, setComments] = useState([]);
@@ -17,10 +18,76 @@ export default function LocationDetails({ loadLocations }) {
   const iconStyles = { color: "red", fontSize: "2em" };
 
   const { data: session } = useSession();
-  console.log(session);
+  // console.log(session);
 
   const router = useRouter();
   const { id } = router.query;
+  //////////////////////
+
+  const [filteredComments, setFilteredComments] = useState(comments);
+
+  const [selectedAgeOption, setSelectedAgeOption] = useState(null);
+  const [selectedGenderOption, setSelectedGenderOption] = useState(null);
+  const [selectedsexualOrientationOption, setSelectedsexualOrientationOption] =
+    useState(null);
+  const [selectedBipocOption, setSelectedBipocOption] = useState(null);
+
+  useEffect(() => {
+    setFilteredComments(comments);
+  }, [comments]);
+
+  const handleCategoryChange = (event) => {
+    setSelectedAgeOption(event.target.value);
+    setSelectedGenderOption(event.target.value);
+  };
+
+  // console.log(
+  //   "selected option",
+  //   selectedAgeOption,
+  //   selectedGenderOption,
+  //   selectedBipocOption,
+  //   selectedsexualOrientationOption
+  // );
+  // console.log("filtered comments", filteredComments);
+
+  const getFilteredList = () => {
+    let filtered = [...filteredComments];
+
+    if (selectedAgeOption) {
+      filtered = filtered.filter(
+        (comment) => comment.age === selectedAgeOption.value
+      );
+    }
+    if (selectedGenderOption) {
+      filtered = filtered.filter(
+        (comment) => comment.gender === selectedGenderOption.value
+      );
+    }
+    if (selectedsexualOrientationOption) {
+      filtered = filtered.filter(
+        (comment) =>
+          comment.sexual_orientation === selectedsexualOrientationOption.value
+      );
+    }
+    if (selectedBipocOption) {
+      // console.log(selectedBipocOption);
+      filtered = filtered.filter(
+        (comment) => comment.bipoc === selectedBipocOption.value
+      );
+    }
+    if (
+      selectedAgeOption === "" ||
+      selectedGenderOption === "" ||
+      selectedsexualOrientationOption === "" ||
+      selectedBipocOption === ""
+    ) {
+      return filtered;
+    }
+    return filtered;
+  };
+
+  const filteredList = getFilteredList();
+  //////////////////////
 
   function loadComments() {
     const fetchData = async () => {
@@ -84,7 +151,7 @@ export default function LocationDetails({ loadLocations }) {
   if (specificLocation) {
     const { name, lngLat, type, address, city, postcode } = specificLocation;
 
-    console.log("COMMENTS CL", comments);
+    // console.log("COMMENTS CL", comments);
 
     // console.log("SPECIFIC: ", specificLocation);
 
@@ -102,44 +169,57 @@ export default function LocationDetails({ loadLocations }) {
                 <ModalCommentForm loadComments={loadComments} />
               </div>
             </div>
-
+            <h3>Filter Comments by:</h3>
+            <div className="comment-filter">
+              <CommentFilter
+                handleCategoryChange={handleCategoryChange}
+                setSelectedAgeOption={setSelectedAgeOption}
+                setSelectedGenderOption={setSelectedGenderOption}
+                setSelectedsexualOrientationOption={
+                  setSelectedsexualOrientationOption
+                }
+                // sexualOrientationCategories={sexualOrientationCategories}
+                selectedAgeOption={selectedAgeOption}
+                selectedGenderOption={selectedGenderOption}
+                selectedBipocOption={setSelectedBipocOption}
+              />
+            </div>
             <div className="comments" key={comments}>
-              {comments &&
-                comments.map((item) => {
-                  const {
-                    comment,
-                    age,
-                    sexual_orientation,
-                    gender,
-                    bipoc,
-                    _id,
-                    date,
-                    name,
-                  } = item;
-                  return (
-                    <div className="comment-card" key={_id}>
-                      <CommentCard
-                        onClick={() => router.push(`/${id}`)}
-                        name={name}
-                        comment={comment}
-                        age={age}
-                        gender={gender}
-                        bipoc={bipoc}
-                        date={date}
-                        sexual_orientation={sexual_orientation}
-                        onRemoveComment={() => handleRemoveComment(_id)}
-                      />
-                    </div>
-                  );
-                })}
+              {filteredList.map((item) => {
+                const {
+                  comment,
+                  age,
+                  sexual_orientation,
+                  gender,
+                  bipoc,
+                  _id,
+                  date,
+                  name,
+                } = item;
+                return (
+                  <div className="comment-card" key={_id}>
+                    <CommentCard
+                      onClick={() => router.push(`/${id}`)}
+                      name={name}
+                      comment={comment}
+                      age={age}
+                      gender={gender}
+                      bipoc={bipoc}
+                      date={date}
+                      sexual_orientation={sexual_orientation}
+                      onRemoveComment={() => handleRemoveComment(_id)}
+                    />
+                  </div>
+                );
+              })}
             </div>
             {session ? (
-              <div>
+              <div className="delete-location">
                 <h4>Delete this location</h4>
                 <MdWrongLocation
                   style={iconStyles}
                   onClick={() => {
-                    console.log("DELETE LOCATION CLICKED");
+                    // console.log("DELETE LOCATION CLICKED");
                     handleRemoveLocation(id);
                   }}
                 />
@@ -176,7 +256,11 @@ const StyledLocationContainer = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
-
+  color: #bfbdbd;
+  /* border-bottom: solid 0.5px whitesmoke; */
+  h3 {
+    text-align: center;
+  }
   .title-header {
     display: flex;
     flex-direction: row;
@@ -185,10 +269,27 @@ const StyledLocationContainer = styled.div`
     align-items: center;
     margin: 40px 0px;
     color: #bfbdbd;
-    border-bottom: solid 0.5px rgba(114, 59, 216, 0.9);
+    border-bottom: solid 0.5px whitesmoke;
+  }
+
+  .comment-filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 10px 0px;
+    font-size: 1em;
   }
   .comment-card {
     margin-right: 10%;
     margin-left: 10%;
+  }
+
+  .delete-location {
+    /* margin: 20px 10px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    justify-content: center;
   }
 `;

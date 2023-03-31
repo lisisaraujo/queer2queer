@@ -16,8 +16,8 @@ const customStyles = {
     padding: "0px",
     background: "rgba(77, 150, 239, 0.8)",
     borderRadius: "10px",
-    width: "80%",
-    height: "80%",
+    width: "70%",
+    height: "70%",
     boxShadow: "0 1px 2px rgba(0,0,0,.1)",
   },
 };
@@ -26,7 +26,7 @@ const closeButtonStyle = {
   backgroundColor: "transparent",
   marginTop: "5%",
   marginLeft: "85%",
-  fontSize: "1.5em",
+  fontSize: "1.7em",
   border: "none",
 };
 

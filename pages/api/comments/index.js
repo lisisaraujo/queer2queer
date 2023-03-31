@@ -7,7 +7,7 @@ export default async function handler(request, response) {
   if (request.method === "GET") {
     try {
       const comments = await Comment.find();
-      console.log("comments: ", comments);
+      // console.log("comments: ", comments);
 
       return response.status(200).json(comments);
     } catch (error) {

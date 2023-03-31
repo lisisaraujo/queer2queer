@@ -8,7 +8,7 @@ export default async function handler(request, response) {
   if (request.method === "GET") {
     try {
       const comments = await Comment.find({ location: id });
-      console.log("COMMENTS: ", id, comments);
+      // console.log("COMMENTS: ", id, comments);
       return response.status(200).json(comments);
     } catch (error) {
       return response.status(404).json("Error", error);
@@ -22,7 +22,7 @@ export default async function handler(request, response) {
 
   if (request.method === "PUT") {
     const comment = await Comment.findByIdAndUpdate(id, request.body);
-    console.log(comment);
+    // console.log(comment);
     return response.status(200).json(comment);
   }
 }

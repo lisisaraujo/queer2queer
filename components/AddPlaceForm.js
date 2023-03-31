@@ -21,7 +21,7 @@ export default function AddPlaceForm({
     event.preventDefault();
     const formData = new FormData(event.target);
     const newLocation = Object.fromEntries(formData);
-    console.log("newLocation", newLocation);
+    // console.log("newLocation", newLocation);
 
     const response = await fetch("/api/locations/create", {
       method: "POST",
@@ -30,10 +30,10 @@ export default function AddPlaceForm({
         "Content-Type": "application/json",
       },
     });
-    console.log("response, ", response);
+    // console.log("response, ", response);
     if (response.ok) {
       await response.json();
-      console.log("RESPONSE", response);
+      // console.log("RESPONSE", response);
     } else {
       console.error(`Error: ${response.status}`);
     }
@@ -54,30 +54,31 @@ export default function AddPlaceForm({
           ></input>
           <h2>Suggest Location</h2>
           <div className="location-input-field">
-            {" "}
             <label htmlFor="name">Name of location:</label>
             <input id="name" name="name"></input>
             <label htmlFor="address">Address:</label>
-            <AddressAutofill accessToken={accessToken}>
-              <input
-                name="address"
-                placeholder="Address"
-                type="text"
-                autoComplete="address-line1"
-              />
-              <input
-                name="city"
-                placeholder="City"
-                type="text"
-                autoComplete="address-level2"
-              />
-              <input
-                name="postcode"
-                placeholder="Postcode"
-                type="text"
-                autoComplete="postal-code"
-              />
-            </AddressAutofill>
+            <div className="address-input">
+              <AddressAutofill accessToken={accessToken}>
+                <input
+                  name="address"
+                  placeholder="Address"
+                  type="text"
+                  autoComplete="address-line1"
+                />
+                <input
+                  name="city"
+                  placeholder="City"
+                  type="text"
+                  autoComplete="address-level2"
+                />
+                <input
+                  name="postcode"
+                  placeholder="Postcode"
+                  type="text"
+                  autoComplete="postal-code"
+                />
+              </AddressAutofill>
+            </div>
             <label htmlFor="type">Type:</label>
             <Select
               defaultValue={selectedOption}
@@ -102,6 +103,7 @@ const EntryForm = styled.form`
   text-align: start;
   width: 100%;
   height: 100%;
+  color: whitesmoke;
 `;
 
 const InputWrapper = styled.div`
@@ -113,6 +115,7 @@ const InputWrapper = styled.div`
   height: auto;
   /* width: auto; */
   justify-content: space-evenly;
+  margin: 0px 30px;
 
   .location-input-field {
     display: flex;
@@ -121,18 +124,26 @@ const InputWrapper = styled.div`
     position: relative; */
     gap: 10px;
   }
+  .address-input {
+    display: flex;
+    flex-direction: column;
+  }
 
   .submit-button {
     width: 80px;
     height: 40px;
     align-self: center;
-    background-color: rgba(77, 150, 239, 0.8);
+    background-color: rgba(1, 72, 224, 0.7);
     box-shadow: 0px 0px 5px 3px rgba(90, 90, 90, 0.75);
+
     color: whitesmoke;
     border-radius: 10px;
     margin-bottom: 10%;
     border-style: none;
     margin-top: 30px;
+    &:hover {
+      box-shadow: 0px 0px 18px 2px rgba(125, 125, 125, 0.75);
+    }
   }
 
   textarea {

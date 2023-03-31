@@ -17,7 +17,6 @@ export default function App({ Component, pageProps, session }) {
   const router = useRouter();
   const { id } = router.query;
 
-  //fetch data from database on page refresh
   function loadLocations() {
     const fetchLocations = async () => {
       setLoading(true);
@@ -62,7 +61,6 @@ export default function App({ Component, pageProps, session }) {
     <>
       <SessionProvider session={session}>
         <GlobalStyle />
-        {/* <Layout> */}
         <SWRConfig value={{ fetcher }}>
           <Component
             {...pageProps}
@@ -72,7 +70,6 @@ export default function App({ Component, pageProps, session }) {
             loadComments={loadComments}
           />
         </SWRConfig>
-        {/* </Layout> */}
       </SessionProvider>
     </>
   );
