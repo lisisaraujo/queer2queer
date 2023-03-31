@@ -15,6 +15,7 @@ export default function Home({ locations, selectedLocation, loadLocations }) {
 
   return (
     <>
+      <title>QueerArchive</title>
       <section className="map">
         <MyMap locations={locations} loadLocations={loadLocations} />
       </section>

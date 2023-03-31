@@ -8,6 +8,7 @@ export default function Contact() {
   const name = "About us";
   return (
     <>
+      <title>Ressources</title>
       <Header>Ressources</Header>
 
       <>

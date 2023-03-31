@@ -8,6 +8,7 @@ export default function AboutUs() {
   const name = "About us";
   return (
     <>
+      <title>About Us</title>
       <Header>About Us</Header>
 
       <>

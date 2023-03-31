@@ -10,6 +10,7 @@ export default function Account() {
   if (status === "authenticated") {
     return (
       <>
+        <title>Admin</title>
         <Header>Admin</Header>
         <StyledAdminPage>
           <div className="home">

@@ -12,6 +12,7 @@ export default function Login() {
   if (session) {
     return (
       <>
+      <title>Login</title>
         <Header>Login</Header>
         <StyledAdminPage>
           <p>Welcome, {session.user.name}</p>
