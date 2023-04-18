@@ -5,7 +5,7 @@ import Header from "../components/Header";
 
 export default function Account() {
   const { data: session, status } = useSession();
-  // console.log(session);
+  const id = session?.user?.email;
 
   if (status === "authenticated") {
     return (
@@ -34,20 +34,35 @@ export default function Account() {
   }
 }
 
-export const getServerSideProps = async (context) => {
-  const session = await getSession(context);
+export async function getServerSideProps(context) {
+  const session = await getSession({ req: context.req });
   if (!session) {
     return {
       redirect: {
         destination: "/login",
+        permanent: false,
       },
     };
   }
-
   return {
     props: { session },
   };
-};
+}
+
+// export const getServerSideProps = async (context) => {
+//   const session = await getSession(context);
+//   if (!session) {
+//     return {
+//       redirect: {
+//         destination: "/login",
+//       },
+//     };
+//   }
+
+//   return {
+//     props: { session },
+//   };
+// };
 
 const StyledAdminPage = styled.div`
   display: flex;
