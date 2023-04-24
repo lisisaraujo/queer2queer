@@ -4,21 +4,21 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import { StyledLabel } from "./StyledForm";
 
-async function createUser(name, email, password) {
-  const response = await fetch("api/auth/admin", {
-    method: "POST",
-    body: JSON.stringify({ name, email, password }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+// async function createUser(name, email, password) {
+//   const response = await fetch("api/auth/admin", {
+//     method: "POST",
+//     body: JSON.stringify({ name, email, password }),
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
 
-  const data = await response.json();
-  if (!response.ok) {
-    throw new Error(data.message || "Something went wrong!");
-  }
-  return data;
-}
+//   const data = await response.json();
+//   if (!response.ok) {
+//     throw new Error(data.message || "Something went wrong!");
+//   }
+//   return data;
+// }
 
 export default function AuthForm() {
   const nameInputRef = useRef();
@@ -54,11 +54,11 @@ export default function AuthForm() {
         }, 2000);
       } else {
         try {
-          const result = await createUser(
-            enteredName,
-            enteredEmail,
-            enteredPassword
-          );
+          // const result = await createUser(
+          //   enteredName,
+          //   enteredEmail,
+          //   enteredPassword
+          // );
           console.log(result);
         } catch (error) {
           console.log(error);
@@ -69,7 +69,11 @@ export default function AuthForm() {
 
   return (
     <Wrapper>
-      <StyledHeader>{isLogin ? "Login" : "Sign Up"}</StyledHeader>
+      <StyledHeader>
+        <p>Admin access only!</p>
+        <h2>Login</h2>
+      </StyledHeader>
+      {/* <StyledHeader>{isLogin ? "Login" : "Sign Up"}</StyledHeader> */}
       <EntryForm onSubmit={submitHandler}>
         <StyledLabel htmlFor="name" name="name" id="name">
           Your name
@@ -102,10 +106,11 @@ export default function AuthForm() {
         <ButtonWrapper>
           {!isButtonLoading ? (
             <>
-              <Button>{isLogin ? "Login" : "Create Account"}</Button>
+              <Button>Login</Button>
+              {/* <Button>{isLogin ? "Login" : "Create Account"}</Button>
               <Button type="button" onClick={switchAuthModeHandler}>
                 {isLogin ? "Create new account" : "Login with existing account"}
-              </Button>
+              </Button> */}
             </>
           ) : (
             <ThreeDots height="50" width="50" color="#2874FC" visible={true} />
@@ -117,9 +122,13 @@ export default function AuthForm() {
 }
 
 const Wrapper = styled.div`
-  margin: 10%;
+  /* margin: 10%; */
   border-radius: 20px;
-  border: 1px solid black;
+  border: 1px solid white;
+  /* display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center; */
 `;
 
 const EntryForm = styled.form`
@@ -154,7 +163,7 @@ const Button = styled.button`
 `;
 
 const ButtonWrapper = styled.div`
-  margin-top: 30px;
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
 `;
