@@ -59,7 +59,7 @@ export default function AuthForm() {
           //   enteredEmail,
           //   enteredPassword
           // );
-          window.alert("You don't have admin access");
+          window.alert("Login failed. You don't have admin access.");
           console.log(result);
         } catch (error) {
           console.log(error);
