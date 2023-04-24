@@ -59,6 +59,7 @@ export default function AuthForm() {
           //   enteredEmail,
           //   enteredPassword
           // );
+          window.alert("You don't have admin access");
           console.log(result);
         } catch (error) {
           console.log(error);
@@ -71,7 +72,7 @@ export default function AuthForm() {
     <Wrapper>
       <StyledHeader>
         <p>Admin access only!</p>
-        <h2>Login</h2>
+        Login
       </StyledHeader>
       {/* <StyledHeader>{isLogin ? "Login" : "Sign Up"}</StyledHeader> */}
       <EntryForm onSubmit={submitHandler}>
