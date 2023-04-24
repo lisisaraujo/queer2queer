@@ -3,6 +3,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import Header from "../components/Header";
+import AuthForm from "../components/AuthForm";
 
 export default function Login() {
   const { data: session } = useSession();
@@ -31,7 +32,8 @@ export default function Login() {
         <Header>Login</Header>
         <StyledAdminPage>
           <p>You are not signed in</p>
-          <button onClick={() => signIn()}>Sign in</button>
+          <AuthForm />
+          {/* <button onClick={() => signIn()}>Sign in</button> */}
         </StyledAdminPage>
       </>
     );
