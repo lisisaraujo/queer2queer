@@ -45,12 +45,6 @@ export const genderCategoriesArr = [
   "Other",
 ];
 
-export const bipocCategory = [
-  { value: "", label: "All" },
-  { value: true, label: "Yes" },
-  { value: false, label: "No" },
-];
-
 export const selectFilterColorStyles = {
   control: (styles) => ({ ...styles, backgroundColor: "white" }),
   option: (styles, { data, isDisabled, isFocused, isSelected }) => {
@@ -62,6 +56,12 @@ export const selectFilterColorStyles = {
     };
   },
 };
+
+export const bipocCategory = [
+  { value: "", label: "All" },
+  { value: true, label: "Yes" },
+  { value: false, label: "No" },
+];
 
 export const ageCategories = [
   { value: "", label: "All" },
@@ -88,7 +88,7 @@ export const sexualOrientationCategories = [
 ];
 
 export const genderCategories = [
-  { value: "", label: "Gender" },
+  { value: "", label: "All" },
   { value: "Genderfluid", label: "Genderfluid" },
   { value: "Genderqueer", label: "Genderqueer" },
   { value: "Transgender male", label: "Transgender male" },

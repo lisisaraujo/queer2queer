@@ -39,21 +39,21 @@ export default function LocationDetails({ loadLocations }) {
   const handleCategoryChange = (event) => {
     setSelectedAgeOption(event.target.value);
     setSelectedGenderOption(event.target.value);
+    setSelectedsexualOrientationOption(event.target.value);
+    setSelectedBipocOption(event.target.value);
   };
-
-  // console.log(
-  //   "selected option",
-  //   selectedAgeOption,
-  //   selectedGenderOption,
-  //   selectedBipocOption,
-  //   selectedsexualOrientationOption
-  // );
-  // console.log("filtered comments", filteredComments);
+  const clearFilter = () => {
+    setSelectedAgeOption("");
+    setSelectedGenderOption("");
+    setSelectedsexualOrientationOption("");
+    setSelectedBipocOption("");
+  };
 
   const getFilteredList = () => {
     let filtered = [...filteredComments];
 
     if (selectedAgeOption) {
+      // console.log(selectedAgeOption);
       filtered = filtered.filter(
         (comment) => comment.age === selectedAgeOption.value
       );
@@ -70,23 +70,26 @@ export default function LocationDetails({ loadLocations }) {
       );
     }
     if (selectedBipocOption) {
-      // console.log(selectedBipocOption);
       filtered = filtered.filter(
         (comment) => comment.bipoc === selectedBipocOption.value
       );
     }
-    if (
-      selectedAgeOption === "" ||
-      selectedGenderOption === "" ||
-      selectedsexualOrientationOption === "" ||
-      selectedBipocOption === ""
-    ) {
-      return filtered;
-    }
+    // if (
+    //   selectedAgeOption === "" ||
+    //   selectedGenderOption === "" ||
+    //   selectedsexualOrientationOption === "" ||
+    //   selectedBipocOption === ""
+    // ) {
+    //   setSelectedAgeOption(null);
+    //   setSelectedGenderOption(null);
+    //   setSelectedsexualOrientationOption(null);
+    //   setSelectedBipocOption(null);
+    // }
     return filtered;
   };
 
   const filteredList = getFilteredList();
+
   //////////////////////
 
   function loadComments() {
@@ -178,11 +181,18 @@ export default function LocationDetails({ loadLocations }) {
                 setSelectedsexualOrientationOption={
                   setSelectedsexualOrientationOption
                 }
-                // sexualOrientationCategories={sexualOrientationCategories}
+                setSelectedBipocOption={setSelectedBipocOption}
+                selectedsexualOrientationOption={
+                  selectedsexualOrientationOption
+                }
                 selectedAgeOption={selectedAgeOption}
                 selectedGenderOption={selectedGenderOption}
-                selectedBipocOption={setSelectedBipocOption}
+                selectedBipocOption={selectedBipocOption}
               />
+              <div className="clear-filter">
+                {" "}
+                <button onClick={clearFilter}>Reset Filter</button>
+              </div>
             </div>
             <div className="comments" key={comments}>
               {filteredList.map((item) => {
