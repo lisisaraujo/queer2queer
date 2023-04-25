@@ -22,7 +22,13 @@ export default function CommentFilter({
   selectedsexualOrientationOption,
   selectedBipocOption,
   setSelectedBipocOption,
+  getFilteredList,
+  closeModal,
 }) {
+  function handleApplyFilter() {
+    getFilteredList();
+    closeModal();
+  }
   const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
   const router = useRouter();
 
@@ -72,6 +78,9 @@ export default function CommentFilter({
             styles={colorStyles}
           />
         </div>
+        <button className="apply-filter-btn" onClick={handleApplyFilter}>
+          Apply Filter
+        </button>
       </StyledFilter>
     </>
   );

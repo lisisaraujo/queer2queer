@@ -9,6 +9,7 @@ import Location from "./LocationCard";
 import ModalCommentForm from "./ModalCommentForm";
 import useSWR from "swr";
 import CommentFilter from "./CommentFilter";
+import ModalCommentFilter from "./ModalCommentFilter";
 
 export default function LocationDetails({ loadLocations }) {
   const [comments, setComments] = useState([]);
@@ -80,15 +81,20 @@ export default function LocationDetails({ loadLocations }) {
     //   selectedsexualOrientationOption === "" ||
     //   selectedBipocOption === ""
     // ) {
-    //   setSelectedAgeOption(null);
-    //   setSelectedGenderOption(null);
-    //   setSelectedsexualOrientationOption(null);
-    //   setSelectedBipocOption(null);
+    //   setSelectedAgeOption("");
+    //   setSelectedGenderOption("");
+    //   setSelectedsexualOrientationOption("");
+    //   setSelectedBipocOption("");
     // }
     return filtered;
   };
 
   const filteredList = getFilteredList();
+
+  // function handleApplyFilter() {
+  //   closeModal();
+  //   getFilteredList();
+  // }
 
   //////////////////////
 
@@ -174,6 +180,23 @@ export default function LocationDetails({ loadLocations }) {
             </div>
             <h3>Filter Comments by:</h3>
             <div className="comment-filter">
+              <ModalCommentFilter
+                handleCategoryChange={handleCategoryChange}
+                setSelectedAgeOption={setSelectedAgeOption}
+                setSelectedGenderOption={setSelectedGenderOption}
+                setSelectedsexualOrientationOption={
+                  setSelectedsexualOrientationOption
+                }
+                setSelectedBipocOption={setSelectedBipocOption}
+                selectedsexualOrientationOption={
+                  selectedsexualOrientationOption
+                }
+                selectedAgeOption={selectedAgeOption}
+                selectedGenderOption={selectedGenderOption}
+                selectedBipocOption={selectedBipocOption}
+                getFilteredList={getFilteredList}
+                clearFilter={clearFilter}
+              />
               <CommentFilter
                 handleCategoryChange={handleCategoryChange}
                 setSelectedAgeOption={setSelectedAgeOption}
