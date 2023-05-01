@@ -45,11 +45,6 @@ export default function ModalCommentForm({ loadComments }) {
     setIsOpen(true);
   }
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // subtitle.style.color = "#f00";
-  }
-
   function closeModal() {
     setIsOpen(false);
   }
@@ -62,7 +57,6 @@ export default function ModalCommentForm({ loadComments }) {
 
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Modal"

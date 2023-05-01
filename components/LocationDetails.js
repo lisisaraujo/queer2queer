@@ -37,12 +37,12 @@ export default function LocationDetails({ loadLocations }) {
     setFilteredComments(comments);
   }, [comments]);
 
-  const handleCategoryChange = (event) => {
-    setSelectedAgeOption(event.target.value);
-    setSelectedGenderOption(event.target.value);
-    setSelectedsexualOrientationOption(event.target.value);
-    setSelectedBipocOption(event.target.value);
-  };
+  // const handleCategoryChange = (event) => {
+  //   setSelectedAgeOption(event.target.value);
+  //   setSelectedGenderOption(event.target.value);
+  //   setSelectedsexualOrientationOption(event.target.value);
+  //   setSelectedBipocOption(event.target.value);
+  // };
   const clearFilter = () => {
     setSelectedAgeOption("");
     setSelectedGenderOption("");
@@ -89,12 +89,7 @@ export default function LocationDetails({ loadLocations }) {
     return filtered;
   };
 
-  const filteredList = getFilteredList();
-
-  // function handleApplyFilter() {
-  //   closeModal();
-  //   getFilteredList();
-  // }
+  let filteredList = getFilteredList();
 
   //////////////////////
 
@@ -181,24 +176,27 @@ export default function LocationDetails({ loadLocations }) {
             <h3>Filter Comments by:</h3>
             <div className="comment-filter">
               <ModalCommentFilter
-                handleCategoryChange={handleCategoryChange}
-                setSelectedAgeOption={setSelectedAgeOption}
-                setSelectedGenderOption={setSelectedGenderOption}
-                setSelectedsexualOrientationOption={
-                  setSelectedsexualOrientationOption
-                }
-                setSelectedBipocOption={setSelectedBipocOption}
-                selectedsexualOrientationOption={
-                  selectedsexualOrientationOption
-                }
-                selectedAgeOption={selectedAgeOption}
-                selectedGenderOption={selectedGenderOption}
-                selectedBipocOption={selectedBipocOption}
+                // handleCategoryChange={handleCategoryChange}
+                // setSelectedAgeOption={setSelectedAgeOption}
+                // setSelectedGenderOption={setSelectedGenderOption}
+                // setSelectedsexualOrientationOption={
+                //   setSelectedsexualOrientationOption
+                // }
+                // setSelectedBipocOption={setSelectedBipocOption}
+                // selectedsexualOrientationOption={
+                //   selectedsexualOrientationOption
+                // }
+                // selectedAgeOption={selectedAgeOption}
+                // selectedGenderOption={selectedGenderOption}
+                // selectedBipocOption={selectedBipocOption}
+                setFilteredComments={setFilteredComments}
+                filteredList={filteredList}
                 getFilteredList={getFilteredList}
                 clearFilter={clearFilter}
+                loadComments={loadComments}
               />
               <CommentFilter
-                handleCategoryChange={handleCategoryChange}
+                // handleCategoryChange={handleCategoryChange}
                 setSelectedAgeOption={setSelectedAgeOption}
                 setSelectedGenderOption={setSelectedGenderOption}
                 setSelectedsexualOrientationOption={

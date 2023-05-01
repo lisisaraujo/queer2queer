@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { FiFilter } from "react-icons/fi";
 import Select from "react-select";
 import { useState } from "react";
 import {
@@ -24,67 +23,88 @@ export default function CommentFilter({
   setSelectedBipocOption,
   getFilteredList,
   closeModal,
+  locationID,
+  filteredList,
+  setFilteredComments,
 }) {
   function handleApplyFilter() {
-    getFilteredList();
     closeModal();
+    setFilteredComments(filteredList);
+    // getFilteredList();
+    console.log("filters applied");
   }
+
   const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
   const router = useRouter();
 
   return (
     <>
-      <StyledFilter>
-        <div className="select-box">
-          <label htmlFor="age">Age </label>{" "}
-          <Select
-            defaultValue={selectedAgeOption}
-            onChange={setSelectedAgeOption}
-            options={ageCategories}
-            name="age"
-            styles={colorStyles}
-          />
-        </div>
-        <div className="select-box">
-          <label htmlFor="sexual-orientation">Sexual Orientation </label>{" "}
-          <Select
-            defaultValue={selectedsexualOrientationOption}
-            onChange={setSelectedsexualOrientationOption}
-            options={sexualOrientationCategories}
-            name="sexual_orientation"
-            styles={colorStyles}
-          />
-        </div>
-        <div className="select-box">
-          {" "}
-          <label htmlFor="gender">Gender </label>
-          <Select
-            defaultValue={selectedGenderOption}
-            onChange={setSelectedGenderOption}
-            options={genderCategories}
-            name="gender"
-            styles={colorStyles}
-          />
-        </div>
+      <EntryForm onSubmit={handleApplyFilter}>
+        <input
+          type="hidden"
+          id="location"
+          name="location"
+          value={locationID}
+        ></input>
+        <StyledFilter>
+          <div className="select-box">
+            <label htmlFor="age">Age </label>{" "}
+            <Select
+              defaultValue={selectedAgeOption}
+              onChange={setSelectedAgeOption}
+              options={ageCategories}
+              name="age"
+              styles={colorStyles}
+            />
+          </div>
+          <div className="select-box">
+            <label htmlFor="sexual-orientation">Sexual Orientation </label>{" "}
+            <Select
+              defaultValue={selectedsexualOrientationOption}
+              onChange={setSelectedsexualOrientationOption}
+              options={sexualOrientationCategories}
+              name="sexual_orientation"
+              styles={colorStyles}
+            />
+          </div>
+          <div className="select-box">
+            {" "}
+            <label htmlFor="gender">Gender </label>
+            <Select
+              defaultValue={selectedGenderOption}
+              onChange={setSelectedGenderOption}
+              options={genderCategories}
+              name="gender"
+              styles={colorStyles}
+            />
+          </div>
 
-        <div className="select-box">
-          {" "}
-          <label htmlFor="bipoc">BiPoc </label>
-          <Select
-            defaultValue={selectedBipocOption}
-            onChange={setSelectedBipocOption}
-            options={bipocCategory}
-            name="bipoc"
-            styles={colorStyles}
-          />
-        </div>
-        <button className="apply-filter-btn" onClick={handleApplyFilter}>
-          Apply Filter
-        </button>
-      </StyledFilter>
+          <div className="select-box">
+            {" "}
+            <label htmlFor="bipoc">BiPoc </label>
+            <Select
+              defaultValue={selectedBipocOption}
+              onChange={setSelectedBipocOption}
+              options={bipocCategory}
+              name="bipoc"
+              styles={colorStyles}
+            />
+          </div>
+          <button className="apply-filter-btn">Apply Filter</button>
+        </StyledFilter>
+      </EntryForm>
     </>
   );
 }
+
+const EntryForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  width: 100%;
+  height: 100%;
+  color: whitesmoke;
+`;
 
 export const StyledFilter = styled.div`
   display: flex;

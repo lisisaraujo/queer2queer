@@ -88,7 +88,7 @@ export const sexualOrientationCategories = [
 ];
 
 export const genderCategories = [
-  { value: "", label: "Gender" },
+  { value: "", label: "All" },
   { value: "Genderfluid", label: "Genderfluid" },
   { value: "Genderqueer", label: "Genderqueer" },
   { value: "Transgender male", label: "Transgender male" },

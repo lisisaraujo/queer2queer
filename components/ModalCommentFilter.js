@@ -32,7 +32,11 @@ const closeButtonStyle = {
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement("div");
 
-export default function ModalCommentFilter({ loadComments, getFilteredList }) {
+export default function ModalCommentFilter({
+  getFilteredList,
+  filteredList,
+  setFilteredComments,
+}) {
   const router = useRouter();
   const { id } = router.query;
   const iconStyles = { color: "#4D96EF", fontSize: "2.5em", cursor: "pointer" };
@@ -42,11 +46,6 @@ export default function ModalCommentFilter({ loadComments, getFilteredList }) {
 
   function openModal() {
     setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // subtitle.style.color = "#f00";
   }
 
   function closeModal() {
@@ -61,7 +60,6 @@ export default function ModalCommentFilter({ loadComments, getFilteredList }) {
 
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Modal"
@@ -72,8 +70,9 @@ export default function ModalCommentFilter({ loadComments, getFilteredList }) {
         <CommentFilter
           locationID={id}
           closeModal={closeModal}
-          loadComments={loadComments}
           getFilteredList={getFilteredList}
+          setFilteredComments={setFilteredComments}
+          filteredList={filteredList}
         />
       </Modal>
     </div>
