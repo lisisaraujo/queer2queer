@@ -228,7 +228,7 @@ const StyledLocationContainer = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
-  color: #bfbdbd;
+  color: #101828;
   h3 {
     text-align: center;
   }
@@ -239,7 +239,7 @@ const StyledLocationContainer = styled.div`
     justify-content: space-around;
     align-items: center;
     margin: 40px 0px;
-    color: #bfbdbd;
+    /* color: #bfbdbd; */
     border-bottom: solid 0.5px whitesmoke;
   }
 

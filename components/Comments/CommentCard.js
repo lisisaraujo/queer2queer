@@ -18,13 +18,6 @@ export default function CommentCard({
   return (
     <>
       <CardFrame>
-        <div className="date">{date}</div>
-
-        <CommentStyle>
-          <div className="comment-card" key={_id}>
-            <p className="comment">{comment}</p>
-          </div>
-        </CommentStyle>
         <div className="demographic-data">
           {name && <p>commented by: {name}</p>}
           {age && <button className="demographic-data-tag">#{age}</button>}
@@ -42,7 +35,14 @@ export default function CommentCard({
             </button>
           )}
         </div>
+        <CommentStyle>
+          <div className="comment-card" key={_id}>
+            <p className="comment">{comment}</p>
+          </div>
+        </CommentStyle>
+
         {session ? <DeleteIcon onClick={() => onRemoveComment(_id)} /> : null}
+        <div className="date">{date}</div>
       </CardFrame>
     </>
   );
@@ -64,8 +64,8 @@ export const getServerSideProps = async (context) => {
 };
 
 const CardFrame = styled.div`
-  /* border: solid; */
-  border-color: black;
+  border-color: transparent;
+  border-style: inset;
   display: flex;
   position: relative;
   flex-direction: column;
@@ -75,47 +75,32 @@ const CardFrame = styled.div`
   height: 100%;
   width: 100%;
   margin-bottom: 20px;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 0px 0px 5px 3px rgba(54, 54, 54, 0.75);
-  color: #bfbdbd;
+  color: #101828;
 
   .demographic-data-tag {
-    background-color: rgba(114, 59, 216, 0.1);
-    color: #bfbdbd;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0px 0px 5px 3px rgba(114, 59, 216, 0.3);
+    background-color: inherit;
+    color: #4d96ef;
+    /* border-radius: 10px; */
+    /* box-shadow: 0px 0px 5px 3px rgba(114, 59, 216, 0.3); */
     border-style: none;
-    padding: 5px;
-    margin: 3px;
-    border-radius: 10%;
+    /* padding: 5px; */
+    /* margin: 3px; */
+    /* border-radius: 10%; */
   }
 
   .date {
     font-size: 0.7rem;
     text-align: right;
-    color: #bfbdbd;
+    color: #101828;
   }
-
-  /* .demographic-data-tag {
-    background-color: rgb(60, 60, 60);
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0px 0px 5px 3px rgba(54, 54, 54, 0.75);
-    border-style: none;
-    padding: 5px;
-    margin: 1px;
-    border-radius: 10%;
-  } */
 `;
 
 const CommentStyle = styled.div`
   display: flex;
   position: relative;
-  background-color: rgb(60, 60, 60);
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0px 0px 5px 3px rgba(54, 54, 54, 0.75);
+  /* padding: 15px; */
   text-align: left;
   width: 100%;
   margin: 40px auto;

@@ -29,7 +29,7 @@ const HeaderWrapper = styled.nav`
   /* justify-content: space-around; */
   /* padding: 5px; */
   margin-top: 0px;
-  color: whitesmoke;
+  color: #101828;
   position: fixed;
   background-color: inherit;
   box-shadow: 0px 0px 5px 3px rgba(95, 94, 94, 0.4);
@@ -44,7 +44,7 @@ const HeaderWrapper = styled.nav`
   }
 
   a {
-    color: #fdfbfc;
+    /* color: #fdfbfc; */
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
@@ -58,19 +58,19 @@ const HeaderWrapper = styled.nav`
     right: 0;
     top: 0;
     background-color: transparent;
-    color: #fdfbfc;
+    /* color: #fdfbfc; */
   }
 
   a:hover {
     background-color: #5f5e5e;
-    color: #fdfbfc;
+    /* color: #fdfbfc; */
     border-radius: 10px;
     width: 100%;
   }
 
   .active {
     background-color: transparent;
-    color: #fdfbfc;
+    /* color: #fdfbfc; */
     align-self: center;
   }
 
