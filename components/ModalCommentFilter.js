@@ -4,6 +4,7 @@ import CommentFilter from "./CommentFilter";
 import { useRouter } from "next/router";
 import { IoFilter } from "react-icons/io5";
 import styled from "styled-components";
+import { get } from "mongoose";
 
 const customStyles = {
   content: {
@@ -34,8 +35,16 @@ Modal.setAppElement("div");
 
 export default function ModalCommentFilter({
   getFilteredList,
-  filteredList,
-  setFilteredComments,
+  loadComments,
+  handleApplyFilter,
+  setSelectedAgeOption,
+  selectedAgeOption,
+  setSelectedGenderOption,
+  selectedGenderOption,
+  setSelectedsexualOrientationOption,
+  selectedsexualOrientationOption,
+  selectedBipocOption,
+  setSelectedBipocOption,
 }) {
   const router = useRouter();
   const { id } = router.query;
@@ -71,8 +80,18 @@ export default function ModalCommentFilter({
           locationID={id}
           closeModal={closeModal}
           getFilteredList={getFilteredList}
-          setFilteredComments={setFilteredComments}
-          filteredList={filteredList}
+          loadComments={loadComments}
+          setSelectedAgeOption={setSelectedAgeOption}
+          setSelectedGenderOption={setSelectedGenderOption}
+          setSelectedsexualOrientationOption={
+            setSelectedsexualOrientationOption
+          }
+          setSelectedBipocOption={setSelectedBipocOption}
+          selectedsexualOrientationOption={selectedsexualOrientationOption}
+          selectedAgeOption={selectedAgeOption}
+          selectedGenderOption={selectedGenderOption}
+          selectedBipocOption={selectedBipocOption}
+          handleApplyFilter={handleApplyFilter}
         />
       </Modal>
     </div>
