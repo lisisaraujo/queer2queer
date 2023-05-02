@@ -1,16 +1,12 @@
 import styled from "styled-components";
 import Select from "react-select";
-import { useState } from "react";
 import {
-  selectFilterColorStyles,
   genderCategories,
   sexualOrientationCategories,
   colorStyles,
   ageCategories,
-  typeCategories,
   bipocCategory,
 } from "../utils";
-import { useRouter } from "next/router";
 
 export default function CommentFilter({
   setSelectedAgeOption,
@@ -23,7 +19,6 @@ export default function CommentFilter({
   setSelectedBipocOption,
   getFilteredList,
   closeModal,
-  locationID,
   loadComments,
 }) {
   function handleApplyFilter() {
@@ -40,18 +35,9 @@ export default function CommentFilter({
     setSelectedBipocOption("");
     closeModal();
   };
-  const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
-  const router = useRouter();
 
   return (
     <>
-      {/* <EntryForm onSubmit={handleApplyFilter}>
-        <input
-          type="hidden"
-          id="location"
-          name="location"
-          value={locationID}
-        ></input> */}
       <StyledFilter>
         <div className="select-box">
           <label htmlFor="age">Age </label>{" "}
@@ -104,19 +90,9 @@ export default function CommentFilter({
           <button onClick={removeFilters}>Remove Filters</button>
         </div>
       </StyledFilter>
-      {/* </EntryForm> */}
     </>
   );
 }
-
-const EntryForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  text-align: start;
-  width: 100%;
-  height: 100%;
-  color: whitesmoke;
-`;
 
 export const StyledFilter = styled.div`
   display: flex;

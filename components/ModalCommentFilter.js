@@ -4,7 +4,6 @@ import CommentFilter from "./CommentFilter";
 import { useRouter } from "next/router";
 import { IoFilter } from "react-icons/io5";
 import styled from "styled-components";
-import { get } from "mongoose";
 
 const customStyles = {
   content: {
@@ -30,7 +29,7 @@ const closeButtonStyle = {
   fontSize: "1.2em",
   border: "none",
 };
-// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
+
 Modal.setAppElement("div");
 
 export default function ModalCommentFilter({
@@ -49,7 +48,6 @@ export default function ModalCommentFilter({
   const router = useRouter();
   const { id } = router.query;
   const iconStyles = { color: "#4D96EF", fontSize: "2.5em", cursor: "pointer" };
-  //   const customStyles = { backgroundColor: "black" };
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -104,7 +102,5 @@ export const StyledButton = styled.button`
   &:hover {
     cursor: pointer;
   }
-  /* margin-left: 80%;
-  margin-bottom: 80%; */
   position: relative;
 `;
