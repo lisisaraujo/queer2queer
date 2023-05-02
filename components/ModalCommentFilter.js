@@ -1,9 +1,8 @@
 import React from "react";
-// import ReactDOM from "react-dom";
 import Modal from "react-modal";
-import CommentForm from "./Comments/CommentForm";
+import CommentFilter from "./CommentFilter";
 import { useRouter } from "next/router";
-import { BiMessageSquareAdd } from "react-icons/bi";
+import { IoFilter } from "react-icons/io5";
 import styled from "styled-components";
 
 const customStyles = {
@@ -30,14 +29,25 @@ const closeButtonStyle = {
   fontSize: "1.2em",
   border: "none",
 };
-// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
+
 Modal.setAppElement("div");
 
-export default function ModalCommentForm({ loadComments }) {
+export default function ModalCommentFilter({
+  getFilteredList,
+  loadComments,
+  handleApplyFilter,
+  setSelectedAgeOption,
+  selectedAgeOption,
+  setSelectedGenderOption,
+  selectedGenderOption,
+  setSelectedsexualOrientationOption,
+  selectedsexualOrientationOption,
+  selectedBipocOption,
+  setSelectedBipocOption,
+}) {
   const router = useRouter();
   const { id } = router.query;
   const iconStyles = { color: "#4D96EF", fontSize: "2.5em", cursor: "pointer" };
-  //   const customStyles = { backgroundColor: "black" };
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -52,7 +62,7 @@ export default function ModalCommentForm({ loadComments }) {
   return (
     <div>
       <StyledButton>
-        <BiMessageSquareAdd style={iconStyles} onClick={openModal} />
+        <IoFilter style={iconStyles} onClick={openModal} />
       </StyledButton>
 
       <Modal
@@ -64,10 +74,22 @@ export default function ModalCommentForm({ loadComments }) {
         <button onClick={closeModal} style={closeButtonStyle}>
           X
         </button>
-        <CommentForm
+        <CommentFilter
           locationID={id}
           closeModal={closeModal}
+          getFilteredList={getFilteredList}
           loadComments={loadComments}
+          setSelectedAgeOption={setSelectedAgeOption}
+          setSelectedGenderOption={setSelectedGenderOption}
+          setSelectedsexualOrientationOption={
+            setSelectedsexualOrientationOption
+          }
+          setSelectedBipocOption={setSelectedBipocOption}
+          selectedsexualOrientationOption={selectedsexualOrientationOption}
+          selectedAgeOption={selectedAgeOption}
+          selectedGenderOption={selectedGenderOption}
+          selectedBipocOption={selectedBipocOption}
+          handleApplyFilter={handleApplyFilter}
         />
       </Modal>
     </div>
@@ -80,7 +102,5 @@ export const StyledButton = styled.button`
   &:hover {
     cursor: pointer;
   }
-  /* margin-left: 80%;
-  margin-bottom: 80%; */
   position: relative;
 `;

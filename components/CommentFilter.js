@@ -1,17 +1,12 @@
 import styled from "styled-components";
-import { FiFilter } from "react-icons/fi";
 import Select from "react-select";
-import { useState } from "react";
 import {
-  selectFilterColorStyles,
   genderCategories,
   sexualOrientationCategories,
   colorStyles,
   ageCategories,
-  typeCategories,
   bipocCategory,
 } from "../utils";
-import { useRouter } from "next/router";
 
 export default function CommentFilter({
   setSelectedAgeOption,
@@ -22,9 +17,24 @@ export default function CommentFilter({
   selectedsexualOrientationOption,
   selectedBipocOption,
   setSelectedBipocOption,
+  getFilteredList,
+  closeModal,
+  loadComments,
 }) {
-  const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
-  const router = useRouter();
+  function handleApplyFilter() {
+    closeModal();
+    loadComments();
+    getFilteredList();
+    console.log("filters applied");
+  }
+
+  const removeFilters = () => {
+    setSelectedAgeOption("");
+    setSelectedGenderOption("");
+    setSelectedsexualOrientationOption("");
+    setSelectedBipocOption("");
+    closeModal();
+  };
 
   return (
     <>
@@ -71,6 +81,13 @@ export default function CommentFilter({
             name="bipoc"
             styles={colorStyles}
           />
+        </div>
+        <button className="apply-filter-btn" onClick={handleApplyFilter}>
+          Apply Filter
+        </button>
+        <div className="clear-filter">
+          {" "}
+          <button onClick={removeFilters}>Remove Filters</button>
         </div>
       </StyledFilter>
     </>

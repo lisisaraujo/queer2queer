@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import React, { useRef, useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import CommentCard from "./Comments/CommentCard";
 import { MdWrongLocation } from "react-icons/md";
 import Header from "./Header";
@@ -8,7 +8,7 @@ import { useSession, getSession } from "next-auth/react";
 import Location from "./LocationCard";
 import ModalCommentForm from "./ModalCommentForm";
 import useSWR from "swr";
-import CommentFilter from "./CommentFilter";
+import ModalCommentFilter from "./ModalCommentFilter";
 
 export default function LocationDetails({ loadLocations }) {
   const [comments, setComments] = useState([]);
@@ -18,14 +18,12 @@ export default function LocationDetails({ loadLocations }) {
   const iconStyles = { color: "red", fontSize: "2em" };
 
   const { data: session } = useSession();
-  // console.log(session);
 
   const router = useRouter();
   const { id } = router.query;
   //////////////////////
 
   const [filteredComments, setFilteredComments] = useState(comments);
-
   const [selectedAgeOption, setSelectedAgeOption] = useState(null);
   const [selectedGenderOption, setSelectedGenderOption] = useState(null);
   const [selectedsexualOrientationOption, setSelectedsexualOrientationOption] =
@@ -36,12 +34,6 @@ export default function LocationDetails({ loadLocations }) {
     setFilteredComments(comments);
   }, [comments]);
 
-  const handleCategoryChange = (event) => {
-    setSelectedAgeOption(event.target.value);
-    setSelectedGenderOption(event.target.value);
-    setSelectedsexualOrientationOption(event.target.value);
-    setSelectedBipocOption(event.target.value);
-  };
   const clearFilter = () => {
     setSelectedAgeOption("");
     setSelectedGenderOption("");
@@ -53,7 +45,6 @@ export default function LocationDetails({ loadLocations }) {
     let filtered = [...filteredComments];
 
     if (selectedAgeOption) {
-      // console.log(selectedAgeOption);
       filtered = filtered.filter(
         (comment) => comment.age === selectedAgeOption.value
       );
@@ -74,21 +65,11 @@ export default function LocationDetails({ loadLocations }) {
         (comment) => comment.bipoc === selectedBipocOption.value
       );
     }
-    // if (
-    //   selectedAgeOption === "" ||
-    //   selectedGenderOption === "" ||
-    //   selectedsexualOrientationOption === "" ||
-    //   selectedBipocOption === ""
-    // ) {
-    //   setSelectedAgeOption(null);
-    //   setSelectedGenderOption(null);
-    //   setSelectedsexualOrientationOption(null);
-    //   setSelectedBipocOption(null);
-    // }
+
     return filtered;
   };
 
-  const filteredList = getFilteredList();
+  let filteredList = getFilteredList();
 
   //////////////////////
 
@@ -97,7 +78,6 @@ export default function LocationDetails({ loadLocations }) {
       setLoading(true);
       const data = await fetch(`/api/comments/${id}`);
       const commentsData = await data.json();
-      // console.log("comments ", commentsData);
       setComments(commentsData);
       setLoading(false);
       if (isLoading) {
@@ -116,7 +96,6 @@ export default function LocationDetails({ loadLocations }) {
     });
     if (response.ok) {
       await response.json();
-      // console.log("routerID", id);
     } else {
       console.error(`Error: ${response.status}`);
     }
@@ -129,7 +108,6 @@ export default function LocationDetails({ loadLocations }) {
     });
     if (response.ok) {
       await response.json();
-      // console.log("routerID", id);
     } else {
       console.error(`Error: ${response.status}`);
     }
@@ -144,7 +122,6 @@ export default function LocationDetails({ loadLocations }) {
         const response = await fetch(`/api/locations/${id}`);
         const specificLocation = await response.json();
         setSpecificLocation(specificLocation);
-        // console.log(specificLocation);
       };
       fetchSpecificLocation();
       loadComments();
@@ -154,14 +131,9 @@ export default function LocationDetails({ loadLocations }) {
   if (specificLocation) {
     const { name, lngLat, type, address, city, postcode } = specificLocation;
 
-    // console.log("COMMENTS CL", comments);
-
-    // console.log("SPECIFIC: ", specificLocation);
-
     return (
       <>
         <Header>{name}</Header>
-        {/* <CommentFilter /> */}
         <StyledLocationContainer>
           <div className="location-container">
             <Location specificLocation={specificLocation} />
@@ -174,8 +146,7 @@ export default function LocationDetails({ loadLocations }) {
             </div>
             <h3>Filter Comments by:</h3>
             <div className="comment-filter">
-              <CommentFilter
-                handleCategoryChange={handleCategoryChange}
+              <ModalCommentFilter
                 setSelectedAgeOption={setSelectedAgeOption}
                 setSelectedGenderOption={setSelectedGenderOption}
                 setSelectedsexualOrientationOption={
@@ -188,6 +159,9 @@ export default function LocationDetails({ loadLocations }) {
                 selectedAgeOption={selectedAgeOption}
                 selectedGenderOption={selectedGenderOption}
                 selectedBipocOption={selectedBipocOption}
+                getFilteredList={getFilteredList}
+                clearFilter={clearFilter}
+                loadComments={loadComments}
               />
               <div className="clear-filter">
                 {" "}
@@ -229,7 +203,6 @@ export default function LocationDetails({ loadLocations }) {
                 <MdWrongLocation
                   style={iconStyles}
                   onClick={() => {
-                    // console.log("DELETE LOCATION CLICKED");
                     handleRemoveLocation(id);
                   }}
                 />
@@ -241,17 +214,6 @@ export default function LocationDetails({ loadLocations }) {
     );
   }
 }
-
-// const DeleteLocation = styled(MdWrongLocation)`
-//   display: flex;
-//   align-items: flex-end;
-//   align-self: flex-end;
-//   width: 20px;
-//   height: 20px;
-//   color: red;
-//   position: relative;
-//   z-index: 2;
-// `;
 
 export const getServerSideProps = async (context) => {
   const session = await getSession(context);
@@ -267,7 +229,6 @@ const StyledLocationContainer = styled.div`
   display: flex;
   justify-content: center;
   color: #bfbdbd;
-  /* border-bottom: solid 0.5px whitesmoke; */
   h3 {
     text-align: center;
   }
@@ -295,7 +256,6 @@ const StyledLocationContainer = styled.div`
   }
 
   .delete-location {
-    /* margin: 20px 10px; */
     display: flex;
     flex-direction: column;
     align-items: center;

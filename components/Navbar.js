@@ -26,7 +26,6 @@ export default function Navbar({
           <Link href="/menu/ressources">Ressources</Link>
           <Link href="/menu/feedback">Feedback</Link>
           <Link href="/menu/contact">Contact</Link>
-          <Link href="/admin">Admin</Link>
         </div>
         <a href="#" className="icon" onClick={navBarDrop}>
           <FiMenu style={iconStyles} />
