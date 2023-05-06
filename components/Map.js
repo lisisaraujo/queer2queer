@@ -13,7 +13,7 @@ import Navbar from "./Navbar";
 import ModalLocationDetail, { Modal } from "./ModalLocationDetail";
 import ModalAddLocationForm from "./ModalAddLocationForm";
 
-export default function MyMap({ locations, loadLocations }) {
+export default function MyMap({ locations, loadLocations, locationName }) {
   const [selectedLocation, setSelectedLocation] = useState({});
   const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
   const barIcon = <FaGlassMartiniAlt style={iconStyles} />;
@@ -32,13 +32,13 @@ export default function MyMap({ locations, loadLocations }) {
     zoom: 12,
   });
 
-  function onMarker(e) {
-    const id = e.currentTarget.getAttribute("location-id");
+  function onMarker(event) {
+    const id = event.currentTarget.getAttribute("location-id");
     const location = locations.find((l) => l._id === id);
 
     setSelectedLocation(location);
   }
-  // console.log("set selected location ", selectedLocation);
+  console.log("set selected location ", selectedLocation);
 
   useEffect(() => {
     setFilteredLocations(locations);
@@ -67,7 +67,7 @@ export default function MyMap({ locations, loadLocations }) {
 
   return (
     <>
-      <Navbar handleCategoryChange={handleCategoryChange}>Queer Map BER</Navbar>
+      <Navbar handleCategoryChange={handleCategoryChange}>Queer2Queer</Navbar>
       <ReactMapGL
         mapStyle="mapbox://styles/dalalamad/clfe8aq9s006701o42zx1li76"
         mapboxAccessToken={accessToken}
@@ -105,22 +105,16 @@ export default function MyMap({ locations, loadLocations }) {
                     latitude={parseFloat(location.lngLat[0])}
                     closeOnClick={false}
                   >
-                    {/* <ModalLocationDetail /> */}
-
+                    {/* {" "}
+                    <ModalLocationDetail
+                      locationName={location.name}
+                      loadLocations={loadLocations}
+                    /> */}
                     <div className="location-link">
                       <Link href={`/location-page/${location._id}`}>
                         {location.name}
                       </Link>
                     </div>
-
-                    {/* <div
-                      className="location-link"
-                      onClick={() => {
-                        setClickedLocation(location._id);
-                      }}
-                    >
-                      {location.name}
-                    </div> */}
                   </Popup>
                 </div>
               )}

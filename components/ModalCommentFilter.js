@@ -47,7 +47,7 @@ export default function ModalCommentFilter({
 }) {
   const router = useRouter();
   const { id } = router.query;
-  const iconStyles = { color: "#4D96EF", fontSize: "2.5em", cursor: "pointer" };
+  const iconStyles = { color: "#101828", fontSize: "1.8em", cursor: "pointer" };
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
 

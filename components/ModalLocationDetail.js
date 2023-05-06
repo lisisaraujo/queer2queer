@@ -1,12 +1,15 @@
 import React from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import LocationDetail from "./LocationDetails";
 import Modal from "react-modal";
 import { BiMessageSquareAdd } from "react-icons/bi";
 import LocationDetails from "./LocationDetails";
 
-export default function ModalLocationDetail({ locationID, loadLocations }) {
+export default function ModalLocationDetail({
+  locations,
+  loadLocations,
+  locationName,
+}) {
   const customStyles = {
     content: {
       top: "55%",
@@ -35,8 +38,7 @@ export default function ModalLocationDetail({ locationID, loadLocations }) {
   }
 
   function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // subtitle.style.color = "#f00";
+    ////
   }
 
   function closeModal() {
@@ -47,7 +49,7 @@ export default function ModalLocationDetail({ locationID, loadLocations }) {
     <div>
       <div className="location-link">
         <a href="#" onClick={openModal}>
-          Name of location
+          {locationName}
         </a>
       </div>
 
@@ -58,8 +60,7 @@ export default function ModalLocationDetail({ locationID, loadLocations }) {
         style={customStyles}
         contentLabel="Modal"
       >
-        <p>This should be the locaton detail page</p>
-        <LocationDetails locationID={id} />
+        <LocationDetails loadLocations={loadLocations} locations={locations} />
       </Modal>
     </div>
   );

@@ -46,7 +46,6 @@ export const genderCategoriesArr = [
 ];
 
 export const bipocCategory = [
-  { value: "", label: "All" },
   { value: true, label: "Yes" },
   { value: false, label: "No" },
 ];
@@ -64,7 +63,6 @@ export const selectFilterColorStyles = {
 };
 
 export const ageCategories = [
-  { value: "", label: "All" },
   { value: ">18", label: ">18" },
   { value: "18-25", label: "18-25" },
   { value: "26-35", label: "26-35" },
@@ -74,7 +72,6 @@ export const ageCategories = [
 ];
 
 export const sexualOrientationCategories = [
-  { value: "", label: "All" },
   { value: "Lesbian", label: "Lesbian" },
   { value: "Gay", label: "Gay" },
   { value: "Pansexual", label: "Pansexual" },
@@ -88,7 +85,6 @@ export const sexualOrientationCategories = [
 ];
 
 export const genderCategories = [
-  { value: "", label: "All" },
   { value: "Genderfluid", label: "Genderfluid" },
   { value: "Genderqueer", label: "Genderqueer" },
   { value: "Transgender male", label: "Transgender male" },

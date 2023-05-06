@@ -138,36 +138,29 @@ export default function LocationDetails({ loadLocations }) {
           <div className="location-container">
             <Location specificLocation={specificLocation} />
             <div className="title-header">
-              {" "}
-              <h2>Comments</h2>
+              <h3>Comments</h3>
               <div className="modal">
                 <ModalCommentForm loadComments={loadComments} />
+                <ModalCommentFilter
+                  setSelectedAgeOption={setSelectedAgeOption}
+                  setSelectedGenderOption={setSelectedGenderOption}
+                  setSelectedsexualOrientationOption={
+                    setSelectedsexualOrientationOption
+                  }
+                  setSelectedBipocOption={setSelectedBipocOption}
+                  selectedsexualOrientationOption={
+                    selectedsexualOrientationOption
+                  }
+                  selectedAgeOption={selectedAgeOption}
+                  selectedGenderOption={selectedGenderOption}
+                  selectedBipocOption={selectedBipocOption}
+                  getFilteredList={getFilteredList}
+                  clearFilter={clearFilter}
+                  loadComments={loadComments}
+                />
               </div>
             </div>
-            <h3>Filter Comments by:</h3>
-            <div className="comment-filter">
-              <ModalCommentFilter
-                setSelectedAgeOption={setSelectedAgeOption}
-                setSelectedGenderOption={setSelectedGenderOption}
-                setSelectedsexualOrientationOption={
-                  setSelectedsexualOrientationOption
-                }
-                setSelectedBipocOption={setSelectedBipocOption}
-                selectedsexualOrientationOption={
-                  selectedsexualOrientationOption
-                }
-                selectedAgeOption={selectedAgeOption}
-                selectedGenderOption={selectedGenderOption}
-                selectedBipocOption={selectedBipocOption}
-                getFilteredList={getFilteredList}
-                clearFilter={clearFilter}
-                loadComments={loadComments}
-              />
-              <div className="clear-filter">
-                {" "}
-                <button onClick={clearFilter}>Reset Filter</button>
-              </div>
-            </div>
+            <div className="comment-filter"></div>
             <div className="comments" key={comments}>
               {filteredList.map((item) => {
                 const {
@@ -236,20 +229,16 @@ const StyledLocationContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    justify-content: space-around;
     align-items: center;
-    margin: 40px 0px;
-    /* color: #bfbdbd; */
-    border-bottom: solid 0.5px whitesmoke;
+    margin: 10px 0px;
+    font-weight: bold;
   }
 
-  .comment-filter {
+  .modal {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    margin: 10px 0px;
-    font-size: 1em;
   }
+
   .comment-card {
     margin-right: 10%;
     margin-left: 10%;

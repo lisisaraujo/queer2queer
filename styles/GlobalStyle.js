@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         
   /* color: #BFBDBD; */
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: lighter;
   text-decoration: none;
 

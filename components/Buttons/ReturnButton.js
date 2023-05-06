@@ -4,8 +4,8 @@ import styled from "styled-components";
 
 export default function ReturnButton() {
   const iconStyles = {
-    color: "whitesmoke",
-    fontSize: "3em",
+    color: "black",
+    fontSize: "2em",
     cursor: "pointer",
   };
   return (

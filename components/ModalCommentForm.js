@@ -3,8 +3,9 @@ import React from "react";
 import Modal from "react-modal";
 import CommentForm from "./Comments/CommentForm";
 import { useRouter } from "next/router";
-import { BiMessageSquareAdd } from "react-icons/bi";
+import { CgMathPlus } from "react-icons/cg";
 import styled from "styled-components";
+import plusJPG from "../icons/plusJPG.jpg";
 
 const customStyles = {
   content: {
@@ -36,7 +37,7 @@ Modal.setAppElement("div");
 export default function ModalCommentForm({ loadComments }) {
   const router = useRouter();
   const { id } = router.query;
-  const iconStyles = { color: "#4D96EF", fontSize: "2.5em", cursor: "pointer" };
+  const iconStyles = { color: "#101828", fontSize: "1.8em", cursor: "pointer" };
   //   const customStyles = { backgroundColor: "black" };
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -52,7 +53,7 @@ export default function ModalCommentForm({ loadComments }) {
   return (
     <div>
       <StyledButton>
-        <BiMessageSquareAdd style={iconStyles} onClick={openModal} />
+        <CgMathPlus style={iconStyles} onClick={openModal} />
       </StyledButton>
 
       <Modal
@@ -80,7 +81,5 @@ export const StyledButton = styled.button`
   &:hover {
     cursor: pointer;
   }
-  /* margin-left: 80%;
-  margin-bottom: 80%; */
   position: relative;
 `;

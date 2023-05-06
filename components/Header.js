@@ -7,12 +7,10 @@ export default function Header({ children, handleCategoryChange }) {
     <>
       <HeaderWrapper>
         <div className="return-button">
-          {" "}
           <ReturnButton />
         </div>
 
         <div className="title">
-          {" "}
           <h3>{children}</h3>
         </div>
         {/* <CategoryFilter onChangeCategory={handleCategoryChange} /> */}
@@ -23,24 +21,21 @@ export default function Header({ children, handleCategoryChange }) {
 
 const HeaderWrapper = styled.nav`
   width: 100%;
+  height: 53px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  /* justify-content: space-around; */
-  /* padding: 5px; */
   margin-top: 0px;
   color: #101828;
   position: fixed;
-  background-color: inherit;
-  box-shadow: 0px 0px 5px 3px rgba(95, 94, 94, 0.4);
-  opacity: 0.9;
-  /* margin-bottom: 200px; */
+  background-color: #e4effd;
   z-index: 1;
-  font-size: 1.2em;
+  text-align: center;
+  justify-content: flex-start;
+  align-content: center;
 
   .title {
-    /* margin: auto;
-    margin-right: 35%; */
+    font-weight: bold;
   }
 
   a {
