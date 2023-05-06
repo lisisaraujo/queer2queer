@@ -5,7 +5,7 @@ import CommentCard from "./Comments/CommentCard";
 import { MdWrongLocation } from "react-icons/md";
 import Header from "./Header";
 import { useSession, getSession } from "next-auth/react";
-import Location from "./LocationCard";
+import LocationCard from "./LocationCard";
 import ModalCommentForm from "./ModalCommentForm";
 import useSWR from "swr";
 import ModalCommentFilter from "./ModalCommentFilter";
@@ -136,7 +136,7 @@ export default function LocationDetails({ loadLocations }) {
         <Header>{name}</Header>
         <StyledLocationContainer>
           <div className="location-container">
-            <Location specificLocation={specificLocation} />
+            <LocationCard specificLocation={specificLocation} />
             <div className="title-header">
               <h3>Comments</h3>
               <div className="modal">

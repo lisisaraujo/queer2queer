@@ -1,5 +1,4 @@
 import React from "react";
-// import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import CommentForm from "./Comments/CommentForm";
 import { useRouter } from "next/router";
@@ -30,14 +29,12 @@ const closeButtonStyle = {
   fontSize: "1.2em",
   border: "none",
 };
-// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement("div");
 
 export default function ModalCommentForm({ loadComments }) {
   const router = useRouter();
   const { id } = router.query;
   const iconStyles = { color: "#101828", fontSize: "1.8em", cursor: "pointer" };
-  //   const customStyles = { backgroundColor: "black" };
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
 

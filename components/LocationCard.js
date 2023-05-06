@@ -48,7 +48,7 @@ const StyledLocationHeader = styled.div`
   text-align: center;
 
   .location-icon {
-    padding: 20px;
+    padding: 30px;
     border-radius: 50%;
     background-color: rgba(77, 150, 239, 0.5);
     /* box-shadow: 0px 0px 5px 3px rgba(95, 94, 94, 0.4); */

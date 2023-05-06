@@ -3,7 +3,7 @@ import React, { useState, useEffect, useMemo, useRef } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { accessToken } from "../src/mapbox";
 import { FaGlassMartiniAlt } from "react-icons/fa";
-import { BsFillCameraVideoOffFill } from "react-icons/bs";
+import { MdNoPhotography } from "react-icons/md";
 import { IoIosPeople } from "react-icons/io";
 import { MdDirectionsBoat } from "react-icons/md";
 import { MdLocationOn } from "react-icons/md";
@@ -17,7 +17,7 @@ export default function MyMap({ locations, loadLocations, locationName }) {
   const [selectedLocation, setSelectedLocation] = useState({});
   const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
   const barIcon = <FaGlassMartiniAlt style={iconStyles} />;
-  const clubIcon = <BsFillCameraVideoOffFill style={iconStyles} />;
+  const clubIcon = <MdNoPhotography style={iconStyles} />;
   const cruisingIcon = <MdDirectionsBoat style={iconStyles} />;
   const communityIcon = <IoIosPeople style={iconStyles} />;
   const otherIcon = <MdLocationOn style={iconStyles} />;
