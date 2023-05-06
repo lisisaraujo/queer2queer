@@ -5,7 +5,6 @@ import CommentForm from "./Comments/CommentForm";
 import { useRouter } from "next/router";
 import { CgMathPlus } from "react-icons/cg";
 import styled from "styled-components";
-import plusJPG from "../icons/plusJPG.jpg";
 
 const customStyles = {
   content: {

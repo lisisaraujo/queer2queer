@@ -160,7 +160,6 @@ export default function LocationDetails({ loadLocations }) {
                 />
               </div>
             </div>
-            <div className="comment-filter"></div>
             <div className="comments" key={comments}>
               {filteredList.map((item) => {
                 const {
@@ -240,8 +239,8 @@ const StyledLocationContainer = styled.div`
   }
 
   .comment-card {
-    margin-right: 10%;
-    margin-left: 10%;
+    margin-right: 5%;
+    margin-left: 5%;
   }
 
   .delete-location {

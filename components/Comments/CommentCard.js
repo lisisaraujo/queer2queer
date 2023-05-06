@@ -36,9 +36,7 @@ export default function CommentCard({
           )}
         </div>
         <CommentStyle>
-          <div className="comment-card" key={_id}>
-            <p className="comment">{comment}</p>
-          </div>
+          <p className="comment">{comment}</p>
         </CommentStyle>
 
         {session ? <DeleteIcon onClick={() => onRemoveComment(_id)} /> : null}
@@ -65,33 +63,30 @@ export const getServerSideProps = async (context) => {
 
 const CardFrame = styled.div`
   border-color: transparent;
-  border-style: inset;
+  border-style: none;
   display: flex;
   position: relative;
   flex-direction: column;
-  padding: 20px;
+  padding: 15px;
   justify-content: center;
   /* align-items: center; */
   height: 100%;
   width: 100%;
   margin-bottom: 20px;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px 3px rgba(54, 54, 54, 0.75);
+  box-shadow: 1px 4px 4px 1px rgba(54, 54, 54, 0.1);
   color: #101828;
+  background-color: #fcfcfd;
 
   .demographic-data-tag {
     background-color: inherit;
     color: #4d96ef;
-    /* border-radius: 10px; */
-    /* box-shadow: 0px 0px 5px 3px rgba(114, 59, 216, 0.3); */
+    font-weight: bold;
     border-style: none;
-    /* padding: 5px; */
-    /* margin: 3px; */
-    /* border-radius: 10%; */
   }
 
   .date {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     text-align: right;
     color: #101828;
   }
@@ -100,14 +95,7 @@ const CardFrame = styled.div`
 const CommentStyle = styled.div`
   display: flex;
   position: relative;
-  /* padding: 15px; */
-  text-align: left;
   width: 100%;
-  margin: 40px auto;
-
-  .comment {
-    align-self: center;
-  }
 `;
 
 const DeleteIcon = styled(RiDeleteBinLine)`
