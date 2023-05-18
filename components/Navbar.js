@@ -31,7 +31,7 @@ export default function Navbar({
           <FiMenu style={iconStyles} />
         </a>
         <a href="#home" className="active">
-          QueerArchive
+          Queer2Queer
         </a>
         <CategoryFilter
           onChangeCategory={handleCategoryChange}
