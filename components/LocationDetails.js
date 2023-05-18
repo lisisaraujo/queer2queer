@@ -10,10 +10,10 @@ import ModalCommentForm from "./ModalCommentForm";
 import useSWR from "swr";
 import ModalCommentFilter from "./ModalCommentFilter";
 
-export default function LocationDetails({ loadLocations }) {
+export default function LocationDetails({ loadLocations, specificLocation }) {
   const [comments, setComments] = useState([]);
   const [isLoading, setLoading] = useState(false);
-  const [specificLocation, setSpecificLocation] = useState();
+  // const [specificLocation, setSpecificLocation] = useState();
   const locations = useSWR("/api/locations");
   const iconStyles = { color: "red", fontSize: "2em" };
 
@@ -31,6 +31,7 @@ export default function LocationDetails({ loadLocations }) {
   const [selectedBipocOption, setSelectedBipocOption] = useState(null);
 
   useEffect(() => {
+    loadComments();
     setFilteredComments(comments);
   }, [comments]);
 
@@ -116,17 +117,17 @@ export default function LocationDetails({ loadLocations }) {
     loadLocations();
   }
 
-  useEffect(() => {
-    if (id) {
-      const fetchSpecificLocation = async () => {
-        const response = await fetch(`/api/locations/${id}`);
-        const specificLocation = await response.json();
-        setSpecificLocation(specificLocation);
-      };
-      fetchSpecificLocation();
-      loadComments();
-    }
-  }, [id]);
+  // useEffect(() => {
+  //   if (id) {
+  //     const fetchSpecificLocation = async () => {
+  //       const response = await fetch(`/api/locations/${id}`);
+  //       const specificLocation = await response.json();
+  //       setSpecificLocation(specificLocation);
+  //     };
+  //     fetchSpecificLocation();
+  //     loadComments();
+  //   }
+  // }, [id]);
 
   if (specificLocation) {
     const { name, lngLat, type, address, city, postcode } = specificLocation;
