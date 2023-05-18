@@ -29,6 +29,7 @@ export default function LocationPage({
     return (
       <>
         <title>{specificLocation.name}</title>
+
         <LocationDetail
           loadLocations={loadLocations}
           locations={locations}
