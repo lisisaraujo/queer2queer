@@ -5,7 +5,7 @@ import { accessToken } from "../src/mapbox";
 import Link from "next/link";
 import { GeolocateControl, NavigationControl } from "react-map-gl";
 import Navbar from "./Navbar";
-import ModalLocationDetail, { Modal } from "./ModalLocationDetail";
+import LocationDetails from "./LocationDetails";
 import ModalAddLocationForm from "./ModalAddLocationForm";
 import {
   barIconMap,
@@ -14,6 +14,7 @@ import {
   communityIconMap,
   otherIconMap,
 } from "../utils";
+import ModalLocationDetails from "./ModalLocationDetails";
 
 export default function MyMap({ locations, loadLocations }) {
   const [selectedLocation, setSelectedLocation] = useState({});
@@ -101,11 +102,10 @@ export default function MyMap({ locations, loadLocations }) {
                     latitude={parseFloat(location.lngLat[0])}
                     closeOnClick={false}
                   >
-                    {/* {" "}
-                    <ModalLocationDetail
-                      locationName={location.name}
-                      loadLocations={loadLocations}
-                    /> */}
+                    {" "}
+                    {/* <ModalLocationDetails locationName={location.name}>
+                      <LocationDetails />
+                    </ModalLocationDetails> */}
                     <div className="location-link">
                       <Link href={`/location-page/${location._id}`}>
                         {location.name}

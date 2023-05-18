@@ -5,10 +5,11 @@ import Modal from "react-modal";
 import { BiMessageSquareAdd } from "react-icons/bi";
 import LocationDetails from "./LocationDetails";
 
-export default function ModalLocationDetail({
+export default function ModalLocationDetails({
   locations,
   loadLocations,
   locationName,
+  loadComments,
 }) {
   const customStyles = {
     content: {
@@ -60,7 +61,7 @@ export default function ModalLocationDetail({
         style={customStyles}
         contentLabel="Modal"
       >
-        <LocationDetails loadLocations={loadLocations} locations={locations} />
+        <LocationDetails />
       </Modal>
     </div>
   );

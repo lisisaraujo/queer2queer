@@ -39,7 +39,6 @@ export default function LocationCard({ specificLocation }) {
 const StyledLocationHeader = styled.div`
   flex-direction: column;
   display: flex;
-  /* padding: 20px; */
   align-items: center;
   color: #101828;
   text-align: center;
@@ -48,7 +47,6 @@ const StyledLocationHeader = styled.div`
     padding: 30px;
     border-radius: 50%;
     background-color: rgba(77, 150, 239, 0.5);
-    /* box-shadow: 0px 0px 5px 3px rgba(95, 94, 94, 0.4); */
   }
   h2 {
     font-weight: bold;
