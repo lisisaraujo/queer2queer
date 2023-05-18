@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         
   /* color: #BFBDBD; */
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: lighter;
   text-decoration: none;
 
@@ -19,9 +19,9 @@ const GlobalStyle = createGlobalStyle`
       body, div#__next {
         height: 100%;
         width: 100%;
-        background-color: rgb(35, 35, 35);
+        background-color: #F6F5F8;
         display: flex;
-        /* color: whitesmoke; */
+        color: #101828;
       }
 
 

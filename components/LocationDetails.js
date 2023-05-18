@@ -5,7 +5,7 @@ import CommentCard from "./Comments/CommentCard";
 import { MdWrongLocation } from "react-icons/md";
 import Header from "./Header";
 import { useSession, getSession } from "next-auth/react";
-import Location from "./LocationCard";
+import LocationCard from "./LocationCard";
 import ModalCommentForm from "./ModalCommentForm";
 import useSWR from "swr";
 import ModalCommentFilter from "./ModalCommentFilter";
@@ -136,36 +136,28 @@ export default function LocationDetails({ loadLocations }) {
         <Header>{name}</Header>
         <StyledLocationContainer>
           <div className="location-container">
-            <Location specificLocation={specificLocation} />
+            <LocationCard specificLocation={specificLocation} />
             <div className="title-header">
-              {" "}
-              <h2>Comments</h2>
+              <h3>Comments</h3>
               <div className="modal">
                 <ModalCommentForm loadComments={loadComments} />
-              </div>
-            </div>
-            <h3>Filter Comments by:</h3>
-            <div className="comment-filter">
-              <ModalCommentFilter
-                setSelectedAgeOption={setSelectedAgeOption}
-                setSelectedGenderOption={setSelectedGenderOption}
-                setSelectedsexualOrientationOption={
-                  setSelectedsexualOrientationOption
-                }
-                setSelectedBipocOption={setSelectedBipocOption}
-                selectedsexualOrientationOption={
-                  selectedsexualOrientationOption
-                }
-                selectedAgeOption={selectedAgeOption}
-                selectedGenderOption={selectedGenderOption}
-                selectedBipocOption={selectedBipocOption}
-                getFilteredList={getFilteredList}
-                clearFilter={clearFilter}
-                loadComments={loadComments}
-              />
-              <div className="clear-filter">
-                {" "}
-                <button onClick={clearFilter}>Reset Filter</button>
+                <ModalCommentFilter
+                  setSelectedAgeOption={setSelectedAgeOption}
+                  setSelectedGenderOption={setSelectedGenderOption}
+                  setSelectedsexualOrientationOption={
+                    setSelectedsexualOrientationOption
+                  }
+                  setSelectedBipocOption={setSelectedBipocOption}
+                  selectedsexualOrientationOption={
+                    selectedsexualOrientationOption
+                  }
+                  selectedAgeOption={selectedAgeOption}
+                  selectedGenderOption={selectedGenderOption}
+                  selectedBipocOption={selectedBipocOption}
+                  getFilteredList={getFilteredList}
+                  clearFilter={clearFilter}
+                  loadComments={loadComments}
+                />
               </div>
             </div>
             <div className="comments" key={comments}>
@@ -228,7 +220,7 @@ const StyledLocationContainer = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
-  color: #bfbdbd;
+  color: #101828;
   h3 {
     text-align: center;
   }
@@ -236,23 +228,19 @@ const StyledLocationContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    justify-content: space-around;
     align-items: center;
-    margin: 40px 0px;
-    color: #bfbdbd;
-    border-bottom: solid 0.5px whitesmoke;
+    margin: 10px 0px;
+    font-weight: bold;
   }
 
-  .comment-filter {
+  .modal {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    margin: 10px 0px;
-    font-size: 1em;
   }
+
   .comment-card {
-    margin-right: 10%;
-    margin-left: 10%;
+    margin-right: 5%;
+    margin-left: 5%;
   }
 
   .delete-location {
