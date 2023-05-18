@@ -1,3 +1,9 @@
+import { FaGlassMartiniAlt } from "react-icons/fa";
+import { MdNoPhotography } from "react-icons/md";
+import { IoIosPeople } from "react-icons/io";
+import { MdDirectionsBoat } from "react-icons/md";
+import { MdLocationOn } from "react-icons/md";
+
 export const typeCategories = [
   { value: "select", label: "Select", isDisabled: true },
   { value: "Bar", label: "Bar" },
@@ -108,3 +114,36 @@ export const colorStyles = {
     };
   },
 };
+
+export const iconStylesMap = {
+  color: "white",
+  fontSize: "1.2em",
+  cursor: "pointer",
+};
+
+export const iconStylesLocationCard = {
+  color: "white",
+  fontSize: "2em",
+  cursor: "pointer",
+};
+export const barIconMap = <FaGlassMartiniAlt style={iconStylesMap} />;
+export const clubIconMap = <MdNoPhotography style={iconStylesMap} />;
+export const cruisingIconMap = <MdDirectionsBoat style={iconStylesMap} />;
+export const communityIconMap = <IoIosPeople style={iconStylesMap} />;
+export const otherIconMap = <MdLocationOn style={iconStylesMap} />;
+
+export const barIconLocationCard = (
+  <FaGlassMartiniAlt style={iconStylesLocationCard} />
+);
+export const clubIconLocationCard = (
+  <MdNoPhotography style={iconStylesLocationCard} />
+);
+export const cruisingIconLocationCard = (
+  <MdDirectionsBoat style={iconStylesLocationCard} />
+);
+export const communityIconLocationCard = (
+  <IoIosPeople style={iconStylesLocationCard} />
+);
+export const otherIconLocationCard = (
+  <MdLocationOn style={iconStylesLocationCard} />
+);

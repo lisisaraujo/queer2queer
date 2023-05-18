@@ -13,9 +13,8 @@ import ModalCommentFilter from "./ModalCommentFilter";
 export default function LocationDetails({ loadLocations, specificLocation }) {
   const [comments, setComments] = useState([]);
   const [isLoading, setLoading] = useState(false);
-  // const [specificLocation, setSpecificLocation] = useState();
   const locations = useSWR("/api/locations");
-  const iconStyles = { color: "red", fontSize: "2em" };
+  const iconStylesDelete = { color: "red", fontSize: "2em" };
 
   const { data: session } = useSession();
 
@@ -117,18 +116,6 @@ export default function LocationDetails({ loadLocations, specificLocation }) {
     loadLocations();
   }
 
-  // useEffect(() => {
-  //   if (id) {
-  //     const fetchSpecificLocation = async () => {
-  //       const response = await fetch(`/api/locations/${id}`);
-  //       const specificLocation = await response.json();
-  //       setSpecificLocation(specificLocation);
-  //     };
-  //     fetchSpecificLocation();
-  //     loadComments();
-  //   }
-  // }, [id]);
-
   if (specificLocation) {
     const { name, lngLat, type, address, city, postcode } = specificLocation;
 
@@ -194,7 +181,7 @@ export default function LocationDetails({ loadLocations, specificLocation }) {
               <div className="delete-location">
                 <h4>Delete this location</h4>
                 <MdWrongLocation
-                  style={iconStyles}
+                  style={iconStylesDelete}
                   onClick={() => {
                     handleRemoveLocation(id);
                   }}

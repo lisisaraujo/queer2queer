@@ -1,26 +1,23 @@
-import { FaGlassMartiniAlt } from "react-icons/fa";
-import { MdNoPhotography } from "react-icons/md";
-import { IoIosPeople } from "react-icons/io";
-import { MdDirectionsBoat } from "react-icons/md";
-import { MdLocationOn } from "react-icons/md";
+import {
+  barIconLocationCard,
+  clubIconLocationCard,
+  cruisingIconLocationCard,
+  communityIconLocationCard,
+  otherIconLocationCard,
+} from "../utils";
 import styled from "styled-components";
 
 export default function LocationCard({ specificLocation }) {
-  const iconStyles = { color: "white", fontSize: "2em", cursor: "pointer" };
-  const barIcon = <FaGlassMartiniAlt style={iconStyles} />;
-  const clubIcon = <MdNoPhotography style={iconStyles} />;
-  const cruisingIcon = <MdDirectionsBoat style={iconStyles} />;
-  const communityIcon = <IoIosPeople style={iconStyles} />;
-  const otherIcon = <MdLocationOn style={iconStyles} />;
   return (
     <>
       <StyledLocationHeader>
         <div className="location-icon">
-          {specificLocation.type === "Bar" && barIcon}
-          {specificLocation.type === "Club" && clubIcon}
-          {specificLocation.type === "Cruising" && cruisingIcon}
-          {specificLocation.type === "Community-Center" && communityIcon}
-          {specificLocation.type === "Other" && otherIcon}
+          {specificLocation.type === "Bar" && barIconLocationCard}
+          {specificLocation.type === "Club" && clubIconLocationCard}
+          {specificLocation.type === "Cruising" && cruisingIconLocationCard}
+          {specificLocation.type === "Community-Center" &&
+            communityIconLocationCard}
+          {specificLocation.type === "Other" && otherIconLocationCard}
         </div>
         <div className="location-description">
           <h2>{specificLocation.name}</h2>

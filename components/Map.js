@@ -2,25 +2,21 @@ import dynamic from "next/dynamic";
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { accessToken } from "../src/mapbox";
-import { FaGlassMartiniAlt } from "react-icons/fa";
-import { MdNoPhotography } from "react-icons/md";
-import { IoIosPeople } from "react-icons/io";
-import { MdDirectionsBoat } from "react-icons/md";
-import { MdLocationOn } from "react-icons/md";
 import Link from "next/link";
 import { GeolocateControl, NavigationControl } from "react-map-gl";
 import Navbar from "./Navbar";
 import ModalLocationDetail, { Modal } from "./ModalLocationDetail";
 import ModalAddLocationForm from "./ModalAddLocationForm";
+import {
+  barIconMap,
+  clubIconMap,
+  cruisingIconMap,
+  communityIconMap,
+  otherIconMap,
+} from "../utils";
 
-export default function MyMap({ locations, loadLocations, locationName }) {
+export default function MyMap({ locations, loadLocations }) {
   const [selectedLocation, setSelectedLocation] = useState({});
-  const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
-  const barIcon = <FaGlassMartiniAlt style={iconStyles} />;
-  const clubIcon = <MdNoPhotography style={iconStyles} />;
-  const cruisingIcon = <MdDirectionsBoat style={iconStyles} />;
-  const communityIcon = <IoIosPeople style={iconStyles} />;
-  const otherIcon = <MdLocationOn style={iconStyles} />;
   const [filteredLocations, setFilteredLocations] = useState(locations);
   const [selectedCategory, setSelectedCategory] = useState("");
 
@@ -90,11 +86,11 @@ export default function MyMap({ locations, loadLocations, locationName }) {
                   onClick={onMarker}
                   aria-label="push-pin"
                 >
-                  {location.type === "Bar" && barIcon}
-                  {location.type === "Club" && clubIcon}
-                  {location.type === "Cruising" && cruisingIcon}
-                  {location.type === "Community-Center" && communityIcon}
-                  {location.type === "Other" && otherIcon}
+                  {location.type === "Bar" && barIconMap}
+                  {location.type === "Club" && clubIconMap}
+                  {location.type === "Cruising" && cruisingIconMap}
+                  {location.type === "Community-Center" && communityIconMap}
+                  {location.type === "Other" && otherIconMap}
                 </p>
               </Marker>
               {selectedLocation._id === location._id && (
