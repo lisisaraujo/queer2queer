@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import { Inter } from "next/font/google";
 import { useRouter } from "next/router";
+import ModalLocationDetails from "../components/ModalLocationDetails";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function Home({ locations, selectedLocation, loadLocations }) {
       <title>Queer2Queer</title>
       <section className="map">
         <MyMap locations={locations} loadLocations={loadLocations} />
+        <ModalLocationDetails />
       </section>
     </>
   );
