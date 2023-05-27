@@ -46,7 +46,14 @@ export default function Navbar({ handleCategoryChange }) {
                   className="flex w-full justify-between p-4 hover:bg-blue-300 curser-pointer rounded-r-lg border-l-transparent hover:border-l-white border-l-4"
                   key={item}
                 >
-                  <h3 className="font-bold">{item}</h3>
+                  <Link className="font-bold" href="/menu/about">
+                    {item}
+                  </Link>
+                  {/* <Link href="/menu/ressources">Ressources</Link>
+                  <Link href="/menu/feedback">Feedback</Link>
+                  <Link href="/menu/contact">Contact</Link>
+                  <Link href="/menu/admin">Admin</Link> */}
+                  {/* <h3 className="font-bold">{item}</h3> */}
                 </div>
               ))}
             </div>
