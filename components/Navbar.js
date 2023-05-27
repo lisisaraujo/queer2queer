@@ -42,8 +42,11 @@ export default function Navbar({ handleCategoryChange }) {
           {isOpen && (
             <div className="bg-blue-400 absolute top-20 flex flex-col items-start rounded-lg p-2 w-full">
               {menuList.map((item) => (
-                <div>
-                  <h3>{item}</h3>
+                <div
+                  className="flex w-full justify-between p-4 hover:bg-blue-300 curser-pointer rounded-r-lg border-l-transparent hover:border-l-white border-l-4"
+                  key={item}
+                >
+                  <h3 className="font-bold">{item}</h3>
                 </div>
               ))}
             </div>
