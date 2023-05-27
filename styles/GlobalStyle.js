@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+
     * {
         box-sizing: border-box;
         
@@ -9,8 +10,14 @@ const GlobalStyle = createGlobalStyle`
   font-weight: lighter;
   text-decoration: none;
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 
     }
+
+
     
       /* body > div:first-child,
       div#__next,
@@ -68,6 +75,8 @@ a:-webkit-any-link {
     inset: 0px;
     background-color: rgba(35, 35, 35, 0.75);
   }
+
+
 `;
 
 export default GlobalStyle;

@@ -2,6 +2,8 @@ import Link from "next/link";
 import styled from "styled-components";
 import { FiMenu } from "react-icons/fi";
 import CategoryFilter from "./CategoryFilter";
+import DropdownNav from "./DropdownNav";
+import GlobalStyle from "../styles/GlobalStyle";
 
 export default function Navbar({ handleCategoryChange }) {
   const iconStyles = { color: "white", fontSize: "1.5em", cursor: "pointer" };
@@ -17,11 +19,13 @@ export default function Navbar({ handleCategoryChange }) {
   return (
     <>
       <NavbarWrapper>
-        <div id="myLinks">
+        <DropdownNav />
+        {/* <div id="myLinks">
           <Link href="/menu/about">About Us</Link>
           <Link href="/menu/ressources">Ressources</Link>
           <Link href="/menu/feedback">Feedback</Link>
           <Link href="/menu/contact">Contact</Link>
+          <Link href="/menu/admin">Admin</Link>
         </div>
         <a href="#" className="icon" onClick={navBarDrop}>
           <FiMenu style={iconStyles} />
@@ -32,7 +36,7 @@ export default function Navbar({ handleCategoryChange }) {
         <CategoryFilter
           onChangeCategory={handleCategoryChange}
           setSelectedOption={handleCategoryChange}
-        />
+        /> */}
       </NavbarWrapper>
     </>
   );

@@ -69,63 +69,69 @@ export default function AuthForm() {
   }
 
   return (
-    <Wrapper>
+    <>
       <StyledHeader>
         <p>Admin access only!</p>
-        Login
       </StyledHeader>
-      {/* <StyledHeader>{isLogin ? "Login" : "Sign Up"}</StyledHeader> */}
-      <EntryForm onSubmit={submitHandler}>
-        <StyledLabel htmlFor="name" name="name" id="name">
-          Your name
-        </StyledLabel>
-        <StyledInput
-          type="name"
-          name="name"
-          autoComplete="off"
-          aria-label="Enter text"
-          placeholder="your name"
-          required
-          ref={nameInputRef}
-        />
-        <StyledLabel htmlFor="email" name="email" id="email">
-          Your Email
-        </StyledLabel>
-        <StyledInput type="email" id="email" required ref={emailInputRef} />
-        <StyledLabel htmlFor="password" name="password" id="password">
-          Your Password
-        </StyledLabel>
-        <StyledInput
-          type="password"
-          name="password"
-          aria-label="Enter your password"
-          placeholder="*********"
-          required
-          ref={passwordInputRef}
-        />
+      <Wrapper>
+        {/* <StyledHeader>{isLogin ? "Login" : "Sign Up"}</StyledHeader> */}
+        <EntryForm onSubmit={submitHandler}>
+          <StyledLabel htmlFor="name" name="name" id="name">
+            Your name
+          </StyledLabel>
+          <StyledInput
+            type="name"
+            name="name"
+            autoComplete="off"
+            aria-label="Enter text"
+            placeholder="your name"
+            required
+            ref={nameInputRef}
+          />
+          <StyledLabel htmlFor="email" name="email" id="email">
+            Your Email
+          </StyledLabel>
+          <StyledInput type="email" id="email" required ref={emailInputRef} />
+          <StyledLabel htmlFor="password" name="password" id="password">
+            Your Password
+          </StyledLabel>
+          <StyledInput
+            type="password"
+            name="password"
+            aria-label="Enter your password"
+            placeholder="*********"
+            required
+            ref={passwordInputRef}
+          />
 
-        <ButtonWrapper>
-          {!isButtonLoading ? (
-            <>
-              <Button>Login</Button>
-              {/* <Button>{isLogin ? "Login" : "Create Account"}</Button>
+          <ButtonWrapper>
+            {!isButtonLoading ? (
+              <>
+                <Button>Login</Button>
+                {/* <Button>{isLogin ? "Login" : "Create Account"}</Button>
               <Button type="button" onClick={switchAuthModeHandler}>
                 {isLogin ? "Create new account" : "Login with existing account"}
               </Button> */}
-            </>
-          ) : (
-            <ThreeDots height="50" width="50" color="#2874FC" visible={true} />
-          )}
-        </ButtonWrapper>
-      </EntryForm>
-    </Wrapper>
+              </>
+            ) : (
+              <ThreeDots
+                height="50"
+                width="50"
+                color="#2874FC"
+                visible={true}
+              />
+            )}
+          </ButtonWrapper>
+        </EntryForm>
+      </Wrapper>
+    </>
   );
 }
 
 const Wrapper = styled.div`
   /* margin: 10%; */
   border-radius: 20px;
-  border: 1px solid white;
+  border: 1px solid black;
   /* display: flex;
   justify-content: center;
   flex-direction: column;
@@ -139,8 +145,8 @@ const EntryForm = styled.form`
 `;
 
 const StyledHeader = styled.h2`
+  color: red;
   font-size: 14pt;
-  padding-top: 30px;
   text-align: center;
   text-transform: uppercase;
   font-weight: 100;

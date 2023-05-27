@@ -1,8 +1,7 @@
 import React from "react";
 import { useSession, signOut, getSession } from "next-auth/react";
 import styled from "styled-components";
-import Header from "../components/Header";
-
+import Header from "../../components/Header";
 export default function Account() {
   const { data: session, status } = useSession();
   const id = session?.user?.email;
