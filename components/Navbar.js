@@ -5,7 +5,14 @@ import CategoryFilter from "./CategoryFilter";
 import DropdownNav from "./DropdownNav";
 import GlobalStyle from "../styles/GlobalStyle";
 
+import { list } from "postcss";
+import { useState } from "react";
+import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai";
+
 export default function Navbar({ handleCategoryChange }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const menuList = ["About", "Contact", "Feedback", "Ressources", "Admin"];
+
   const iconStyles = { color: "white", fontSize: "1.5em", cursor: "pointer" };
   function navBarDrop() {
     let x = document.getElementById("myLinks");
@@ -19,7 +26,30 @@ export default function Navbar({ handleCategoryChange }) {
   return (
     <>
       <NavbarWrapper>
-        <DropdownNav />
+        <div className="relative flex flex-col items-center w-[340px] rounded-lg">
+          <button
+            onClick={() => setIsOpen((prev) => !prev)}
+            className="bg-blue-400 p-4 w-full flex items-center justify-between font-bold text-lg rounded-lg tracking-wider border-4 border-transparent active:border-white duration-300 active:text-black"
+          >
+            Dropdown
+            {!isOpen ? (
+              <AiOutlineCaretDown className="h-8" />
+            ) : (
+              <AiOutlineCaretUp className="h-8" />
+            )}
+          </button>
+
+          {isOpen && (
+            <div className="bg-blue-400 absolute top-20 flex flex-col items-start rounded-lg p-2 w-full">
+              {menuList.map((item) => (
+                <div>
+                  <h3>{item}</h3>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
         {/* <div id="myLinks">
           <Link href="/menu/about">About Us</Link>
           <Link href="/menu/ressources">Ressources</Link>
@@ -43,11 +73,10 @@ export default function Navbar({ handleCategoryChange }) {
 }
 
 const NavbarWrapper = styled.nav`
-  width: 80%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-around;
+  /* width: 80%; */
+
+  /* flex-wrap: wrap; */
+
   /* padding: 5px; */
   z-index: 1;
   margin-top: 25px;
@@ -55,23 +84,22 @@ const NavbarWrapper = styled.nav`
   position: fixed;
   background-color: rgba(77, 150, 239, 0.9);
   opacity: 0.9;
-  margin-left: 10%;
   border-radius: 16px;
   box-shadow: 0px 0px 18px 2px rgba(54, 54, 54, 0.75);
 
-  #myLinks {
+  /* #myLinks {
     display: none;
-  }
+  } */
 
-  a {
+  /* a {
     color: #fdfbfc;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
     display: block;
     position: relative;
-  }
-
+  } */
+  /* 
   a.icon {
     display: block;
     position: relative;
@@ -79,17 +107,17 @@ const NavbarWrapper = styled.nav`
     top: 0;
     background-color: transparent;
     color: #fdfbfc;
-  }
+  } */
 
-  a:hover {
+  /* a:hover {
     background-color: #73aef4;
     color: #fdfbfc;
     border-radius: 10px;
-  }
+  } */
 
-  .active {
+  /* .active {
     background-color: transparent;
     color: #fdfbfc;
     align-self: center;
-  }
+  } */
 `;
