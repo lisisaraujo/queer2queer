@@ -5,7 +5,7 @@ import { useState } from "react";
 import { selectFilterColorStyles, typeCategories } from "../utils";
 import { useRouter } from "next/router";
 
-export default function CategoryFilter({ onChangeCategory }) {
+export default function CategoryFilter({ handleCategoryChange }) {
   const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
   const router = useRouter();
 
@@ -13,12 +13,21 @@ export default function CategoryFilter({ onChangeCategory }) {
 
   return (
     <>
+      {/* <label htmlFor="type">Type:</label>
+      <Select
+        defaultValue={selectedOption}
+        onChange={setSelectedOption}
+        options={typeCategories}
+        name="type"
+        styles={selectFilterColorStyles}
+      /> */}
+
       {
         <StyledFilter>
           <select
             name="category-list"
             id="category-list"
-            onChange={onChangeCategory}
+            onChange={handleCategoryChange}
             selected
             class="block px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm w-52 focus:outline-none focus:ring-primary-500 focus:border-primary-500"
             name="homeFilter"
@@ -41,9 +50,9 @@ export default function CategoryFilter({ onChangeCategory }) {
 
 export const StyledFilter = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   align-content: center;
-  /* width: fit-content; */
+  width: fit-content;
   height: fit-content;
 
   #category-list {
