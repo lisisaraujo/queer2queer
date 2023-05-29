@@ -1,9 +1,10 @@
 import React from "react";
 import Modal from "react-modal";
+import CategoryFilter from "./CategoryFilter";
 import { useRouter } from "next/router";
-import { IoIosAdd, IoIosClose } from "react-icons/io";
+import { IoFilter } from "react-icons/io5";
 import styled from "styled-components";
-import AddPlaceForm from "./AddPlaceForm";
+import { IoIosClose } from "react-icons/io";
 
 const customStyles = {
   content: {
@@ -26,21 +27,15 @@ const closeButtonStyle = {
   backgroundColor: "transparent",
   marginTop: "5%",
   marginLeft: "85%",
+  fontSize: "1.2em",
   border: "none",
 };
 
-// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement("div");
 
-export default function ModalAddLocationForm({ loadLocations }) {
+export default function ModalFilterHomepage({ handleCategoryChange }) {
   const router = useRouter();
-  const { id } = router.query;
-  const iconStyles = {
-    color: "white",
-    fontSize: "1.8em",
-    cursor: "pointer",
-  };
-  //   const customStyles = { backgroundColor: "black" };
+  const iconStyles = { color: "white", fontSize: "1.8em", cursor: "pointer" };
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -55,7 +50,7 @@ export default function ModalAddLocationForm({ loadLocations }) {
   return (
     <div>
       <StyledButton>
-        <IoIosAdd style={iconStyles} onClick={openModal} />
+        <IoFilter style={iconStyles} onClick={openModal} />
       </StyledButton>
 
       <Modal
@@ -63,15 +58,18 @@ export default function ModalAddLocationForm({ loadLocations }) {
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Modal"
+        className="text-white flex-cl items-center absolute"
       >
         <button onClick={closeModal} style={closeButtonStyle}>
           <IoIosClose style={iconStyles} />
         </button>
-        <AddPlaceForm
-          locationID={id}
-          closeModal={closeModal}
-          loadLocations={loadLocations}
-        />
+        <div>
+          <h1>Filter by Category</h1>
+          <CategoryFilter handleCategoryChange={handleCategoryChange} />
+          <button className="bg-blue-450" onClick={closeModal}>
+            Apply Filter
+          </button>
+        </div>
       </Modal>
     </div>
   );
@@ -79,19 +77,9 @@ export default function ModalAddLocationForm({ loadLocations }) {
 
 export const StyledButton = styled.button`
   border: none;
-  background-color: rgba(77, 150, 239, 0.9);
-  z-index: 1;
-  display: flex;
-  a:hover {
-    background-color: #73aef4;
-    color: #fdfbfc;
-    border-radius: 50%;
+  background-color: transparent;
+  &:hover {
+    cursor: pointer;
   }
-  font-size: 2em;
   position: relative;
-  margin-top: 85vh;
-  margin-left: 80vw;
-  opacity: 0.9;
-  border-radius: 50%;
-  box-shadow: 0px 0px 18px 2px rgba(54, 54, 54, 0.75);
 `;
