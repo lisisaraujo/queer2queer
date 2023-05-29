@@ -37,7 +37,7 @@ const StyledSection = styled.div`
   height: 100%;
   margin-top: 30%;
   width: auto;
-  color: whitesmoke;
+  color: black;
 
   .description {
     margin: 0% 10%;

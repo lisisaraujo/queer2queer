@@ -43,17 +43,17 @@ export const StyledFilter = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-  width: fit-content;
+  /* width: fit-content; */
   height: fit-content;
 
   #category-list {
     color: white;
-    background-color: rgba(77, 150, 239, 1);
-    border-radius: 10px;
-    width: fit-content;
+    background-color: transparent;
+    /* border-radius: 10px; */
+    width: 100px;
     border-color: transparent;
   }
   .type-list {
-    background-color: rgba(77, 150, 239, 1);
+    background-color: red;
   }
 `;

@@ -26,21 +26,20 @@ export default function Navbar({ handleCategoryChange }) {
   return (
     <>
       <NavbarWrapper>
-        <div className="relative flex flex-col items-center w-[200px] rounded-lg">
+        <div className="relative flex flex-col items-center w-fit rounded-lg">
           <button
             onClick={() => setIsOpen((prev) => !prev)}
-            className="bg-blue-450 p-4 w-full flex items-center justify-between font-bold text-lg rounded-lg tracking-wider border-4 border-transparent active:border-white duration-300 active:text-black"
+            className="bg-blue-450 p-4 w-fit flex items-center justify-between font-bold text-lg rounded-lg tracking-wider border-4 border-transparent active:border-white duration-300 active:text-black"
           >
             <FiMenu />
-            {!isOpen ? (
+            {/* {!isOpen ? (
               <AiOutlineCaretDown className="h-8" />
             ) : (
               <AiOutlineCaretUp className="h-8" />
-            )}
+            )} */}
           </button>
-
           {isOpen && (
-            <div className="bg-blue-400 absolute top-20 flex flex-col items-start rounded-lg p-2 w-full">
+            <div className="bg-blue-400 absolute top-20 ml-10 flex flex-col items-start rounded-lg p-2 w-fit">
               {menuList.map((item) => (
                 <div
                   className="flex w-full justify-between p-4 hover:bg-blue-300 curser-pointer rounded-r-lg border-l-transparent hover:border-l-white border-l-4"
@@ -57,6 +56,7 @@ export default function Navbar({ handleCategoryChange }) {
             </div>
           )}
         </div>
+        <div className="title">Queer2Queer</div>
         <CategoryFilter
           onChangeCategory={handleCategoryChange}
           setSelectedOption={handleCategoryChange}
@@ -69,8 +69,8 @@ export default function Navbar({ handleCategoryChange }) {
 const NavbarWrapper = styled.nav`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  padding-right: 5%;
+  justify-content: space-around;
+  padding: 0% 5%;
   width: 100%;
   z-index: 1;
   margin-top: 0px;
