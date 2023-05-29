@@ -32,7 +32,7 @@ const HeaderWrapper = styled.nav`
   z-index: 1;
   text-align: center;
   justify-content: flex-start;
-  align-content: center;
+  align-items: center;
 
   .title {
     font-weight: bold;

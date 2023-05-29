@@ -26,12 +26,12 @@ export default function Navbar({ handleCategoryChange }) {
   return (
     <>
       <NavbarWrapper>
-        <div className="relative flex flex-col items-center w-[340px] rounded-lg">
+        <div className="relative flex flex-col items-center w-[200px] rounded-lg">
           <button
             onClick={() => setIsOpen((prev) => !prev)}
-            className="bg-blue-400 p-4 w-full flex items-center justify-between font-bold text-lg rounded-lg tracking-wider border-4 border-transparent active:border-white duration-300 active:text-black"
+            className="bg-blue-450 p-4 w-full flex items-center justify-between font-bold text-lg rounded-lg tracking-wider border-4 border-transparent active:border-white duration-300 active:text-black"
           >
-            Dropdown
+            <FiMenu />
             {!isOpen ? (
               <AiOutlineCaretDown className="h-8" />
             ) : (
@@ -46,88 +46,38 @@ export default function Navbar({ handleCategoryChange }) {
                   className="flex w-full justify-between p-4 hover:bg-blue-300 curser-pointer rounded-r-lg border-l-transparent hover:border-l-white border-l-4"
                   key={item}
                 >
-                  <Link className="font-bold" href="/menu/about">
+                  <Link
+                    className="font-bold"
+                    href={`/menu/${item.toLowerCase()}`}
+                  >
                     {item}
                   </Link>
-                  {/* <Link href="/menu/ressources">Ressources</Link>
-                  <Link href="/menu/feedback">Feedback</Link>
-                  <Link href="/menu/contact">Contact</Link>
-                  <Link href="/menu/admin">Admin</Link> */}
-                  {/* <h3 className="font-bold">{item}</h3> */}
                 </div>
               ))}
             </div>
           )}
         </div>
-
-        {/* <div id="myLinks">
-          <Link href="/menu/about">About Us</Link>
-          <Link href="/menu/ressources">Ressources</Link>
-          <Link href="/menu/feedback">Feedback</Link>
-          <Link href="/menu/contact">Contact</Link>
-          <Link href="/menu/admin">Admin</Link>
-        </div>
-        <a href="#" className="icon" onClick={navBarDrop}>
-          <FiMenu style={iconStyles} />
-        </a>
-        <a href="#home" className="active">
-          Queer2Queer
-        </a>
         <CategoryFilter
           onChangeCategory={handleCategoryChange}
           setSelectedOption={handleCategoryChange}
-        /> */}
+        />
       </NavbarWrapper>
     </>
   );
 }
 
 const NavbarWrapper = styled.nav`
-  /* width: 80%; */
-
-  /* flex-wrap: wrap; */
-
-  /* padding: 5px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 5%;
+  width: 100%;
   z-index: 1;
-  margin-top: 25px;
+  margin-top: 0px;
   color: #fdfbfc;
   position: fixed;
   background-color: rgba(77, 150, 239, 0.9);
   opacity: 0.9;
-  border-radius: 16px;
   box-shadow: 0px 0px 18px 2px rgba(54, 54, 54, 0.75);
-
-  /* #myLinks {
-    display: none;
-  } */
-
-  /* a {
-    color: #fdfbfc;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-    display: block;
-    position: relative;
-  } */
-  /* 
-  a.icon {
-    display: block;
-    position: relative;
-    right: 0;
-    top: 0;
-    background-color: transparent;
-    color: #fdfbfc;
-  } */
-
-  /* a:hover {
-    background-color: #73aef4;
-    color: #fdfbfc;
-    border-radius: 10px;
-  } */
-
-  /* .active {
-    background-color: transparent;
-    color: #fdfbfc;
-    align-self: center;
-  } */
+  align-items: center;
 `;
