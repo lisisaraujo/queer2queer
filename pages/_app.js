@@ -6,6 +6,7 @@ import "/styles/map.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useRouter } from "next/router";
 import { SessionProvider } from "next-auth/react";
+import "../global.css";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
