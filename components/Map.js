@@ -45,6 +45,11 @@ export default function MyMap({ locations, loadLocations }) {
     setSelectedCategory(event.target.value);
   };
 
+  const clearFilter = () => {
+    setSelectedCategory("");
+    console.log(selectedCategory, "filters cleared");
+  };
+
   // console.log(selectedCategory);
 
   const getFilteredList = () => {
@@ -64,7 +69,13 @@ export default function MyMap({ locations, loadLocations }) {
 
   return (
     <>
-      <Navbar handleCategoryChange={handleCategoryChange}>Queer2Queer</Navbar>
+      <Navbar
+        handleCategoryChange={handleCategoryChange}
+        clearFilter={clearFilter}
+        selectedCategory={selectedCategory}
+      >
+        Queer2Queer
+      </Navbar>
       <ReactMapGL
         mapStyle="mapbox://styles/dalalamad/clfe8aq9s006701o42zx1li76"
         mapboxAccessToken={accessToken}

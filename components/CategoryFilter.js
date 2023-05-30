@@ -8,15 +8,18 @@ import { useRouter } from "next/router";
 export default function CategoryFilter({ handleCategoryChange }) {
   const iconStyles = { color: "white", fontSize: "1.2em", cursor: "pointer" };
   const router = useRouter();
+  const [selectedCategory, setSelectedCategory] = useState("");
 
-  const [selectedOption, setSelectedOption] = useState(null);
+  function changeCategory() {
+    setSelectedCategory(selectedCategory);
+  }
 
   return (
     <>
       {/* <label htmlFor="type">Type:</label>
       <Select
-        defaultValue={selectedOption}
-        onChange={setSelectedOption}
+        defaultValue={selectedCategory}
+        onChange={changeCategory}
         options={typeCategories}
         name="type"
         styles={selectFilterColorStyles}
@@ -30,7 +33,6 @@ export default function CategoryFilter({ handleCategoryChange }) {
             onChange={handleCategoryChange}
             selected
             class="block px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm w-52 focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-            name="homeFilter"
           >
             <option defaultValue="Select Filter" disabled>
               Filter
@@ -55,13 +57,13 @@ export const StyledFilter = styled.div`
   width: fit-content;
   height: fit-content;
 
-  #category-list {
+  /* #category-list {
     color: white;
-    background-color: transparent;
+    background-color: blue;
     /* border-radius: 10px; */
-    width: 100px;
+    width: fit-content;
     border-color: transparent;
-  }
+  } */
   .type-list {
     background-color: red;
   }
