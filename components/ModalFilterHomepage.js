@@ -33,7 +33,11 @@ const closeButtonStyle = {
 
 Modal.setAppElement("div");
 
-export default function ModalFilterHomepage({ handleCategoryChange }) {
+export default function ModalFilterHomepage({
+  handleCategoryChange,
+  clearFilter,
+  selectedCategory,
+}) {
   const router = useRouter();
   const iconStyles = { color: "white", fontSize: "1.8em", cursor: "pointer" };
 
@@ -48,7 +52,7 @@ export default function ModalFilterHomepage({ handleCategoryChange }) {
   }
 
   return (
-    <div>
+    <div className="flex relative justify-center">
       <StyledButton>
         <IoFilter style={iconStyles} onClick={openModal} />
       </StyledButton>
@@ -63,11 +67,23 @@ export default function ModalFilterHomepage({ handleCategoryChange }) {
         <button onClick={closeModal} style={closeButtonStyle}>
           <IoIosClose style={iconStyles} />
         </button>
-        <div>
-          <h1>Filter by Category</h1>
-          <CategoryFilter handleCategoryChange={handleCategoryChange} />
-          <button className="bg-blue-450" onClick={closeModal}>
+        <div className="flex flex-col items-center p-10 space-y-8">
+          <h1 className="font-bold">Filter by Category</h1>
+          <CategoryFilter
+            handleCategoryChange={handleCategoryChange}
+            selectedCategory={selectedCategory}
+          />
+          <button
+            className="bg-blue-500 rounded p-3 shadow-lg shadow-slate-500"
+            onClick={closeModal}
+          >
             Apply Filter
+          </button>
+          <button
+            className="bg-blue-500 rounded p-3 shadow-lg shadow-slate-500"
+            onClick={clearFilter}
+          >
+            Clear Filter
           </button>
         </div>
       </Modal>

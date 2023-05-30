@@ -3,13 +3,21 @@ import CategoryFilter from "./CategoryFilter";
 import DropdownMenu from "./DropdownMenu";
 import ModalFilterHomepage from "./ModalFilterHomepage";
 
-export default function Navbar({ handleCategoryChange }) {
+export default function Navbar({
+  handleCategoryChange,
+  clearFilter,
+  selectedCategory,
+}) {
   return (
     <>
       <NavbarWrapper>
         <DropdownMenu />
         <div className="title">Queer2Queer</div>
-        <ModalFilterHomepage handleCategoryChange={handleCategoryChange} />
+        <ModalFilterHomepage
+          handleCategoryChange={handleCategoryChange}
+          clearFilter={clearFilter}
+          selectedCategory={selectedCategory}
+        />
         {/* <CategoryFilter onChangeCategory={handleCategoryChange} /> */}
       </NavbarWrapper>
     </>
