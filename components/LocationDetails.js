@@ -217,7 +217,7 @@ const StyledLocationContainer = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: 10px 0px;
+    margin: 5% 10%;
     font-weight: bold;
   }
 
