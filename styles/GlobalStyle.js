@@ -5,23 +5,12 @@ const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
         
-  /* color: #BFBDBD; */
   font-family: 'Montserrat', sans-serif;
   font-weight: lighter;
   text-decoration: none;
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 
     }
-
-
-    
-      /* body > div:first-child,
-      div#__next,
-      div#__next > div */
   
       body, div#__next {
         height: 100%;

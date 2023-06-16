@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
-import { accessToken } from "../src/mapbox";
+import { accessToken } from "../mapbox";
 import Link from "next/link";
 import { GeolocateControl, NavigationControl } from "react-map-gl";
 import Navbar from "./Navbar";

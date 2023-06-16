@@ -1,6 +1,6 @@
 import dbConnect from "../../../db/connect";
 import Location from "../../../db/models/Location";
-import { accessToken } from "../../../src/mapbox";
+import { accessToken } from "../../../mapbox";
 import axios from "axios";
 
 export default async function handler(req, response) {
