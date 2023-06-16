@@ -3,7 +3,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import Header from "../components/Header.js";
-import AuthForm from "../components/AuthForm";
+import AuthForm from "../components/Forms/AuthForm.js";
 
 export default function Login() {
   const { data: session } = useSession();
@@ -45,10 +45,10 @@ const StyledAdminPage = styled.div`
   flex-direction: column;
   justify-content: center;
   color: black;
-  margin: 10% auto;
-  font-size: 1.5em;
+  margin: 30% auto;
+  font-size: 1em;
   button {
-    width: 80px;
+    width: 50px;
     height: 40px;
     align-self: center;
     background-color: rgba(1, 72, 224, 0.7);

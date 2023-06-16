@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import CommentCard from "./Comments/CommentCard";
+import CommentCard from "./CommentCard";
 import { MdWrongLocation } from "react-icons/md";
 import Header from "./Header";
 import { useSession, getSession } from "next-auth/react";
-import LocationCard from "./LocationCard";
-import ModalCommentForm from "./ModalCommentForm";
+import LocationHeaderDetails from "./LocationHeaderDetails";
+import ModalCommentForm from "./Modals/ModalCommentForm";
 import useSWR from "swr";
-import ModalCommentFilter from "./ModalCommentFilter";
+import ModalCommentFilter from "./Modals/ModalCommentFilter";
 
 export default function LocationDetails({ loadLocations, specificLocation }) {
   const [comments, setComments] = useState([]);
@@ -124,7 +124,7 @@ export default function LocationDetails({ loadLocations, specificLocation }) {
         <Header>{name}</Header>
         <StyledLocationContainer>
           <div className="location-container">
-            <LocationCard specificLocation={specificLocation} />
+            <LocationHeaderDetails specificLocation={specificLocation} />
             <div className="title-header">
               <h3>Comments</h3>
               <div className="modal">

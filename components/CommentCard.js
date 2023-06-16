@@ -14,24 +14,23 @@ export default function CommentCard({
   date,
 }) {
   const { data: session } = useSession();
-  // console.log("session", session);
   return (
     <>
       <CardFrame>
         <div className="demographic-data">
-          {name && <p>commented by: {name}</p>}
-          {age && <button className="demographic-data-tag">#{age}</button>}
+          {name && <p>commented by: {name} </p>}
+          {age && <button className="demographic-data-tag">#{age} </button>}
           {sexual_orientation && (
             <button className="demographic-data-tag">
               #{sexual_orientation}
             </button>
           )}
           {gender && (
-            <button className="demographic-data-tag">#{gender}</button>
+            <button className="demographic-data-tag">#{gender} </button>
           )}
           {bipoc && (
             <button className="demographic-data-tag">
-              {bipoc ? "#BiPoc" : null}
+              {bipoc ? "#BiPoc " : null}
             </button>
           )}
         </div>
@@ -69,7 +68,6 @@ const CardFrame = styled.div`
   flex-direction: column;
   padding: 15px;
   justify-content: center;
-  /* align-items: center; */
   height: 100%;
   width: 100%;
   margin-bottom: 20px;
@@ -83,6 +81,7 @@ const CardFrame = styled.div`
     color: #4d96ef;
     font-weight: bold;
     border-style: none;
+    padding: 0% 2% 3% 0%;
   }
 
   .date {

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import Modal from "react-modal";
 import { BiMessageSquareAdd } from "react-icons/bi";
-import LocationDetails from "./LocationDetails";
+import LocationDetails from "../LocationDetails";
 
 export default function ModalLocationDetails({
   locations,

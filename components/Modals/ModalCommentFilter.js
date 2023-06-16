@@ -1,11 +1,11 @@
 import React from "react";
 import Modal from "react-modal";
-import CommentFilter from "./CommentFilter";
+import CommentFilter from "../Filters/CommentFilter";
 import { useRouter } from "next/router";
 import { IoFilter } from "react-icons/io5";
 import styled from "styled-components";
 
-const customStyles = {
+const customModalStyles = {
   content: {
     top: "55%",
     left: "50%",
@@ -68,7 +68,7 @@ export default function ModalCommentFilter({
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        style={customStyles}
+        style={customModalStyles}
         contentLabel="Modal"
       >
         <button onClick={closeModal} style={closeButtonStyle}>

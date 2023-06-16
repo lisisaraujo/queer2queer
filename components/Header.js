@@ -1,6 +1,6 @@
 import ReturnButton from "./Buttons/ReturnButton";
 import styled from "styled-components";
-import CategoryFilter from "./CategoryFilter";
+import CategoryFilter from "./Filters/CategoryFilter";
 
 export default function Header({ children, handleCategoryChange }) {
   return (

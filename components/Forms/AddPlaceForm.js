@@ -4,9 +4,9 @@ import Select from "react-select";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { AddressAutofill } from "@mapbox/search-js-react";
-import { accessToken } from "../src/mapbox";
+import { accessToken } from "../../src/mapbox";
 
-import { selectFilterColorStyles, typeCategories } from "../utils";
+import { selectFilterColorStyles, typeCategories } from "../../utils";
 
 export default function AddPlaceForm({
   locationID,

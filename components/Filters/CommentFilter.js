@@ -6,7 +6,7 @@ import {
   colorStyles,
   ageCategories,
   bipocCategory,
-} from "../utils";
+} from "../../utils";
 
 export default function CommentFilter({
   setSelectedAgeOption,
