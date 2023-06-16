@@ -2,7 +2,6 @@ import { useState, useRef } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import { StyledLabel } from "./StyledForm";
 
 // async function createUser(name, email, password) {
 //   const response = await fetch("api/auth/admin", {
@@ -128,14 +127,17 @@ export default function AuthForm() {
   );
 }
 
+const StyledLabel = styled.label`
+  margin-top: 20px;
+  padding-bottom: 10px;
+  font-family: "Bodoni Moda", serif;
+  text-transform: uppercase;
+  font-size: 10pt;
+`;
+
 const Wrapper = styled.div`
-  /* margin: 10%; */
   border-radius: 20px;
   border: 1px solid black;
-  /* display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-content: center; */
 `;
 
 const EntryForm = styled.form`

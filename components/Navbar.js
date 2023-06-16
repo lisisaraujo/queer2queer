@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import CategoryFilter from "./CategoryFilter";
 import DropdownMenu from "./DropdownMenu";
-import ModalFilterHomepage from "./ModalFilterHomepage";
+import ModalFilterHomepage from "./Modals/ModalFilterHomepage";
 
 export default function Navbar({
   handleCategoryChange,
-  clearFilter,
+  clearCategoryFilter,
   selectedCategory,
+  setSelectedCategory,
 }) {
   return (
     <>
@@ -15,10 +15,10 @@ export default function Navbar({
         <div className="title">Queer2Queer</div>
         <ModalFilterHomepage
           handleCategoryChange={handleCategoryChange}
-          clearFilter={clearFilter}
+          clearCategoryFilter={clearCategoryFilter}
           selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
         />
-        {/* <CategoryFilter onChangeCategory={handleCategoryChange} /> */}
       </NavbarWrapper>
     </>
   );

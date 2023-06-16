@@ -1,9 +1,9 @@
 import React from "react";
 import Modal from "react-modal";
-import CommentForm from "./Comments/CommentForm";
 import { useRouter } from "next/router";
-import { CgMathPlus } from "react-icons/cg";
+import { IoIosAdd, IoIosClose } from "react-icons/io";
 import styled from "styled-components";
+import AddPlaceForm from "../Forms/AddPlaceForm";
 
 const customStyles = {
   content: {
@@ -26,15 +26,21 @@ const closeButtonStyle = {
   backgroundColor: "transparent",
   marginTop: "5%",
   marginLeft: "85%",
-  fontSize: "1.2em",
   border: "none",
 };
+
+// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement("div");
 
-export default function ModalCommentForm({ loadComments }) {
+export default function ModalAddLocationForm({ loadLocations }) {
   const router = useRouter();
   const { id } = router.query;
-  const iconStyles = { color: "#101828", fontSize: "1.8em", cursor: "pointer" };
+  const iconStyles = {
+    color: "white",
+    fontSize: "1.8em",
+    cursor: "pointer",
+  };
+  //   const customStyles = { backgroundColor: "black" };
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -49,7 +55,7 @@ export default function ModalCommentForm({ loadComments }) {
   return (
     <div>
       <StyledButton>
-        <CgMathPlus style={iconStyles} onClick={openModal} />
+        <IoIosAdd style={iconStyles} onClick={openModal} />
       </StyledButton>
 
       <Modal
@@ -59,12 +65,12 @@ export default function ModalCommentForm({ loadComments }) {
         contentLabel="Modal"
       >
         <button onClick={closeModal} style={closeButtonStyle}>
-          X
+          <IoIosClose style={iconStyles} />
         </button>
-        <CommentForm
+        <AddPlaceForm
           locationID={id}
           closeModal={closeModal}
-          loadComments={loadComments}
+          loadLocations={loadLocations}
         />
       </Modal>
     </div>
@@ -73,9 +79,19 @@ export default function ModalCommentForm({ loadComments }) {
 
 export const StyledButton = styled.button`
   border: none;
-  background-color: transparent;
-  &:hover {
-    cursor: pointer;
+  background-color: rgba(77, 150, 239, 0.9);
+  z-index: 1;
+  display: flex;
+  a:hover {
+    background-color: #73aef4;
+    color: #fdfbfc;
+    border-radius: 50%;
   }
+  font-size: 2em;
   position: relative;
+  margin-top: 85vh;
+  margin-left: 80vw;
+  opacity: 0.9;
+  border-radius: 50%;
+  box-shadow: 0px 0px 18px 2px rgba(54, 54, 54, 0.75);
 `;

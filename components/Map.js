@@ -1,12 +1,10 @@
-import dynamic from "next/dynamic";
-import React, { useState, useEffect, useMemo, useRef } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
-import { accessToken } from "../src/mapbox";
+import { accessToken } from "../mapbox";
 import Link from "next/link";
 import { GeolocateControl, NavigationControl } from "react-map-gl";
 import Navbar from "./Navbar";
-import LocationDetails from "./LocationDetails";
-import ModalAddLocationForm from "./ModalAddLocationForm";
+import ModalAddLocationForm from "./Modals/ModalAddLocationForm";
 import {
   barIconMap,
   clubIconMap,
@@ -14,7 +12,6 @@ import {
   communityIconMap,
   otherIconMap,
 } from "../utils";
-import ModalLocationDetails from "./ModalLocationDetails";
 
 export default function MyMap({ locations, loadLocations }) {
   const [selectedLocation, setSelectedLocation] = useState({});
@@ -41,17 +38,6 @@ export default function MyMap({ locations, loadLocations }) {
     setFilteredLocations(locations);
   }, [locations]);
 
-  const handleCategoryChange = (event) => {
-    setSelectedCategory(event.target.value);
-  };
-
-  const clearFilter = () => {
-    setSelectedCategory("");
-    console.log(selectedCategory, "filters cleared");
-  };
-
-  // console.log(selectedCategory);
-
   const getFilteredList = () => {
     if (!selectedCategory) {
       return filteredLocations;
@@ -65,14 +51,12 @@ export default function MyMap({ locations, loadLocations }) {
     selectedCategory,
     filteredLocations,
   ]);
-  // console.log(filteredList);
 
   return (
     <>
       <Navbar
-        handleCategoryChange={handleCategoryChange}
-        clearFilter={clearFilter}
         selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
       >
         Queer2Queer
       </Navbar>

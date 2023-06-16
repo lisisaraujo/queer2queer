@@ -1,10 +1,9 @@
 import React from "react";
 import Modal from "react-modal";
-import CategoryFilter from "./CategoryFilter";
+import CommentForm from "../Forms/CommentForm";
 import { useRouter } from "next/router";
-import { IoFilter } from "react-icons/io5";
+import { CgMathPlus } from "react-icons/cg";
 import styled from "styled-components";
-import { IoIosClose } from "react-icons/io";
 
 const customStyles = {
   content: {
@@ -30,16 +29,12 @@ const closeButtonStyle = {
   fontSize: "1.2em",
   border: "none",
 };
-
 Modal.setAppElement("div");
 
-export default function ModalFilterHomepage({
-  handleCategoryChange,
-  clearFilter,
-  selectedCategory,
-}) {
+export default function ModalCommentForm({ loadComments }) {
   const router = useRouter();
-  const iconStyles = { color: "white", fontSize: "1.8em", cursor: "pointer" };
+  const { id } = router.query;
+  const iconStyles = { color: "#101828", fontSize: "1.8em", cursor: "pointer" };
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -52,9 +47,9 @@ export default function ModalFilterHomepage({
   }
 
   return (
-    <div className="flex relative justify-center">
+    <div>
       <StyledButton>
-        <IoFilter style={iconStyles} onClick={openModal} />
+        <CgMathPlus style={iconStyles} onClick={openModal} />
       </StyledButton>
 
       <Modal
@@ -62,30 +57,15 @@ export default function ModalFilterHomepage({
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Modal"
-        className="text-white flex-cl items-center absolute"
       >
         <button onClick={closeModal} style={closeButtonStyle}>
-          <IoIosClose style={iconStyles} />
+          X
         </button>
-        <div className="flex flex-col items-center p-10 space-y-8">
-          <h1 className="font-bold">Filter by Category</h1>
-          <CategoryFilter
-            handleCategoryChange={handleCategoryChange}
-            selectedCategory={selectedCategory}
-          />
-          <button
-            className="bg-blue-500 rounded p-3 shadow-lg shadow-slate-500"
-            onClick={closeModal}
-          >
-            Apply Filter
-          </button>
-          <button
-            className="bg-blue-500 rounded p-3 shadow-lg shadow-slate-500"
-            onClick={clearFilter}
-          >
-            Clear Filter
-          </button>
-        </div>
+        <CommentForm
+          locationID={id}
+          closeModal={closeModal}
+          loadComments={loadComments}
+        />
       </Modal>
     </div>
   );

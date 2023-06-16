@@ -1,3 +1,11 @@
+## Queer2Queer Map Application
+
+This application was build using React, Next.js, MongoDB and Mapbox API.
+
+With the aim of creating "safer" queer spaces in the city, it features queer locations in Berlin. It allows users to browse for specific kind of locations on the map and read other people's experiences in chosen locations, add their own experiences, and filter through comments to read the experiences of specific groups of people. Users are also able to add new locations to the map.
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -36,4 +44,3 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# queer-map

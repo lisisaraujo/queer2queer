@@ -7,9 +7,8 @@ import {
   ageCategories,
   genderCategories,
   sexualOrientationCategories,
-  bipocCategory,
   colorStyles,
-} from "../../utils";
+} from "../../utils.js";
 export default function CommentForm({ locationID, closeModal, loadComments }) {
   const router = useRouter();
   const comments = useSWR("/api/comments");
@@ -123,15 +122,9 @@ const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  /* padding: 5px; */
-  /* justify-content: center; */
-  /* height: 100%; */
   width: auto;
-  /* margin-left: 10%;
-  margin-right: 10%; */
   align-items: center;
   height: 100%;
-  /* width: auto; */
   margin-left: 10%;
   margin-right: 10%;
   justify-content: space-evenly;
@@ -139,8 +132,6 @@ const InputWrapper = styled.div`
   .location-input-field {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-evenly;
-    position: relative; */
     gap: 10px;
   }
   .comment-card {
@@ -171,9 +162,6 @@ const InputWrapper = styled.div`
     font-size: 1.2em;
     &:hover {
       box-shadow: 0px 0px 18px 2px rgba(125, 125, 125, 0.75);
-      /* width: 125px;
-      height: 55px;
-      background-color: red; */
     }
   }
 

@@ -13,7 +13,7 @@ export default function Account() {
         <Header>Admin</Header>
         <StyledAdminPage>
           <div className="home">
-            <p>Welcome {session.user.name}</p>
+            <p>Welcome {session.user.name}. You are currently logged in.</p>
             <button onClick={() => signOut()}>Sign out</button>
           </div>
         </StyledAdminPage>
@@ -67,9 +67,9 @@ const StyledAdminPage = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: whitesmoke;
-  margin: 10% 40%;
-  font-size: 2em;
+  color: black;
+  margin: 30% 40%;
+  font-size: 1em;
   button {
     width: 80px;
     height: 40px;

@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import { Inter } from "next/font/google";
 import { useRouter } from "next/router";
-import ModalLocationDetails from "../components/ModalLocationDetails";
+import ModalLocationDetails from "../components/Modals/ModalLocationDetails";
 
 const inter = Inter({ subsets: ["latin"] });
 
