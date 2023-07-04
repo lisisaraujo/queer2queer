@@ -29,62 +29,26 @@ export default function Navbar({
 }
 
 const NavbarWrapper = styled.nav`
-  /* display: flex;
+  display: flex;
   flex-direction: row;
   justify-content: space-around;
-  padding: 0% 5%;
-  width: 100%;
-  z-index: 1;
-
-  color: #101828;
-  position: fixed;
-  background-color: #e4effd;
-  opacity: 0.9;
-  box-shadow: 0px 0px 18px 2px rgba(54, 54, 54, 0.75);
-  align-items: center; */
-  display: flex;
   position: absolute;
   width: 100%;
   height: 54px;
-  /* padding: 16px 24px; */
-  /* justify-content: center;
-  align-items: flex-start; */
   gap: 92px;
   flex-shrink: 0;
   color: rgba(16, 24, 40, 1);
   border-radius: 2px;
-  background: rgba(252, 252, 253, 0.7);
-
+  background: rgba(252, 252, 253, 0.9);
   top: 0;
-
-  /* Title3/Bold */
-  /* font-size: 20px;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 25px; */
-
-  /* .navbar-container {
-    display: flex;
-    width: 375px;
-    height: 54px;
-    padding: 16px 24px;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 92px;
-    flex-shrink: 0;
-  } */
 
   .navbar-left {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     gap: 12px;
-    color: rgba(16, 24, 40, 1);
     color: #101828;
-
-    /* Title3/Bold */
     font-size: 20px;
-    font-family: Montserrat;
     font-style: normal;
     font-weight: 700;
     line-height: 25px;
@@ -93,6 +57,7 @@ const NavbarWrapper = styled.nav`
   .navbar-right {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     gap: 12px;
     color: rgba(16, 24, 40, 1);
   }

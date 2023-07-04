@@ -23,14 +23,17 @@ const GlobalStyle = createGlobalStyle`
 
 
  .mapboxgl-popup-content{
-    background: rgba(77, 150, 239, 1);
+  background: rgba(252, 252, 253, 0.9);
+
      /* background: white;  */
-     border-radius: 3px;
+     /* border-radius: 3px; */
     box-shadow: 0 1px 2px rgba(0,0,0,.1);
     padding: 10px 10px;
     pointer-events: auto;
     position: relative;
     opacity: 0.9; 
+    color: black;
+    font-size: 1.2em;
  }
 
  .mapboxgl-popup-close-button {
@@ -39,9 +42,9 @@ const GlobalStyle = createGlobalStyle`
     border-radius: 0 3px 0 0;
     cursor: pointer;
     position: absolute;
-    right: 0;
-    top: 0;
-    color: white;
+    right: 6%;
+    top: -3px;
+    color: black;
 }
 
 /* a:-webkit-any-link {
