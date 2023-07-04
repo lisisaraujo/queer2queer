@@ -35,7 +35,7 @@ const NavbarWrapper = styled.nav`
   padding: 0% 5%;
   width: 100%;
   z-index: 1;
-  margin-top: 0px;
+
   color: #101828;
   position: fixed;
   background-color: #e4effd;
@@ -45,32 +45,51 @@ const NavbarWrapper = styled.nav`
   display: flex;
   width: 100%;
   height: 54px;
-  padding: 16px 24px;
-  justify-content: center;
-  align-items: flex-start;
+  /* padding: 16px 24px; */
+  /* justify-content: center;
+  align-items: flex-start; */
   gap: 92px;
   flex-shrink: 0;
+  color: rgba(16, 24, 40, 1);
   border-radius: 2px;
   background: rgba(77, 150, 239, 0.15);
-  color: #101828;
 
   /* Title3/Bold */
-  font-size: 20px;
+  /* font-size: 20px;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 700;
-  line-height: 25px;
+  line-height: 25px; */
+
+  /* .navbar-container {
+    display: flex;
+    width: 375px;
+    height: 54px;
+    padding: 16px 24px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 92px;
+    flex-shrink: 0;
+  } */
 
   .navbar-left {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     gap: 12px;
     color: rgba(16, 24, 40, 1);
+    color: #101828;
+
+    /* Title3/Bold */
+    font-size: 20px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25px;
   }
 
   .navbar-right {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 12px;
     color: rgba(16, 24, 40, 1);
   }

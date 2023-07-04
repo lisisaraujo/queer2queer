@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function DropdownMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const menuList = ["About", "Contact", "Feedback", "Ressources", "Admin"];
-  const iconStyles = { color: "white", fontSize: "1em", cursor: "pointer" };
+  const iconStyles = { color: "black", fontSize: "1.5em", cursor: "pointer" };
 
   return (
     <div className="relative flex flex-col items-center w-fit rounded-lg">

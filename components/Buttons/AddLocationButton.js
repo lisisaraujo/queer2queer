@@ -2,39 +2,40 @@ import { IoIosAdd } from "react-icons/io";
 import styled from "styled-components";
 import Link from "next/link";
 
-export default function AddLocationButton() {
+export default function AddLocationButton({ openModal }) {
   const iconStyles = {
-    color: "white",
-    fontSize: "2em",
+    color: "rgba(255, 255, 255, 1)",
+    width: "34px",
+    height: "34px",
+    flexShrink: "0",
     cursor: "pointer",
   };
 
   return (
     <>
+      {" "}
       <StyledButton>
-        <Link href="/addLocation">
+        <button onClick={openModal}>
           <IoIosAdd style={iconStyles} />
-        </Link>
+        </button>
       </StyledButton>
     </>
   );
 }
 
-export const StyledButton = styled.button`
-  border: none;
-  background-color: rgba(77, 150, 239, 0.9);
-  z-index: 1;
+export const StyledButton = styled.div`
   display: flex;
-  a:hover {
-    background-color: #73aef4;
-    color: #fdfbfc;
-    border-radius: 50%;
-  }
-  font-size: 2em;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  flex-shrink: 0;
+  border-radius: 68px;
+  background: rgba(252, 252, 253, 0.7);
+  box-shadow: 3px 7px 6px 2px rgba(0, 0, 0, 0.16);
+  color: rgba(252, 252, 253, 0.7);
+  /* font-size: 2em; */
   position: relative;
   margin-top: 85vh;
   margin-left: 80vw;
-  opacity: 0.9;
-  border-radius: 50%;
-  box-shadow: 0px 0px 18px 2px rgba(54, 54, 54, 0.75);
+  /* margin-bottom: 50vh; */
 `;

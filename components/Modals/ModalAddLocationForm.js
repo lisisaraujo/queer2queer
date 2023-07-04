@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { IoIosAdd, IoIosClose } from "react-icons/io";
 import styled from "styled-components";
 import AddPlaceForm from "../Forms/AddPlaceForm";
+import AddLocationButton from "../Buttons/AddLocationButton";
 
 const customStyles = {
   content: {
@@ -54,9 +55,7 @@ export default function ModalAddLocationForm({ loadLocations }) {
 
   return (
     <div>
-      <StyledButton>
-        <IoIosAdd style={iconStyles} onClick={openModal} />
-      </StyledButton>
+      <AddLocationButton openModal={openModal} />
 
       <Modal
         isOpen={modalIsOpen}
