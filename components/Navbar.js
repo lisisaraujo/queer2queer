@@ -43,6 +43,7 @@ const NavbarWrapper = styled.nav`
   box-shadow: 0px 0px 18px 2px rgba(54, 54, 54, 0.75);
   align-items: center; */
   display: flex;
+  position: absolute;
   width: 100%;
   height: 54px;
   /* padding: 16px 24px; */
@@ -52,7 +53,9 @@ const NavbarWrapper = styled.nav`
   flex-shrink: 0;
   color: rgba(16, 24, 40, 1);
   border-radius: 2px;
-  background: rgba(77, 150, 239, 0.15);
+  background: rgba(252, 252, 253, 0.7);
+
+  top: 0;
 
   /* Title3/Bold */
   /* font-size: 20px;

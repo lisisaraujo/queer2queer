@@ -44,11 +44,11 @@ const GlobalStyle = createGlobalStyle`
     color: white;
 }
 
-a:-webkit-any-link {
+/* a:-webkit-any-link {
     color:white;
     cursor: pointer;
     text-decoration: none;
-} 
+}  */
 
 .location-container {
     display: flex;

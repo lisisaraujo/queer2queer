@@ -13,19 +13,18 @@ export default function AddLocationButton({ openModal }) {
 
   return (
     <>
-      {" "}
-      <StyledButton>
-        <button onClick={openModal}>
-          <IoIosAdd style={iconStyles} />
-        </button>
+      <StyledButton onClick={openModal}>
+        <IoIosAdd style={iconStyles} />
       </StyledButton>
     </>
   );
 }
 
-export const StyledButton = styled.div`
+export const StyledButton = styled.button`
   display: flex;
+  position: absolute;
   justify-content: center;
+  align-items: center;
   width: 68px;
   height: 68px;
   flex-shrink: 0;
@@ -34,7 +33,7 @@ export const StyledButton = styled.div`
   box-shadow: 3px 7px 6px 2px rgba(0, 0, 0, 0.16);
   color: rgba(252, 252, 253, 0.7);
   /* font-size: 2em; */
-  position: relative;
+
   margin-top: 85vh;
   margin-left: 80vw;
   /* margin-bottom: 50vh; */
