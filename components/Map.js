@@ -54,18 +54,16 @@ export default function MyMap({ locations, loadLocations }) {
 
   return (
     <>
-      <Navbar
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-      >
-        Queer2Queer
-      </Navbar>
       <ReactMapGL
-        mapStyle="mapbox://styles/dalalamad/clfe8aq9s006701o42zx1li76"
+        mapStyle="mapbox://styles/dalalamad/clf8n2lcn002001pjbso7lz8r"
         mapboxAccessToken={accessToken}
         {...viewport}
         onMove={(evt) => setViewport(evt.viewport)}
       >
+        <Navbar
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        ></Navbar>
         {filteredList.map((location) => {
           return (
             <div key={location._id}>
@@ -112,6 +110,7 @@ export default function MyMap({ locations, loadLocations }) {
             </div>
           );
         })}
+
         <GeolocateControl
           positionOptions={{ enableHighAccuracy: true }}
           trackUserLocation={true}

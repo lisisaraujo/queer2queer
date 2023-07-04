@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai";
-import { IoMenu } from "react-icons/io5";
+import { HiMenuAlt1 } from "react-icons/hi";
 import Link from "next/link";
 
 export default function DropdownMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const menuList = ["About", "Contact", "Feedback", "Ressources", "Admin"];
-  const iconStyles = { color: "white", fontSize: "1.8em", cursor: "pointer" };
+  const iconStyles = { color: "black", fontSize: "1.5em", cursor: "pointer" };
 
   return (
     <div className="relative flex flex-col items-center w-fit rounded-lg">
@@ -14,7 +14,7 @@ export default function DropdownMenu() {
         onClick={() => setIsOpen((prev) => !prev)}
         className="bg-blue-450 p-4 w-fit flex items-center justify-between font-bold text-lg rounded-lg tracking-wider border-4 border-transparent active:border-white duration-300 active:text-black"
       >
-        <IoMenu style={iconStyles} />
+        <HiMenuAlt1 style={iconStyles} />
         {/* {!isOpen ? (
               <AiOutlineCaretDown className="h-8" />
             ) : (

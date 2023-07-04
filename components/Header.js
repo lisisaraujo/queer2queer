@@ -1,8 +1,7 @@
 import ReturnButton from "./Buttons/ReturnButton";
 import styled from "styled-components";
-import CategoryFilter from "./Filters/CategoryFilter";
 
-export default function Header({ children, handleCategoryChange }) {
+export default function Header({ children }) {
   return (
     <>
       <HeaderWrapper>
@@ -13,7 +12,6 @@ export default function Header({ children, handleCategoryChange }) {
         <div className="title">
           <h3>{children}</h3>
         </div>
-        {/* <CategoryFilter onChangeCategory={handleCategoryChange} /> */}
       </HeaderWrapper>
     </>
   );

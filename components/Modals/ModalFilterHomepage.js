@@ -39,7 +39,7 @@ export default function ModalFilterHomepage({
   setSelectedCategory,
 }) {
   const router = useRouter();
-  const iconStyles = { color: "white", fontSize: "1.8em", cursor: "pointer" };
+  const iconStyles = { color: "black", fontSize: "1.8em", cursor: "pointer" };
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
 

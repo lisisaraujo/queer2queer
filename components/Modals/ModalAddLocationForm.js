@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { IoIosAdd, IoIosClose } from "react-icons/io";
 import styled from "styled-components";
 import AddPlaceForm from "../Forms/AddPlaceForm";
+import AddLocationButton from "../Buttons/AddLocationButton";
 
 const customStyles = {
   content: {
@@ -53,10 +54,8 @@ export default function ModalAddLocationForm({ loadLocations }) {
   }
 
   return (
-    <div>
-      <StyledButton>
-        <IoIosAdd style={iconStyles} onClick={openModal} />
-      </StyledButton>
+    <>
+      <AddLocationButton openModal={openModal} />
 
       <Modal
         isOpen={modalIsOpen}
@@ -73,25 +72,25 @@ export default function ModalAddLocationForm({ loadLocations }) {
           loadLocations={loadLocations}
         />
       </Modal>
-    </div>
+    </>
   );
 }
 
-export const StyledButton = styled.button`
-  border: none;
-  background-color: rgba(77, 150, 239, 0.9);
-  z-index: 1;
-  display: flex;
-  a:hover {
-    background-color: #73aef4;
-    color: #fdfbfc;
-    border-radius: 50%;
-  }
-  font-size: 2em;
-  position: relative;
-  margin-top: 85vh;
-  margin-left: 80vw;
-  opacity: 0.9;
-  border-radius: 50%;
-  box-shadow: 0px 0px 18px 2px rgba(54, 54, 54, 0.75);
-`;
+// export const StyledButton = styled.button`
+//   border: none;
+//   background-color: rgba(77, 150, 239, 0.9);
+//   z-index: 1;
+//   display: flex;
+//   a:hover {
+//     background-color: #73aef4;
+//     color: #fdfbfc;
+//     border-radius: 50%;
+//   }
+//   font-size: 2em;
+//   position: relative;
+//   margin-top: 85vh;
+//   margin-left: 80vw;
+//   opacity: 0.9;
+//   border-radius: 50%;
+//   box-shadow: 0px 0px 18px 2px rgba(54, 54, 54, 0.75);
+// `;
