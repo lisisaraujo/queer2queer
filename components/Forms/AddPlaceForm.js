@@ -52,7 +52,6 @@ export default function AddPlaceForm({
             name="location"
             value={locationID}
           ></input>
-          <h2>Suggest Location</h2>
           <div className="location-input-field">
             <label htmlFor="name">Name of location:</label>
             <input id="name" name="name"></input>
@@ -79,7 +78,7 @@ export default function AddPlaceForm({
                 />
               </AddressAutofill>
             </div>
-            <label htmlFor="type">Type:</label>
+            <label htmlFor="type">What type of location is it?</label>
             <Select
               defaultValue={selectedOption}
               onChange={setSelectedOption}
@@ -103,7 +102,7 @@ const EntryForm = styled.form`
   text-align: start;
   width: 100%;
   height: 100%;
-  color: whitesmoke;
+  color: black;
 `;
 
 const InputWrapper = styled.div`
@@ -118,52 +117,44 @@ const InputWrapper = styled.div`
   margin: 0px 30px;
 
   .location-input-field {
+    margin-top: 25%;
     display: flex;
     flex-direction: column;
     /* justify-content: space-evenly;
     position: relative; */
-    gap: 10px;
+    gap: 20px;
   }
   .address-input {
     display: flex;
     flex-direction: column;
+    gap: 20px;
   }
 
   .submit-button {
-    width: 80px;
-    height: 40px;
-    align-self: center;
-    background-color: rgba(1, 72, 224, 0.7);
-    box-shadow: 0px 0px 5px 3px rgba(90, 90, 90, 0.75);
-
-    color: whitesmoke;
-    border-radius: 10px;
-    margin-bottom: 10%;
-    border-style: none;
-    margin-top: 30px;
-    &:hover {
-      box-shadow: 0px 0px 18px 2px rgba(125, 125, 125, 0.75);
-    }
+    display: flex;
+    width: 207px;
+    height: 48px;
+    padding: 24px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 200px;
+    border: 1px solid #4d96ef;
+    background: #4d96ef;
   }
 
   textarea {
     display: flex;
     position: relative;
-    background-color: rgb(60, 60, 60);
+    /* background-color: rgb(60, 60, 60); */
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0px 0px 5px 3px rgba(54, 54, 54, 0.75);
     text-align: left;
     width: 100%;
     margin: 40px auto;
-    .date {
-      font-size: 0.7rem;
-      text-align: right;
-    }
-    .comment {
-      align-self: center;
-    }
-    background-color: inherit;
+
+    /* background-color: inherit; */
   }
 
   input {
@@ -171,5 +162,9 @@ const InputWrapper = styled.div`
     border-radius: 5px;
     border: none;
     /* box-shadow: 0px 0px 5px 3px rgba(90, 90, 90, 0.75); */
+  }
+
+  #name {
+    border-color: black;
   }
 `;
